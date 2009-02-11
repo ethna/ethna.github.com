@@ -1,0 +1,4 @@
+[project]
+ethna_version = 2.5.0-preview2
+controller_file = "app/Docbook_Controller.php"
+controller_class = "Docbook_Controller"
