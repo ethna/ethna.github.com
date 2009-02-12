@@ -14,7 +14,7 @@ $config = array(
 
     // db
     // sample-1: single db
-    // 'dsn' => 'mysql://user:password@server/database',
+    'dsn' => 'mysql://user:password@server/database',
     //
     // sample-2: single db w/ multiple users
     // 'dsn'   => 'mysql://rw_user:password@server/database', // read-write
