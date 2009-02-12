@@ -1,2 +1,10 @@
 tmp
 log
+lib/.channels
+lib/.depdb
+lib/.depdblock
+lib/.filemap
+lib/.lock
+lib/.pear
+lib/.registry
+lib/pear.conf
