@@ -1,5 +1,6 @@
-tmp
-log
+tmp/log
+tmp/c
+tmp/.pear
 lib/.channels
 lib/.depdb
 lib/.depdblock
