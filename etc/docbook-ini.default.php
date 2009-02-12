@@ -6,7 +6,7 @@
  */
 $config = array(
     // site
-    'url' => '',
+    'url' => 'http://book.ethna.jp/',
 
     // debug
     // (to enable ethna_info and ethna_unittest, turn this true)
@@ -29,7 +29,7 @@ $config = array(
 
     // log
     // sample-1: sigile facility
-    'log_facility'          => 'echo',
+    'log_facility'          => 'file',
     'log_level'             => 'warning',
     'log_option'            => 'pid,function,pos',
     'log_filter_do'         => '',
@@ -81,5 +81,11 @@ $config = array(
     
     // csrf
     // 'csrf' => 'Session',
+
+    //  time
+    'now' => time(),
+    'datetime' => date("Y-m-d H:i:s"),
+    'date' => date("Y-m-d"),
+    'time' => date("H:i:s"),
 );
 ?>
