@@ -45,7 +45,7 @@
 <div id="footer">
  <p>Copyright &copy; 2009 , All Rights Reserved.</p>
     <p>
-    Powered By <a href="http://ethna.jp">Ethna</a>-{$smarty.const.ETHNA_VERSION}.
+    Powered By <a href="http://ethna.jp">Ethna</a>-{{$smarty.const.ETHNA_VERSION}}.
     </p>
 </div>
 

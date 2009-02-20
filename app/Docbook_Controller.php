@@ -162,7 +162,7 @@ class Docbook_Controller extends Ethna_Controller
          *
          *  'Common', 'Docbook', 'Ethna',
          */
-        'Docbook', 'Ethna',
+        'Ether', 'Docbook', 'Ethna',
     );
 
     /**
@@ -178,6 +178,24 @@ class Docbook_Controller extends Ethna_Controller
          *
          *  'ExecutionTime',
          */
+         'ExecutionTimeEcho',
+         'ExecutionTime',
+         'EndLogger',
+         'EtherSuite',
+    );
+
+    /**
+     * write filters that should be used only on debug mode.
+     *
+     * not implemented!!!
+     *
+     * !! use this switch with 'FilterSwitch' filter plugin. !!
+     *
+     * @var     array       ignore on release
+     */
+    var $filter_ignore_on_release = array(
+         'ExecutionTime',
+         'EtherSuite',
     );
 
     /**
@@ -273,6 +291,23 @@ class Docbook_Controller extends Ethna_Controller
     function _getDefaultLanguage()
     {
         return array('ja_JP', 'UTF-8', 'UTF-8');
+    }
+
+    /* override
+    */
+    function _createFilterChain()
+    {
+        $config = $this->getConfig();
+        $isDebug = $config->get('debug');
+
+        if (!$isDebug) {
+            $this->filter = array_diff(
+                $this->filter,
+                $this->filter_ignore_on_release
+            );
+        }
+
+        parent::_createFilterChain();
     }
 }
 
