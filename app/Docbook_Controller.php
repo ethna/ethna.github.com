@@ -15,6 +15,7 @@ $app = BASE . "/app";
 $lib = BASE . "/lib";
 ini_set('include_path', implode(PATH_SEPARATOR, array($app, $lib)) . PATH_SEPARATOR . ini_get('include_path'));
 
+require_once 'Ether_Utility.php';
 
 /** including application library. */
 require_once 'Ethna/Ethna.php';
@@ -22,6 +23,7 @@ require_once 'Docbook_Error.php';
 require_once 'Docbook_ActionClass.php';
 require_once 'Docbook_ActionForm.php';
 require_once 'Docbook_ViewClass.php';
+
 
 /**
  *  Docbook application Controller definition.

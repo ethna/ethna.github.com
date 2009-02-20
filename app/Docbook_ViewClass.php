@@ -16,17 +16,17 @@
  *  @package    Docbook
  *  @access     public
  */
-class Docbook_ViewClass extends Ethna_ViewClass
+class Docbook_ViewClass extends Ether_ViewClass
 {
     /**
      *  set common default value.
      *
      *  @access protected
      *  @param  object  Docbook_Renderer  Renderer object.
-     */
     function _setDefault(&$renderer)
     {
     }
+     */
 
 }
 // }}}

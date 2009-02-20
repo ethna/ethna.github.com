@@ -21,7 +21,7 @@
 -->
 
 
-<title>title</title>
+<title>book.ethna.jp</title>
 </head>
 <body>
 <div id="frame">
@@ -29,11 +29,16 @@
 
 <div id="header">
  <h1><a href="{{$config.url}}">book.ethna.jp</a></h1>
+
+ <ul>
+  <li><a href="http://ethna.jp/">top</a></li>
+  <li><a href="{{$config.url}}">book</a></li>
+ </ul>
 </div>
 
 <div id="main">
 
-{{$contnet}}
+{{$content}}
     
 </div>
 
