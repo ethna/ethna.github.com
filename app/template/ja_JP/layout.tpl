@@ -31,8 +31,8 @@
  <h1><a href="{{$config.url}}">book.ethna.jp</a></h1>
 
  <ul>
-  <li><a href="http://ethna.jp/">top</a></li>
-  <li><a href="{{$config.url}}">book</a></li>
+  <li><a href="http://ethna.jp/">Top</a></li>
+  <li><a href="{{$config.url}}">Book</a></li>
  </ul>
 </div>
 
