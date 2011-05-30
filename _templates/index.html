@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% set title = 'Overview' %}
+
+{% block body %}
+
+<h1>Ethna ドキュメント</h1>
+<p>
+Ethna のドキュメントへようこそ。
+</p>
+
+
+<h2>クイックリンク</h2>
+
+<ul>
+  <li><a href="{{ pathto("README.html", 1) }}">Ethna 公式ドキュメント</a></li>
+  <li><a href="http://ethna.jp/" class="external">Ethna 公式サイト</a></li>
+  <li><a href="http://sourceforge.jp/projects/ethna/" class="external">Ethna - SourceForge.JP プロジェクト</a></li>
+  <li><a href="http://sourceforge.jp/projects/ethna/releases/" class="external">ダウンロード - Ethna - SourceForge.JP プロジェクト</a></li>
+</ul>
+
+{% endblock %}
+

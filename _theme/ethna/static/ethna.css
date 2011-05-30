@@ -1,0 +1,64 @@
+/*
+ * strkmemo.css_t
+ * ~~~~~~~~~~~~~~~
+ *
+ * Strkmemo stylesheet -- strkmemo theme.  Originally created by
+ * sotarok.
+ *
+ * :copyright: Copyright 2007-2011 by sotarok.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+@import url("basic.css");
+@import url("sphinxdoc.css");
+
+@import url("ethna.jp.css");
+
+/**
+ */
+
+body {
+  background: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f0f0f0)); /* for webkit browsers */
+  background: -moz-linear-gradient(top, #fff, #f0f0f0); /* for firefox 3.6+ */ 
+  border-bottom: none;
+  border-top: none;
+}
+
+h1 {
+  color: #009F9F;
+}
+
+
+
+a {
+  color:#f35a21;
+}
+
+a.external {
+  background: url("horizbullet.gif") no-repeat 3px 4px;
+  background-color:#e9f8f8;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 2px 2px 0px 23px;
+  color:#f35a21;
+}
+
+a:hover ,
+div.related ul li a:hover {
+  color: #f2a921;
+}
+
+
+/**
+ * header
+ */
+#ethna-header {
+  background: #AFEFEF;
+  text-align: left;
+  background: -webkit-gradient(linear, left top, left bottom, from(#E9FAFA), to(#AFEFEF));
+  background: -moz-linear-gradient(top, #E9FAFA, #AFEFEF);
+  background: -o-linear-gradient(#E9FAFA, #AFEFEF);
+  background: linear-gradient(#E9FAFA, #AFEFEF);
+}
