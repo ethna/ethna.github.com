@@ -3,7 +3,7 @@
 リファレンス
 =====================
 
-ここでは、 `Ethna` についての説明、開発にあたっての
+ここでは、 `Ethna` にのもつ機能について、基本から応用まで解説します。
 
 .. toctree::
    :maxdepth: 3
@@ -19,6 +19,8 @@
    reference/urlhandler
    reference/template
    reference/i18n
+   reference/testing
    reference/plugin
    reference/command
+   reference/migration
 

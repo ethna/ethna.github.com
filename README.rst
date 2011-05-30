@@ -18,6 +18,7 @@ Ethna ドキュメント
    install
    tutorial
    reference
+   cookbook
    docdoc
 
 

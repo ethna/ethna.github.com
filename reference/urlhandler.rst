@@ -1,9 +1,9 @@
 .. _reference_urlhandler:
 
-URLルーティング - UrlHandler
+UrlHandler
 =============================
 
-`Ethna` で URL のルーティングを行う場合、 `UrlHandler` を利用します。
+`Ethna` で URL ルーティングを行う場合、 `UrlHandler` を使用します。
 
 
 

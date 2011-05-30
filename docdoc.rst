@@ -37,6 +37,9 @@ Ethna のコミッタである `@sotarok <http://twitter.com/sotarok>`_ がド�
 ドキュメントの追加など
 -----------------------
 
-ドキュメントの間違いの指摘、修正、追加などは `GitHub` から直接 pull request を送っていただいても構いませんし、 `ML <http://ml.ethna.jp/mailman/listinfo/users>`_ で相談していただいても構いません。
+ドキュメントの間違いの指摘、修正、追加などは `GitHub` から直接 pull request を送っていただいても構いませんし、 `ML <http://ml.ethna.jp/mailman/listinfo/users>`_ で相談していただいても構いません。Pull request を送る際は、develop ブランチえ直接はコミットせず、他の名前でブランチを適当に区切ってから送ってください。
+
+* 参考: `GitHubへpull requestする際のベストプラクティス <http://d.hatena.ne.jp/hnw/20110528>`_
+
 
 ドキュメントを充実させることに協力いただけるのは大歓迎です！
