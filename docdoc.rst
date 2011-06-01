@@ -20,21 +20,21 @@ Ethna のコミッタである `@sotarok <http://twitter.com/sotarok>`_ がド�
 
 
 Sphinxインストール方法
-----------------
+------------------------
 
 Macの場合 ::
 
     $ sudo easy_install sphinx
 
-Linuxの場合 ::
+Linuxの場合 
 
- $ wget http://peak.telecommunity.com/dist/ez_setup.py
- $ sudo python ez_setup.py
- $ sudo easy_install sphinx
+aptitude/yum で python-setuptoolsをインストールした後、 ::
+
+    $ sudo easy_install sphinx
 
 
 ドキュメントのビルド方法
-----------------
+--------------------------
 
 簡単です。
 clone したディレクトリで ::
@@ -44,8 +44,15 @@ clone したディレクトリで ::
 するだけです。 ``_build/html`` ディレクトリに HTML が生成されるため、HTML ファイルをブラウザで確認しましょう。
 
 
+Sphinxドキュメントの書き方
+--------------------------
+
+* `Sphinxドキュメント <http://sphinx-users.jp/doc10/>`_
+
 方針
 ----------------
+
+
 
 多分結構適当です。元々の http://ethna.jp/ の内容をベースに、バージョンに沿った内容に書きなおしたりしています。
 
