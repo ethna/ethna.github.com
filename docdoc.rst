@@ -19,14 +19,24 @@ Ethna のコミッタである `@sotarok <http://twitter.com/sotarok>`_ がド�
 *  `book.ethna.jp - GitHub <https://github.com/sotarok/book.ethna.jp>`_
 
 
-ビルド方法
-----------------
+Sphinxインストール方法
+------------------------
 
-ビルドは簡単です (特に Mac なら)。
-まず、 `Sphinx` をインストールし、 ::
+Macの場合 ::
 
     $ sudo easy_install sphinx
 
+Linuxの場合 
+
+aptitude/yum で python-setuptoolsをインストールした後、 ::
+
+    $ sudo easy_install sphinx
+
+
+ドキュメントのビルド方法
+--------------------------
+
+簡単です。
 clone したディレクトリで ::
 
     $ make html
@@ -34,8 +44,15 @@ clone したディレクトリで ::
 するだけです。 ``_build/html`` ディレクトリに HTML が生成されるため、HTML ファイルをブラウザで確認しましょう。
 
 
+Sphinxドキュメントの書き方
+--------------------------
+
+* `Sphinxドキュメント <http://sphinx-users.jp/doc10/>`_
+
 方針
 ----------------
+
+
 
 多分結構適当です。元々の http://ethna.jp/ の内容をベースに、バージョンに沿った内容に書きなおしたりしています。
 
