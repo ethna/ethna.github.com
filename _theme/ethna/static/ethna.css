@@ -62,3 +62,18 @@ div.related ul li a:hover {
   background: -o-linear-gradient(#E9FAFA, #AFEFEF);
   background: linear-gradient(#E9FAFA, #AFEFEF);
 }
+
+
+table.docutils {
+  margin: 0 auto;
+}
+
+table.docutils th {
+  background: #f0f0f0;
+  text-align: center;
+}
+
+table.docutils th,
+table.docutils td {
+  padding: 4px;
+}
