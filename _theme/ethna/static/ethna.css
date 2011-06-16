@@ -1,9 +1,9 @@
 /*
- * strkmemo.css_t
+ * ethna.css_t
  * ~~~~~~~~~~~~~~~
  *
- * Strkmemo stylesheet -- strkmemo theme.  Originally created by
- * sotarok.
+ * book.ethna.jp stylesheet -- ethna theme.
+ * Originally created by sotarok.
  *
  * :copyright: Copyright 2007-2011 by sotarok.
  * :license: BSD, see LICENSE for details.
@@ -28,9 +28,23 @@ body {
 
 h1 {
   color: #009F9F;
+  font-size: 2em;
+  margin-bottom: 1em;
+  text-shadow: 1px 1px 4px #ccc;
 }
 
+h2 {
+  font-size: 1.45em;
+  margin: 1.6em 0 1.05em;
+  padding: 0;
+  text-shadow: 1px 1px 4px #ccc;
+}
 
+h2 {
+  font-size: 1.25em;
+  margin: 1.2em 0 0.9em;
+  padding: 0;
+}
 
 a {
   color:#f35a21;
@@ -76,4 +90,45 @@ table.docutils th {
 table.docutils th,
 table.docutils td {
   padding: 4px;
+}
+
+tt {
+  background: #f2f2f2;
+  border: solid 1px #ddd;
+  padding: 2px 3px;
+  border-radius: 4px;
+}
+span.pre {
+}
+
+pre {
+  border-radius: 4px;
+}
+
+/**
+ * override
+ */
+
+/* nav */
+div.related ul {
+  padding: 8px 5px;
+  font-size: 1.15em;
+}
+div.related ul li.right
+{
+  font-size: 0.9em;
+}
+
+/* document */
+div.bodywrapper {
+  border-right: none;
+}
+div.sphinxsidebarwrapper {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+div.sphinxsidebar h3:first-child {
+  margin-top: 0;
 }
