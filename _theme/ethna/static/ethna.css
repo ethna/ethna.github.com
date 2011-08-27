@@ -40,7 +40,7 @@ h2 {
   text-shadow: 1px 1px 4px #ccc;
 }
 
-h2 {
+h3 {
   font-size: 1.25em;
   margin: 1.2em 0 0.9em;
   padding: 0;
@@ -99,10 +99,12 @@ tt {
   border-radius: 4px;
 }
 span.pre {
+  font-family: menlo, monaco, consolas, monospace;
 }
 
 pre {
   border-radius: 4px;
+  font-family: menlo, monaco, consolas, monospace;
 }
 
 /**
