@@ -64,7 +64,10 @@ post_do        app/action/Post/Do.php         Sample_Action_PostDo
 * :ref:`reference_command-add-action`
 
 
-`ActionForm` には、次の 2 つのメソッド ``prepare()`` と ``preform()`` が定義されます。 ::
+
+`ActionForm` には、次の 2 つのメソッド ``prepare()`` と ``preform()`` が定義されます。
+
+.. code-block:: php-inline
 
     class Sample_Action_Sample extends Sample_ActionClass
     {
@@ -82,7 +85,7 @@ post_do        app/action/Post/Do.php         Sample_Action_PostDo
 prepare()
 --------------------
 
-``prepare()`` は、フォームの検証などを行う、 ``prepare()`` メソッドを実行する準備をするためのメソッドです。何事もなければ ``null`` を返し (あるいは ``return`` を省略し)、バリデーションの結果エラーが存在する場合には、遷移名を ``return`` することで、 ``perform()`` メソッドを実行せずに、任意の `ViewClass` や `Template` に遷移させることができます。 
+``prepare()`` は、フォームの検証などを行う、 ``perform()`` メソッドを実行する準備をするためのメソッドです。何事もなければ ``null`` を返し (あるいは ``return`` を省略し)、バリデーションの結果エラーが存在する場合には、遷移名を ``return`` することで、 ``perform()`` メソッドを実行せずに、任意の `ViewClass` や `Template` に遷移させることができます。 
 
 次の例では、フォーム値を検証し (\ ``$this->af->validate()``\ )、エラーが1つ以上ある場合、 `error` という名前の遷移先に遷移するよう、 ``'error'`` という文字列を ``return`` しています。 ::
 
@@ -124,7 +127,13 @@ perform()
 
 すでに説明したとおり、 `Ethna` の `ActionClas` は、コントローラの一部です。
 
-よくある `Ethna` による開発での間違いは、 `ActionClass` の ``preform()`` などに、非常に大きな・複雑なロジックを書いてしまうことです。肥大化した `ActionClass` は、アプリケーションの見通しを悪くし、メンテナンス性を著しく悪化させます。ロジックは `AppManager` や `AppObject` に記述します。
+`Ethna` による開発でのよくある間違いは、 `ActionClass` の ``preform()`` などに、非常に大きな・複雑なロジックを書いてしまうことです。肥大化した `ActionClass` は、アプリケーションの見通しを悪くし、メンテナンス性を著しく悪化させます。ロジックは `AppManager` や `AppObject` に記述します。
+
+
+参考:
+
+* :ref:`reference_appobject`
+* :ref:`reference_appmanager`
 
 
 ActionClass に関するコンテンツ
