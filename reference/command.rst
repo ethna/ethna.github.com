@@ -3,7 +3,7 @@
 コマンド
 ===================
 
-``ethna`` コマンドついて。
+``ethna`` コマンドについて。
 
 
 .. _reference_command-add-action:
