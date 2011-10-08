@@ -37,8 +37,7 @@ Ethna には `『絶妙に妥協』` という合言葉があります。レッ�
 ----------------
 
 * `Ethna <http://ethna.jp>`_
-* `SourceForge.JP Ethna <http://sourceforge.jp/projects/ethna/>`_
-* `ethna/ethna.git <http://git.sourceforge.jp/view?p=ethna/ethna.git>`_
+* `Github ethna/ethna <https://github.com/ethna/ethna>`_
 
 
 .. Indices and tables
