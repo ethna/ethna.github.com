@@ -53,7 +53,7 @@ PEAR コマンドを使ったアップグレード
 ダウンロードしたを利用してアップグレードすることも可能です。 ::
 
     $ wget -OEthna-2.x.y.tgz http://..../Ethna-2.x.y.tgz
-    上記のURLは、実際には、 sourceforge 上のURLを取得してください
+    上記のURLは、実際には、 github 上のURLを取得してください
     $ pear upgrade Ethna-2.x.y.tgz
 
 
