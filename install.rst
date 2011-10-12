@@ -10,7 +10,8 @@ PEAR コマンドを使ったインストール
 -----------------------------------
 
 PEAR コマンドを使ったインストールが最も簡単であるため、推奨します。
-システムに PEAR がインストールされている必要があります。 [#ref1]_
+システムに PEAR がインストールされている必要があります。 
+(PEARコマンドが使えない場合の説明は後述)
 
 最初の1回だけ、 ``channel-discover`` で Ethna のチャネルを登録する必要があります。 ::
 
@@ -52,12 +53,25 @@ PEAR コマンドを使ったアップグレード
 
 ダウンロードしたを利用してアップグレードすることも可能です。 ::
 
-    $ wget -OEthna-2.x.y.tgz http://..../Ethna-2.x.y.tgz
-    上記のURLは、実際には、 sourceforge 上のURLを取得してください
+    $ wget -OEthna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
     $ pear upgrade Ethna-2.x.y.tgz
 
+アーカイブファイル(tar.gz/zip)を解凍してインストール
+----------------------------------------------------
 
-注釈
--------------------
+PEARコマンドが使えない場合はこちらの方法でやります。
 
-.. [#ref1] 共有のレンタルサーバ等で、PEAR コマンドを使えない場合でも、ソースコードのアーカイブを取得して展開すればインストールできます。本質的には、 ``include_path`` の通った場所に置けば問題ありません (ただし、Ethna コマンドを使うには別途設定が必要)
+Linuxの場合
+
+githubから、ソースコードのアーカイブを取得して解凍します。
+
+`Github Downloads for ethna/ethna <https://github.com/ethna/ethna/downloads>`_ ::
+
+    $ wget -OEthna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
+    $ tar xvfz Ethna-2.6.x.tar.gz
+    $ mv ethna-ethna-xxxxxx Ethna
+    $ php Ethna/bin/ethna_handle.php  -v
+
+``include_path`` の通った場所に置くことを推奨しますが、そうでなくても問題ありません。
+
+``ethna``コマンドを使うには別途設定が必要です。
