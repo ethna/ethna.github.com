@@ -51,10 +51,11 @@ PEAR コマンドを使ったアップグレード
 
     $ pear upgrade ethna/ethna
 
-ダウンロードしたを利用してアップグレードすることも可能です。 ::
+ダウンロードしたファイルを利用してアップグレードすることも可能です。 ::
 
     $ wget -OEthna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
     $ pear upgrade Ethna-2.x.y.tgz
+
 
 アーカイブファイル(tar.gz/zip)を解凍してインストール
 ----------------------------------------------------
@@ -62,8 +63,9 @@ PEAR コマンドを使ったアップグレード
 PEARコマンドが使えない場合はこちらの方法でやります。
 
 Linuxの場合
+^^^^^^^^^^^
 
-githubから、ソースコードのアーカイブを取得して解凍します。
+GitHub から、ソースコードのアーカイブを取得して解凍します。
 
 `Github Downloads for ethna/ethna <https://github.com/ethna/ethna/downloads>`_ ::
 
@@ -72,6 +74,4 @@ githubから、ソースコードのアーカイブを取得して解凍しま�
     $ mv ethna-ethna-xxxxxx Ethna
     $ php Ethna/bin/ethna_handle.php  -v
 
-``include_path`` の通った場所に置くことを推奨しますが、そうでなくても問題ありません。
-
-``ethna``コマンドを使うには別途設定が必要です。
+``include_path`` の通った場所に置くことを推奨しますが、そうでなくても問題ありません。 ``ethna`` コマンドを使うには別途設定が必要です。
