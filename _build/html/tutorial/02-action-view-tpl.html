@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. アクション、ビュー、テンプレートの作成 &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="チュートリアル" href="../tutorial.html" />
+    <link rel="next" title="3. ログインのロジックを作成" href="03-logic.html" />
+    <link rel="prev" title="1. プロジェクトのセットアップ" href="01-setup.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../README.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="03-logic.html" title="3. ログインのロジックを作成"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="01-setup.html" title="1. プロジェクトのセットアップ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" accesskey="U">チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. アクション、ビュー、テンプレートの作成</a><ul>
+<li><a class="reference internal" href="#hello-world">アクション、ビュー、テンプレートを使ってHello Worldを表示する</a><ul>
+<li><a class="reference internal" href="#ethna">Ethnaにおける処理の流れ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01-setup.html"
+                        title="previous chapter">1. プロジェクトのセットアップ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="03-logic.html"
+                        title="next chapter">3. ログインのロジックを作成</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorial/02-action-view-tpl.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-02-action-view-tpl">
+<span id="id1"></span><h1>2. アクション、ビュー、テンプレートの作成<a class="headerlink" href="#tutorial-02-action-view-tpl" title="Permalink to this headline">¶</a></h1>
+<p>アプリケーションのセットアップが済んだら、アクション、ビュー、テンプレートを作成してみましょう。</p>
+<div class="section" id="hello-world">
+<h2>アクション、ビュー、テンプレートを使ってHello Worldを表示する<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
+<p>仕様</p>
+<p>下記URLでアクセスすると、画面にHello Worldが表示されるようにします。</p>
+<p><a class="reference external" href="http://sample.myhost/index.php?action_hello=true">http://sample.myhost/index.php?action_hello=true</a></p>
+<p>やるべきことは３つです</p>
+<ul class="simple">
+<li>Helloアクションの追加</li>
+<li>Helloビューの作成(省略可能)</li>
+<li>Helloテンプレートの追加</li>
+</ul>
+<p>Ethnaコマンドを使ってそれぞれ作成します。</p>
+<div class="highlight-python"><pre>$ ethna add-action hello
+$ ethna add-view   hello
+$ ethna add-template hello</pre>
+</div>
+<p>上記URLでアクセスすれば、Hello Worldが表示されます。</p>
+<div class="section" id="ethna">
+<h3>Ethnaにおける処理の流れ<a class="headerlink" href="#ethna" title="Permalink to this headline">¶</a></h3>
+<p>ここで、Ethnaの処理の流れについて説明します。</p>
+<p>Ethnaは、クライアント(この場合はブラウザ)から上記リクエストを受け取ると、まずhelloアクションを呼び出します。</p>
+<p>helloアクションの実体は、sample/app/action/Hello.phpファイルであり、Sample_Action_Helloクラスです。</p>
+<p>このクラスでは、peformメソッドが&#8217;hello&#8217;という文字列を返しています。</p>
+<p>これは遷移先をビュー名を意味しています。
+「以降の処理は&#8217;hello&#8217;ビューに任せる」という意味です。</p>
+<div class="highlight-python"><pre>class Sample_Action_Hello extends Sample_ActionClass
+{
+    ...
+
+    function perform()
+    {
+        return 'hello';
+    }
+}</pre>
+</div>
+<p>Ethnaは、アクションクラスからこの指示を受け取ると、Helloビュークラスを呼び出してpreforwardメソッドを実行します。</p>
+<p>Helloビュークラスでは、preforwardの中身は空になっているので何も行われません。
+(このような場合、ビュークラス作成を省略してもかまいません)</p>
+<div class="highlight-python"><pre>class Sample_View_Hello extends Sample_ViewClass
+{
+    function preforward()
+    {
+    }
+}</pre>
+</div>
+<p>最後に、Ethnaがhelloテンプレートを呼び出して、レスポンスとして返します(ブラウザに画面が表示されます)。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="03-logic.html" title="3. ログインのロジックを作成"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="01-setup.html" title="1. プロジェクトのセットアップ"
+             >previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" >チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

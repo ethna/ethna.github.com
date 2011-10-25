@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>action_ である理由 &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../../index.html" />
+    <link rel="up" title="ActionClass" href="../action.html" />
+    <link rel="next" title="ActionForm" href="../actionform.html" />
+    <link rel="prev" title="アクション名の決定方法を変更する" href="formname.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../../README.html">
+  <img src="../../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../actionform.html" title="ActionForm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="formname.html" title="アクション名の決定方法を変更する"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >リファレンス</a> &raquo;</li>
+          <li><a href="../action.html" accesskey="U">ActionClass</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">action_ である理由</a><ul>
+<li><a class="reference internal" href="#id1">複数の遷移先をもつフォーム</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="formname.html"
+                        title="previous chapter">アクション名の決定方法を変更する</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../actionform.html"
+                        title="next chapter">ActionForm</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/action/formnamereason.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="action">
+<span id="reference-action-formnamereason"></span><h1>action_ である理由<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h1>
+<p>アクション名のデフォルトが <tt class="docutils literal"><span class="pre">action_</span></tt> から始まるフォーム値の「値」ではなく「キー」に基づいてアクション名が決定されることを不思議に思う方もいるかもしれません。</p>
+<p>たしかに、 <cite>Sample</cite> アクションの場合、</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">action</span><span class="o">=</span><span class="n">sample</span>
+</pre></div>
+</div>
+<p>などのほうが自然に感じるかもしれません。</p>
+<p>しかし、フォームのキーによってアクション名を振り分けることができると、次のような場合に非常に便利です。</p>
+<div class="section" id="id1">
+<h2>複数の遷移先をもつフォーム<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>実際のアプリケーション開発をしていると、1つのフォームから、場合によって複数の画面に遷移したい、といった要望があるでしょう。</p>
+<p>例えば、投稿画面の確認画面のようなものを考えてみましょう。確認画面には「送信」ボタンと「もどって修正する」ボタンの2つが必要となるかもしれません。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../actionform.html" title="ActionForm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="formname.html" title="アクション名の決定方法を変更する"
+             >previous</a> |</li>
+        <li><a href="../../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >リファレンス</a> &raquo;</li>
+          <li><a href="../action.html" >ActionClass</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

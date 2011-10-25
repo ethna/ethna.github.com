@@ -1,0 +1,136 @@
+/*
+ * ethna.css_t
+ * ~~~~~~~~~~~~~~~
+ *
+ * book.ethna.jp stylesheet -- ethna theme.
+ * Originally created by sotarok.
+ *
+ * :copyright: Copyright 2007-2011 by sotarok.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+@import url("basic.css");
+@import url("sphinxdoc.css");
+
+@import url("ethna.jp.css");
+
+/**
+ */
+
+body {
+  background: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f0f0f0)); /* for webkit browsers */
+  background: -moz-linear-gradient(top, #fff, #f0f0f0); /* for firefox 3.6+ */ 
+  border-bottom: none;
+  border-top: none;
+}
+
+h1 {
+  color: #009F9F;
+  font-size: 2em;
+  margin-bottom: 1em;
+  text-shadow: 1px 1px 4px #ccc;
+}
+
+h2 {
+  font-size: 1.45em;
+  margin: 1.6em 0 1.05em;
+  padding: 0;
+  text-shadow: 1px 1px 4px #ccc;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin: 1.2em 0 0.9em;
+  padding: 0;
+}
+
+a {
+  color:#f35a21;
+}
+
+a.external {
+  background: url("horizbullet.gif") no-repeat 3px 4px;
+  background-color:#e9f8f8;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 2px 2px 0px 23px;
+  color:#f35a21;
+}
+
+a:hover ,
+div.related ul li a:hover {
+  color: #f2a921;
+}
+
+
+/**
+ * header
+ */
+#ethna-header {
+  background: #AFEFEF;
+  text-align: left;
+  background: -webkit-gradient(linear, left top, left bottom, from(#E9FAFA), to(#AFEFEF));
+  background: -moz-linear-gradient(top, #E9FAFA, #AFEFEF);
+  background: -o-linear-gradient(#E9FAFA, #AFEFEF);
+  background: linear-gradient(#E9FAFA, #AFEFEF);
+}
+
+
+table.docutils {
+  margin: 0 auto;
+}
+
+table.docutils th {
+  background: #f0f0f0;
+  text-align: center;
+}
+
+table.docutils th,
+table.docutils td {
+  padding: 4px;
+}
+
+tt {
+  background: #f2f2f2;
+  border: solid 1px #ddd;
+  padding: 2px 3px;
+  border-radius: 4px;
+}
+span.pre {
+  font-family: menlo, monaco, consolas, monospace;
+}
+
+pre {
+  border-radius: 4px;
+  font-family: menlo, monaco, consolas, monospace;
+}
+
+/**
+ * override
+ */
+
+/* nav */
+div.related ul {
+  padding: 8px 5px;
+  font-size: 1.15em;
+}
+div.related ul li.right
+{
+  font-size: 0.9em;
+}
+
+/* document */
+div.bodywrapper {
+  border-right: none;
+}
+div.sphinxsidebarwrapper {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+div.sphinxsidebar h3:first-child {
+  margin-top: 0;
+}

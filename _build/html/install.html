@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>インストール &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="index.html" />
+    <link rel="next" title="チュートリアル" href="tutorial.html" />
+    <link rel="prev" title="Ethna ドキュメント" href="README.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="README.html">
+  <img src="_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="チュートリアル"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ethna ドキュメント"
+             accesskey="P">previous</a> |</li>
+        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">インストール</a><ul>
+<li><a class="reference internal" href="#pear">PEAR コマンドを使ったインストール</a></li>
+<li><a class="reference internal" href="#id2">PEAR コマンドを使ったアップグレード</a></li>
+<li><a class="reference internal" href="#tar-gz-zip">アーカイブファイル(tar.gz/zip)を解凍してインストール</a><ul>
+<li><a class="reference internal" href="#linux">Linuxの場合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="previous chapter">Ethna ドキュメント</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="next chapter">チュートリアル</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/install.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="install">
+<span id="id1"></span><h1>インストール<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>ここでは Ethna のインストール方法について説明します。</p>
+<div class="section" id="pear">
+<h2>PEAR コマンドを使ったインストール<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h2>
+<p>PEAR コマンドを使ったインストールが最も簡単であるため、推奨します。
+システムに PEAR がインストールされている必要があります。
+(PEARコマンドが使えない場合の説明は後述)</p>
+<p>最初の1回だけ、 <tt class="docutils literal"><span class="pre">channel-discover</span></tt> で Ethna のチャネルを登録する必要があります。</p>
+<div class="highlight-python"><pre>$ pear channel-discover pear.ethna.jp</pre>
+</div>
+<p>Ethna の PEAR チャネルが登録されたら、次のようにインストールします。</p>
+<div class="highlight-python"><pre>$ pear install -a ethna/ethna</pre>
+</div>
+<p>このコマンドでは、依存ライブラリである <cite>Smarty</cite> や <cite>simpletest</cite> なども同時にインストールされます。もし依存ライブラリを同時にインストールしたくない場合は、 <tt class="docutils literal"><span class="pre">-a</span></tt> オプションを付けずに、</p>
+<div class="highlight-python"><pre>$ pear install ethna/ethna</pre>
+</div>
+<p>としてください。</p>
+<p>インストールが終われば、 <tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドが使えるようになっているはずです。</p>
+<div class="highlight-python"><pre>$ ethna -v
+Ethna 2.6.0 (using PHP 5.3.6-6~dotdeb.1)
+
+Copyright (c) 2004-2011,
+  Masaki Fujimoto &lt;fujimoto@php.net&gt;
+  halt feits &lt;halt.feits@gmail.com&gt;
+  Takuya Ookubo &lt;sfio@sakura.ai.to&gt;
+  nozzzzz &lt;nozzzzz@gmail.com&gt;
+  cocoitiban &lt;cocoiti@comio.info&gt;
+  Yoshinari Takaoka &lt;takaoka@beatcraft.com&gt;
+  Sotaro Karasawa &lt;sotaro.k@gmail.com&gt;
+
+http://ethna.jp/</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>PEAR コマンドを使ったアップグレード<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>アップデートは、次のコマンドで実行します。</p>
+<div class="highlight-python"><pre>$ pear upgrade ethna/ethna</pre>
+</div>
+<p>ダウンロードしたファイルを利用してアップグレードすることも可能です。</p>
+<div class="highlight-python"><pre>$ wget -OEthna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
+$ pear upgrade Ethna-2.x.y.tgz</pre>
+</div>
+</div>
+<div class="section" id="tar-gz-zip">
+<h2>アーカイブファイル(tar.gz/zip)を解凍してインストール<a class="headerlink" href="#tar-gz-zip" title="Permalink to this headline">¶</a></h2>
+<p>PEARコマンドが使えない場合はこちらの方法でやります。</p>
+<div class="section" id="linux">
+<h3>Linuxの場合<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>GitHub から、ソースコードのアーカイブを取得して解凍します。</p>
+<p><a class="reference external" href="https://github.com/ethna/ethna/downloads">Github Downloads for ethna/ethna</a></p>
+<div class="highlight-python"><pre>$ wget -OEthna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
+$ tar xvfz Ethna-2.6.x.tar.gz
+$ mv ethna-ethna-xxxxxx Ethna
+$ php Ethna/bin/ethna_handle.php  -v</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">include_path</span></tt> の通った場所に置くことを推奨しますが、そうでなくても問題ありません。 <tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを使うには別途設定が必要です。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="チュートリアル"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ethna ドキュメント"
+             >previous</a> |</li>
+        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

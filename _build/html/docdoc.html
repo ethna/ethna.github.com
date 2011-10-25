@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>このドキュメントについて &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="index.html" />
+    <link rel="prev" title="エントリポイント" href="cookbook/entrypoint.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="README.html">
+  <img src="_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cookbook/entrypoint.html" title="エントリポイント"
+             accesskey="P">previous</a> |</li>
+        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">このドキュメントについて</a><ul>
+<li><a class="reference internal" href="#id2">環境</a></li>
+<li><a class="reference internal" href="#id3">リポジトリ</a></li>
+<li><a class="reference internal" href="#sphinx">Sphinxインストール方法</a></li>
+<li><a class="reference internal" href="#id4">ドキュメントのビルド方法</a></li>
+<li><a class="reference internal" href="#id5">Sphinxドキュメントの書き方</a></li>
+<li><a class="reference internal" href="#id7">方針</a></li>
+<li><a class="reference internal" href="#id8">ドキュメントの追加など</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cookbook/entrypoint.html"
+                        title="previous chapter">エントリポイント</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/docdoc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>このドキュメントについて<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>book.ethna.jp は、Ethna のドキュメントを整理するプロジェクトです。</p>
+<p>Ethna のコミッタである <a class="reference external" href="http://twitter.com/sotarok">&#64;sotarok</a> がドキュメント整備のために始めました。 <cite>Sphinx</cite> を使って作成されています。</p>
+<div class="section" id="id2">
+<h2>環境<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://sphinx.pocoo.org/">Sphinx 1.0.7</a></li>
+<li><a class="reference external" href="https://github.com/nvie/gitflow">git-flow 0.4</a></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>リポジトリ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/sotarok/book.ethna.jp">book.ethna.jp - GitHub</a></li>
+</ul>
+</div>
+<div class="section" id="sphinx">
+<h2>Sphinxインストール方法<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
+<p>Macの場合</p>
+<div class="highlight-python"><pre>$ sudo easy_install sphinx</pre>
+</div>
+<p>Linuxの場合</p>
+<p>aptitude/yum で python-setuptoolsをインストールした後、</p>
+<div class="highlight-python"><pre>$ sudo easy_install sphinx</pre>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>ドキュメントのビルド方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>簡単です。
+clone したディレクトリで</p>
+<div class="highlight-python"><pre>$ make html</pre>
+</div>
+<p>するだけです。 <tt class="docutils literal"><span class="pre">_build/html</span></tt> ディレクトリに HTML が生成されるため、HTML ファイルをブラウザで確認しましょう。</p>
+</div>
+<div class="section" id="id5">
+<h2>Sphinxドキュメントの書き方<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://sphinx-users.jp/doc10/">Sphinxドキュメント</a></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>方針<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>多分結構適当です。元々の <a class="reference external" href="http://ethna.jp/">http://ethna.jp/</a> の内容をベースに、バージョンに沿った内容に書きなおしたりしています。</p>
+<ul class="simple">
+<li>develop ブランチはソースコードの develop ブランチを追従</li>
+<li>マイナーバージョンごとに develop ブランチ からのブランチを作成<ul>
+<li>バージョンごとのドキュメントはそのブランチ上で作業</li>
+</ul>
+</li>
+<li>ソースコードの master ブランチに対するドキュメントが整ったタイミングで master に merge<ul>
+<li>その後リリースされているバージョンに対するドキュメントの更新は master からの hotfix で作業</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>ドキュメントの追加など<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>ドキュメントの間違いの指摘、修正、追加などは <cite>GitHub</cite> から直接 pull request を送っていただいても構いませんし、 <a class="reference external" href="http://ml.ethna.jp/mailman/listinfo/users">ML</a> で相談していただいても構いません。Pull request を送る際は、develop ブランチえ直接はコミットせず、他の名前でブランチを適当に区切ってから送ってください。</p>
+<ul class="simple">
+<li>参考: <a class="reference external" href="http://d.hatena.ne.jp/hnw/20110528">GitHubへpull requestする際のベストプラクティス</a></li>
+</ul>
+<p>ドキュメントを充実させることに協力いただけるのは大歓迎です！</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cookbook/entrypoint.html" title="エントリポイント"
+             >previous</a> |</li>
+        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

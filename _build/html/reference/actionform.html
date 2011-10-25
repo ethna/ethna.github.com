@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ActionForm &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="リファレンス" href="../reference.html" />
+    <link rel="next" title="フォームの定義" href="actionform/define.html" />
+    <link rel="prev" title="action_ である理由" href="action/formnamereason.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../README.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="actionform/define.html" title="フォームの定義"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="action/formnamereason.html" title="action_ である理由"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" accesskey="U">リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ActionForm</a><ul>
+<li><a class="reference internal" href="#id2"><cite>ActionForm</cite> の概要</a></li>
+<li><a class="reference internal" href="#id3">コンテンツ</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">注釈</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="action/formnamereason.html"
+                        title="previous chapter">action_ である理由</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="actionform/define.html"
+                        title="next chapter">フォームの定義</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/actionform.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="actionform">
+<span id="reference-actionform"></span><h1>ActionForm<a class="headerlink" href="#actionform" title="Permalink to this headline">¶</a></h1>
+<p>ここでは、HTML フォームや URL パラメータと、送信されたその値の取り扱いについての詳しい解説をします。
+<cite>ActionForm</cite> は <cite>Ethna</cite> を使いこなす鍵となるでしょう。</p>
+<p>アクションクラスからフォーム値へのアクセスするイメージは以下のようになっています。</p>
+<img alt="../_images/reference_actionform-01.jpg" src="../_images/reference_actionform-01.jpg" />
+<ol class="arabic simple">
+<li>ブラウザから <cite>GET</cite> あるいは <cite>POST</cite> により渡された値が、PHP によって <tt class="docutils literal"><span class="pre">$_GET</span></tt> あるいは <tt class="docutils literal"><span class="pre">$_POST</span></tt> 変数に格納されます</li>
+<li><cite>ActionForm</cite> オブジェクトは、フォーム値として定義されている値のみ <tt class="docutils literal"><span class="pre">$_GET</span></tt> あるいは <tt class="docutils literal"><span class="pre">$_POST</span></tt> から取得して、オブジェクト内のコンテナに格納します <a class="footnote-reference" href="#ref1" id="id1">[1]</a></li>
+<li>アクションクラスオブジェクトは、 <cite>ActionForm</cite> の <tt class="docutils literal"><span class="pre">get()</span></tt> / <tt class="docutils literal"><span class="pre">set()</span></tt> メソッドを通じてフォーム値にアクセスし、処理を行います</li>
+<li>ビューオブジェクトは、 <cite>ActionForm</cite> から必要な値を取得して出力に反映して、</li>
+<li>HTMLを出力します</li>
+</ol>
+<div class="section" id="id2">
+<h2><cite>ActionForm</cite> の概要<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>次に <cite>ActionForm</cite> とは何か、について簡単にご説明します。 <cite>ActionForm</cite> は、Ethnaでは、</p>
+<ul class="simple">
+<li>フォーム値</li>
+<li>アクションクラスがビューに渡したい値 (強制エスケープ)</li>
+<li>アクションクラスがビューに渡したい値 (エスケープなし)</li>
+</ul>
+<p>という3種類の値のコンテナだと考えて下さい。以下のようなイメージです。</p>
+<img alt="../_images/reference_actionform-02.jpg" src="../_images/reference_actionform-02.jpg" />
+<ol class="arabic">
+<li><p class="first">フォーム値には <tt class="docutils literal"><span class="pre">get()</span></tt> / <tt class="docutils literal"><span class="pre">set()</span></tt> メソッドでアクセスします</p>
+</li>
+<li><p class="first">アプリケーション設定値(フォーム値以外で、ビューに表示させたいダイナミックな値)は <tt class="docutils literal"><span class="pre">setApp()</span></tt> メソッドで <cite>ActionForm</cite> に格納します</p>
+</li>
+<li><p class="first">アプリケーション設定値(HTMLエスケープさせたくない値)は <tt class="docutils literal"><span class="pre">setAppNE()</span></tt> メソッドで <cite>ActionForm</cite> に格納します</p>
+</li>
+<li><p class="first">フォーム値はテンプレートで</p>
+<div class="highlight-python"><pre>{$form.フォーム名}</pre>
+</div>
+<p>としてアクセスします。値は常にHTMLエスケープされます。</p>
+</li>
+<li><p class="first">アプリケーション設定値( <tt class="docutils literal"><span class="pre">setApp()</span></tt> で格納されたもの)はテンプレートで</p>
+<div class="highlight-python"><pre>{$app.変数名}</pre>
+</div>
+<p>としてアクセスします。値は常にHTMLエスケープされます。</p>
+</li>
+<li><p class="first">アプリケーション設定値( <tt class="docutils literal"><span class="pre">setAppNE()</span></tt> で格納されたもの)はテンプレートで</p>
+<div class="highlight-python"><pre>{$app_ne.変数名}</pre>
+</div>
+<p>としてアクセスします。この値はHTMLエスケープされません。
+不特定多数の入力する値をこのようにエスケープせずに出力することは、推奨されません。エスケープせずに出力する値は、限定された入力 (例えば、管理者の入力など) に限るべきでしょう。</p>
+</li>
+</ol>
+<p>なお、 <cite>ActionForm</cite> はアクションクラスと対になって必ず生成され、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> あるいは <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッド、また、 <cite>ViewClass</cite> の <tt class="docutils literal"><span class="pre">preforward()</span></tt> では必ず</p>
+<div class="highlight-python"><pre>$this-&gt;af // 面倒なら$this-&gt;afでも可</pre>
+</div>
+<p>でアクセスできることが保証されています。アクションクラスに対応する <cite>ActionForm</cite> が未定義の場合は、フォーム値定義の無いデフォルトの <cite>ActionForm</cite> が生成されます。</p>
+</div>
+<div class="section" id="id3">
+<h2>コンテンツ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="actionform/define.html">フォームの定義</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/file.html">ファイル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/array.html">配列のフォーム定義</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/multiarray.html">多次元配列のフォーム定義</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/validation.html">バリデーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/filter.html">フィルタ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/customcheck.html">カスタムチェック</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/complexvalidation.html">複合的なバリデーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/errormsg.html">エラーメッセージのカスタマイズ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actionform/formtemplate.html">フォームテンプレート</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>注釈<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ethnaでは基本的に、クライアントから送信され <cite>ActionForm</cite> に格納されたフォーム値が <cite>GET</cite> / <cite>POST</cite> ( <cite>REQUEST_METHOD</cite> )のどちらに由来するかを区別しません。理由は、 <cite>GET</cite> / <cite>POST</cite> で振舞いを変えていると思わぬところでダサダサな振舞いをしたり、場合によっては(ここは <cite>GET</cite> しかこないと思い込んでコードを書いていたりすると)セキュリティホールになる可能性もなくもなくも無いためです</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="actionform/define.html" title="フォームの定義"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="action/formnamereason.html" title="action_ である理由"
+             >previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" >リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

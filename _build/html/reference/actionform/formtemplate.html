@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>フォームテンプレート &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../../index.html" />
+    <link rel="up" title="ActionForm" href="../actionform.html" />
+    <link rel="next" title="ViewClass" href="../view.html" />
+    <link rel="prev" title="エラーメッセージのカスタマイズ" href="errormsg.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../../README.html">
+  <img src="../../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../view.html" title="ViewClass"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="errormsg.html" title="エラーメッセージのカスタマイズ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >リファレンス</a> &raquo;</li>
+          <li><a href="../actionform.html" accesskey="U">ActionForm</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">フォームテンプレート</a><ul>
+<li><a class="reference internal" href="#id2">フォームテンプレートの定義</a></li>
+<li><a class="reference internal" href="#id3">フォームテンプレートの利用</a></li>
+<li><a class="reference internal" href="#id4">省略記法 (<cite>2.5.0</cite>以降)</a></li>
+<li><a class="reference internal" href="#id5">定義の上書き</a></li>
+<li><a class="reference internal" href="#id6">使い方のコツ</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="errormsg.html"
+                        title="previous chapter">エラーメッセージのカスタマイズ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../view.html"
+                        title="next chapter">ViewClass</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/actionform/formtemplate.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reference-actionform-formtemplate">
+<span id="id1"></span><h1>フォームテンプレート<a class="headerlink" href="#reference-actionform-formtemplate" title="Permalink to this headline">¶</a></h1>
+<p><cite>ActionForm</cite> の定義を毎回配列の形で書いていくのは、数が多くなってくると非常に面倒です。フォームテンプレートは、そんな要求があった場合に、親クラスに共通の雛形を定義することで、子クラスでその定義を省略させることができる機能です。</p>
+<p>複数の画面で共通するフォームがあったような場合に、この機能は特に有用です。</p>
+<p>例えば、ページング処理に使う処理に使う、現在のページを表す値を <tt class="docutils literal"><span class="pre">'page'</span></tt> というキーで受け取りたいとします。ページング処理はアプリケーション全体でおそらく数カ所必要となるような頻繁に用いられる処理です。このような処理を記述するたびに、フォーム定義に <tt class="docutils literal"><span class="pre">'page'</span> <span class="pre">=&gt;</span> <span class="pre">array(...</span></tt> などと定義をしたり、他の <tt class="docutils literal"><span class="pre">'page'</span></tt> からコピーしてきたりするのは、あまり賢くありません。ほとんど共通の定義に関しては、1度定義して使い回したいですね。</p>
+<p>そこで、 <cite>Ethna</cite> ではフォーム定義に使い回しのため、フォームテンプレートという機能を利用できます。</p>
+<div class="section" id="id2">
+<h2>フォームテンプレートの定義<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><cite>Sample</cite> というアプリケーションでは、次のようなファイル構成をしています。</p>
+<div class="highlight-python"><pre>.
+|-- app
+|   |-- Sample_ActionClass.php
+|   |-- Sample_ActionForm.php   &lt;- フォームテンプレートを定義する親クラス
+|   |-- Sample_Controller.php
+|   |-- Sample_ViewClass.php
+|   |-- action
+|   |   `-- Index.php           &lt;- テンプレートを利用してフォーム定義をする個々の ActionForm クラス
+|   ...
+...</pre>
+</div>
+<p><cite>ActionForm</cite> の親クラス (例では、 <cite>Sample_ActionForm</cite> ) に以下のように書くだけで、子クラスの <cite>ActionForm</cite> でフォーム名を書くだけでその定義が使えるようになります。また、その定義の上書きも可能です。</p>
+<div class="highlight-python"><pre>class Sample_ActionForm extends Ethna_ActionForm
+{
+    protected $form_template = array(
+        'mailaddress' =&gt; array(
+            'name'      =&gt; 'メールアドレス',
+            'required'  =&gt; true,
+            'max'       =&gt; 255,
+            'filter'    =&gt; FILTER_HW,
+            'custom'    =&gt; 'checkMailaddress',
+            'form_type' =&gt; FORM_TYPE_TEXT,
+            'type'      =&gt; VAR_TYPE_STRING,
+        ),
+    );
+}</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>フォームテンプレートの利用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>このテンプレートを、 Index で使う場合、次のように、フォーム定義にフォーム名 (<tt class="docutils literal"><span class="pre">'mailaddress'</span></tt>) のみ記述すれば、フォームテンプレートに定義したフォームの定義が適用されます。</p>
+<div class="highlight-python"><pre>class Sample_Form_Index extends Sample_ActionForm
+{
+    protected $form = array(
+        'mailaddress' =&gt; array(),
+
+        // その他の定義 ...
+        'other_form_def' =&gt; array(
+            ...
+    );
+}</pre>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>省略記法 (<cite>2.5.0</cite>以降)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><cite>Ethna 2.5.0</cite> 以降では、次のように、フォーム名のみを指定すればよくなりました。</p>
+<div class="highlight-python"><pre>class Sample_Form_Index extends Sample_ActionForm
+{
+    protected $form = array(
+        'mailaddress',
+
+        // その他の定義 ...
+        'other_form_def' =&gt; array(
+            ...
+    );
+}</pre>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>定義の上書き<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>定義の一部のみを上書きする場合、上書きした項目のみ定義します。以下の例では、 <tt class="docutils literal"><span class="pre">'required'</span></tt> の定義のみ変更し、その他はフォームテンプレートに定義されたものを使う例です。</p>
+<div class="highlight-python"><pre>class Sample_Form_Index extends Sample_ActionForm
+{
+    protected $form = array(
+        'mailaddress' =&gt; array(
+            'required' =&gt; false,
+        ),
+
+        // その他の定義 ...
+        'other_form_def' =&gt; array(
+            ...
+    );
+}</pre>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>使い方のコツ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>アプリケーション全体のフォーム定義をすべてひとつの親クラスに定義してしまうと、フォームテンプレート自体が巨大になってしまいます。</p>
+<p>このような状態を回避するには、共通のカテゴリ毎に、 <cite>ActionForm</cite> クラスを分割し、子クラスに継承させるのもひとつの手です。</p>
+<dl class="docutils">
+<dt><strong>app/Sample_ActionForm.php (Sample_ActionForm クラス)</strong></dt>
+<dd>親クラス</dd>
+<dt><strong>app/Sample_ActionForm_Blog.php (Sample_ActionForm_Blog クラス)</strong></dt>
+<dd><p class="first"><cite>Sample_ActionForm</cite> クラスを継承したクラス。
+Blog 関連のフォームテンプレートを定義しておき、 Blog関連の <cite>ActionForm</cite> では、これを継承する。</p>
+<p>ex.</p>
+<div class="last highlight-python"><pre>class Sample_Form_Blog_View extends Sample_ActionForm_Blog</pre>
+</div>
+</dd>
+<dt><strong>app/Sample_ActionForm_Admin.php (Sample_ActionForm_Admin クラス)</strong></dt>
+<dd><p class="first"><cite>Sample_ActionForm</cite> クラスを継承したクラス。
+Admin 関連のフォームテンプレートを定義しておき、Admin 関連の <cite>ActionForm</cite> では、これを継承する。</p>
+<p>ex.</p>
+<div class="last highlight-python"><pre>class Sample_Form_Admin_Comment_Delete extends Sample_ActionForm_Admin</pre>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../view.html" title="ViewClass"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="errormsg.html" title="エラーメッセージのカスタマイズ"
+             >previous</a> |</li>
+        <li><a href="../../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >リファレンス</a> &raquo;</li>
+          <li><a href="../actionform.html" >ActionForm</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

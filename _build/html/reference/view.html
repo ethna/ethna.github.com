@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ViewClass &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="リファレンス" href="../reference.html" />
+    <link rel="next" title="ActionError" href="actionerror.html" />
+    <link rel="prev" title="フォームテンプレート" href="actionform/formtemplate.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../README.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="actionerror.html" title="ActionError"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="actionform/formtemplate.html" title="フォームテンプレート"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" accesskey="U">リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ViewClass</a><ul>
+<li><a class="reference internal" href="#id1">ビューの仕組み</a></li>
+<li><a class="reference internal" href="#id2">ビューの生成</a></li>
+<li><a class="reference internal" href="#preforward">preforward()</a></li>
+<li><a class="reference internal" href="#id3">ヘッダの送出</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="actionform/formtemplate.html"
+                        title="previous chapter">フォームテンプレート</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="actionerror.html"
+                        title="next chapter">ActionError</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/view.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="viewclass">
+<span id="reference-view"></span><h1>ViewClass<a class="headerlink" href="#viewclass" title="Permalink to this headline">¶</a></h1>
+<p>ここでは、 <cite>ViewClass</cite> (ビュー) について説明します。</p>
+<p><cite>Ethna</cite> における <cite>ViewClass</cite> は、 <cite>MVCモデル</cite> で言うところの <cite>Controller</cite> の一部です。 <cite>MVC</cite> でいうところの <cite>V</cite> は、 <cite>Ethna</cite> では <strong>テンプレート</strong> (デフォルトでは <cite>Smarty</cite> ) がそれにあたります。</p>
+<p>したがって、 <cite>ViewClass</cite> は、次のような役割を果たします。</p>
+<ul class="simple">
+<li>プレゼンテーションロジックの記述<ul>
+<li>表示に使うデータをテンプレート変数にアサイン (<tt class="docutils literal"><span class="pre">$this-&gt;af-&gt;setApp()</span></tt>)</li>
+</ul>
+</li>
+<li>HTTPヘッダの送出</li>
+<li>テンプレートなどの設定</li>
+</ul>
+<div class="section" id="id1">
+<h2>ビューの仕組み<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>ビューの生成<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="preforward">
+<h2>preforward()<a class="headerlink" href="#preforward" title="Permalink to this headline">¶</a></h2>
+<p>開発いおいて、実際に処理を記述するメソッドが <tt class="docutils literal"><span class="pre">preforward()</span></tt> メソッドです。</p>
+</div>
+<div class="section" id="id3">
+<h2>ヘッダの送出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><cite>Ethna_ViewClass</cite> が持つ様々な機能を <cite>ViewClass</cite> で使うことができます。例えば、</p>
+<ul class="simple">
+<li>テンプレートのレイアウトを変更する</li>
+<li>エラーのために HTTP ヘッダを送出してエラー用テンプレートを指定する</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="actionerror.html" title="ActionError"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="actionform/formtemplate.html" title="フォームテンプレート"
+             >previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" >リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

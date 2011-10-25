@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. プロジェクトのセットアップ &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="チュートリアル" href="../tutorial.html" />
+    <link rel="next" title="2. アクション、ビュー、テンプレートの作成" href="02-action-view-tpl.html" />
+    <link rel="prev" title="チュートリアル" href="../tutorial.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../README.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../tutorial.html" title="チュートリアル"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" accesskey="U">チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. プロジェクトのセットアップ</a><ul>
+<li><a class="reference internal" href="#id2">アプリケーション情報の決定</a></li>
+<li><a class="reference internal" href="#id3">アプリケーションの雛形の生成</a></li>
+<li><a class="reference internal" href="#id5">ディレクトリ構成の確認</a></li>
+<li><a class="reference internal" href="#id6">エントリポイントの設定</a><ul>
+<li><a class="reference internal" href="#id7">注釈</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../tutorial.html"
+                        title="previous chapter">チュートリアル</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02-action-view-tpl.html"
+                        title="next chapter">2. アクション、ビュー、テンプレートの作成</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorial/01-setup.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-01-setup">
+<span id="id1"></span><h1>1. プロジェクトのセットアップ<a class="headerlink" href="#tutorial-01-setup" title="Permalink to this headline">¶</a></h1>
+<p><cite>Ethna</cite> でアプリケーションを作成するには、まず <cite>プロジェクト</cite> を作成します。</p>
+<div class="section" id="id2">
+<h2>アプリケーション情報の決定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>アプリケーションを構築する前に、少なくとも以下の 2 点を決定しておく必要があります。</p>
+<ol class="arabic">
+<li><p class="first">アプリケーションID(英字のみ)</p>
+<div class="line-block">
+<div class="line">例: <cite>Sample</cite></div>
+</div>
+</li>
+<li><p class="first">アプリケーション配置ディレクトリ (どこでも構いません)</p>
+<div class="line-block">
+<div class="line">例: <tt class="docutils literal"><span class="pre">/var/www/sample/</span></tt> とか <tt class="docutils literal"><span class="pre">C:\codes\php\</span></tt> とか適当に</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>アプリケーションの雛形の生成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを利用してアプリケーションを使って生成します。</p>
+<p>アプリケーションIDが <strong>sample</strong> 、アプリケーション配置ディレクトリが <tt class="docutils literal"><span class="pre">/var/www/sample</span></tt> とすると、次のように <tt class="docutils literal"><span class="pre">add-project</span></tt> コマンドを使ってアプリケーションの雛形を自動的に生成することができます。 <a class="footnote-reference" href="#ref1" id="id4">[1]</a></p>
+<div class="highlight-python"><pre>$ cd /var/www
+$ ethna add-project sample
+creating directory (/var/www/sample) [y/n]: y
+project sub directory created [/var/www/sample/app]
+project sub directory created [/var/www/sample/app/action]
+
+...
+
+file generated [/usr/share/php/Ethna/skel/skel.view_test.php -&gt; /var/www/sample/skel/skel.view_test.php]
+
+project skelton for [sample] is successfully generated at [/var/www/sample]</pre>
+</div>
+<p>以上で、最小構成のアプリケーションが生成されます。</p>
+</div>
+<div class="section" id="id5">
+<h2>ディレクトリ構成の確認<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>生成されたディレクトリをのぞいてみましょう。次のような構成となっています。(一部抜粋)</p>
+<div class="highlight-python"><pre>|-- app                 (アプリケーションのディレクトリ)
+|   |-- action          (アクションスクリプト)
+|   |-- plugin          (フィルタスクリプト)
+|   |-- test            (テストスクリプト)
+|   `-- view            (ビュースクリプト)
+|-- bin                 (コマンドラインスクリプト)
+|-- etc                 (設定ファイル等)
+|-- lib                 (アプリケーションのライブラリ)
+|-- locale
+|   `-- ja_JP
+|-- log                 (ログファイル)
+|-- schema              (DBスキーマ等)
+|-- skel                (アプリケーション用スケルトンファイル)
+|-- template
+|   `-- ja_JP           (テンプレートファイル)
+|-- tmp                 (一時ファイル)
+`-- www                 (ウェブ公開用ファイル)</pre>
+</div>
+<p>よく使うのは下記のディレクトリです。</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">app</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/action</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/view</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">template/ja_JP</span></tt></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>エントリポイントの設定<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>生成したアプリケーションにアクセスするには、 <tt class="docutils literal"><span class="pre">www</span></tt> ディレクトリを、ウェブサーバを通じてアクセス可能にするか、シンボリックリンクを作成します。</p>
+<p>今回は、 <cite>Apache</cite> の <cite>VirtualHost</cite> を設定し、 <tt class="docutils literal"><span class="pre">http://sample.myhost/</span></tt> でアクセスできるようにしてみましょう。</p>
+<div class="highlight-python"><pre>$ cd ~/public_html/
+$ ln -s /tmp/sample/www/index.php .
+$ cp -r /tmp/sample/www/css ./css</pre>
+</div>
+<p>以上で設定は完了です。ブラウザから</p>
+<div class="highlight-python"><pre>http://sample.myhost/</pre>
+</div>
+<p>具体的なアプリケーションの作成については <a class="reference internal" href="02-action-view-tpl.html#tutorial-02-action-view-tpl"><em>2. アクション、ビュー、テンプレートの作成</em></a> を御覧下さい。</p>
+<div class="section" id="id7">
+<h3>注釈<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="docutils footnote" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td><tt class="docutils literal"><span class="pre">/var/www</span></tt> ディレクトリに適切な権限を設定する必要があります。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../tutorial.html" title="チュートリアル"
+             >previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" >チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

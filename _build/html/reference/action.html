@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ActionClass &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="リファレンス" href="../reference.html" />
+    <link rel="next" title="authenticate()" href="action/authenticate.html" />
+    <link rel="prev" title="リファレンス" href="../reference.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../README.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="action/authenticate.html" title="authenticate()"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../reference.html" title="リファレンス"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" accesskey="U">リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../README.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ActionClass</a><ul>
+<li><a class="reference internal" href="#id1">アクションの仕組み</a></li>
+<li><a class="reference internal" href="#id2">アクションの生成</a></li>
+<li><a class="reference internal" href="#prepare">prepare()</a></li>
+<li><a class="reference internal" href="#perform">perform()</a></li>
+<li><a class="reference internal" href="#id3">遷移先</a></li>
+<li><a class="reference internal" href="#id4">注意すべきこと</a></li>
+<li><a class="reference internal" href="#id5">ActionClass に関するコンテンツ</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../reference.html"
+                        title="previous chapter">リファレンス</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="action/authenticate.html"
+                        title="next chapter">authenticate()</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/action.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="actionclass">
+<span id="reference-action"></span><h1>ActionClass<a class="headerlink" href="#actionclass" title="Permalink to this headline">¶</a></h1>
+<p><cite>Ethna</cite> の <cite>ActionClass</cite> (アクションクラス) は <cite>MVC</cite> モデルでいうところの <cite>C (Controller)</cite> の一部です。</p>
+<p>ユーザのリクエストによってアプリケーションが起動され、指定されたアクションが実行されます。アクションでは、ロジックの呼び出しを (場合によっては複数回) 行い、遷移先 (<cite>ViewClass</cite>) の決定をします。</p>
+<div class="section" id="id1">
+<h2>アクションの仕組み<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><cite>ActionClass</cite> の決定は、デフォルトでは、次のようなルールで行われます。 ( <a class="reference internal" href="urlhandler.html#reference-urlhandler"><em>UrlHandler</em></a> を使ったり、 <a class="reference internal" href="action/formname.html#reference-action-formname"><em>アクション名の決定方法を変更する</em></a> などによって変更できます)</p>
+<ol class="arabic simple">
+<li>フォーム名のうち、名前が <tt class="docutils literal"><span class="pre">action_</span></tt> で始まり、且つフォーム値が空ではないものを探します</li>
+<li>1.に該当するフォーム名が見つかった場合、そこから先頭の <tt class="docutils literal"><span class="pre">action_</span></tt> を除いた部分をアクション名とします</li>
+</ol>
+<p>例えば、</p>
+<div class="highlight-python"><pre>http://example.com/?action_sample=true</pre>
+</div>
+<p>という URL にアクセスされた場合、決定されるアクション名は <cite>Sample</cite> となります。</p>
+<p>アクションは、主に次の役割を持っています:</p>
+<ul class="simple">
+<li>フォーム値のバリデーションを実行し、エラーなどがあった場合に遷移先 (<cite>ViewClass</cite>) を決定する</li>
+<li>ロジックの呼び出しを行い、遷移先 (<cite>ViewClass</cite>) を決定する</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>アクションの生成<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><cite>ActionClass</cite> は、 <cite>ethnaコマンド</cite> を用いて次のように生成します。</p>
+<div class="highlight-python"><pre>$ ethna add-action sample</pre>
+</div>
+<p>このとき、</p>
+<p>このコマンドによって、次にようにファイルが生成されます。</p>
+<div class="highlight-python"><pre>$ ethna add-action sample</pre>
+</div>
+<p>すると、次のように出力され、 <tt class="docutils literal"><span class="pre">app/action/Sample.php</span></tt> ファイルが生成されます。</p>
+<div class="highlight-python"><pre>file generated [/path/to/sample/skel/skel.action.php -&gt; /path/to/sample/app/action/Sample.php]
+action script(s) successfully created [/path/to/sample/app/action/Sample.php]</pre>
+</div>
+<p>生成されたファイルには、指定した <cite>ActionClass</cite> と、対になる <cite>ActionForm</cite> が定義されます。アクション名とファイルは次のように、 <tt class="docutils literal"><span class="pre">_</span></tt> 区切りがディレクトリ区切りに対応します。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="43%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">アクション名</th>
+<th class="head">ファイル</th>
+<th class="head">クラス名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>index</td>
+<td>app/action/Index.php</td>
+<td>Sample_Action_Index</td>
+</tr>
+<tr><td>post_confirm</td>
+<td>app/action/Post/Confirm.php</td>
+<td>Sample_Action_PostConfirm</td>
+</tr>
+<tr><td>post_do</td>
+<td>app/action/Post/Do.php</td>
+<td>Sample_Action_PostDo</td>
+</tr>
+</tbody>
+</table>
+<p>参考:</p>
+<ul class="simple">
+<li><a class="reference internal" href="command.html#reference-command-add-action"><em>add-action</em></a></li>
+</ul>
+<p><cite>ActionForm</cite> には、次の 2 つのメソッド <tt class="docutils literal"><span class="pre">prepare()</span></tt> と <tt class="docutils literal"><span class="pre">preform()</span></tt> が定義されます。</p>
+<div class="highlight-php-inline"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sample_Action_Sample</span> <span class="k">extends</span> <span class="nx">Sample_ActionClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">perform</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;sample&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare">
+<h2>prepare()<a class="headerlink" href="#prepare" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">prepare()</span></tt> は、フォームの検証などを行う、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドを実行する準備をするためのメソッドです。何事もなければ <tt class="docutils literal"><span class="pre">null</span></tt> を返し (あるいは <tt class="docutils literal"><span class="pre">return</span></tt> を省略し)、バリデーションの結果エラーが存在する場合には、遷移名を <tt class="docutils literal"><span class="pre">return</span></tt> することで、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドを実行せずに、任意の <cite>ViewClass</cite> や <cite>Template</cite> に遷移させることができます。</p>
+<p>次の例では、フォーム値を検証し (<tt class="docutils literal"><span class="pre">$this-&gt;af-&gt;validate()</span></tt>)、エラーが1つ以上ある場合、 <cite>error</cite> という名前の遷移先に遷移するよう、 <tt class="docutils literal"><span class="pre">'error'</span></tt> という文字列を <tt class="docutils literal"><span class="pre">return</span></tt> しています。</p>
+<div class="highlight-python"><pre>public function prepare()
+{
+    if ($this-&gt;af-&gt;validate() &gt; 0) {
+        return 'error';
+    }
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドと <tt class="docutils literal"><span class="pre">preform()</span></tt> メソッドの関係は以下のようになっていて、まず <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドが呼ばれ、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドが <tt class="docutils literal"><span class="pre">null</span></tt> を返した場合のみ <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドが呼び出されます。</p>
+<img alt="../_images/reference_action-01.png" src="../_images/reference_action-01.png" />
+<p>要するに、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドでフォーム値の検証を行うこと、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドでは全てのデータがバリデート済みであるという前提で処理を行うことが出来、安全且つ簡潔なコードが書けるというわけです。</p>
+<p>なお、フォーム値の自動検証詳細については以下をご覧下さい。</p>
+<ul class="simple">
+<li><a class="reference internal" href="actionform.html#reference-actionform"><em>ActionForm</em></a></li>
+</ul>
+</div>
+<div class="section" id="perform">
+<h2>perform()<a class="headerlink" href="#perform" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドは、ロジックを処理するためのメソッドです。</p>
+</div>
+<div class="section" id="id3">
+<h2>遷移先<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>遷移先とは、アクション実行後に呼び出される <cite>ViewClass</cite> (または <cite>Template</cite>) のことです。</p>
+<p><cite>ActionClass</cite> では、ここで説明した <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッド、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドと、 <a class="reference internal" href="action/authenticate.html#reference-action-authenticate"><em>authenticate()</em></a> の頁で説明する <tt class="docutils literal"><span class="pre">authenticate()</span></tt> メソッドの戻り値が遷移名となり、この遷移名に該当する <cite>ViewClass</cite> や <cite>Template</cite> が呼び出されます。</p>
+</div>
+<div class="section" id="id4">
+<h2>注意すべきこと<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>すでに説明したとおり、 <cite>Ethna</cite> の <cite>ActionClas</cite> は、コントローラの一部です。</p>
+<p><cite>Ethna</cite> による開発でのよくある間違いは、 <cite>ActionClass</cite> の <tt class="docutils literal"><span class="pre">preform()</span></tt> などに、非常に大きな・複雑なロジックを書いてしまうことです。肥大化した <cite>ActionClass</cite> は、アプリケーションの見通しを悪くし、メンテナンス性を著しく悪化させます。ロジックは <cite>AppManager</cite> や <cite>AppObject</cite> に記述します。</p>
+<p>参考:</p>
+<ul class="simple">
+<li><a class="reference internal" href="appobject.html#reference-appobject"><em>AppObject</em></a></li>
+<li><a class="reference internal" href="appmanager.html#reference-appmanager"><em>AppManager</em></a></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>ActionClass に関するコンテンツ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="action/authenticate.html">authenticate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action/nameresolve.html">アクション名の解決と定義の省略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action/formname.html">アクション名の決定方法を変更する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action/formnamereason.html">action_ である理由</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="action/authenticate.html" title="authenticate()"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../reference.html" title="リファレンス"
+             >previous</a> |</li>
+        <li><a href="../README.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../reference.html" >リファレンス</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
