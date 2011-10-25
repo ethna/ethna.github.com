@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna 焼肉会議 議事録 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna 焼肉会議 議事録 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-yakiniku.html">ethna-yakiniku</a> &gt; <a href="ethna-yakiniku-meeting.html">ethna-yakiniku-meeting</a> &gt; Ethna 焼肉会議 議事録 
+<h2 id="content_1_0">Ethna 焼肉会議 議事録  <a class="anchor_super" id="qc9871a1" href="ethna-yakiniku-meeting-20090125.html#qc9871a1" title="qc9871a1"> </a></h2>
+<p>2009年1月25日に、焼肉をつつきながらEthna について話す会が開かれました。非常に中身が濃く、有意義なものでした。</p>
+<p>その議事録を以下にアップします。こうした議論を元に、これからのEthnaの進化にご期待下さい。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#qc9871a1">  Ethna 焼肉会議 議事録 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#j636dd2a">  DBレイヤの抽象化 </a></li>
+<li><a href="#ya10b2b3">  プラグインどうする？ </a></li>
+<li><a href="#mb0a884d">  View の扱い方と連携に関する考え方 </a></li>
+<li><a href="#m0f24ac9">  Ethna_Session </a></li>
+<li><a href="#n6dcddfc">  認証(Auth) の機構はなんとかしたい </a></li>
+<li><a href="#ccb4dcf8">  URLHandler </a></li>
+<li><a href="#pe25f208">  サンプルを増やす努力 </a></li>
+<li><a href="#i8a46eea">  ドキュメント </a></li>
+<li><a href="#r834c67c">  マーケティング </a></li>
+<li><a href="#ga7b8804">  チケットシステムどうする? </a></li>
+<li><a href="#c21af290">  新しいコミッタ。新しい流れを </a></li>
+<li><a href="#mc7e2195">  番外編 </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-01-26</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">DBレイヤの抽象化  <a class="anchor_super" id="j636dd2a" href="ethna-yakiniku-meeting-20090125.html#j636dd2a" title="j636dd2a"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>何がなくとも最優先。2.5.0 preview4 に。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>これを実現し、様々なライブラリやインターフェイスをプラガブルにする -&gt; 最優先</li></ul></li>
+<li>AppObject 捨てでいいと思う
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>捨てるとして、既存のORMを取り込むか、ライブラリを使うかを決める</li>
+<li>ActionForm との連携をとりやすくするのが何よりも重要
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>ActionForm は、複数の項目を連携するための仕組みがない。カスタムチェックもありだけど、'required_if' =&gt; 'hoge &gt; 5 AND fuga &lt; 0' のように、項目を連携するValidate の仕組みもありではないか</li></ul></li></ul></li></ul>
+
+<h3 id="content_1_2">プラグインどうする？  <a class="anchor_super" id="ya10b2b3" href="ethna-yakiniku-meeting-20090125.html#ya10b2b3" title="ya10b2b3"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>DB の次に優先度が高い</li>
+<li>名前空間が複数（master, local) があり、ユーザがどう扱ってよいか分からない
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションローカルなプラグインを、グローバルなプラグインより優先させ、オーバライドしたいとの思いで作った仕組み(いちい)
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="http://d.hatena.ne.jp/ichii386/20090126/1232911256" rel="nofollow">http://d.hatena.ne.jp/ichii386/20090126/1232911256</a></li>
+<li>名前空間は最小限（ひとつ）にするべきだと思う。上記のオーバライドは、優先度をコントロールすれば実現できることではないか</li>
+<li>ロードする順番を再検討すること</li>
+<li>アプリケーションID, lib(extlib?) 以下、Ethna本体くらいか</li>
+<li>extlib加える？</li></ul></li></ul></li>
+<li>ユーザがインストールしやすい仕組みに
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>置いてちょっと設定すれば動くくらいでないと</li></ul></li>
+<li>ロードする機構は考え直さないとダメだろ
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>getPlugin('hoge') は若気の至りだったとの某氏の告白</li>
+<li>少なくともrequireはダメだろ</li>
+<li>Cake のコンポーネント風？ 書けばロードされる感じ</li>
+<li>Ethnaのプラグイン機構が確立したらbakeryのようなサイトも欲しいよね</li></ul></li></ul>
+
+<h3 id="content_1_3">View の扱い方と連携に関する考え方  <a class="anchor_super" id="mb0a884d" href="ethna-yakiniku-meeting-20090125.html#mb0a884d" title="mb0a884d"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_ViewClass はコンテキストに依存した値を処理することで、If 文を action や テンプレートに書くのを極力防ぐための仕組みです。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>その意味で、Viewは不要とは思えないが、Actionや ActionForm(フォームヘルパ）等との連携を改良する必要がある
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>View と ActionForm の連携にはフォームヘルパを使うべき。サンプルを増やす努力を。</li>
+<li><a href="http://ml.ethna.jp/pipermail/users/2009-January/001092.html" rel="nofollow">http://ml.ethna.jp/pipermail/users/2009-January/001092.html</a></li>
+<li>アクションからViewに値をどうしても渡したい場合、call_user_func_array を使う案はどうか(sotarok)</li>
+<li><a href="http://d.hatena.ne.jp/sotarok/20090125/1232900121" rel="nofollow">http://d.hatena.ne.jp/sotarok/20090125/1232900121</a></li></ul></li></ul></li>
+<li>複数テンプレートを組み合わせられるように改良したい
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Renderer#perform(true) を使えば、テンプレートの出力を取り出せるので、それを再度 assign する形で。</li></ul></li>
+<li>汎用Viewの実現
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>汎用のものは取り込む方向で</li>
+<li>JSON</li>
+<li>ステータスコードを吐くView</li>
+<li>リダイレクトビュー
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="http://d.hatena.ne.jp/sotarok/20090125/1232900121" rel="nofollow">http://d.hatena.ne.jp/sotarok/20090125/1232900121</a></li>
+<li><a href="http://d.hatena.ne.jp/okonomi/20090125/1232876245" rel="nofollow">http://d.hatena.ne.jp/okonomi/20090125/1232876245</a></li></ul></li></ul></li>
+<li>View のテストには、prefoward より、forward で exit させたほうがしっくりくるかも</li></ul>
+
+<h3 id="content_1_4">Ethna_Session  <a class="anchor_super" id="m0f24ac9" href="ethna-yakiniku-meeting-20090125.html#m0f24ac9" title="m0f24ac9"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>実装がボロいとの批判が多い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>セッションを保存するディレクトリが固定な件</li>
+<li>セッションが auto start 固定でないほうがよい場合もある</li>
+<li>isValid メソッドのIPチェックがstrictすぎて携帯で使えない件</li>
+<li>session ID の実装が独自で、うまく使えない場合がある件</li>
+<li>DBをセッションに保存する機構を実装すべき
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>これは、DBレイヤが抽象化されることが前提</li></ul></li></ul></li></ul>
+
+<h3 id="content_1_5">認証(Auth) の機構はなんとかしたい  <a class="anchor_super" id="n6dcddfc" href="ethna-yakiniku-meeting-20090125.html#n6dcddfc" title="n6dcddfc"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_ActionClass を継承する方法は間違いが多い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>継承を忘れればセキュリティ上の致命的なミスとなる。これはどうすれば防げる？
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>authenticate インターフェイスを除いて全部ユーザの責任にする？</li></ul></li></ul></li>
+<li>プラグイン化しようよ
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>画一的な処理なのだから、そういう形にしてもいいはず</li>
+<li>プラグイン機構の確定が前提、かつ必須</li></ul></li></ul>
+
+<h3 id="content_1_6">URLHandler  <a class="anchor_super" id="ccb4dcf8" href="ethna-yakiniku-meeting-20090125.html#ccb4dcf8" title="ccb4dcf8"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>現状はアクション名ありきで path_info をアクション名にマッピングしている
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクション名ありきで path_info の解釈が後付けなこの実装には確固たる根拠が
+あるわけではない（いちい）</li>
+<li>mod_rewrite や Net_URL_Mapper を使わざるを得ない</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>上記のような仕組みではなくて、path_info をもとに、デフォルトでアクション名
+を推定する仕組みが欲しい(重要)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>この仕組みを実現するのに、URLHandler の仕組みをごそっと置き換えても構わな
+いと思う</li></ul></li></ul>
+
+<h3 id="content_1_7">サンプルを増やす努力  <a class="anchor_super" id="pe25f208" href="ethna-yakiniku-meeting-20090125.html#pe25f208" title="pe25f208"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>これこそが Ethna だ！ という流儀を示すためにも、サンプルの充実は必須</li>
+<li>当然ドキュメントともリンクしている</li>
+<li><a href="http://planet.php.gr.jp" rel="nofollow">http://planet.php.gr.jp</a> は Ethna で出来ているので、これを最新にあわせて書き直そうよ</li></ul>
+
+<h3 id="content_1_8">ドキュメント  <a class="anchor_super" id="i8a46eea" href="ethna-yakiniku-meeting-20090125.html#i8a46eea" title="i8a46eea"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>流儀を確立し、再整理は必須
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>サンプルコードを増やす努力を。[ethna-users:1093]
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="http://ml.ethna.jp/pipermail/users/2009-January/001092.html" rel="nofollow">http://ml.ethna.jp/pipermail/users/2009-January/001092.html</a></li></ul></li></ul></li>
+<li>簡単なテキスト整形ツールが必要
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>DocBook(?) -&gt; 学習コストが高い</li>
+<li>Structured_Text (python)</li>
+<li>halt たんと simpledoc について話をしたのだけれども、あれはJavaコードにヘッダとか直に書いているのでカスタマイズが不能で彼とはうまく折り合えなかったと記憶している</li>
+<li>Ethna でドキュメント管理ツールを再実装する案もあり
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>サンプルコードをコメントとかみたいな形で管理できないですかね</li></ul></li></ul></li></ul>
+
+<h3 id="content_1_9">マーケティング  <a class="anchor_super" id="r834c67c" href="ethna-yakiniku-meeting-20090125.html#r834c67c" title="r834c67c"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>要するに「XXといえばEthna」と言わせたい</li>
+<li>目玉機能をつけることでマーケティング力を
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>携帯とか</li>
+<li>国産とか</li>
+<li>ローカルなネタを生かせるように</li>
+<li>初心者や中級者の人を増やすには、確固たるドキュメントと流儀の確立が必須</li></ul></li></ul>
+
+<h3 id="content_1_10">チケットシステムどうする?  <a class="anchor_super" id="ga7b8804" href="ethna-yakiniku-meeting-20090125.html#ga7b8804" title="ga7b8804"> </a></h3>
+<pre>以下の点は結局 sourceforge.jp のチケットシステムを使うということで落ち着きました。
+(2009/02/23)</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>sf.jp をご破算にしてチケットシステムを使うのもあり</li>
+<li>trac を新たに立てる？</li>
+<li>結論としては、新たに ethna.jp のドメインでバグトラッキングシステムを立てる
+方向で
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ethna.jp のドメインなので sf.jp に入れられるものでないとダメ。希望するソフトウェアを各々出して見てください
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>kagemai</li>
+<li>redmine</li>
+<li>trac</li>
+<li>mantis</li>
+<li>ethnaで作る?</li></ul></li></ul></li></ul>
+
+<h3 id="content_1_11">新しいコミッタ。新しい流れを  <a class="anchor_super" id="c21af290" href="ethna-yakiniku-meeting-20090125.html#c21af290" title="c21af290"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>１年半近く mumumu がひとりで Ethna をいじってきたのだけど、一人の発想だと必ず進化が止まるので、新たに sotarok と maru_cc というコミッタを迎えた(mumumu)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="http://d.hatena.ne.jp/sotarok" rel="nofollow">http://d.hatena.ne.jp/sotarok</a></li>
+<li><a href="http://d.hatena.ne.jp/maru_cc" rel="nofollow">http://d.hatena.ne.jp/maru_cc</a></li></ul></li>
+<li>新しい発想、フィードバックの流れを作れればいいなと思う(mumumu)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>その意味で、新しいコミッタには「新しい血」を期待している</li>
+<li>気負わずに自分ができることを。</li></ul></li>
+<li>業務でやってることをうまくフィードバックする流れを作れたらいいなと思う(maru_cc)</li></ul>
+
+<h3 id="content_1_12">番外編  <a class="anchor_super" id="mc7e2195" href="ethna-yakiniku-meeting-20090125.html#mc7e2195" title="mc7e2195"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethnaのメインキャラクター候補
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>宮崎あおい
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="http://www.aoimiyazaki.jp/" rel="nofollow">http://www.aoimiyazaki.jp/</a></li>
+<li>人妻なんてそんなの関係ねぇ！！！！！</li></ul></li>
+<li>ポッキーのCMキャラクター(忽那汐里)
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="http://pocky.jp/cm/pocky/index.html" rel="nofollow">http://pocky.jp/cm/pocky/index.html</a></li></ul></li>
+<li>ポニョ(???)
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>誰の好みだこれは</li></ul></li>
+<li>いちいさんをキャラクター担当に任命する</li></ul></li>
+<li>ふじもとさんどうしてる？</li>
+<li>Smarty にDBコードを埋め込む変態コード。
+<ul class="list3" style="padding-left:32px;margin-left:32px"><li><a href="http://d.hatena.ne.jp/maru_cc/20080625/ethna_template_db" rel="nofollow">http://d.hatena.ne.jp/maru_cc/20080625/ethna_template_db</a></li>
+<li><a href="http://d.hatena.ne.jp/maru_cc/20080325/1206453551" rel="nofollow">http://d.hatena.ne.jp/maru_cc/20080325/1206453551</a> ＜たぶん話してたのはこっち</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

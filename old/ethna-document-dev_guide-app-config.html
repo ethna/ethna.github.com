@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethnaアプリケーションの設定ファイル - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethnaアプリケーションの設定ファイル </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-app.html">ethna-document-dev_guide-app</a> &gt; Ethnaアプリケーションの設定ファイル 
+<h2 id="content_1_0">Ethnaアプリケーションの設定ファイル  <a class="anchor_super" id="a5ab4cc3" href="ethna-document-dev_guide-app-config.html#a5ab4cc3" title="a5ab4cc3"> </a></h2>
+<p>Ethna では、PHPファイルやテンプレートファイルを ethnaコマンドで生成し、生成したものを主に弄っていきます。しかし、アプリケーション全体に共通する設定というのも存在しており、それらは別に記述する必要があります。ここでは、そうしたアプリケーション全体の設定について説明します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#a5ab4cc3">  Ethnaアプリケーションの設定ファイル </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#ieb592dd">  設定ファイルの置き場所 </a></li>
+<li><a href="#c216dd88">  設定値を制御する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#i385ce02">  設定値を記述する </a></li>
+<li><a href="#k99f5ba3">  設定値を取得する </a></li></ul></li>
+<li><a href="#b0bb0cb7">  個別の設定値の詳細 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#w57b0977">  デバッグ設定 </a></li>
+<li><a href="#s9203e88">  データベース接続設定 </a></li>
+<li><a href="#ob9f7383">  ログ出力の設定 </a></li>
+<li><a href="#p7a8ed92">  memcached </a></li>
+<li><a href="#uf9b931e">  国際化設定 </a></li>
+<li><a href="#wda34d3a">  CSRF対策 </a></li></ul></li>
+<li><a href="#ub3319d5">  設定値をiniファイルで管理する </a></li>
+<li><a href="#m5c1461e">  設定値をyamlで管理する </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">----</td><td class="style_td">----------</td><td class="style_td">新規作成</td></tr><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-06-15</td><td class="style_td">最新版に追随する形で全面的に修正</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">設定ファイルの置き場所  <a class="anchor_super" id="ieb592dd" href="ethna-document-dev_guide-app-config.html#ieb592dd" title="ieb592dd"> </a></h3>
+<p>以下のようにアプリケーションIDを「sample」としてプロジェクトを作成すると、sample/etc/sample-ini,php に設定ファイルが作成されます。</p>
+<pre>$ ethna add-project sample 
+$ cd sample/etc
+$ ls
+sample-ini.php</pre>
+<p>つまり、etc/[アプリケーションID]-ini.php が設定ファイルの置き場所ということになります。</p>
+
+<h3 id="content_1_2">設定値を制御する  <a class="anchor_super" id="c216dd88" href="ethna-document-dev_guide-app-config.html#c216dd88" title="c216dd88"> </a></h3>
+
+<h4 id="content_1_3">設定値を記述する  <a class="anchor_super" id="i385ce02" href="ethna-document-dev_guide-app-config.html#i385ce02" title="i385ce02"> </a></h4>
+<p>Ethnaの設定ファイルは素のPHPを使って記述します。上で説明した etc/[アプリケーションID]-ini.php に、$config というグローバル変数を書き、そこに配列の形で定義を行います。</p>
+<pre>$config = array(
+    'debug' =&gt; false,
+    'dsn'   =&gt; 'mysql://user:pass@unix+localhost/dbname',
+);</pre>
+<p>ここに設定した値は、変更すると次のリクエストからすぐに反映されます。この変数に一ヶ所に纏めることで、環境が変わった場合の対応も容易になります。</p>
+
+<h4 id="content_1_4">設定値を取得する  <a class="anchor_super" id="k99f5ba3" href="ethna-document-dev_guide-app-config.html#k99f5ba3" title="k99f5ba3"> </a></h4>
+<p>Ethnaには設定値の制御を行うクラスとして Ethna_Config があります。このクラスを利用すれば、上記で設定したファイルの設定値が容易に取得できます。</p>
+<p>ユーザーが主に触ることになるアクションクラスやビュークラス、アプリケーションマネージャークラスには、$config というメンバで Ethna_Config クラスのインスタンスが定義されています。よって、getメソッドを使って設定値を取得することができます。</p>
+<p>以下はアクションクラスで設定値を取得する例です。<a href="doc/Ethna/Ethna_Config.html" rel="nofollow">Ethna_ConfigクラスのAPIドキュメント</a>も参照してください。</p>
+<pre>class Sample_Action_Index extends Ethna_ActionClass
+{
+    function prepare()
+    {
+        return null;
+    }
+
+    function perform()
+    {
+        //   dsn という設定値を取得
+        $dsn = $this-&gt;config-&gt;get('dsn');
+        
+        //.... 残りの処理
+    }
+}</pre>
+
+<h3 id="content_1_5">個別の設定値の詳細  <a class="anchor_super" id="b0bb0cb7" href="ethna-document-dev_guide-app-config.html#b0bb0cb7" title="b0bb0cb7"> </a></h3>
+<p>ここでは、Ethna で設定できる設定値のすべてを詳細に示します。</p>
+
+<h4 id="content_1_6">デバッグ設定  <a class="anchor_super" id="w57b0977" href="ethna-document-dev_guide-app-config.html#w57b0977" title="w57b0977"> </a></h4>
+<pre>$config = array(
+    'debug' =&gt; false,  //   デフォルトはfalse
+);</pre>
+<p>デバッグ設定は開発時に使用するもので、true または false で指定します。
+この値をtrueにした場合、以下の機能が実行できるようになります。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>www/info.php によるアプリケーション情報の一覧</li>
+<li>www/unittest.php による単体テスト実行</li></ol>
+<p><a href="ethna-document-dev_guide-misc-unittest.html" title="ethna-document-dev_guide-misc-unittest (1240d)">ユニットテストを実行する</a> と <a href="ethna-document-dev_guide-misc-info.html" title="ethna-document-dev_guide-misc-info (1240d)">設定情報や定義済みアクション等を一覧する</a> も参照してください。</p>
+<p><strong>本番環境でこの値を絶対trueに設定しないで下さい！ 上記の機能はユーザーに見せるものではないからです！</strong></p>
+
+<h4 id="content_1_7">データベース接続設定  <a class="anchor_super" id="s9203e88" href="ethna-document-dev_guide-app-config.html#s9203e88" title="s9203e88"> </a></h4>
+<pre>$config = array(
+   // sample-1: single db
+   'dsn' =&gt; 'mysql://user:password@server/database',
+   // sample-2: single db w/ multiple users
+   'dsn'   =&gt; 'mysql://rw_user:password@server/database', // read-write
+   'dsn_r1' =&gt; 'mysql://ro_user:password@server/database', // read-only
+   // sample-3: multiple db (slaves)
+   'dsn'   =&gt; 'mysql://rw_user:password@master/database', // read-write(master)
+   'dsn_r2' =&gt; array(
+        'mysql://ro_user:password@slave1/database',         // read-only(slave)
+        'mysql://ro_user:password@slave2/database',         // read-only(slave)
+    ),
+);</pre>
+<p>上記のようにdsnというkeyにDSNを記述することでBackendからgetDBによってDBオブジェクトが呼び出されてコネクトするときのDSNを指定することができます。</p>
+<p>データベースオブジェクトを、アクションクラスやアプリケーションマネージャーでは以下の形で取得することが出来ます。</p>
+<pre>$this-&gt;backend-&gt;getDB('r');  //  dsn_r の設定を返す</pre>
+<p>ひとつのdsnに複数の接続先が配列で指定された場合は、ランダムに接続先が返ってきます。</p>
+<pre>$this-&gt;backend-&gt;getDB('r2'); //  dsn_r2 の接続を返す。</pre>
+<p><a href="ethna-document-dev_guide-db.html" rel="nofollow">データベースアクセス</a>のページも参照してください。</p>
+
+<h4 id="content_1_8">ログ出力の設定  <a class="anchor_super" id="ob9f7383" href="ethna-document-dev_guide-app-config.html#ob9f7383" title="ob9f7383"> </a></h4>
+<p>ログ出力の設定の詳細については、<a href="ethna-document-dev_guide-log.html" title="ethna-document-dev_guide-log (874d)">Ethnaでログ出力を制御する</a> のページを参照してください。</p>
+
+<h4 id="content_1_9">memcached  <a class="anchor_super" id="p7a8ed92" href="ethna-document-dev_guide-app-config.html#p7a8ed92" title="p7a8ed92"> </a></h4>
+<p>memcached も、データベース接続設定と同様に多様な設定が可能です。memcached がひとつの場合の設定を以下に示します。</p>
+<pre> $config = array(
+   // sample-1: single (or default) memcache
+   'memcache_host' =&gt; 'localhost',   //  memcached を置いているホスト
+   'memcache_port' =&gt; 11211,         //  ポート番号
+   'memcache_use_pconnect' =&gt; false, //  永続的な接続をサポートするか
+   'memcache_retry' =&gt; 3,            //  接続に失敗した場合のリトライ回数
+   'memcache_timeout' =&gt; 3,          //  接続タイムアウト値
+ );
+   </pre>
+<p>以下のように名前空間を指定して複数台のmemcached を指定することも可能です。</p>
+<pre> $config = array(
+   // sample-2: multiple memcache servers (distributing w/ namespace and ids)
+   'memcache' =&gt; array(
+        'namespace1' =&gt; array(
+            0 =&gt; array(
+                'memcache_host' =&gt; 'cache1.example.com',
+                'memcache_port' =&gt; 11211,
+            ),
+            1 =&gt; array(
+                'memcache_host' =&gt; 'cache2.example.com',
+                'memcache_port' =&gt; 11211,
+            ),
+        ),
+    ),
+ );</pre>
+
+<h4 id="content_1_10">国際化設定  <a class="anchor_super" id="uf9b931e" href="ethna-document-dev_guide-app-config.html#uf9b931e" title="uf9b931e"> </a></h4>
+<pre>この機能を利用するには、Ethna 2.5.0 preview2 以降が必要です。</pre>
+<pre>$config = array(
+    'use_gettext'   =&gt; false,
+);</pre>
+<p>Ethnaプロジェクトを国際化する手段として、iniファイルを利用する方法と、gettext を利用する方法の２種類が用意されています。デフォルトは iniファイルを利用する方法です。詳細は <a href="ethna-document-dev_guide-i18n.html" title="ethna-document-dev_guide-i18n (737d)">プロジェクトの国際化(2.5.0 preview2以降)</a> を参照してください。</p>
+<p>gettext を利用する場合に、この値を true にします。</p>
+
+<h4 id="content_1_11">CSRF対策  <a class="anchor_super" id="wda34d3a" href="ethna-document-dev_guide-app-config.html#wda34d3a" title="wda34d3a"> </a></h4>
+<pre>$config = array(
+    'csrf'   =&gt; 'Session',
+);</pre>
+<p>CSRF とは、ログイン済みのユーザーに細工したURLを踏ませることで、ログイン済みユーザの権限を利用して意図しない操作を実行させるものです。詳細は <a href="ethna-document-dev_guide-csrf.html" title="ethna-document-dev_guide-csrf (1240d)">クロスサイトリクエストフォージェリの対策コードについて</a> を参照してください。</p>
+<p>デフォルト値は、上記のように 'Session' となっており、正当な値をセッションに格納するようになっています。現状はこの値を変更できません。</p>
+
+<h3 id="content_1_12">設定値をiniファイルで管理する  <a class="anchor_super" id="ub3319d5" href="ethna-document-dev_guide-app-config.html#ub3319d5" title="ub3319d5"> </a></h3>
+<p>etc/[appid]-ini.phpの中では変数の定義だけでなくロジックの記述もできるので</p>
+<p>config.ini</p>
+<pre>debug = false
+dsn = mysql://user:password@localhost/db</pre>
+<p>を用意しておいて</p>
+<p>etc/[app-id]-ini.php内で</p>
+<pre>$config = parse_ini_file('config.ini', true);</pre>
+<p>としておけば設定値をiniファイルに記述することができます。<a id="notetext_1" href="#notefoot_1" class="note_super" title="この例では、parse_ini_file 関数への第二引数を true にして、セクション定義を解釈させるようになっていますが、dsn のようなEthnaの動作の根本に関わる一部の設定値については、セクション定義されていないことを前提に値を取得する実装が Ethna でなされているため、セクション定義しない方が無難かもしれません">*1</a></p>
+
+<h3 id="content_1_13">設定値をyamlで管理する  <a class="anchor_super" id="m5c1461e" href="ethna-document-dev_guide-app-config.html#m5c1461e" title="m5c1461e"> </a></h3>
+<p>iniファイルとほとんど同じ手法でできます。
+bogoYAMLのスタイルでよければharukiさんが作ったbogoYAMLを利用して
+YAMLで記述したデータを配列として取得するだけです。詳しくは、以下を参照して下さい。</p>
+<p><a href="http://hatotech.org/kumatch/archives/000492.html" rel="nofollow">http://hatotech.org/kumatch/archives/000492.html</a></p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">この例では、<a href="http://jp.php.net/manual/ja/function.parse-ini-file.php" rel="nofollow">parse_ini_file 関数</a>への第二引数を true にして、セクション定義を解釈させるようになっていますが、dsn のようなEthnaの動作の根本に関わる一部の設定値については、<a href="doc/__filesource/fsource_Ethna__classEthna_Controller.php.html#a1878" rel="nofollow">セクション定義されていないことを前提に値を取得する実装</a>が Ethna でなされているため、セクション定義しない方が無難かもしれません</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

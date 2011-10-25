@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+フレームワーク比較 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>フレームワーク比較 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-about.html">概要 </a> &gt; フレームワーク比較 
+<h2 id="content_1_0">フレームワーク比較  <a class="anchor_super" id="s2d223e7" href="ethna-about-framework_comparison.html#s2d223e7" title="s2d223e7"> </a></h2>
+<p><strong><a href="ethna-about-framework_comparison-list.html" title="ethna-about-framework_comparison-list (1240d)">フレームワーク一覧</a></strong></p>
+<p>ちょっとずづ違うフレームワークが、それこそ星の数ほどあります。それぞれ特徴があり、どれがいいのか、どれを選んだらよいのか、なかなか難しいと思います。</p>
+<p>ここでは、Ethnaを含め、次の5つのフレームワークについて、簡単な比較をしたいと思います(2006年4月現在)。これを読んで、Ethnaっていけてるじゃん!って思っていただければ幸いです。。。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="" rel="nofollow">Ethna</a></li>
+<li><a href="http://www.xisc.com/" rel="nofollow">PRADO</a></li>
+<li><a href="http://www.rubyonrails.org/" rel="nofollow">Ruby on Rails</a> (RoR)</li>
+<li><a href="http://www.symfony-project.com/" rel="nofollow">symfony</a></li>
+<li><a href="http://framework.zend.com/" rel="nofollow">Zend Framework</a> (ZF)</li></ul>
+
+<h2 id="content_1_1">まとめの表  <a class="anchor_super" id="kac47d09" href="ethna-about-framework_comparison.html#kac47d09" title="kac47d09"> </a></h2>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><thead><tr><td class="style_td" colspan="2"></td><td class="style_td">Ethna</td><td class="style_td">PRADO</td><td class="style_td">RoR</td><td class="style_td">symfony</td><td class="style_td">ZF</td></tr></thead><tbody><tr><td class="style_td" colspan="2"><a href="#language">言語</a></td><td class="style_td">php4/5</td><td class="style_td">php5</td><td class="style_td">Ruby</td><td class="style_td">php5</td><td class="style_td">php5</td></tr><tr><td class="style_td" colspan="2"><a href="#document">ドキュメント</a></td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">○</td></tr><tr><td class="style_td" colspan="2"><a href="#install">インストール</a></td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td></tr><tr><td class="style_td" colspan="2"><a href="#syntax">必要な文法</a></td><td class="style_td">◎</td><td class="style_td">△</td><td class="style_td">◎</td><td class="style_td">△</td><td class="style_td">◎</td></tr><tr><td class="style_td" colspan="2"><a href="#sources">ソースの読みやすさ</a></td><td class="style_td">◎</td><td class="style_td">△</td><td class="style_td">△</td><td class="style_td">△</td><td class="style_td">○</td></tr><tr><td class="style_td" colspan="2"><a href="#usability">使いやすさ</a></td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">○</td></tr><tr><td class="style_td" rowspan="3"><a href="#mvc">MVC</a></td><td class="style_td"><a href="#model">モデル</a></td><td class="style_td">○</td><td class="style_td">△</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">○</td></tr><tr><td class="style_td"><a href="#view">ビュー</a></td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">△</td></tr><tr><td class="style_td"><a href="#controller">コントローラ</a></td><td class="style_td">○</td><td class="style_td">△</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td></tr><tr><td class="style_td" rowspan="3"><a href="#webproper">Webアプリ特有</a></td><td class="style_td"><a href="#ajax">ajax</a></td><td class="style_td">△</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">○</td></tr><tr><td class="style_td"><a href="#formdata">フォーム</a></td><td class="style_td">◎</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">△</td></tr><tr><td class="style_td"><a href="#session">セッション</a></td><td class="style_td">○</td><td class="style_td">○</td><td class="style_td">◎</td><td class="style_td">◎</td><td class="style_td">△</td></tr></tbody></table></div>
+
+<h2 id="content_1_2">くわしい比較内容  <a class="anchor_super" id="t54a060a" href="ethna-about-framework_comparison.html#t54a060a" title="t54a060a"> </a></h2>
+
+<h3 id="content_1_3">言語  <a class="anchor_super" id="language" href="ethna-about-framework_comparison.html#language" title="language"> </a></h3>
+<p>フレームワークで使用している言語は、実際にアプリケーション開発に用いる言語と同じものになることでしょう。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>その名のとおりRubyで作られたフレームワークであり、アプリケーションはRubyで書くことになります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>php4、php5の両方に対応しています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO、symfony、ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>php5のみに対応し、アクセス修飾や例外を利用したコードになっています。</li></ul></li></ul>
+
+<h3 id="content_1_4">ドキュメント  <a class="anchor_super" id="document" href="ethna-about-framework_comparison.html#document" title="document"> </a></h3>
+<p>ドキュメント(サンプル、チュートリアル、APIリファレンスなど)の豊富さは、そのフレームワークのわかりやすさを決める重要なポイントとなります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>本家サイトのオンラインドキュメントで比較すると、symfonyがいちばんわかりやすいのではないでしょうか。サンプルごとにチュートリアルがあり、またマニュアルはキーワードから該当個所を見つけやすいと感じました。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>RoRも豊富なドキュメントがありますが、チュートリアルや分厚い本、HowToが多く、とりあえずこれだけ一通り読めば済む、というようなマニュアルが見当たりませんでした。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現時点ではプレビューの段階ですが、すでに日本語のドキュメントが整備されています。サンプルはまだほとんど用意されていないようです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PRADOの重要な要素であるコンポーネントの説明が未完成だったり、日本語のページもあるものの未記入なページが多いようでした。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethnaについては、APIマニュアルはあるもののドキュメントの整備はこれから、というところです。もっとも、すべて日本語で書かれているので、日本のユーザにとっては読みやすいと思います。</li></ul></li></ul>
+
+<h3 id="content_1_5">インストール  <a class="anchor_super" id="install" href="ethna-about-framework_comparison.html#install" title="install"> </a></h3>
+<p>フレームワークを使うにあたって同時に必要となるライブラリと、それも含めてインストールの簡単さを比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PEARが必要になります。また、mysqlとsmartyの利用を前提としている部分がいくつかあります。Ethna本体はinclude_pathに入っていればいいので、root権限の無い環境でもインストールしやすいと思います。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現時点ではデータベースの利用にPDOが必要なようですが、それ以外に必要なものは一切ないようです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>rakeなど必要なものは多いですが、RubyGemsがインストールできればgemによって簡単にインストールできます。ユーザも多いため、インストールで困ることはあまり無いかもしれません。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>依存するライブラリはcreole、pake、phing、propelと少し多めですが、PEARのコマンドでsymfonyといっしょにインストールすることができます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>データベースを利用するにあたって、ADODBが必要になります。</li></ul></li></ul>
+
+<h3 id="content_1_6">必要な文法  <a class="anchor_super" id="syntax" href="ethna-about-framework_comparison.html#syntax" title="syntax"> </a></h3>
+<p>フレームワークの言語に従ってプログラムを書いていくほかに、テンプレートを書いたりデータベースの設定を書いたり、その言語以外に必要な文法について比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現状php以外のものを書くことはないようです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>テンプレートを書くときにSmartyの知識が必要です。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>データベースの設定にyamlを使いますが、とても簡単です。'Convention over Configuration'と言われるとおり、設定ファイルを書くことはほとんどありません。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>propelの利用に際してyamlやxmlでの設定が必要な場合があります。アプリケーションの設定をするファイルが多く、迷いやすいと感じました。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションの定義をapplication.specという名のxmlファイルで行う必要があります。あまり書きやすいとは言えないと思います。また、当然ながらコンポーネントをテンプレートに配置するために、コンポーネントをあらわすPRADO特有のタグを用いる必要があります。</li></ul></li></ul>
+
+<h3 id="content_1_7">ソースコードの量と読みやすさ  <a class="anchor_super" id="sources" href="ethna-about-framework_comparison.html#sources" title="sources"> </a></h3>
+<p>問題が発生したときにドキュメントを見ても解決しなければ、ソースコードを見たほうが早いことも多いでしょう。ここでは、フレームワーク自体のソースコードの量と読みやすさを比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードの量は少なく、全体を眺めるのもそれほど苦ではありません。もっとも、その分だけ始めからできることも少なくなりますが、すでにphpで(PEARのライブラリなどを用いて)開発を行っている方には、自分のやり方をそのまま適用できる、というメリットがあります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードの量は少し多めですが、他のライブラリに依存することはほとんどありません。コード自体も「標準」と言ってよい記法になっており、読みやすいと思います。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードの量は多く、なにか問題があったときにソースを読むことで解決するにはかなりの慣れが必要だと思います。特に、このプロパティやメソッドはどこで定義されているのだろう？と迷ってしまうことがよくあります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>symfony自体のコードの量はそれほど多くありません。コードも読みやすいと思います。ただし、インストールの項で触れたように、symfony本体でない部分のコードの量は相当な量があります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードの量は少し多めだと思います。明確なコーディング規約が適用されておらず、ちょっと読みにくい部分がありました。</li></ul></li></ul>
+
+<h3 id="content_1_8">使いやすさ  <a class="anchor_super" id="usability" href="ethna-about-framework_comparison.html#usability" title="usability"> </a></h3>
+<p>ある程度の理解はできた上で、実際に使ってみるにあたり、拡張性やコードジェネレータについて比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーション側にいったん基底クラスを作り、それを継承したクラスのインスタンスとしてほとんどのオブジェクトが使われるため、アプリケーションごとの拡張がとてもやりやすくなっています。</li>
+<li>ある程度のコードジェネレータがありますが、基底クラスを継承して必要なメソッドを追加する程度は自分で書かなければならない場面があります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードジェネレータが整備されており、新たに自分でファイルを作る場面はないといってもいいほどです。</li>
+<li>ジェネレータはgemから多数取得することができます。</li>
+<li>一方、ジェネレータが用意されていないものに関しては、慣れないとどう作っていいのかなかなかわからないと思いました。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>RoR同様、コードジェネレータが整備されています。</li>
+<li>yamlによる設定がたくさんあり、ちょっとした動作の変更は設定ファイルを修正するだけで済むことも多いですが、そのぶん設定ファイルの量はかなり多くなっています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードジェネレータは現在のところ用意されていません。まだプレビューの段階ですが、アプリケーションのディレクトリ構造から自分で作らなければなりません。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コードジェネレータは用意されていません。PRADO本体に添付される豊富なサンプルを参考に、自分で書いていくことになるようです。</li></ul></li></ul>
+
+<h3 id="content_1_9">MVC  <a class="anchor_super" id="mvc" href="ethna-about-framework_comparison.html#mvc" title="mvc"> </a></h3>
+<p>フレームワークにはそれぞれ期待する開発の方針があり、基本的にはそれに従うことでアプリケーションの開発を手助けしてくれるものです。特に、現在主流となっているMVC(Model-View-Controller)の考え方に沿っているかどうかで大きく区別できると考えられます。</p>
+<p>この中で、PRADOを除く4つのフレームワークはMVCフレームワークと言ってよいでしょう。一方、PRADOはサイトのいちばん最初に</p>
+<pre>PRADO is a component-based and event-driven framework for rapid Web programming in PHP 5.</pre>
+<p>と紹介されています。ページにコンポーネントを配置し、イベントを登録してゆく方針は、他のフレームワークとは大きく異なる特徴です。</p>
+
+<h4 id="content_1_10">モデル  <a class="anchor_super" id="model" href="ethna-about-framework_comparison.html#model" title="model"> </a></h4>
+<p>主に、データベースに由来するデータの取り扱いのしやすさについて比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR、symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ActiveRecord、propelにより、CRUDのscaffoldまで自動的に生成でき、取り扱いはとても簡単です。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>AppObjectというActiveRecordのようなものがありますが、複数のテーブルを扱うことはまだ発展途上です。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現時点ではまだ未実装な部分がいくつかあり、なんとも言えませんでした。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>そもそもMVCフレームワークではないので比較はできませんが、データベースを用いたサンプルでは、SQL文を直接書いたものしかありませんでした。</li></ul></li></ul>
+
+<h4 id="content_1_11">ビュー  <a class="anchor_super" id="view" href="ethna-about-framework_comparison.html#view" title="view"> </a></h4>
+<p>ビュー部分(テンプレート)の書きやすさについて比較します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビュークラスとSmartyによるテンプレートによってビューを構成します。表示にのみ必要な処理をアクションから分離しやすい構成になっています。</li>
+<li>ヘルパーはまだありません。Smartyプラグインを使うための土台が用意されています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR、symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>phpもしくはerubyで書いたテンプレートをアクションで暗黙もしくは明示的に指定します。</li>
+<li>ヘルパーが多数用意されています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コンポーネントを配置するための、独自のタグを用いたテンプレートを書きます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>基本的にはphpでテンプレートを書いてゆきます。フォームについてはヘルパーが用意されているようです。</li>
+<li>現時点では '&lt;?php echo $this-&gt;escape($this-&gt;text); ?&gt;' と書かなければならず、少し面倒なように思いました。</li></ul></li></ul>
+
+<h4 id="content_1_12">コントローラ  <a class="anchor_super" id="controller" href="ethna-about-framework_comparison.html#controller" title="controller"> </a></h4>
+<p>あまり表に出ない部分ですが、気づいた点についていくつか挙げてゆきます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>CLIやxmlrpcといった複数のゲートウェイに対応しています。</li>
+<li>ルーティングは、少しわかりにくいですが変更することができます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>yamlの設定ファイルでルーティングが簡単に指定できます。</li>
+<li>producion/development/test 環境の切り替えに対応しています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ルーティング機構やコンソールが用意されています。</li>
+<li>producion/development/test 環境の切り替えに対応しています。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ルーティング機構が用意されているようです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>application.specがコントローラに相当するのでしょうか...?</li></ul></li></ul>
+
+<h3 id="content_1_13">ウェブアプリ特有の話  <a class="anchor_super" id="webproper" href="ethna-about-framework_comparison.html#webproper" title="webproper"> </a></h3>
+<p>ウェブアプリ特有の話として</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ajaxのサポート</li>
+<li>フォームから得られたデータの扱い(validationやfilter)</li>
+<li>アクションをまたぐデータの受け渡し(セッション)の扱い
+について比較します。</li></ul>
+
+<h4 id="content_1_14">ajax  <a class="anchor_super" id="ajax" href="ethna-about-framework_comparison.html#ajax" title="ajax"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>コンポーネントにイベントを登録してゆく、というPRADOの方針はajaxをやりたいならもっとも相性がいいと思います。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR, symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>prototype.jsのヘルパーと豊富なサンプルのおかげで非常に簡単にajaxを実現することができます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現状はフレームワークとしてのサポートがまだ用意されていませんが、incubatorにそれらしいものが見られました。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現在のところヘルパーがまだないため、実質的にテンプレートから自分で実装しなければならない状況です。</li></ul></li></ul>
+
+<h4 id="content_1_15">フォーム値  <a class="anchor_super" id="formdata" href="ethna-about-framework_comparison.html#formdata" title="formdata"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォーム値を保持するActionFormクラスがあり、フォーム値のvalidation、filter処理を担当します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォーム値はアクションからパラメータとして取得します。validatorとfilterは設定ファイル中で指定します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォーム値はアクションからパラメータとして取得しますが、標準ではActiveRecordを利用したvalidation処理しか用意されていません。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>validatorとfilterをあわせたようなZend_Filterクラスがあります。値の取得については、現時点では$_POSTなどを直接参照するようなサンプルしかありませんが、incubatorにフォームエレメントのためのクラスが用意されているようです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>他とは大きく異なり、フォーム値は直接コンポーネントが持つ値としてセットされます。validatorはコンポーネントに登録します。フィルタは手動でやらなければならないようです。</li></ul></li></ul>
+
+<h4 id="content_1_16">セッション  <a class="anchor_super" id="session" href="ethna-about-framework_comparison.html#session" title="session"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>RoR, symfony
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>セッションの取り扱いは簡単であり、セッションを用いた&quot;flash&quot;という機構を使ってデータを次のアクションに渡すことができます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna, PRADO
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>セッションを維持するクラスがあり、アクションから呼び出すことができます。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ZF
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>現状はフレームワークとしてのサポートはまだ用意されていないようです。</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

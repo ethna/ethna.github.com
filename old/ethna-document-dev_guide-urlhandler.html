@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+PATH_INFOを使ったRequest-URIからのパラメータの取得 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>PATH_INFOを使ったRequest-URIからのパラメータの取得 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; PATH_INFOを使ったRequest-URIからのパラメータの取得 
+
+<h2 id="content_1_0">PATH_INFOを使ったRequest-URIからのパラメータの取得  <a class="anchor_super" id="i0e637a7" href="ethna-document-dev_guide-urlhandler.html#i0e637a7" title="i0e637a7"> </a></h2>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#i0e637a7">  PATH_INFOを使ったRequest-URIからのパラメータの取得 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#s78a6388">  概要 </a></li>
+<li><a href="#g61ffe3b">  使用例 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#s835c9d5">  $action_map の設定 </a></li>
+<li><a href="#kd2b87cb">  _getPath_Index() 関数の定義 </a></li>
+<li><a href="#w8d56d61">  URL_HANDLER 変数の設定 </a></li>
+<li><a href="#a73bed72">  $config['url'] の設定 </a></li>
+<li><a href="#o192bb64">  echo_msg アクションを追加 </a></li></ul></li>
+<li><a href="#y55211fb">  細かい使いかた </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#ofa9d0dd">  PATH_INFOから複数のパラメータを取得する </a></li>
+<li><a href="#d3e99360">  path_extのパラメータ </a></li>
+<li><a href="#e11e215b">  PATH_INFOの正規化 </a></li>
+<li><a href="#t9c03c10">  _getPath_*() の返り値 </a></li></ul></li></ul></li></ul>
+</div>
+
+<p>書いた人: いちい</p>
+
+<h3 id="content_1_1">概要  <a class="anchor_super" id="s78a6388" href="ethna-document-dev_guide-urlhandler.html#s78a6388" title="s78a6388"> </a></h3>
+<p>Request-URIからパラメータを取得したいときは、Ethna_UrlHandlerクラスを使うと便利です。</p>
+<p>Ethna_UrlHandlerは次の2つの機能を持っています。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>PATH_INFOからaction, リクエストパラメータへの変換
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エントリポイントとPATH_INFOからactionを決定する</li>
+<li>PATH_INFOから$_REQUESTなどにパラメータをインポートする</li>
+<li>コントローラに組込み済み</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>action, パラメータからPATH_INFO(に相当するパス文字列)への変換
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>actionからエントリポイントを決定</li>
+<li>その他のパラメータからPATH_INFOを生成</li>
+<li>Ethnaで定義済みのSmartyプラグイン {url} で利用可能</li></ul></li></ul>
+<p>また、Ethna-2.3.2からEthna_UrlHandlerがプラグインを使っても利用できるようになりました。</p>
+<p><strong><a href="ethna-document-dev_guide-urlhandler-plugin-neturlmapper.html" title="ethna-document-dev_guide-urlhandler-plugin-neturlmapper (1240d)">Net_URL_Mapperを使ったUrlhandlerプラグイン</a></strong></p>
+<p>UrlHandlerとエントリポイント、mod_rewriteとの関係などについては、以下を参照してください。</p>
+<p><strong><a href="ethna-document-dev_guide-urlhandler-example.html" title="ethna-document-dev_guide-urlhandler-example (926d)">URLHandlerの設定例</a></strong></p>
+
+<h3 id="content_1_2">使用例  <a class="anchor_super" id="g61ffe3b" href="ethna-document-dev_guide-urlhandler.html#g61ffe3b" title="g61ffe3b"> </a></h3>
+<p>新規にプロジェクトを作ると、app/Appid_UrlHandler.phpファイルが作られ、アプリケーションのUrlHandlerクラスが用意されます。この中の$action_mapを設定することでUrlHandlerが利用できます。デフォルトではなにもしません。</p>
+<p>以下では、 <a href="http://localhost/sample/index.php/echo/hello" rel="nofollow">http://localhost/sample/index.php/echo/hello</a> のアクセスで、エントリポイント index.php にパラメータ echo='hello' を指定するための例を説明します。</p>
+
+<h4 id="content_1_3">$action_map の設定  <a class="anchor_super" id="s835c9d5" href="ethna-document-dev_guide-urlhandler.html#s835c9d5" title="s835c9d5"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>app/Appid_UrlHandler.php</li></ul>
+<pre>var $action_map = array(
+    'index' =&gt; array(
+        'echo_msg' =&gt; array(
+            'path'          =&gt; 'echo',
+            'path_regexp'   =&gt; '|^echo/(.*)$|',
+            'path_ext'      =&gt; array('msg' =&gt; array()),
+        ),
+    ),
+);</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>'index'
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>明確な位置づけはないですが、エントリポイントごとに設定を切替えるための見出しとして使います。詳しくは後述します。</li></ul></li>
+<li>'echo_msg'
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>以下のpathの設定に対応するEthnaでのアクション名を指定します。</li></ul></li>
+<li>'path'
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOの中でパラメータではなくパス部分と解釈されるprefixです。PATH_INFO生成時にprefixとして付加されるときと、path_regexpより低コストのマッチングをするときに使われます。</li></ul></li>
+<li>'path_regexp'
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOからパラメータを切り出すための正規表現です。なお、この例では正規表現のデリミタを (よくある '/' ではなく) '|' としています。</li></ul></li>
+<li>'path_ext'
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOに埋め込まれるパラメータと、Ethnaでのフォーム名との対応を記述します。正規表現の後方参照と、arrayの要素の順序が対応します。</li></ul></li></ul>
+
+<h4 id="content_1_4">_getPath_Index() 関数の定義  <a class="anchor_super" id="kd2b87cb" href="ethna-document-dev_guide-urlhandler.html#kd2b87cb" title="kd2b87cb"> </a></h4>
+<p>アクションとパラメータからPATH_INFOを含むURLを生成するときに使われます。現在のところ、Ethna組込みのSmarty関数{url}を利用するときのみ必要な作業です。</p>
+<p>上のエントリポイントで指定した 'index' に対応するものとして、 _getPath_Index() という関数名になります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>app/Appid_UrlHandler.php</li></ul>
+<pre>function _getPath_Index()
+{
+    return array(&quot;/index.php/&quot;, array());
+}</pre>
+
+<h4 id="content_1_5">URL_HANDLER 変数の設定  <a class="anchor_super" id="w8d56d61" href="ethna-document-dev_guide-urlhandler.html#w8d56d61" title="w8d56d61"> </a></h4>
+<p>$action_map の中で 'index' の設定を使うことを指示するために、エントリポイントで $_SERVER['URL_HANDLER'] の値を 'index' に設定します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>エントリポイントに記述する場合
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>www/index.php を以下のように設定</li></ul></li></ul>
+<pre>&lt;?php
+include_once('/path/to/appid/app/Appid_Controller.php');
+$_SERVER['URL_HANDLER'] = 'index';
+
+Appid_Controller::main('Appid_Controller', 'index');
+?&gt;</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Apache の .htaccess に記述する場合
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エントリポイントのファイル名を拡張子 '.php' なしで使いたい場合には以下のように設定するとよいでしょう(詳しくはApacheのマニュアルを参照してください)。</li></ul></li></ul>
+<pre>DirectoryIndex index
+&lt;FilesMatch &quot;^index$&quot;&gt;
+ForceType application/x-httpd-php
+SetEnv URL_HANDLER index
+&lt;/FilesMatch&gt;</pre>
+<p>$_SERVER や SetEnv を経由するのは複雑なようですが、 $action_map のエントリが膨大になった場合に、リクエストのたびに膨大な量の照合が発生することを避ける意図があります。</p>
+
+<h4 id="content_1_6">$config['url'] の設定  <a class="anchor_super" id="a73bed72" href="ethna-document-dev_guide-urlhandler.html#a73bed72" title="a73bed72"> </a></h4>
+<p>さらに、アプリケーションの(ベースとなる)URLを設定します。これは、htmlの相対パス指定がPATH_INFOによって混乱するのを避けるためです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>etc/app-ini.php</li></ul>
+<pre>$config = array(
+    ...
+    'url' =&gt; '/sample/',
+    ...</pre>
+
+<h4 id="content_1_7">echo_msg アクションを追加  <a class="anchor_super" id="o192bb64" href="ethna-document-dev_guide-urlhandler.html#o192bb64" title="o192bb64"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>echo_msg アクションを追加</li></ul>
+<pre>$ ethna add-action echo_msg</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>app/action/Echo/Msg.php を編集</li></ul>
+<pre>var $form = array(
+    'msg' =&gt; array(),
+    ...
+);</pre>
+<pre>function prepare()
+{
+    $this-&gt;af-&gt;validate();
+}</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>echo_msg のテンプレートを追加 (ビューは省略)</li></ul>
+<pre>$ ethna add-template echo_msg</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>template/ja/echo/msg.tpl を編集</li></ul>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Appid&lt;/h1&gt;
+        &lt;p&gt;message = {$form.msg}&lt;/p&gt;
+	 &lt;p&gt;a url to echo &quot;good morning&quot; is &lt;a href={url action=&quot;echo_msg&quot; msg=&quot;good morning&quot;}&gt;here&lt;/a&gt;.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>これで <a href="http://localhost/sample/index.php/echo/hello" rel="nofollow">http://localhost/sample/index.php/echo/hello</a> にアクセスし、&quot;message = hello&quot; と表示されれば成功です。</p>
+
+<h3 id="content_1_8">細かい使いかた  <a class="anchor_super" id="y55211fb" href="ethna-document-dev_guide-urlhandler.html#y55211fb" title="y55211fb"> </a></h3>
+
+<h4 id="content_1_9">PATH_INFOから複数のパラメータを取得する  <a class="anchor_super" id="ofa9d0dd" href="ethna-document-dev_guide-urlhandler.html#ofa9d0dd" title="ofa9d0dd"> </a></h4>
+<p>例:</p>
+<pre>'printf_msg =&gt; array(
+    'path'          =&gt; 'printf,
+    'path_regexp'   =&gt; array(
+        1 =&gt; '|^printf/([^/]*)$|',
+        2 =&gt; '|^printf/([^/]*)/([^/]*)$|',
+    ),
+    'path_ext'      =&gt; array(
+        1 =&gt; array(
+            'msg'      =&gt; array(),
+        ),
+        2 =&gt; array(
+            'format'   =&gt; array(),
+            'param'    =&gt; array(),
+        ),
+    ),
+),</pre>
+<p>1の正規表現にマッチしたときは'msg'にパラメータを、2にマッチしたときは'format'と'param'にパラメータを入れる、という使いかたができます。</p>
+
+<h4 id="content_1_10">path_extのパラメータ  <a class="anchor_super" id="d3e99360" href="ethna-document-dev_guide-urlhandler.html#d3e99360" title="d3e99360"> </a></h4>
+<p>'path_ext' =&gt; array('msg' =&gt; array()) の array() の中には、次のパラメータが指定できます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>input_filter
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOの各パラメータの入力フィルタです。PATH_INFOからフォーム値に変換するときに作用します。Appid_UrlHandlerクラスのメソッド名を指定します。</li></ul></li>
+<li>output_filter
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOの各パラメータの出力フィルタです。フォーム値からPATH_INFOを作るときに作用します。</li></ul></li>
+<li>form_prefix, form_suffix
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>input_filter/output_filterのprefix, suffixに特化したフィルタです。入出力時にprefix, suffixを付加／削除します。たとえば実際の値は複雑だが、PATH_INFOでの表現は簡潔にしたいときに指定します。</li></ul></li>
+<li>url_prefix, url_suffix
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>form_prefixなどとは逆に、PATH_INFOでの表現を修飾したいときに使います。</li></ul></li></ul>
+<p>なお、PATH_INFO生成はrawurlencode()を用いたエンコードを施します。フィルタなどの処理は上に書いた順に行われ、rawurlencode()はurl_prefix/suffixを付加する直前に実行されます。</p>
+
+<h4 id="content_1_11">PATH_INFOの正規化  <a class="anchor_super" id="e11e215b" href="ethna-document-dev_guide-urlhandler.html#e11e215b" title="e11e215b"> </a></h4>
+<p>'path_regexp' で指定した正規表現とマッチングされるPATH_INFOは、スラッシュ ('/') の重複と先頭、末尾のスラッシュを取り除いた状態に正規化されています。</p>
+
+<h4 id="content_1_12">_getPath_*() の返り値  <a class="anchor_super" id="t9c03c10" href="ethna-document-dev_guide-urlhandler.html#t9c03c10" title="t9c03c10"> </a></h4>
+<p>先ほどの例では、 array('/index.php/', array()) という2つの要素を含む配列を返していました。この意味について説明します。(この内容はPATH_INFOを生成するときの話です。)</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>1つめの要素
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PATH_INFOにprefixとして付加する文字列。すなわち、エントリポイントのパスになります。</li></ul></li>
+<li>2つめの要素
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>リクエストパラメータのうち、PATH_INFOに埋め込むパラメータとそうでないパラメータが存在します。UrlHandlerがパラメータをPATH_INFOに埋め込んだ場合は、そのパラメータをリクエストパラメータ(&quot;?&quot;以降につけるパラメータ)に付加しないようにしなければなりません。2つめの要素に array('foo', 'bar') のように指定すると、実際にPATH_INFOに加えた'foo', 'bar' というパラメータはリクエストパラメータに入らなくなります。(?? ちょっと意図が不明)</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

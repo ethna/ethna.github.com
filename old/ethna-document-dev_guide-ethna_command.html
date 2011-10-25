@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+ethnaコマンドリファレンス - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>ethnaコマンドリファレンス </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; ethnaコマンドリファレンス 
+<h2 id="content_1_0">ethnaコマンドリファレンス  <a class="anchor_super" id="m52a16d1" href="ethna-document-dev_guide-ethna_command.html#m52a16d1" title="m52a16d1"> </a></h2>
+<p><a href="ethna-document-tutorial-practice1.html" title="ethna-document-tutorial-practice1 (23d)">アプリケーション構築手順(1)</a> のページにあるように、Ethna では、プロジェクトの作成から、作成されたプロジェクトに関わる様々な操作を ethna コマンドと呼ばれるコマンドラインから行えるようになっています。</p>
+<p>ethna コマンドには様々なサブコマンドが用意されており、プロジェクトに対する様々な操作が行えます。このページでは、ethnaコマンドで出来ることをリファレンスとして紹介します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#m52a16d1">  ethnaコマンドリファレンス </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#mc36ad4e">  プロジェクトの作成 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#d32de849">  add-project コマンド </a></li></ul></li>
+<li><a href="#sf73f4c9">  アクション, ビューの追加など </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#if0ed86e">  add-action コマンド </a></li>
+<li><a href="#db9ba91d">  add-view コマンド </a></li>
+<li><a href="#j8da82ec">  add-template コマンド </a></li>
+<li><a href="#z12d56c0">  add-entry-point コマンド </a></li></ul></li>
+<li><a href="#g5817598">  アプリケーションオブジェクト、マネージャの追加 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#b9587b84">  add-app-manager コマンド </a></li>
+<li><a href="#vfc12644">  add-app-object コマンド </a></li></ul></li>
+<li><a href="#vd9b3c8f">  国際化(i18n) </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#x5983a2e">  i18n コマンド </a></li></ul></li>
+<li><a href="#b74a7844">  テストケースの追加 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#eabd1343">  テストケース追加に当たっての注意 </a></li>
+<li><a href="#bfd9c83f">  add-action-test コマンド </a></li>
+<li><a href="#wf6361bb">  add-view-test コマンド </a></li>
+<li><a href="#jef6edfc">  add-test コマンド </a></li></ul></li>
+<li><a href="#b32e4f9a">  PEAR パッケージ管理 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#p0e29fbe">  pear-local コマンド </a></li></ul></li>
+<li><a href="#a5b6aa6b">  プラグイン関連 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#ce163f85">  list-plugin コマンド </a></li>
+<li><a href="#b1531846">  install-plugin, upgrade-plugin コマンド </a></li>
+<li><a href="#gb320c18">  uninstall-plugin コマンド </a></li>
+<li><a href="#k2f32fc9">  info-plugin コマンド </a></li>
+<li><a href="#y9141b9a">  channel-update コマンド </a></li>
+<li><a href="#q2220b86">  make-plugin-package コマンド </a></li></ul></li>
+<li><a href="#ua07194f">  その他 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#bf398ab9">  clear-cache コマンド </a></li></ul></li></ul></li>
+<li><a href="#c18670c0">  ethna コマンドを拡張する </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#qd450599">  Ethna_Handle について </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">いちい</td><td class="style_td">-</td><td class="style_td">新規作成</td></tr><tr><td class="style_td">mumumu</td><td class="style_td">2008-07-30</td><td class="style_td">最新の状態を反映</td></tr><tr><td class="style_td">DQNEO</td><td class="style_td">2010-05-23</td><td class="style_td">アクション名指定の際の大文字小文字の違いを解説</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">プロジェクトの作成  <a class="anchor_super" id="mc36ad4e" href="ethna-document-dev_guide-ethna_command.html#mc36ad4e" title="mc36ad4e"> </a></h3>
+
+<h4 id="content_1_2">add-project コマンド  <a class="anchor_super" id="d32de849" href="ethna-document-dev_guide-ethna_command.html#d32de849" title="d32de849"> </a></h4>
+<pre>(使い方)
+$ ethna add-project [-b|--basedir=dir] [-s|--skeldir]
+                    [-l|--locale] [-e|--encoding] [Application id]</pre>
+<p>プロジェクトと、それに付随する必須ファイルを自動生成します。作成しようとした先に、既に同名のプロジェクトが存在する場合は、不足しているファイルのみ作成されます。[Application id]（アプリケーションID) の指定が最低限必要です。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトを作成するディレクトリを指定します。</li>
+<li>ここで指定されたディレクトリ下に、[Application id] で指定されたディレクトリが作成されます。</li>
+<li>デフォルトはカレントディレクトリです。</li></ul></li>
+<li>[-s|--skeldir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethnaは自動生成されるファイルのスケルトンを持っており、それに基づきプロジェクトを生成します。このオプションでディレクトリを指定すると、そこにあるスケルトンファイルが優先されます。</li>
+<li>ファイル名は Ethna本体の skelディレクトリ にあるものと同じでなければなりません。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[-l|--locale] (2.5.0 preview1以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ロケール（言語や文化の規則)を指定します。</li>
+<li>デフォルトはja_JPです。</li>
+<li><a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a> も参照して下さい</li></ul></li>
+<li>[-e|--encoding] (2.5.0 preview1以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトで使用するエンコーディングを指定します。</li>
+<li>デフォルトはUTF-8です。</li>
+<li><a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a> も参照して下さい</li></ul></li>
+<li>[Application ID]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションIDです。最低限これだけは指定して下さい。</li>
+<li>大文字小文字は区別されません。</li>
+<li>自動生成されるファイルの都合上、先頭に数値を指定してはいけません。</li></ul></li></ul>
+
+<h3 id="content_1_3">アクション, ビューの追加など  <a class="anchor_super" id="sf73f4c9" href="ethna-document-dev_guide-ethna_command.html#sf73f4c9" title="sf73f4c9"> </a></h3>
+
+<h4 id="content_1_4">add-action コマンド  <a class="anchor_super" id="if0ed86e" href="ethna-document-dev_guide-ethna_command.html#if0ed86e" title="if0ed86e"> </a></h4>
+<pre>(使い方)
+$ ethna add-action [-b|--basedir=dir] [-s|--skelfile=file] 
+                   [-g|--gateway=www|cli|xmlrpc] [-w|--with-unittest]    
+                   [-u|--unittestskel=file] [action]</pre>
+<p>アクションをプロジェクトに追加します。オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションファイルを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>省略時は、gatewayの指定に従い、プロジェクトのskel/skel.{action,actio_cli,action_xmlrpc}.phpが使われます。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[-g|--gateway=www|cli|xmlrpc]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションのゲートウェイを指定します。</li>
+<li>それぞれaction, action_cli,action_xmlrpcディレクトリの下にアクションが追加されます。</li>
+<li>省略時は www が指定されたものとみなされます。</li></ul></li>
+<li>[-w|--with-unittest] (2.3.5 以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ユニットテストファイルを同時に生成します。</li>
+<li>add-action-test を同時に実行したことと同じです。</li></ul></li>
+<li>[-u|--unittestskel=file] (2.3.5 以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ユニットテストファイルを作るときのスケルトンを指定します。</li>
+<li>-w オプションが指定されない場合は、このオプションは無視されます。</li></ul></li>
+<li>[action]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクション名を指定します。最低限これだけは指定して下さい。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>【補足１】&quot;add-action Foo_Bar&quot;と &quot;add-action foo_bar&quot;の違い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>生成されるファイル名・クラス名は同じです。</li>
+<li>performのreturn値は異なります。( 'Foo_Bar' と 'foo_bar' )</li>
+<li>どちらの形式でも可能ですが、add-view, add-templateする際は、同じ形式で入力する必要があります。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>【補足２】&quot;add-action Foo_Bar&quot;と &quot;add-action FooBar&quot;の違い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>生成されるファイル名は異なります。( 'Foo/Bar.php' と 'FooBar.php' )</li>
+<li>生成されるクラス名は同じです。</li>
+<li>performのreturn値は異なります。( 'Foo_Bar' と 'FooBar' )</li></ul></li></ul>
+
+<h4 id="content_1_5">add-view コマンド  <a class="anchor_super" id="db9ba91d" href="ethna-document-dev_guide-ethna_command.html#db9ba91d" title="db9ba91d"> </a></h4>
+<pre>(使い方)
+$ ethna add-view [-b|--basedir=dir] [-s|--skelfile=file]
+                 [-w|--with-unittest] [-u|--unittestskel=file]
+                 [-t|--template] [-l|--locale] [-e|--encoding] [view]</pre>
+<p>ビューをプロジェクトに追加します。オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビューを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビューファイルを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[-t|--template]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビューと同じ名前のテンプレートを追加します。add-templateを同時に実行したのと同じです。</li></ul></li>
+<li>[-w|--with-unittest] (2.3.5 以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ユニットテストファイルを同時に生成します。add-view-test を同時に実行したことと同じです。</li>
+<li>-t オプション を指定した場合は、この指定は無視されます。</li></ul></li>
+<li>[-u|--unittestskel=file] (2.3.5 以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ユニットテストファイルを作るときのスケルトンファイルを指定します。</li>
+<li>-t オプション を指定した場合は、この指定は無視されます。</li></ul></li>
+<li>[-l|--locale] (2.5.0 preview1以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ロケール（言語や文化の規則)を指定します。</li>
+<li>デフォルトはja_JPです。</li>
+<li>これにより、プロジェクトのテンプレートディレクトリ以下に、指定したロケール名のディ<br />
+レクトリが作られます。</li>
+<li>-t オプションを指定したときのみ意味を持ちます。</li>
+<li><a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a> も参照して下さい</li></ul></li>
+<li>[-e|--encoding] (2.5.0 preview1以降)<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトで使用するエンコーディングを指定します。</li>
+<li>デフォルトはUTF-8です。</li>
+<li>meta タグで指定するエンコーディングを指定する意味しかありません。</li>
+<li>-t オプションを指定したときのみ意味を持ちます。</li></ul></li>
+<li>[view]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>追加したいビュー名を指定します。最低これだけは指定して下さい。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>【補足１】&quot;add-view Foo_Bar&quot;と &quot;add-view foo_bar&quot;の違い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>挙動は全く同じです。ただし、-tオプションをつけると、tplファイル名が異なります。（後述)</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>【補足２】&quot;add-view Foo_Bar&quot;と &quot;add-view FooBar&quot;の違い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>生成されるファイル名は異なります。( 'Foo/Bar.php' と 'FooBar.php' )</li>
+<li>生成されるクラス名は同じです。</li></ul></li></ul>
+
+<h4 id="content_1_6">add-template コマンド  <a class="anchor_super" id="j8da82ec" href="ethna-document-dev_guide-ethna_command.html#j8da82ec" title="j8da82ec"> </a></h4>
+<pre>(使い方)
+$ ethna add-template [-b|--basedir=dir] [-s|--skelfile=file]
+                     [-l|--locale] [-e|--encoding] [template]</pre>
+<p>テンプレートファイルを追加します。オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>テンプレートファイルを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]<br />
+テンプレートファイルを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[-l|--locale] (2.5.0 preview1以降)<br />
+ロケール（言語や文化の規則)を指定します。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>デフォルトはja_JPです。</li>
+<li>これにより、プロジェクトのテンプレートディレクトリ以下に、指定したロケール名のディ<br />
+レクトリが作られます。</li>
+<li><a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a> も参照して下さい</li></ul></li>
+<li>[-e|--encoding] (2.5.0 preview1以降)<br />
+プロジェクトで使用するエンコーディングを指定します。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>デフォルトはUTF-8です。</li>
+<li>meta タグで指定するエンコーディングを指定する意味しかありません。</li></ul></li>
+<li>[template]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>追加したいテンプレート名を指定します。最低これだけは指定して下さい。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>【補足】&quot;add-template Foo_Bar&quot;と &quot;add-template foo_bar&quot;の違い
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>生成されるファイル名は異なります。( 'Foo_Bar' と 'foo_bar' )</li>
+<li>アクションクラスのprepare/performが返す文字列と完全一致している必要があります。</li></ul></li></ul>
+
+<h4 id="content_1_7">add-entry-point コマンド  <a class="anchor_super" id="z12d56c0" href="ethna-document-dev_guide-ethna_command.html#z12d56c0" title="z12d56c0"> </a></h4>
+<pre>(使い方)
+$ ethna add-entry-point [-b|--basedir=dir] [-s|--skelfile=file]
+                        [-g|--gateway=www|cli] [action]</pre>
+<p>エントリポイントと対応するアクションを追加します。エントリポイントは、wwwディレクトリに置かれ、コントローラーを呼び出す役割を果たします。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エントリポイントを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エントリポイントを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[-g|--gateway=www|cli]<br />
+アクションのゲートウェイを指定します。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>それぞれaction, action_cli ディレクトリの下にアクションが追加されます。</li>
+<li>省略時は www が指定されたものとみなされます。</li></ul></li>
+<li>[action]<br />
+追加したいエントリポイントで起動するアクション名を指定します。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>例えばgatewayにwww を指定した状態で &quot;admin&quot; を指定すると、エントリポイントとしてadmin.phpが作られ、続けてadminアクションが追加されます。</li></ul></li></ul>
+
+<h3 id="content_1_8">アプリケーションオブジェクト、マネージャの追加  <a class="anchor_super" id="g5817598" href="ethna-document-dev_guide-ethna_command.html#g5817598" title="g5817598"> </a></h3>
+
+<h4 id="content_1_9">add-app-manager コマンド  <a class="anchor_super" id="b9587b84" href="ethna-document-dev_guide-ethna_command.html#b9587b84" title="b9587b84"> </a></h4>
+<pre>(使い方)
+$ ethna add-app-manager [-b|--basedir=dir] [app-manager name]</pre>
+<p>アプリケーションマネージャを追加します。オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションマネージャを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>(現在のところskelfileを指定することはできません。)</li>
+<li>[app-manager name]<br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションマネージャ−名。最低これだけは指定して下さい。</li></ul></li></ul>
+
+<h4 id="content_1_10">add-app-object コマンド  <a class="anchor_super" id="vfc12644" href="ethna-document-dev_guide-ethna_command.html#vfc12644" title="vfc12644"> </a></h4>
+<pre>(使い方)
+$ ethna add-app-object [-b|--basedir=dir] [table name]</pre>
+<p>アプリケーションオブジェクトを追加します。データベースのテーブル名を指定することで、スキーマ定義などを自動的に取得することができます</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションオブジェクトを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>(現在のところskelfileを指定することはできません。)</li>
+<li>[table name]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>最低限これだけは指定して下さい</li>
+<li>データベースのテーブル名を指定することで、スキーマ定義などを自動的に取得することができます</li>
+<li>必ずしもテーブル名である必要はありません。</li></ul></li></ul>
+
+<h3 id="content_1_11">国際化(i18n)  <a class="anchor_super" id="vd9b3c8f" href="ethna-document-dev_guide-ethna_command.html#vd9b3c8f" title="vd9b3c8f"> </a></h3>
+
+<h4 id="content_1_12">i18n コマンド  <a class="anchor_super" id="x5983a2e" href="ethna-document-dev_guide-ethna_command.html#x5983a2e" title="x5983a2e"> </a></h4>
+<pre>この機能を使うには、Ethna 2.5.0 preview2 以降が必要です</pre>
+<pre>(使い方)
+$ ethna i18n [-b|--basedir=dir] [-l|--locale=locale] [-g|--gettext] [extdir1] ...</pre>
+<p>プロジェクト内部のPHPスクリプト(テストスクリプトは除く)、テンプレートファイルを全て調べ、翻訳の対象となるメッセージを全て抜きだし、メッセージカタログの雛形を自動生成します。
+実際に調べられ、抜き出されるメッセージは、以下の部分が対象になります<a id="notetext_1" href="#notefoot_1" class="note_super" title="フォーム定義を調べるのは、フォーム定義はメンバ変数であり、その初期化は定数でなければならないことから、これを関数定義の戻り値で初期化するとFATAL ERRORになるためです">*1</a></p>
+<pre>1. app ディレクトリ内のPHPスクリプトの、_et 関数の呼び出し箇所全て
+2. app ディレクトリ内の ActionForm のフォーム定義のうち、以下の部分
+  a) name
+  b) required_error
+  c) type_error
+  d) min_error
+  e) max_error
+  f) regexp_error
+3. template ディレクトリ内の、i18n修正子の呼び出し箇所全て</pre>
+<p>既に[ini|po]ファイルが存在していた場合、iniファイル(デフォルト) の場合は 自動的に既にある翻訳をマージしてファイルを上書きします。gettext([-g|--gettext] を指定)の場合は、別に新しいファイルを作成し、古いファイルはそのままにします。</p>
+<p>コマンドのオプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir=dir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-l|--locale=locale]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>生成したいカタログのロケールを指定します。</li>
+<li>デフォルトは ja_JP です。</li>
+<li>実際のカタログは [appid]/locale/[指定したロケール名]/LC_MESSAGES/[指定したロケール名].[ini|po] に作られます。デフォルトでは ini ファイルが生成されます。</li></ul></li>
+<li>[-g|--gettext]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>gettext を使う場合、このオプションを指定します。</li>
+<li>このオプションを指定すると、デフォルトの iniファイルではなく、po ファイルが自動生成されます。</li>
+<li>生成された po ファイルに対して、xgettext や msgmerge コマンドを使用して mo ファイルを生成するのはユーザの責任です。</li></ul></li>
+<li>[extdir1] [extdir2] ...
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>デフォルトでは プロジェクト内の app ディレクトリ内と、templateディレクトリしか調べられませんが、任意のディレクトリをコマンドの最後に追加できます。</li>
+<li>ここで指定したディレクトリ内のファイルは、PHPスクリプトの _et 関数の呼び出ししか解釈されません</li></ul></li></ul>
+
+<h3 id="content_1_13">テストケースの追加  <a class="anchor_super" id="b74a7844" href="ethna-document-dev_guide-ethna_command.html#b74a7844" title="b74a7844"> </a></h3>
+
+<h4 id="content_1_14">テストケース追加に当たっての注意  <a class="anchor_super" id="eabd1343" href="ethna-document-dev_guide-ethna_command.html#eabd1343" title="eabd1343"> </a></h4>
+<p>Ethna 2.3.5 以降では、作成したテストはデフォルトで失敗するようになっています。要するに「作った以上、テストを書いて下さいネ」ということです。</p>
+
+<h4 id="content_1_15">add-action-test コマンド  <a class="anchor_super" id="bfd9c83f" href="ethna-document-dev_guide-ethna_command.html#bfd9c83f" title="bfd9c83f"> </a></h4>
+<pre>(使い方)
+$ ethna add-action-test [-b|--basedir=dir] [-s|--skelfile=file] [action]</pre>
+<p>指定されたアクションのテストスクリプトを追加します。<br />
+対応するアクションがまだ作成されていない場合には警告が生成されるので注意して下さい。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションのテストを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションのテストを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[action]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>作成するテストのアクション名を指定します。最低これだけは指定して下さい。</li></ul></li></ul>
+
+<h4 id="content_1_16">add-view-test コマンド  <a class="anchor_super" id="wf6361bb" href="ethna-document-dev_guide-ethna_command.html#wf6361bb" title="wf6361bb"> </a></h4>
+<pre>(使い方)
+$ ethna add-view-test [-b|--basedir=dir] [-s|--skelfile=file] [view]</pre>
+<p>指定されたビューのテストスクリプトを追加します。<br />
+対応するビューがまだ作成されていない場合には警告が生成されるので注意して下さい。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビューのテストを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ビューのテストを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[view]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>作成するテストのビュー名を指定します。最低これだけは指定して下さい。</li></ul></li></ul>
+
+<h4 id="content_1_17">add-test コマンド  <a class="anchor_super" id="jef6edfc" href="ethna-document-dev_guide-ethna_command.html#jef6edfc" title="jef6edfc"> </a></h4>
+<pre>(使い方)
+$ ethna add-test [-b|--basedir=dir] [-s|--skelfile=file] [name]</pre>
+<p>一般的なテストスクリプトを追加します。アプリケーションマネージャー等、アクションやビュー以外のテストケース作成に使います。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>テストを追加したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--skelfile=file]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>テストを生成する元となるスケルトンファイルを指定します。相対／絶対パスが指定できます。</li>
+<li>指定されたファイルが見つからないときはアプリケーションのskelディレクトリ、Ethna本体のskelディレクトリを順に探します。</li>
+<li>このオプションはスケルトンを改造していた場合に有用です。</li></ul></li>
+<li>[name]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>作成するテスト名を指定します。最低これだけは指定して下さい。</li></ul></li></ul>
+
+<h3 id="content_1_18">PEAR パッケージ管理  <a class="anchor_super" id="b32e4f9a" href="ethna-document-dev_guide-ethna_command.html#b32e4f9a" title="b32e4f9a"> </a></h3>
+
+<h4 id="content_1_19">pear-local コマンド  <a class="anchor_super" id="p0e29fbe" href="ethna-document-dev_guide-ethna_command.html#p0e29fbe" title="p0e29fbe"> </a></h4>
+<pre>(使い方)
+$ ethna pear-local [-c|--channel=channel] [-b|--basedir=dir] [pear command ...]</pre>
+<p>pearコマンド と全く同じ操作で、プロジェクト内でPEARパッケージを楽に管理できます。<br />
+詳細は、<a href="ethna-document-dev_guide-pearlocal.html" title="ethna-document-dev_guide-pearlocal (858d)">Ethnaプロジェクト内で PEAR パッケージを管理する</a> を参照して下さい。</p>
+<p>オプションは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-c|--channel=channel]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PEARチャンネル名を指定します。ここで指定したチャンネルのパッケージが操作対象になります。</li>
+<li>デフォルトは pear.php.net です。</li></ul></li>
+<li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>PEARパッケージを追加、管理したいプロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[pear command ...]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>pearコマンド と同様のオプションやパッケージ名を指定します</li>
+<li><a href="ethna-document-dev_guide-pearlocal.html" title="ethna-document-dev_guide-pearlocal (858d)">Ethnaプロジェクト内で PEAR パッケージを管理する</a> も参照して下さい。</li></ul></li></ul>
+
+<h3 id="content_1_20">プラグイン関連  <a class="anchor_super" id="a5b6aa6b" href="ethna-document-dev_guide-ethna_command.html#a5b6aa6b" title="a5b6aa6b"> </a></h3>
+<p>おもにプラグインのパッケージを扱うハンドラです。</p>
+<pre>警告！：--channel=channelの指定はまだ不完全です!!</pre>
+
+<h4 id="content_1_21">list-plugin コマンド  <a class="anchor_super" id="ce163f85" href="ethna-document-dev_guide-ethna_command.html#ce163f85" title="ce163f85"> </a></h4>
+<pre>(使用例)
+$ ethna list-plugin [-c|--channel=channel] [-b|--basedir=dir] 　　　 
+                    [-l|--local] [-m|--master]
+                    [-t|--type=type] [-v|--verbose]</pre>
+<p>プラグインの一覧を表示します。パッケージでインストールされたものはpackageの列にパッケージ名が表示されます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-l|--local], [-m|--master]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>local, masterどちらのプラグインを表示するかを切替えます。<br />
+local/master の違いは<a href="ethna-document-dev_guide-plugin.html" title="ethna-document-dev_guide-plugin (737d)">プラグインの説明</a>を参照してください。</li>
+<li>省略時はlocalが指定されたとみなされます。</li></ul></li>
+<li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-t|--type]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>表示するプラグインの$typeを指定できます。</li></ul></li>
+<li>[-v|--verbose]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>バージョン情報などが表示されます。かなり横に長いです。</li></ul></li></ul>
+
+<h4 id="content_1_22">install-plugin, upgrade-plugin コマンド  <a class="anchor_super" id="b1531846" href="ethna-document-dev_guide-ethna_command.html#b1531846" title="b1531846"> </a></h4>
+<pre>(使い方)
+$ ethna install-plugin [-c|--channel=channel] [-b|--basedir=dir]
+                       [-l|--local] [-m|--master]
+                       [type name|packagefile|packageurl]
+$ ethna upgrade-plugin [-c|--channel=channel] [-b|--basedir=dir]
+                       [-l|--local] [-m|--master]
+                       [type name|packagefile|packageurl]</pre>
+<pre>(使用例その1)
+pear.ethna.jpからHoge_Fugaプラグインのパッケージをインストールする
+$ ethna install-plugin -l Hoge Fuga
+(使用例その2)
+指定されたtgzファイルからEthna本体のプラグインをアップグレードする
+$ ethna upgrade-plugin -m http://pear.ethna.jp/get/Ethna_Plugin_Hoge_Fuga-0.0.1.tgz
+</pre>
+<p>プラグインをパッケージからインストール、アップグレードします。pearコマンドのinstall、upgradeと似たような動作をします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-l|--local], [-m|--master]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>list-pluginと同様です。</li></ul></li>
+<li>[-b|--basedir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プロジェクトのあるディレクトリを指定します。</li>
+<li>省略時は、現在のディレクトリから親ディレクトリをたどってプロジェクトを自動的に探索します。</li></ul></li>
+<li>[-s|--state]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>パッケージの状態(stable, alpha, beta)を指定できます。</li></ul></li></ul>
+
+<h4 id="content_1_23">uninstall-plugin コマンド  <a class="anchor_super" id="gb320c18" href="ethna-document-dev_guide-ethna_command.html#gb320c18" title="gb320c18"> </a></h4>
+<pre>(使い方)
+$ ethna uninstall-plugin [-c|--channel=channel] [-b|--basedir=dir]
+                         [-l|--local] [-m|--master] [type name]</pre>
+<p>パッケージでインストールされたプラグインをアンインストールします。</p>
+<p>インストールしたファイルをローカルで編集していても問答無用で消しますので注意してください。</p>
+
+<h4 id="content_1_24">info-plugin コマンド  <a class="anchor_super" id="k2f32fc9" href="ethna-document-dev_guide-ethna_command.html#k2f32fc9" title="k2f32fc9"> </a></h4>
+<pre>$ ethna info-plugin [-c|--channel=channel] [-b|--basedir=dir]
+                    [-l|--local] [-m|--master] [type name]</pre>
+<p>パッケージでインストールされたプラグインのパッケージ情報を表示します。
+pear info [パッケージ名] と同様です。</p>
+
+<h4 id="content_1_25">channel-update コマンド  <a class="anchor_super" id="y9141b9a" href="ethna-document-dev_guide-ethna_command.html#y9141b9a" title="y9141b9a"> </a></h4>
+<pre>$ ethna channel-update [-c|--channel=channel] [-b|--basedir=dir]
+                       [-l|--local] [-m|--master]</pre>
+<p>Ethnaのパッケージをダウンロードするpear channelの情報をアップデートします。
+pear channel-update pear.ethna.jp とほぼ同様です。</p>
+
+<h4 id="content_1_26">make-plugin-package コマンド  <a class="anchor_super" id="q2220b86" href="ethna-document-dev_guide-ethna_command.html#q2220b86" title="q2220b86"> </a></h4>
+<pre>(使い方)
+$ ethna make-plugin-package [-i|--inifile=file] [-s|--skelfile=file]
+                            [-w|--workdir=dir]</pre>
+<p>プラグインのパッケージを作ります。詳しくは<a href="ethna-document-dev_guide-pearpackage.html#k085db20" title="ethna-document-dev_guide-pearpackage (856d)">プラグインのパッケージを作る</a>を参照してください。
+このコマンドを使うには、<a href="http://pear.php.net/manual/ja/package.pear.pear-packagefilemanager.php" rel="nofollow">PEAR_PackageFileManager</a> がインストールされている必要があります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-i|--inifile]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>パッケージの情報ファイル(ini形式)を指定します。</li></ul></li>
+<li>[-s|--skelfile]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>プラグインのスケルトンファイルを指定します。</li></ul></li>
+<li>[-w|--workdir]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>作業ディレクトリを指定します。省略時はカレントディレクトリです。</li></ul></li></ul>
+
+<h3 id="content_1_27">その他  <a class="anchor_super" id="ua07194f" href="ethna-document-dev_guide-ethna_command.html#ua07194f" title="ua07194f"> </a></h3>
+
+<h4 id="content_1_28">clear-cache コマンド  <a class="anchor_super" id="bf398ab9" href="ethna-document-dev_guide-ethna_command.html#bf398ab9" title="bf398ab9"> </a></h4>
+<pre>(使い方)
+$ ethna clear-cache [-b|--basedir=dir] [-a|--any-tmp-files]
+                    [-s|--smarty] [-p|--pear] [-c|--cachemanager]</pre>
+<p>アプリケーションのキャッシュファイルを削除します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>[-s|--smarty]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>smartyのキャッシュ、コンパイル済みファイルを削除</li></ul></li>
+<li>[-c|--cachemanager]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Cachemanager_Localfileが作るキャッシュファイルを削除します。デフォルトではアプリケーションの tmp/.cache/ 以下のファイルです。</li></ul></li>
+<li>[-p|--pear]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ethnaコマンドで使っているpearチャンネル関連のキャッシュを削除します。</li></ul></li>
+<li>[-a|--any-tmp-files]
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アプリケーションの tmp/ 以下のファイルをすべて削除します。</li></ul></li></ul>
+
+<h2 id="content_1_29">ethna コマンドを拡張する  <a class="anchor_super" id="c18670c0" href="ethna-document-dev_guide-ethna_command.html#c18670c0" title="c18670c0"> </a></h2>
+<p>ethna で指定できる各コマンドは Ethna_Plugin_Handle_* プラグインで作られています。プラグインはアプリケーション固有のものもありますが、現在のところ ethna コマンド用 のプラグインはEthna本体のものしか使えません。</p>
+
+<h3 id="content_1_30">Ethna_Handle について  <a class="anchor_super" id="qd450599" href="ethna-document-dev_guide-ethna_command.html#qd450599" title="qd450599"> </a></h3>
+<p>Ethna_Handleはコントローラから独立したクラスです。ethnaコマンドが実行されてまずインスタンスが作られます。Ethna_Handleのコンストラクタ内でようやくEthna_Controllerのインスタンスが作られます。</p>
+<p>Ethna本体のディレクトリやアプリケーションのディレクトリに何か指示をするときは、いったん以下のメソッドで各コントローラを取得し、$ctl-&gt;getDirectory('tmp')とかするといいと思います。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>getEthnaController()
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Controllerのインスタンスを取得します。これはEthna本体のEthna_Controller.phpで定義されたEthna_Controllerそのものです。</li></ul></li>
+<li>getAppController($app_dir)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>指定されたディレクトリからアプリケーションのコントローラをさがし、そのインスタンスを返します。</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">フォーム定義を調べるのは、フォーム定義はメンバ変数であり、その初期化は定数でなければならないことから、これを関数定義の戻り値で初期化するとFATAL ERRORになるためです</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

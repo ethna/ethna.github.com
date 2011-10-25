@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+フォーム値の自動検証を行う(プラグイン編) - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>フォーム値の自動検証を行う(プラグイン編) </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-form.html">フォーム定義 </a> &gt; フォーム値の自動検証を行う(プラグイン編) 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#dbe63c2f">  フォーム値の自動検証を行う(プラグイン編) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#fed21c0f">  概要 </a></li>
+<li><a href="#c330251d">  具体例 </a></li>
+<li><a href="#fd113da8">  プラグインを使うかどうかのフラグ </a></li>
+<li><a href="#s214f15e">  フォーム定義の解釈 </a></li>
+<li><a href="#g28b16fc">  フォーム定義のパラメータについて </a></li>
+<li><a href="#x6efaddf">  後方互換性について </a></li>
+<li><a href="#s1acd3cf">  各バリデータプラグインの詳細 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#ibd203a0">  Required </a></li>
+<li><a href="#gaaa9f2b">  Max, Min, Regexp </a></li>
+<li><a href="#t14e4c97">  Custom </a></li>
+<li><a href="#v2072cc9">  File </a></li></ul></li>
+<li><a href="#eebb5029">  バリデータプラグインを作る </a></li></ul></li></ul>
+</div>
+
+<p>書いた人</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">いちい</td><td class="style_td">新規作成</td><td class="style_td">-</td></tr><tr><td class="style_td">DQNEO</td><td class="style_td">プラグインの作り方を補足</td><td class="style_td">2010-05-30</td></tr></tbody></table></div>
+<h2 id="content_1_0">フォーム値の自動検証を行う(プラグイン編)  <a class="anchor_super" id="dbe63c2f" href="ethna-document-dev_guide-form-validate_with_plugin.html#dbe63c2f" title="dbe63c2f"> </a></h2>
+<p>Ethna_Plugin_Validatorを使ったフォーム値の検証について説明します。主に，プラグインが導入される以前の方式に慣れている方のための説明です。</p>
+
+<h3 id="content_1_1">概要  <a class="anchor_super" id="fed21c0f" href="ethna-document-dev_guide-form-validate_with_plugin.html#fed21c0f" title="fed21c0f"> </a></h3>
+<p>Ethna_ActionForm::validate()に，プラグインを使ったフォーム値の検証処理が追加されました。</p>
+<p>できるかぎり後方互換性を維持しつつ，プラグインを使ってフォーム値の検証処理が簡単に拡張できるようになりました。これまでcustomメソッドを使っていた処理も，プラグイン化することで取り扱いが簡単になるでしょう。</p>
+
+<h3 id="content_1_2">具体例  <a class="anchor_super" id="c330251d" href="ethna-document-dev_guide-form-validate_with_plugin.html#c330251d" title="c330251d"> </a></h3>
+<p>Fileプラグインは，アップロードされたファイルの検証に特化した，新たに追加されたプラグインです。</p>
+<p>アクションフォームで</p>
+<pre>var $use_validator_plugin = true;
+var $form = array(
+        'sample' =&gt; array(
+            'type'          =&gt; VAR_TYPE_FILE,
+            'form_type'     =&gt; FORM_TYPE_FILE,
+            'name'          =&gt; 'サンプル',
+            'required'      =&gt; true,
+            'file_size_max' =&gt; '10KB',
+            'file_type'     =&gt; 'text/plain',
+            'file_error'    =&gt; 'ファイルが不正です',
+        ),
+    );</pre>
+<p>のようにフォームを定義し，アクションクラスで</p>
+<pre>function prepare()
+{
+    $this-&gt;af-&gt;validate();
+    return null;
+}</pre>
+<p>とすると，「サンプル」フォームは</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>typeのチェック</li>
+<li>requiredのチェック</li>
+<li>fileプラグインのチェック
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ファイルサイズは10KB以下</li>
+<li>MIME型はtext/plain</li>
+<li>エラーの場合は「ファイルが不正です」というメッセージ</li></ul></li></ol>
+<p>の順にフォーム値が検証されます。</p>
+
+<h3 id="content_1_3">プラグインを使うかどうかのフラグ  <a class="anchor_super" id="fd113da8" href="ethna-document-dev_guide-form-validate_with_plugin.html#fd113da8" title="fd113da8"> </a></h3>
+<p>各アクションフォームごと，もしくはアクションフォームの各フォーム定義ごとにプラグインを使用するかどうかを選択することができます。新規にプロジェクトを作った場合は，デフォルトでプラグインを使ったフォーム値の検証を行うようになります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>各アクションフォームの$use_validator_pluginプロパティ
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>この値がtrueに指定されていた場合，validate()はプラグインを使った検証を行います。</li>
+<li>Ethna_ActionForm自体のデフォルトは(現状)falseです。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>各フォーム定義の 'plugin' 要素
+<pre>var $form = array(
+        'sample' =&gt; array(
+            'plugin'        =&gt; true,
+        ),
+    );</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>この値がtrueに指定されていた場合，validate()はプラグインを使った検証を行います。</li>
+<li>この値は$use_validator_pluginの指定よりも優先されます。</li></ul></li></ul>
+<p>プラグインを使うように指定した場合，プラグイン化以前のフォーム値検証処理は<strong>実行されない</strong>ことに注意してください。(<a href="#x6efaddf">後方互換性</a>の項も参照してください。)</p>
+
+<h3 id="content_1_4">フォーム定義の解釈  <a class="anchor_super" id="s214f15e" href="ethna-document-dev_guide-form-validate_with_plugin.html#s214f15e" title="s214f15e"> </a></h3>
+<p>プラグインを使わない場合，アクションフォームのフォーム定義はEthna_ActionFormの組み込み検証メソッドへの指示でした。プラグインを使う場合は，どのプラグインにどんなパラメータを与えて呼び出すかの指示になります。あらかじめ，組み込み検証メソッドで指定できたすべての要素に相当するプラグインが用意されています。</p>
+<p>以前からあったフォーム定義要素は</p>
+<pre>   'name', 'required', 'max', 'min', 'regexp', 'custom', 'filter', 'form_type', 'type'</pre>
+<p>でした。このうち</p>
+<pre>   'type', 'form', 'name', 'plugin', 'filter', 'option'</pre>
+<p>については，非プラグイン要素として解釈されます<a id="notetext_1" href="#notefoot_1" class="note_super" title="厳密には，typeはTypeプラグインによって検証されています">*1</a>。</p>
+<p>これ以外の要素については，プラグインを用いたフォーム値の検証を定義していると解釈されます。</p>
+<pre>'required' =&gt; true,</pre>
+<p>であれば，Requiredプラグインにtrueをパラメータとして検証を指示していることになります。</p>
+<p>また，フォーム値の検証は<strong>その要素を書いた順に</strong>実行されます。</p>
+<p>なお，実際に呼び出されるValidatorプラグインは，各要素の先頭の1文字目だけを大文字にした名前($name)のプラグインになります。Validatorプラグインの名前($name)には '_' を含むことはできません。</p>
+
+<h3 id="content_1_5">フォーム定義のパラメータについて  <a class="anchor_super" id="g28b16fc" href="ethna-document-dev_guide-form-validate_with_plugin.html#g28b16fc" title="g28b16fc"> </a></h3>
+<p>プラグインに渡されるパラメータは，後方互換性を考慮して，すこし複雑な解釈をしています。詳細はEthna_ActionForm::_getPluginDef()を参照してください。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>配列で定義する
+<pre>'file' =&gt; array(
+                'size_max' =&gt; '10KB',
+                'type'     =&gt; 'text/plain',
+                'error'    =&gt; 'エラー',
+               ),</pre>
+この場合，この配列がそのままパラメータとして Ethna_Plugin_Validator_File::validate() に渡されます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>'_' でつないで定義する (プラグインを使わない場合と互換性のある書き方)
+<pre>'required'       =&gt; true,
+'required_error' =&gt; 'エラー',</pre>
+この場合，次のような配列が定義されたとしてプラグインにパラメータとして渡されます。
+<pre>'required' =&gt; array(
+                    'required' =&gt; true,
+                    'error'    =&gt; 'エラー',
+                   ),</pre></li></ul>
+
+<h3 id="content_1_6">後方互換性について  <a class="anchor_super" id="x6efaddf" href="ethna-document-dev_guide-form-validate_with_plugin.html#x6efaddf" title="x6efaddf"> </a></h3>
+<p>あらかじめ用意されたプラグインと，パラメータを 'plugin_param' の形式で指定できることから，プラグインを使わない場合とまったく同様の記法によってプラグインを使ったフォーム定義をすることができます。</p>
+<p>ただしフォーム値の検証順序については，プラグインを使う場合には「書いた順に」実行されるため，まったく同じ動作とはなりませんので注意してください。特にEthna_ActionError::getMessage()は，いちばん最初に発生したエラーを返す仕様となっていたため，エラーが発生した場合のメッセージが変わることがあります。</p>
+
+<h3 id="content_1_7">各バリデータプラグインの詳細  <a class="anchor_super" id="s1acd3cf" href="ethna-document-dev_guide-form-validate_with_plugin.html#s1acd3cf" title="s1acd3cf"> </a></h3>
+
+<h4 id="content_1_8">Required  <a class="anchor_super" id="ibd203a0" href="ethna-document-dev_guide-form-validate_with_plugin.html#ibd203a0" title="ibd203a0"> </a></h4>
+<p>Requiredプラグインは，(なんでもいいので)値が入力されているかをチェックします。フォームを配列として定義した場合は，配列全体を見渡してチェックすることができます。</p>
+<p>追加で指定できるパラメータは，次の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>error
+<pre>'required_error' =&gt; 'エラー',</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エラーが起きたときのメッセージを上書きします。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>key
+<pre>'required_key' =&gt; 'foo',
+'required_key' =&gt; array(0, 1, 'bar'),</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>配列フォームの場合に，指定されたkeyが入力されているかをチェックします。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>num
+<pre>'required_num' =&gt; 2,</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>配列フォームの場合に，指定された数だけ入力されているかをチェックします。</li></ul></li></ul>
+
+<h4 id="content_1_9">Max, Min, Regexp  <a class="anchor_super" id="gaaa9f2b" href="ethna-document-dev_guide-form-validate_with_plugin.html#gaaa9f2b" title="gaaa9f2b"> </a></h4>
+<p>それぞれ，最大値，最小値，正規表現マッチのチェックをします。</p>
+
+<h4 id="content_1_10">Custom  <a class="anchor_super" id="t14e4c97" href="ethna-document-dev_guide-form-validate_with_plugin.html#t14e4c97" title="t14e4c97"> </a></h4>
+<p>後方互換性のために用意されました。アクションフォームの指定されたメソッドを呼び出すだけです。</p>
+
+<h4 id="content_1_11">File  <a class="anchor_super" id="v2072cc9" href="ethna-document-dev_guide-form-validate_with_plugin.html#v2072cc9" title="v2072cc9"> </a></h4>
+<p>アップロードされたファイルのチェックに特化し，PHP4.2.0以降に追加された，アップロードファイルのエラーコードに対応したエラーメッセージを得ることができます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>error
+<pre>'file_error' =&gt; 'エラー',</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エラーが起きたときのメッセージを上書きします。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>size_max, size_min
+<pre>'file_size_max' =&gt; '1kbytes',
+'file_size_min' =&gt; '1KB',</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ファイルサイズのチェックをします。Max, Minプラグインと同様です。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>type
+<pre>'file_type' =&gt; 'text/xml',
+'file_type' =&gt; array('text', 'application/octet-stream'),</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ファイルのMIME型のチェックをします。(信頼できるとは限りません。)</li>
+<li>'text' は 'text/*' と解釈します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>name
+<pre>'file_name' =&gt; 'sample.txt',
+'file_name' =&gt; '/.*\.txt/',</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>完全一致または正規表現でファイル名のチェックをします。(あまり使い道はないかもしれません。)</li></ul></li></ul>
+
+<h3 id="content_1_12">バリデータプラグインを作る  <a class="anchor_super" id="eebb5029" href="ethna-document-dev_guide-form-validate_with_plugin.html#eebb5029" title="eebb5029"> </a></h3>
+<p>アプリケーション固有のプラグインを作る場合の例を以下に示します。Ethna本体に付属させる形で作りたい場合も基本的に同様で，命名規則の部分がだけが異なります。便利なプラグインができたら、<a href="ethna-document-dev_guide-pearpackage.html" title="ethna-document-dev_guide-pearpackage (856d)">プラグインパッケージ</a>をつくって公開しましょう。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>名前を決める。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アルファベット小文字のみからなる適当な名前</li>
+<li>ex. auth</li></ul></li>
+<li>命名規則に従い，ファイルとクラスを作る。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>in sample/app/plugin/Validator/Sample_Plugin_Validator_Auth.php:
+<pre> class Sample_Plugin_Validator_Auth extends Ethna_Plugin_Validator
+ {
+     var $accept_array = true;
+     ...
+ }</pre></li>
+<li>$accept_array = true を指定して，配列として定義したフォーム値を配列のまま受け取ると宣言</li></ul></li>
+<li>validate()関数を書く。
+<pre>     function &amp;validate($name, $var, $params)
+     {
+         $user =&amp; new Sample_User($this-&gt;backend);
+         if ($user-&gt;getPassword($var['username']) != $var['password']) {
+             // パスワードが一致しなければ、エラーオブジェクトを返す
+             return Ethna::raiseNotice($params['error']);
+         }
+
+         return true;
+     }</pre></li></ol>
+<ul class="list2" style="padding-left:32px;margin-left:32px"><li>$name:   フォームの名前</li>
+<li>$var:    入力されたフォームの値</li>
+<li>$params: フォーム定義のパラメータ(連想配列)</li></ul>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>使い方
+<pre>var $form = array(
+        'sample' =&gt; array(
+            'name'           =&gt; '認証フォーム',
+            'type'           =&gt; array(VAR_TYPE_STRING),
+            'form_type'      =&gt; FORM_TYPE_TEXT,
+            'required'       =&gt; true,
+            'required_key'   =&gt; array('username', 'password'),
+            'required_error' =&gt; 'ユーザ名とパスワードを入力してください',
+            'auth'           =&gt; true,
+            'auth_error'     =&gt; 'パスワードが合いません',
+            ),
+        ...</pre></li></ol>
+<pre>    &lt;input name=&quot;sample[username]&quot; type=&quot;text&quot; ...
+    &lt;input name=&quot;sample[password]&quot; type=&quot;text&quot; ...</pre>
+<ul class="list2" style="padding-left:32px;margin-left:32px"><li>最初にrequiredのチェックで配列authのusernameとpasswordの入力を確認</li>
+<li>次にユーザ名からパスワードの確認</li>
+<li>'auth' =&gt; true の部分は，他に 'auth_*' があれば省略可</li></ul>
+<p>その他，親クラス(Ethna_Plugin_Validator)で定義されたプロパティ・メソッドついて簡単に説明します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;backend
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Backendオブジェクト</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;af
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_ActionFormオブジェクト</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;logger
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Loggerオブジェクト</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;accept_array (boolean)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>この値が true のとき，Ethna_ActionFormのバリデート処理は，配列で指定されたフォームを(各配列要素でなく)配列のままプラグインに渡します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;getFormType($name)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォームの 'type' 要素(VAR_TYPE_INTなど)を取得します。配列指定の場合は値のみを取得します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>$this-&gt;isEmpty($var, $type)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>VAR_TYPE_* に応じて，フォームの値が空と見なせるかどうかを判定します。</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">厳密には，typeはTypeプラグインによって検証されています</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

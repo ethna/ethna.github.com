@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna で コマンドラインから利用するスクリプトを書く。 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna で コマンドラインから利用するスクリプトを書く。 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; Ethna で コマンドラインから利用するスクリプトを書く。 
+<h2 id="content_1_0">Ethna で コマンドラインから利用するスクリプトを書く。  <a class="anchor_super" id="a21d661c" href="ethna-document-dev_guide-cli.html#a21d661c" title="a21d661c"> </a></h2>
+<p>Webアプリケーション を書いていると、コマンドラインから利用するスクリプトを書きたくなるときがあるかもしれません。たとえばバッチ処理や、データベースのテストデータ生成等、Webアプリケーションのメインの処理からは外れた、細々とした処理が考えられます。</p>
+<p>たとえば、「データベースのデータを集計して集計用のテーブルに書き込む」という一定時間毎に実行する単純なバッチ処理を考えてみましょう。新たに接続処理やクエリを流す処理を <strong>独自に書きたくない</strong> なぁと思いませんか？ こうした場合は、既にあるフレームワークの枠組みを使い回せると便利な場合があります。</p>
+<p>Ethna は、こうした場合もきちんと考慮して設計されています。<br />
+以下では、Ethnaの枠組みを利用しつつ、コマンドラインスクリプトを書く方法を説明します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#a21d661c">  Ethna で コマンドラインから利用するスクリプトを書く。 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#r9d16a6e">  コマンドライン用のアクションスクリプトを生成する </a></li>
+<li><a href="#c9327a01">  コマンドラインで実行する処理を書く </a></li>
+<li><a href="#l1cc601b">  コマンドライン用のエントリポイントを作成する </a></li>
+<li><a href="#dc77f28a">  実行してみる </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">日付</td><td class="style_td">備考</td></tr><tr><td class="style_td">mumumu</td><td class="style_td">2007-02-15</td><td class="style_td">初版</td></tr><tr><td class="style_td">DQNEO</td><td class="style_td">2010-05-31</td><td class="style_td">一部言い回しを修正</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">コマンドライン用のアクションスクリプトを生成する  <a class="anchor_super" id="r9d16a6e" href="ethna-document-dev_guide-cli.html#r9d16a6e" title="r9d16a6e"> </a></h3>
+<p>まずは、通常のアクションスクリプト生成と似た方法で、コマンドライン用のアクションスクリプトを生成します。<br />
+今回は上で集計バッチを例に出したので、batch_sum_daily というアクションを考えてみましょう。いつもの通り、ethna コマンドを使います。</p>
+<pre>$ ethna add-action -g cli batch_sum_daily
+file generated [/tmp/sample/skel/skel.action_cli.php -&gt; 
+[/tmp/sample/app/action_cli/Batch/Sum/Daily.php]
+action script(s) successfully created
+[/tmp/sample/app/action_cli/Batch/Sum/Daily.php]</pre>
+<p>「add-action」に加えて、「-g cli」というオプションを付けると、コマンドライン用のアクションスクリプトが action_cli ディレクトリ以下に生成されます。</p>
+
+<h3 id="content_1_2">コマンドラインで実行する処理を書く  <a class="anchor_super" id="c9327a01" href="ethna-document-dev_guide-cli.html#c9327a01" title="c9327a01"> </a></h3>
+<p>あとは、上記で生成されたスクリプトのアクションクラスに、処理<a id="notetext_1" href="#notefoot_1" class="note_super" title="ただし、アクションクラスにロジックを長々と書くのはおすすめしません。http://ethna.jp/ethna-document-tutorial-practice3.html#x9a32944 ">*1</a> を書きましょう。<a id="notetext_2" href="#notefoot_2" class="note_super" title="アクションフォームクラスも生成されますが、コマンドラインを解釈してEthnaがフォーム定義に突っ込んでくれるわけではないので、役に立ちません">*2</a> ここでは、DB接続等、既存の Ethna の 枠組みをそのまま使うことが出来ます。<a id="notetext_3" href="#notefoot_3" class="note_super" title="後で述べるエントリポイントさえ間違わなければ、ですが。">*3</a></p>
+<p>今回は説明のため、「Hello World!!」と表示させるだけにしてみます。<br />
+コマンドライン引数を読むには、通常のPHPでCLIで用いる場合と同様、グローバル変数 $argc, $argv を利用して下さい。</p>
+<pre>/**
+ *  batch_sum_dailyアクションの実装
+ *
+ *  @author     {$author}
+ *  @access     public
+ *  @package    Sample
+ */
+class Sample_Cli_Action_BatchSumDaily extends Sample_ActionClass
+{
+    /**
+     *  batch_sum_dailyアクションの前処理
+     *
+     *  @access public
+     *  @return string      遷移名(正常終了ならnull, 処理終了ならfalse)
+     */
+    function prepare()
+    {
+        //
+        //   あなたの好きな前処理を書いて下さい！
+        //
+        //   但し、コマンドライン引数をEthnaはパースしないこと
+        //   に注意して下さい。渡されたコマンドライン引数を
+        //   ActionFormに入れてくれるわけではありません！！
+        //
+        //   コマンドライン引数を読むには、通常のPHPでCLIを用
+        //   いる場合と同様、グローバル変数 $argc, $argv を利
+        //   用して下さい。
+        //
+        //   @see http://ml.ethna.jp/pipermail/users/2008-January/000872.html
+        //
+    }
+
+    /**
+     *  batch_sum_dailyアクションの実装
+     *
+     *  @access public
+     *  @return string  遷移名
+     */
+    function perform()
+    {
+        //
+        //   あなたの好きなメイン処理を書いて下さい！
+        //   以下のように、Ethna 内で使ってきたやり方が
+        //   そのまま使えます！
+        //    
+        //   ただし実際に開発するときはメインの処理は
+        //   appマネジャーなどに記述し、
+        //   アクションクラスはそれらを単純に呼び出す
+        //   のみにするのがオススメです。
+        //
+        //$db = $this-&gt;backend-&gt;getDB();
+        //$rs = $db-&gt;query('SELECT * FROM test');
+        //var_dump($rs);
+
+        echo &quot;Hello World!!\n&quot;;
+    }
+}
+?&gt;</pre>
+
+<h3 id="content_1_3">コマンドライン用のエントリポイントを作成する  <a class="anchor_super" id="l1cc601b" href="ethna-document-dev_guide-cli.html#l1cc601b" title="l1cc601b"> </a></h3>
+<p>アクションクラスを書いたら、あとはそれを呼び出す部分を作るだけです。以下のように、上で生成した batch_sum_daily アクションを 呼び出すスクリプトを任意の場所に作ります。</p>
+<pre>&lt;?php
+require_once '/tmp/sample/app/Sample_Controller.php';
+
+Sample_Controller::main_CLI('Sample_Controller', 'batch_sum_daily');
+?&gt;</pre>
+<p>2行目でrequire_once している、コントローラークラスのスクリプトへの絶対パスは絶対に間違わないように注意して下さい。<a id="notetext_4" href="#notefoot_4" class="note_super" title="これが プロジェクト の app ディレクトリと lib ディレクトリに include_path を通してくれているので、間違うとEthna の機構が全て使えなくなって終了、、です。">*4</a><br />
+4行目が、実際のアクションを呼び出す部分です。[APP_ID]_Controller クラスの main_CLI メソッドは、第一引数に コントローラークラスの名前、第二引数に呼び出すアクション名を指定します。</p>
+<p>今回はこれを、/tmp/batch_sum_daily.php という名前で保存することにします。</p>
+
+<h3 id="content_1_4">実行してみる  <a class="anchor_super" id="dc77f28a" href="ethna-document-dev_guide-cli.html#dc77f28a" title="dc77f28a"> </a></h3>
+<p>上で保存したエントリポイントのスクリプトを実行してみましょう。うまくいけば「Hello World!!」と表示されるはずです。</p>
+<pre>php -f /tmp/batch_sum_daily.php</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">ただし、アクションクラスにロジックを長々と書くのはおすすめしません。<a href="ethna-document-tutorial-practice3.html#x9a32944" rel="nofollow">http://ethna.jp/ethna-document-tutorial-practice3.html#x9a32944</a> </span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">アクションフォームクラスも生成されますが、コマンドラインを解釈してEthnaがフォーム定義に突っ込んでくれるわけではないので、役に立ちません</span><br />
+<a id="notefoot_3" href="#notetext_3" class="note_super">*3</a>
+<span class="small">後で述べるエントリポイントさえ間違わなければ、ですが。</span><br />
+<a id="notefoot_4" href="#notetext_4" class="note_super">*4</a>
+<span class="small">これが プロジェクト の app ディレクトリと lib ディレクトリに include_path を通してくれているので、間違うとEthna の機構が全て使えなくなって終了、、です。</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

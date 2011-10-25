@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+フォームヘルパ サンプル集 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>フォームヘルパ サンプル集 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-view.html">ビュー定義 </a> &gt; <a href="ethna-document-dev_guide-view-form_helper.html">フォームへルパ </a> &gt; フォームヘルパ サンプル集 
+<h2 id="content_1_0">フォームヘルパ サンプル集  <a class="anchor_super" id="za7890ce" href="ethna-document-dev_guide-view-form_helper-samples.html#za7890ce" title="za7890ce"> </a></h2>
+<p><a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパのページ</a> で説明した通り、フォームヘルパはアクションフォームのフォーム定義を読み取り、入力フォームを自動生成してくれる優れた機能です。</p>
+<p>非常に強力な分、機能も複雑なため、ここではその使い方をサンプルという形で示しています。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#za7890ce">  フォームヘルパ サンプル集 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#sample">  サンプルコード </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#e79e41fe">  GET メソッドで submit できないの？ </a></li>
+<li><a href="#b7f425f4">  ファイルをアップロードする処理をフォームヘルパで </a></li>
+<li><a href="#i661b532">  複数選択が必要な SELECT ボックス </a></li>
+<li><a href="#w7015017">  テキストボックスのサイズを指定して、非表示にする </a></li>
+<li><a href="#v362698b">  いちいちタグに value=&quot;hoge&quot; とか書きたくないよ！ </a></li>
+<li><a href="#v10af805">  編集画面に初期値を指定する </a></li>
+<li><a href="#pb9afac4">  日付の選択フォームを簡単に </a></li>
+<li><a href="#od6deeaa">  入力ウィザードを作る </a></li></ul></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-01-29</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">サンプルコード  <a class="anchor_super" id="sample" href="ethna-document-dev_guide-view-form_helper-samples.html#sample" title="sample"> </a></h3>
+
+<h4 id="content_1_2">GET メソッドで submit できないの？  <a class="anchor_super" id="e79e41fe" href="ethna-document-dev_guide-view-form_helper-samples.html#e79e41fe" title="e79e41fe"> </a></h4>
+<p>{form}{/form} ブロックタグは、デフォルトでPOST メソッドを指定しますが、もちろん それ以外の方法も指定できます。</p>
+<pre>{* テンプレート側 *}
+{form method=&quot;GET&quot; ethna_action=&quot;formhelper&quot;}
+  (... 省略)
+{/form}</pre>
+<p>出力は以下のようになります。</p>
+<pre>&lt;form method=&quot;GET&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;action_formhelper&quot; value=&quot;true&quot;&gt;
+  (... 省略)
+&lt;/form&gt;</pre>
+
+<h4 id="content_1_3">ファイルをアップロードする処理をフォームヘルパで  <a class="anchor_super" id="b7f425f4" href="ethna-document-dev_guide-view-form_helper-samples.html#b7f425f4" title="b7f425f4"> </a></h4>
+<p>ファイルをアップロードする際には、&lt;form enctype=&quot;multipart/form-data&quot;&gt; と指定する必要があります。こんなtypoしやすい文字列をいちいち書いてられないので、フォームヘルパを使いましょう。</p>
+<pre>// フォーム定義
+var $form = array(
+    'sample' =&gt; array(
+         'type'        =&gt; VAR_TYPE_FILE,  // ファイル型
+         'form_type'   =&gt; FORM_TYPE_FILE, // form_typeにもファイル型を指定
+         'name'        =&gt; 'ファイルを選んでね',
+    ),
+);</pre>
+<p>{form}{/form} ブロックタグの enctype属性に &quot;file&quot; と指定してあげれば、typoしやすい multipart/form-data も生成してくれます。</p>
+<pre>{* テンプレート側 *}
+{form enctype=&quot;file&quot; ethna_action=&quot;formhelper&quot;}
+  {form_input name=&quot;sample&quot;}
+{/form}</pre>
+<p>出力は以下のようになります。</p>
+<pre>&lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;action_formhelper&quot; value=&quot;true&quot;&gt;
+  &lt;input type=&quot;file&quot; name=&quot;sample&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;</pre>
+
+<h4 id="content_1_4">複数選択が必要な SELECT ボックス  <a class="anchor_super" id="i661b532" href="ethna-document-dev_guide-view-form_helper-samples.html#i661b532" title="i661b532"> </a></h4>
+<p>いわゆる multiple な SELECT ボックスを作りたい場合は、以下のようにします。一度に複数選択できるようにするので、フォーム定義の type 属性に 配列型を指定し、テンプレートでも multiple 属性を指定しているのがミソです。</p>
+<pre>// フォーム定義
+var $form = array(
+    'sample' =&gt; array(
+         'type'        =&gt; array(VAR_TYPE_INT), // 配列指定のフォーム定義
+         'form_type'   =&gt; FORM_TYPE_SELECT,
+         'name'        =&gt; '複数選んでね',
+         'option'      =&gt; array(1 =&gt; '1番目', 2 =&gt; '2番目'),
+    ),
+);</pre>
+<pre>// テンプレート側
+{form_input name=&quot;sample&quot; multiple=&quot;multiple&quot;}</pre>
+<p>出力は以下のようになります。これにより、複数の整数型の値を選択し、submitできるようになります。</p>
+<pre>&lt;select multiple=&quot;multiple&quot; name=&quot;sample[]&quot;&gt;
+  &lt;option value=&quot;1&quot;&gt;1番目&lt;/option&gt;
+  &lt;option value=&quot;2&quot;&gt;2番目&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+<h4 id="content_1_5">テキストボックスのサイズを指定して、非表示にする  <a class="anchor_super" id="w7015017" href="ethna-document-dev_guide-view-form_helper-samples.html#w7015017" title="w7015017"> </a></h4>
+<p>フォームヘルパのタグによって予約されている属性以外を埋め込めることから、HTMLのサイズやスタイルも指定できます。テキストボックスの場合、以下のようにします。</p>
+<pre>// フォーム定義
+// 通常の指定と変わらない
+var $form = array(
+    'sample' =&gt; array(
+         'type'        =&gt; VAR_TYPE_STRING,
+         'form_type'   =&gt; FORM_TYPE_TEXT,
+         'name'        =&gt; 'テキストボックスのサンプル',
+    ),
+);</pre>
+<pre>{* テンプレート側 *}
+{* サイズを50にし、非表示にする *}
+{form_input name=&quot;sample&quot; size=&quot;50&quot; style=&quot;display:none&quot;}</pre>
+<p>出力は以下のようになります。</p>
+<pre>&lt;input size=&quot;50&quot; style=&quot;display:none&quot; type=&quot;text&quot; name=&quot;sample&quot; value=&quot;&quot; /&gt;</pre>
+
+<h4 id="content_1_6">いちいちタグに value=&quot;hoge&quot; とか書きたくないよ！  <a class="anchor_super" id="v362698b" href="ethna-document-dev_guide-view-form_helper-samples.html#v362698b" title="v362698b"> </a></h4>
+<p>... 執筆中</p>
+
+<h4 id="content_1_7">編集画面に初期値を指定する  <a class="anchor_super" id="v10af805" href="ethna-document-dev_guide-view-form_helper-samples.html#v10af805" title="v10af805"> </a></h4>
+<p>... 執筆中</p>
+
+<h4 id="content_1_8">日付の選択フォームを簡単に  <a class="anchor_super" id="pb9afac4" href="ethna-document-dev_guide-view-form_helper-samples.html#pb9afac4" title="pb9afac4"> </a></h4>
+<p>... 執筆中</p>
+
+<h4 id="content_1_9">入力ウィザードを作る  <a class="anchor_super" id="od6deeaa" href="ethna-document-dev_guide-view-form_helper-samples.html#od6deeaa" title="od6deeaa"> </a></h4>
+<p>... 執筆中</p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

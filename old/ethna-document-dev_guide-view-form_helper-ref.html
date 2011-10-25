@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+フォームヘルパ タグリファレンス - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>フォームヘルパ タグリファレンス </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-view.html">ビュー定義 </a> &gt; <a href="ethna-document-dev_guide-view-form_helper.html">フォームへルパ </a> &gt; フォームヘルパ タグリファレンス 
+<h2 id="content_1_0">フォームヘルパ タグリファレンス  <a class="anchor_super" id="za7890ce" href="ethna-document-dev_guide-view-form_helper-ref.html#za7890ce" title="za7890ce"> </a></h2>
+<p><a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパのページ</a> で説明した通り、フォームヘルパはアクションフォームのフォーム定義を読み取り、入力フォームを自動生成してくれる優れた機能です。ここでは、フォームヘルパで使えるタグのすべてをリファレンスとして示します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#za7890ce">  フォームヘルパ タグリファレンス </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#rbb7b355">  {form}{/form} ブロックタグ </a></li>
+<li><a href="#i3d40688">  {form_input} </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#q5b0f000">  パラメータの渡し方 </a></li>
+<li><a href="#y3e3abac">  もう少し細かく </a></li>
+<li><a href="#l9325637">  一般的なフォーム </a></li>
+<li><a href="#ha685255">  配列で指定されたフォーム </a></li>
+<li><a href="#g96861c2">  選択肢が必要なフォーム </a></li></ul></li>
+<li><a href="#n9fa50cd">  {form_name} </a></li>
+<li><a href="#k0e2bffb">  {form_submit} </a></li>
+<li><a href="#b1c6abef">  注意事項 </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-01-23</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">{form}{/form} ブロックタグ  <a class="anchor_super" id="rbb7b355" href="ethna-document-dev_guide-view-form_helper-ref.html#rbb7b355" title="rbb7b355"> </a></h3>
+<p>{form}ブロックタグの一番の役割は、ブロックの中身を &lt;form&gt;...&lt;/form&gt; タグで囲み、アクションフォームの定義を読み取ることです。</p>
+<p>{form}ブロックが受け取れるパラメータは以下の通りです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>name
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォーム名を指定します。ひとつのテンプレート内に複数 {form} ブロックタグを指定する場合、この指定は必須です。それぞれの名前は重複しないようにしてください。</li></ul></li>
+<li>ethna_action
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォーム定義を読み取る対象のアクション名を指定します。{form}ブロック内で{form_input name=&quot;foo&quot;}と指定されていたとき、&quot;foo&quot;というフォームがどのアクションで定義されているかを指定します。省略時は現在のアクションになります(フォーム値が不正で戻ってくるときなど)</li>
+<li>ethna_actionで指定したアクション名で、
+<pre>&lt;input type=&quot;hidden&quot; name=&quot;action_XXX&quot; value=&quot;true&quot;&gt;</pre>
+と出力されます。</li></ul></li>
+<li>enctype
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>フォームのenctypeを指定します。'file' のみが現在指定できます。この場合、enctype=&quot;multipart/form-data&quot; が &lt;form&gt; タグに出力できます。</li></ul></li>
+<li>default
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>{form}ブロック内でのdefaultをまとめて指定するときに使います。フォーム名をkeyとする連想配列を与えます。省略時は現在のフォーム値になります。</li>
+<li><strong>注意</strong>: ここで指定する値は出力時にエスケープ処理が入ります。たとえばテンプレートで {form default=$form} のように指定すると、2重にエスケープされてしまうことに注意してください。省略時の値は$formではなくActionFormから直接取得しています。</li></ul></li>
+<li>method
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>get/postを指定します。省略時はpostになります。</li></ul></li></ul>
+<p>参考までに、パラメータ action は{form}ブロックは理解しないので、</p>
+<pre>{form action=&quot;index.php&quot;}</pre>
+<p>とすると&lt;form&gt;タグのパラメータとしてそのままわたされて、</p>
+<pre>&lt;form action=&quot;index.php&quot;&gt;</pre>
+<p>と出力されます。</p>
+
+<h3 id="content_1_2">{form_input}  <a class="anchor_super" id="i3d40688" href="ethna-document-dev_guide-view-form_helper-ref.html#i3d40688" title="i3d40688"> </a></h3>
+
+<h4 id="content_1_3">パラメータの渡し方  <a class="anchor_super" id="q5b0f000" href="ethna-document-dev_guide-view-form_helper-ref.html#q5b0f000" title="q5b0f000"> </a></h4>
+<p>{form_input}タグは以下の二つでパラメータを受けとることができます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ActionForm での定義</li>
+<li>Smarty テンプレートでの指定</li></ul>
+<p>このうち、いわゆるMVC的なビューに属するものはテンプレートで、そうでないものはActionForm
+で指定するようにしているつもりですが、実用上の簡便さから両者が混ざっている部分もあります。基
+本的には以下の考え方で作られています。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>アプリケーションのコンテキストによって決まるものはActionForm
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>&lt;select&gt;タグの選択肢をデータベースから取得するような場合</li></ul></li>
+<li>表示の問題でしかないもの、htmlのタグ生成に直接渡されるパラメータはテンプレート
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>style指定などはヘルパーは理解せずそのままhtmlのタグにパラメータとして渡されます。</li></ul></li></ul>
+
+<h4 id="content_1_4">もう少し細かく  <a class="anchor_super" id="y3e3abac" href="ethna-document-dev_guide-view-form_helper-ref.html#y3e3abac" title="y3e3abac"> </a></h4>
+<p>正確には、タグを生成するときに</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ActionFormでの定義のうち、タグごとに決められたパラメータを解釈する</li>
+<li>テンプレートで渡されたパラメータのうち、タグごとに決められたパラメータを解釈し、
+のこりのパラメータについてはhtmlのパラメータにそのまま渡す</li></ul>
+<p>という流れになります。どちらでも指定できるものについては、次の順に評価され、後ろにあるものほど優先されます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ActionFormでの指定</li>
+<li>{form_input}を囲む{form}ブロックでの指定</li>
+<li>{form}での指定</li></ul>
+
+<h4 id="content_1_5">一般的なフォーム  <a class="anchor_super" id="l9325637" href="ethna-document-dev_guide-view-form_helper-ref.html#l9325637" title="l9325637"> </a></h4>
+<p>ほとんどの場合、フォームの種類(FORM_TYPE)に従い対応するhtmlタグを出力するだけです。</p>
+<p>パラメータとして指定できるdefault, valueは、どちらもフォームの値を指定するものですが、次のような違いがあります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>valueはその値が編集されることを期待しない場合に指定します。hiddenやbuttonなどです。</li>
+<li>defaultは、編集されるフォームに初期値を与える場合に指定します。valueが指定されている場合はdefaultよりも優先されます。</li></ul>
+
+<h4 id="content_1_6">配列で指定されたフォーム  <a class="anchor_super" id="ha685255" href="ethna-document-dev_guide-view-form_helper-ref.html#ha685255" title="ha685255"> </a></h4>
+<p>選択肢が必要なフォーム以外で、たとえばふつうのテキスト入力フォームが配列で指定されている場合</p>
+<pre>$form = array(
+    &quot;foo&quot; =&gt; array(
+         'type'        =&gt; VAR_TYPE_STRING,
+         'form_type'   =&gt; FORM_TYPE_TEXT,
+         'name'        =&gt; '3つ入力してね',
+    ),
+);</pre>
+<p>のように定義して、</p>
+<pre>{form_input name=&quot;foo&quot;}
+{form_input name=&quot;foo&quot;}
+{form_input name=&quot;foo&quot;}</pre>
+<p>と3つ{form_input}を並べると&lt;input&gt;タグが3つ生成されます。defaultが配列で指定されている場合、上から順にdefaultの値を埋めていきます。</p>
+
+<h4 id="content_1_7">選択肢が必要なフォーム  <a class="anchor_super" id="g96861c2" href="ethna-document-dev_guide-view-form_helper-ref.html#g96861c2" title="g96861c2"> </a></h4>
+<p>選択肢が必要なフォームはFORM_TYPE_SELECT, FORM_TYPE_CHECKBOX, FORM_TYPE_RADIOの3つがあります。</p>
+<p>選択肢はActionForm (またはテンプレート) で'option'パラメータによって指定します。ActionForm で、以下の option の *** の部分に以下の3通りが指定できます。</p>
+<pre>$form = array(
+    &quot;foo&quot; =&gt; array(
+         'type'        =&gt; VAR_TYPE_INT,
+         'form_type'   =&gt; FORM_TYPE_SELECT,
+         'name'        =&gt; '次から選んでください:',
+         'option'      =&gt; ***,
+    ),
+);</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>array (連想配列)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>keyが選択肢の実際の値、valueが表示される値</li></ul></li>
+<li>',' を含まない string
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>そのActionFormのプロパティもしくは関数の返す値(配列)を選択肢にします。</li></ul></li>
+<li>',' で区切られた2つの string ('address,prefecture'など)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>'address'マネージャの'prefecture'プロパティの値一覧を選択肢にします。アプリケーションマネージャ(AppManager)のgetAttrList()関数を利用しています。</li></ul></li></ul>
+<p>またselectタグについてはパラメータemptyoptionが指定できます。これは、選択肢のどれも選択されていないときに表示する値を指定できます(value=&quot;&quot;となります)。</p>
+<pre>{form_input emptyoption=&quot;選択してね&quot;}</pre>
+
+<h3 id="content_1_8">{form_name}  <a class="anchor_super" id="n9fa50cd" href="ethna-document-dev_guide-view-form_helper-ref.html#n9fa50cd" title="n9fa50cd"> </a></h3>
+<p>フォーム定義の 'name' 属性の値をそのまま出力します。</p>
+<pre>$form = array(
+    &quot;foo&quot; =&gt; array(
+         'type'        =&gt; VAR_TYPE_STRING,
+         'form_type'   =&gt; FORM_TYPE_TEXT,
+         'name'        =&gt; '3つ入力してね',
+    ),
+);</pre>
+<p>たとえば上記のようなフォーム定義があったとして、</p>
+<pre>{form_name name=&quot;foo&quot;}</pre>
+<p>とテンプレートに書くと、以下のように出力されます。</p>
+<pre>3つ入力してね</pre>
+
+<h3 id="content_1_9">{form_submit}  <a class="anchor_super" id="k0e2bffb" href="ethna-document-dev_guide-view-form_helper-ref.html#k0e2bffb" title="k0e2bffb"> </a></h3>
+<p>submitボタンだけを作りたい場合、(テンプレートにそのままhtmlタグを書いてもいいですが)送信先のActionFormにボタンの定義をするのは面倒なので、{form_submit}を使って定義によらずに送信ボタンを出力することができます。</p>
+<pre>{form_submit value=&quot;送信するよ!&quot;}</pre>
+
+<h3 id="content_1_10">注意事項  <a class="anchor_super" id="b1c6abef" href="ethna-document-dev_guide-view-form_helper-ref.html#b1c6abef" title="b1c6abef"> </a></h3>
+<p><a href="ethna-document-dev_guide-view-form_helper-ref.html#rbb7b355" title="ethna-document-dev_guide-view-form_helper-ref (999d)">{form}ブロックタグ</a>の項にも書きましたが、タグを出力するときにまと
+めてエスケープ処理が入るので、パラメータとして指定する値はエスケープしないように気をつけてください。</p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

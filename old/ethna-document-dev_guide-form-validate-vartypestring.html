@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+VAR_TYPE_STRING の max, min 属性に関する詳細 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>VAR_TYPE_STRING の max, min 属性に関する詳細 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-form.html">フォーム定義 </a> &gt; <a href="ethna-document-dev_guide-form-validate.html">フォーム値の自動検証を行う(基本編) </a> &gt; VAR_TYPE_STRING の max, min 属性に関する詳細 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#yea703ed">  VAR_TYPE_STRING の max, min 属性に関する詳細 </a></li>
+<li><a href="#b1714d90">  Ethna 2.5.0 以降での max, min の検証 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#i96dbb09">  文字数単位(全角半角区別なし)の検証</a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#za9eb899">  mbstrmax, mbstrmin 属性を使う </a></li></ul></li>
+<li><a href="#h4401591">  バイト数単位(全角半角区別あり)の検証 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#v51832a6">  クライアントエンコーディングを utf-8(eucJP-Win) に変更する </a></li>
+<li><a href="#j6390c67">  strmaxcompat, strmincompat 属性を使う </a></li></ul></li>
+<li><a href="#g034b9d6">  シングルバイト文字列の検証 </a></li></ul></li>
+<li><a href="#o87f6308">  Ethna 2.3.5 より前でのmax, min属性の検証 </a></li></ul>
+</div>
+
+<h2 id="content_1_0">VAR_TYPE_STRING の max, min 属性に関する詳細  <a class="anchor_super" id="yea703ed" href="ethna-document-dev_guide-form-validate-vartypestring.html#yea703ed" title="yea703ed"> </a></h2>
+<p>form 定義の type を 以下のように VAR_TYPE_STRING と設定した場合、Ethna のバージョンによって、max と min 属性の解釈に違いがあります。2.5.0 以降と、2.3.x以前のバージョンでこの違いが表れます。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        // ....
+   ),
+);
+</pre>
+<p>以下、その違いについて詳細を説明します。</p>
+
+<h2 id="content_1_1">Ethna 2.5.0 以降での max, min の検証  <a class="anchor_super" id="b1714d90" href="ethna-document-dev_guide-form-validate-vartypestring.html#b1714d90" title="b1714d90"> </a></h2>
+
+<h3 id="content_1_2">文字数単位(全角半角区別なし)の検証 <a class="anchor_super" id="i96dbb09" href="ethna-document-dev_guide-form-validate-vartypestring.html#i96dbb09" title="i96dbb09"> </a></h3>
+<p>Ethna 2.5.0 以降では、maxとmin 属性のチェックがデフォルトで「文字数」を基本として行われ、全角と半角を区別しなくなりました。required, (mb)regexp 属性についての扱いは従来と同様です。</p>
+<p>これは Ethna 2.5.0 以降、Ethna で扱う内部のエンコーディングが　utf-8 から UTF-8に変更となったことによるものです。</p>
+<p>フォーム定義を以下のように設定した場合は、</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>sampleは入力必須</li>
+<li>文字数が最大で6文字</li>
+<li>文字数が最小で2文字</li></ul>
+<p>という意味として解釈されます。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'max'       =&gt; 6,
+        'min'       =&gt; 2,
+   ),
+);</pre>
+<p>この場合に検証結果がエラーになった場合、エラーメッセージは全角半角を区別しない形で以下のように表示されます。</p>
+<pre>{form}は6文字以下で入力して下さい
+{form}は2文字以上で入力して下さい</pre>
+
+<h4 id="content_1_3">mbstrmax, mbstrmin 属性を使う  <a class="anchor_super" id="za9eb899" href="ethna-document-dev_guide-form-validate-vartypestring.html#za9eb899" title="za9eb899"> </a></h4>
+<p>上記の「全角半角を区別しない、文字数ベースの検証」は、以下のように mbstrmax, mbstrmin 属性を設定したときの動きと同じです。これらの属性を使うと、後で述べるクライアントエンコーディングに関わらず、全角半角の区別がない文字数ベースの検証が行われます。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'mbstrmax'       =&gt; 6,
+        'mbstrmin'       =&gt; 2,
+   ),
+);</pre>
+
+<h3 id="content_1_4">バイト数単位(全角半角区別あり)の検証  <a class="anchor_super" id="h4401591" href="ethna-document-dev_guide-form-validate-vartypestring.html#h4401591" title="h4401591"> </a></h3>
+
+<h4 id="content_1_5">クライアントエンコーディングを utf-8(eucJP-Win) に変更する  <a class="anchor_super" id="v51832a6" href="ethna-document-dev_guide-form-validate-vartypestring.html#v51832a6" title="v51832a6"> </a></h4>
+<p>※ クライアントエンコーディングとは、プロジェクトの内部エンコーディングと、テンプレートのエンコーディングのふたつを指します。詳しくは <a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a> のページを参照して下さい。</p>
+<p>Ethna 2.5.0 preview1 以降で、古いプロジェクトを維持するために utf-8 のような全角半角のバイト数が決まっている文字コードをクライアントエンコーディングとして用いるときは、バイト数単位の検証を行いたいかもしれません。</p>
+<p>その場合は、[appid]_Controller.php の _getDefaultLanguage メソッドを以下のようにオーバーライドし、クライアントエンコーディングを utf-8に変更することで、デフォルトでバイト数単位で、全角半角を区別した検証が行われるようになります。</p>
+<pre>警告！：以下のようにオーバーライドすると、テンプレートのエンコーディング及
+び、プロジェクトの内部エンコーディングが utf-8 であると Ethna は看做します！
+これは utf-8 がデフォルトであった 2.3.x との互換性を維持するための設定です！</pre>
+<pre>/**
+ *  デフォルト状態での使用言語を取得する
+ *  外部に出力されるEthnaのエラーメッセージ等のエンコーディングを
+ *  切り替えたい場合は、このメソッドをオーバーライドする。
+ *
+ *  @access protected
+ */
+function _getDefaultLanguage()
+{
+    // ロケール名(e.x ja_JP, en_US 等),
+    // システムエンコーディング名,
+    // クライアントエンコーディング(= テンプレートのエンコーディング) の配列
+    return array('ja_JP', 'utf-8', 'utf-8');
+}</pre>
+<p>つまり、上記のように設定し、フォーム定義を以下のように設定した場合は、</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>sampleは入力必須</li>
+<li>文字数が最大で全角3文字、半角6文字</li>
+<li>文字数が最小で全角1文字、半角2文字</li></ul>
+<p>という意味として解釈されます。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'max'       =&gt; 6,
+        'min'       =&gt; 2,
+   ),
+);</pre>
+<p>上記の設定で検証結果がエラーになった場合、エラーメッセージは以下のように全角半角を区別した形で表示されます。</p>
+<pre>{form}には全角1文字以上(半角2文字以上)で入力して下さい
+{form}には全角3文字以下(半角6文字以下)で入力して下さい</pre>
+
+<h4 id="content_1_6">strmaxcompat, strmincompat 属性を使う  <a class="anchor_super" id="j6390c67" href="ethna-document-dev_guide-form-validate-vartypestring.html#j6390c67" title="j6390c67"> </a></h4>
+<p>新しいプロジェクトで、クライアントエンコーディングを utf-8 に設定しない場合でも、バイト数単位で、全角半角区別ありの検証を行いたいかもしれません。その場合は、strmaxcompat, strmincompat 属性を以下のようにして使用します。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'strmaxcompat' =&gt; 6,
+        'strmincompat' =&gt; 2,
+   ),
+);</pre>
+
+<h3 id="content_1_7">シングルバイト文字列の検証  <a class="anchor_super" id="g034b9d6" href="ethna-document-dev_guide-form-validate-vartypestring.html#g034b9d6" title="g034b9d6"> </a></h3>
+<p>ASCII しか入ってこないことがわかっている場合で、全角半角を区別「しない」検証を行いたい場合に備えて、strmax, strmin 属性が追加されました。以下のようにして使用します。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'strmax' =&gt; 6,
+        'strmin' =&gt; 2,
+   ),
+);</pre>
+<p>この場合のエラーメッセージは、デフォルトの場合と同様、以下のように全角半角を区別しない形になります。</p>
+<pre>{form}は6文字以下で入力して下さい
+{form}は2文字以上で入力して下さい</pre>
+<pre>この属性は、mbstring が入っていない場合の、min, max のデフォルトの
+動きになります。</pre>
+
+<h2 id="content_1_8">Ethna 2.3.5 より前でのmax, min属性の検証  <a class="anchor_super" id="o87f6308" href="ethna-document-dev_guide-form-validate-vartypestring.html#o87f6308" title="o87f6308"> </a></h2>
+<p>Ethna 2.3.5 以前では、一貫して「バイト数単位で、全角半角を区別する」検証がmax, min 属性では行われます。</p>
+<p>つまり、フォーム定義を以下のように設定した場合は、</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>sampleは入力必須</li>
+<li>文字数が最大で全角3文字、半角6文字</li>
+<li>文字数が最小で全角1文字、半角2文字</li></ul>
+<p>という意味として解釈されます。</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; VAR_TYPE_STRING,
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required'  =&gt; true,
+        'max'       =&gt; 6,
+        'min'       =&gt; 2,
+   ),
+);</pre>
+<p>上記の設定で検証結果がエラーになった場合、エラーメッセージは以下のように全角半角を区別した形で表示されます。</p>
+<pre>{form}には全角1文字以上(半角2文字以上)で入力して下さい
+{form}には全角3文字以下(半角6文字以下)で入力して下さい</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

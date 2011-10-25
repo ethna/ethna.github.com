@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+アプリケーション構築手順(3) - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>アプリケーション構築手順(3) </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-tutorial.html">チュートリアル </a> &gt; アプリケーション構築手順(3) 
+<h2 id="content_1_0">アプリケーション構築手順(3)  <a class="anchor_super" id="ed639c24" href="ethna-document-tutorial-practice3.html#ed639c24" title="ed639c24"> </a></h2>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#ed639c24">  アプリケーション構築手順(3) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#s3dcd04e">  (10) ログイン画面の変更 </a></li>
+<li><a href="#tbd93730">  (11) ログインアクションの追加 </a></li>
+<li><a href="#r4602518">  (12) フォーム値の取得 </a></li>
+<li><a href="#ma018c2e">  (13) フォーム値の検証 </a></li>
+<li><a href="#b237aaa1">  (14) エラー処理(フォーム値の表示) </a></li>
+<li><a href="#dfdf474a">  (15) エラー処理(エラーメッセージの表示) </a></li>
+<li><a href="#x9a32944">  (16) ロジックの記述(概念) </a></li>
+<li><a href="#q7acefe5">  (17) ロジックの記述(実際) </a></li></ul></li></ul>
+</div>
+
+<p>次に、もう少し実際的な内容ということで、ログイン処理(画面の表示ではなく)を例にとって</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>フォーム値の取得方法</li>
+<li>基本的なエラー処理方法</li>
+<li>ビューへのデータ設定方法</li></ul>
+<p>といった点をご説明したいと思います。</p>
+<p>なお、このページは<a href="ethna-document-tutorial-practice1.html" title="ethna-document-tutorial-practice1 (23d)">アプリケーション構築手順(1)</a>〜<a href="ethna-document-tutorial-practice2.html" title="ethna-document-tutorial-practice2 (888d)">アプリケーション構築手順(2)</a>の続きとなっていますので、一応ご注意下さい。</p>
+
+<h3 id="content_1_1">(10) ログイン画面の変更  <a class="anchor_super" id="s3dcd04e" href="ethna-document-tutorial-practice3.html#s3dcd04e" title="s3dcd04e"> </a></h3>
+<p>まず、前節(8)で作成したテンプレートファイル(template/ja/login.tpl)をもうちょっとログイン画面っぽいものに作り変えておきます。具体的には以下のようにしてみます。</p>
+<p>template/ja/login.tpl:</p>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+ &lt;head&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;form action=&quot;{$script}&quot; method=&quot;post&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;action_login_do&quot; value=&quot;dummy&quot;&gt;
+  &lt;table border=&quot;0&quot;&gt;
+   &lt;tr&gt;
+    &lt;td&gt;メールアドレス&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mailaddress&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td&gt;パスワード&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;p&gt;
+  &lt;input type=&quot;submit&quot; name=&quot;action_login_do&quot; value=&quot;ログイン&quot;&gt;
+  &lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>通常のHTMLファイル(あるいはSmartyのテンプレートファイル)ですが、2点ほどEthna独自の点がありますのでここでご説明します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>{$script}はテンプレート表示前にEthnaフレームワークが設定する変数で、現在実行中のPHPスクリプトを表します(<a href="doc//__filesource/fsource_Ethna__classEthna_ViewClass.php.html#a144" rel="nofollow">Ethna_ViewClass::_getTemplateEngine()</a>をご参照下さい)<br />
+もちろん、/index.phpで全てを処理する場合は、action=&quot;/&quot;と記述しても全く問題ありません</li>
+<li>hiddenタグの&quot;action_login_do&quot;は、このフォームをsubmitした際に、「login_do」というアクションを実行することを表します<br />
+「login_do」というはStrutsの慣習をそのまま使っているだけなので、「login」と重ならなければ「login_exec」でも「login_submit」でも何でも構いません</li></ul>
+<p>Smartyテンプレートの詳細については</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="http://smarty.php.net/" rel="nofollow">Smarty : Template Engine</a> (<a href="http://sunset.freespace.jp/smarty/" rel="nofollow">和訳</a>)</li></ul>
+<p>などを見てください。</p>
+<p>以上で準備は完了です。</p>
+<pre>http://some.host/~foo/?action_login=true</pre>
+<p>にアクセスしてログイン画面が表示されることを確認してください。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig7.jpg" alt="ethna-fig7.jpg" title="ethna-fig7.jpg" /></div>
+
+
+<h3 id="content_1_2">(11) ログインアクションの追加  <a class="anchor_super" id="tbd93730" href="ethna-document-tutorial-practice3.html#tbd93730" title="tbd93730"> </a></h3>
+<p>フォームがsubmitされた際に実行されるアクション「login_do」を前節(5)の場合と同様に追加します。</p>
+<pre>$ ethna add-action login_do
+generating action script for [login_do]...
+action script(s) successfully created [/tmp/sample/app/action/Login/Do.php]</pre>
+<p>この状態ではやはり'login_do'という遷移名を返すだけのアクションになっています。実際には'login_do'という遷移名は不要なので、以下のように変更しておきます。</p>
+<p>app/action/Login/Do.php:</p>
+<pre>66     function perform()
+67     {
+68   -     return 'login_do';
+68   +     return 'index';
+69     }</pre>
+<p>以上の状態で、ログインボタンを押すと</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>コントローラがlogin_doアクションを実行します</li>
+<li>Sample_Action_LoginDo::perform()メソッドが実行されます</li>
+<li>遷移名としてindexが返されます</li></ol>
+<p>という処理の流れで、トップページが表示されると思います。</p>
+<p>実際にはトップページに遷移する前に、(あたりまえですが)フォーム値のチェックや認証処理を行い、エラーが発生した場合はエラーメッセージを表示させる必要があります。</p>
+
+<h3 id="content_1_3">(12) フォーム値の取得  <a class="anchor_super" id="r4602518" href="ethna-document-tutorial-practice3.html#r4602518" title="r4602518"> </a></h3>
+<p>認証を行うためには、フォームから送信された値を取得する必要があります。フォームから送信された値にアクセスするには、アクションクラスと1対1で生成されるアクションフォームというオブジェクトを利用します。アクションフォームのクラス定義は、ethna add-action を実行すると、アクションクラスと同時に生成されていますので、まずは何も考えず、app/action/Login/Do.phpに以下のようなコードを追加してみてください。</p>
+<p>app/action/Login/Do.php:</p>
+<pre>23     var $form = array(
+24   +     'mailaddress' =&gt; array(
+25   +         'type'          =&gt; VAR_TYPE_STRING,
+26   +     ),
+...
+69     function perform()
+70     {
+71   +     print $this-&gt;action_form-&gt;get('mailaddress');
+</pre>
+<p>以上の状態で、フォームの「メールアドレス」に適当な文字を入力してsubmitすると、その値が表示されるかと思います。これで何となくお分かりかと思いますが、フォーム値にアクセスするには(非常に大雑把に言うと)</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>アクションフォームに受け取るフォーム値を定義する</li>
+<li>アクションクラスにメンバ変数として設定されている$action_formオブジェクトのアクセサ(get()/set())を通じて値を取得/設定する</li></ol>
+<p>という手順になります。なお、フォーム値にアクセスする度に</p>
+<pre>$this-&gt;action_form-&gt;get('foo');</pre>
+<p>と書くのは面倒なので、省略形として</p>
+<pre>$this-&gt;af-&gt;get('foo');</pre>
+<p>と書くことも出来ます。</p>
+
+<h3 id="content_1_4">(13) フォーム値の検証  <a class="anchor_super" id="ma018c2e" href="ethna-document-tutorial-practice3.html#ma018c2e" title="ma018c2e"> </a></h3>
+<p>たかがフォーム値にアクセスするのに何故こんな面倒な手順が必要なのか、にはいくつか理由がありますが(ほとんどはセキュリティ上の理由)、この方法の最大のメリットはフォーム値の自動検証です。</p>
+<p>アクションスクリプトのスケルトンを生成すると、アクションフォームに以下のようなコメントも生成されているかと思います。</p>
+<pre>27         /*
+28         'sample' =&gt; array(
+29             'name'          =&gt; 'サンプル',      // 表示名
+30             'required'      =&gt; true,            // 必須オプション(true/false)
+31             'min'           =&gt; null,            // 最小値
+32             'max'           =&gt; null,            // 最大値
+33             'regexp'        =&gt; null,            // 文字種指定(正規表現)
+34             'custom'        =&gt; null,            // メソッドによるチェック
+35             'filter'        =&gt; null,            // 入力値変換フィルタオプション
+36             'form_type'     =&gt; FORM_TYPE_TEXT   // フォーム型
+37             'type'          =&gt; VAR_TYPE_INT,    // 入力値型
+38         ),
+39         */</pre>
+<p>上記のように、各フォーム値には'name'〜'type'まで計9つの属性を設定することが出来ます(必須なのは'type'のみです)。Ethnaでは、ここで設定されら属性を利用したフォーム値の自動検証機能を提供しています。</p>
+<p>ここで先ほどのフォーム値'mailaddress'を利用して実際に試してみます。まず、先ほどの'mailaddress'の属性を下記のように変更します。</p>
+<pre>24         'mailaddress' =&gt; array(
+25  +          'name'          =&gt; 'メールアドレス',
+26  +          'required'      =&gt; true,
+27             'type'          =&gt; VAR_TYPE_STRING,
+28         ),
+29  +      'password' =&gt; array(
+30  +          'name'          =&gt; 'パスワード',
+31  +          'required'      =&gt; true,
+32  +          'type'          =&gt; VAR_TYPE_STRING,
+33  +      ),</pre>
+<p>これは、フォーム値'mailaddress'の表示名が「メールアドレス」であり、また入力が必須であることを示しています。ついでにpasswordも必須としてしまいます。</p>
+<p>次に、アクションクラスで自動入力処理を行います。具体的には、アクションクラスのprepare()メソッドに以下のような処理を追加します。</p>
+<pre>65     function prepare()
+66     {
+67  +      if ($this-&gt;af-&gt;validate() &gt; 0) {
+68  +          return 'login';
+69  +      }</pre>
+<p>アクションフォームのvalidate()メソッドは、定義に従ってフォーム値を自動検証し、検出したエラーの数を戻り値として返します(発生したエラーの扱い等については後述します)。</p>
+<p>この状態で、メールアドレスを空欄にしてsubmitすると以前と異なりトップページは表示されず、再度ログインページが表示されるのが分かるかと思います。</p>
+<p>以上が、フォーム値の検証に関する基本的な説明でした。なお、アクションクラスのprepare()メソッドとperform()メソッドの関係は以下のようになっていて(なんちゃってシーケンス図-しかもスペルチェックエラー<a id="notetext_1" href="#notefoot_1" class="note_super" title="消せよ...＞自分">*1</a>)、まずはprepare()メソッドが呼ばれ、prepare()メソッドがnullを返した場合のみperform()メソッドが呼び出されます。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig8.gif" alt="ethna-fig8.gif" title="ethna-fig8.gif" /></div>
+
+<p>ようするに、prepare()メソッドでフォーム値の検証を行うこと、perform()メソッドでは全てのデータはサニタイズされているという前提で処理を行うことが出来る、安全且つ簡潔なコードが書けるというわけです(やっぱりStrutsの真似)。</p>
+<p>なお、フォーム値の自動検証詳細については以下をご覧下さい。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-form-validate.html" title="ethna-document-dev_guide-form-validate (737d)">フォーム値の自動検証を行う</a></p>
+
+<h3 id="content_1_5">(14) エラー処理(フォーム値の表示)  <a class="anchor_super" id="b237aaa1" href="ethna-document-tutorial-practice3.html#b237aaa1" title="b237aaa1"> </a></h3>
+<p>(自動にせよ手動にせよ)フォーム値の検証を行ってエラーが発生したら、それに伴って幾つかの処理を行う必要があります。</p>
+<p>まずは最低限の処理その1ということで、入力されたフォーム値をvalue属性に設定してみます。</p>
+<p>フォーム値はEthnaフレームワークによって自動的にSmarty変数として割り当てられるので、実際にはテンプレートで</p>
+<p>{$form.<em>フォーム項目名</em>}</p>
+<p>と記述すればOKです。ですのでここではlogin.tplを以下のように変更します。</p>
+<p>template/ja/login.tpl:</p>
+<pre> 8    &lt;tr&gt;
+ 9     &lt;td&gt;メールアドレス&lt;/td&gt;
+10 -   &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mailaddress&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+10 +   &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mailaddress&quot; value=&quot;{$form.mailaddress}&quot;&gt;&lt;/td&gt;
+11    &lt;/tr&gt;</pre>
+<p>この状態で、メールアドレスのみを入力してsubmitすると、(パスワードが入力されていないのでエラーにはなりますが)メールアドレスのフォーム値が失われずに表示されていると思います。</p>
+<p>なお、{$form.*}で表示される値は<em>常に</em>エスケープされていますので、サニタイズ等は考慮する必要はありません。<a id="notetext_2" href="#notefoot_2" class="note_super" title="とはいえ、テンプレート中の変数表示位置によっては、サニタイズは非常にナイーブな処理が必要になりますので過信は禁物です。特にタグ内の属性値に割り振られる変数には注意が必要です。">*2</a></p>
+
+<h3 id="content_1_6">(15) エラー処理(エラーメッセージの表示)  <a class="anchor_super" id="dfdf474a" href="ethna-document-tutorial-practice3.html#dfdf474a" title="dfdf474a"> </a></h3>
+<p>次に最低限の処理その2である、エラーメッセージの表示を行います。発生したエラーは、やはりEthnaフレームワークによって自動的にテンプレート変数として割り当てられ、</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>全てのエラーメッセージ一覧</li>
+<li>指定されたフォーム名に対応するエラーメッセージ</li></ul>
+<p>という形でアクセスすることが可能です。</p>
+<p>まず全てのエラーメッセージを表示させてみます。エラーメッセージは配列として{$errors}というSmarty変数に割り当てられていますので:</p>
+<p>template/ja/login.tpl:</p>
+<pre>4  &lt;body&gt;
+5 + {if count($errors)}
+6 +  &lt;ul&gt;
+7 +  {foreach from=$errors item=error}
+8 +   &lt;li&gt;{$error}&lt;/li&gt;
+9 +  {/foreach}
+10+  &lt;/ul&gt;
+11+ {/if}</pre>
+<p>というように書くと、全てのエラーメッセージを表示させることが出来ます。</p>
+<p>また、特定のフォーム名に対応するエラーメッセージを表示させるには、Ethnaフレームワークの提供するSmarty関数&quot;message&quot;を利用します。</p>
+<p>template/ja/login.tpl:</p>
+<pre>15    &lt;tr&gt;
+16     &lt;td&gt;メールアドレス&lt;/td&gt;
+17     &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mailaddress&quot; value=&quot;{$form.mailaddress}
+   &quot;&gt;{message name=&quot;mailaddress&quot;}&lt;/td&gt;
+18    &lt;/tr&gt;
+19    &lt;tr&gt;
+20     &lt;td&gt;パスワード&lt;/td&gt;
+21     &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot;&gt;{message name=&quot;p
+   assword&quot;}&lt;/td&gt;
+22    &lt;/tr&gt;</pre>
+<p>Ethnaフレームワークにおけるエラー処理ポリシーについては以下をご覧下さい。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-error-policy.html" title="ethna-document-dev_guide-error-policy (1240d)">エラー処理ポリシー</a></p>
+<p>また、自動検証で設定されるエラーメッセージは(もちろん)任意にカスタマイズすることが出来ます。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-form-message.html" title="ethna-document-dev_guide-form-message (619d)">自動検証のエラーメッセージをカスタマイズする</a></p>
+
+<h3 id="content_1_7">(16) ロジックの記述(概念)  <a class="anchor_super" id="x9a32944" href="ethna-document-tutorial-practice3.html#x9a32944" title="x9a32944"> </a></h3>
+<p>フォーム値の検証が完了したら、いよいよロジック部分(実際のアプリケーションとしての動作)を記述します。</p>
+<p>と、その前にアクションクラスとアプリケーションの関連を表した図を以下に示します。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig9.png" alt="ethna-fig9.png" title="ethna-fig9.png" /></div>
+
+<p>ちょっと分かりにくいかもしれませんが、上記のようにアクションクラス(perform()メソッド)にはアプリケーションの核となる処理を<em>記述してはいけません</em>。</p>
+<p>基本的にはほぼ全ての処理はアプリケーションの核となるクラス(app/ディレクトリに置かれるスクリプト)に記述し、アクションクラスはそれらを単純に呼び出すのみ、というイメージです。例えば</p>
+<pre>perform()
+{
+  // メールアドレスをキーにしてユーザオブジェクトを生成
+  $user =&amp; new Sample_User($this-&gt;backend, $this-&gt;af-&gt;get('mailaddress'));
+  // 認証処理
+  $result = $user-&gt;auth($this-&gt;af-&gt;get('password');
+  // 以降結果によってビューを変更、等...
+}</pre>
+<p>というようになります。これには、各アクションクラス間での処理の重複を防ぐ目的もありますが、主な目的は、アクションクラスはフロントエンドに徹することで、低コストで異なるクライアントに対応できる、と言うことです。具体的には以下のようなイメージです。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig10.png" alt="ethna-fig10.png" title="ethna-fig10.png" /></div>
+
+<p>このあたりは実験段階ですが、一応モバイル(仮にAU)とSOAPクライアントに関しては実績がありますので、ブラッシュアップすればなかなか使えるものになっていくと思います。</p>
+<p>最後に改めてアクションクラスのperform()メソッドを記述する際の注意事項を挙げてさせて頂きます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>アクションクラスにアプリケーションの核となる処理を記述しない</li>
+<li>アクションクラスはどんなに長くても100〜200行程度におさめる</li>
+<li>他のアクションクラスと重複する処理を記述しない<br />
+重複する処理がある場合は、そのアクションクラスを継承するか、アプリケーションのマネージャ的処理に移行する</li></ul>
+
+<h3 id="content_1_8">(17) ロジックの記述(実際)  <a class="anchor_super" id="q7acefe5" href="ethna-document-tutorial-practice3.html#q7acefe5" title="q7acefe5"> </a></h3>
+<p>(16)の概念を元に、アクションクラスにロジック部分の処理を記述していきます(正確には、ロジック部分を記述したクラスを別に作成し、それをアクションクラスから呼び出します)。</p>
+<p>まず、アプリケーションのクラスを作成します。ここでは簡単に以下のようなスクリプトを作成してみます。</p>
+<p>app/Sample_UserManager.php:</p>
+<pre>&lt;?php
+class Sample_UserManager
+{
+    function auth($mailaddress, $password)
+    {
+        // 実際にはまともに認証処理を行う
+        if ($mailaddress != $password) {
+            return Ethna::raiseNotice('メールアドレスまたはパスワードが正しくありません', E_SAMPLE_AUTH);
+        }
+        return 0;
+    }
+}
+?&gt;</pre>
+<p>ついでにエラーコードを追加します。</p>
+<p>app/Sample_Error.php:</p>
+<pre>18    */
+19 + /** エラーコード: ユーザ認証エラー */
+20 + define('E_SAMPLE_AUTH', -128);
+21   ?&gt;</pre>
+<p>先ほど作成したSample_UserManager.phpをControllerでインクルードします。appディレクトリとlibディレクトリは、プロジェクトスケルトンを生成した時点でinclude_pathに追加されていますので、ファイル名を記述するだけでOKです。</p>
+<p>app/Sample_Controller.php:</p>
+<pre>21   include_once('Sample_Error.php');
+22 + include_once('Sample_UserManager.php');
+23</pre>
+<p>最後に、アクションクラスのperform()メソッドを記述します。ここでは、ユーザマネージャで認証処理を行うだけです。</p>
+<p>app/actoin/Login/Do.php</p>
+<pre>80     function perform()
+81     {
+82         $um =&amp; new Sample_UserManager();
+83         $result = $um-&gt;auth($this-&gt;af-&gt;get('mailaddress'), $this-&gt;af-&gt;ge
+   t('password'));
+84         if (Ethna::isError($result)) {
+85             $this-&gt;ae-&gt;addObject(null, $result);
+86             return 'login';
+87         }
+88
+89         return 'index';
+90     }</pre>
+<p>ここではauth()メソッドからエラーオブジェクトが返ってきた場合は再度ログイン画面を表示させ、認証が成功した場合はトップページを表示しています。</p>
+<p>エラー処理詳細につきましては下記をご覧下さい。</p>
+<p><em>ses also:</em> <a href="ethna-document-dev_guide-error-policy.html" title="ethna-document-dev_guide-error-policy (1240d)">エラー処理ポリシー</a></p>
+<p>以上が、結構長くなってしまいましたが基本的なアプリケーションの構築手順となります。なんとなくご理解いただけると嬉しいです。</p>
+<p>なお、実際のアプリケーション開発ではその他いろいろ、例えば下記のようなパターンも必要となってくるかと思いますので、それらについては順次howtoの方でご説明していきますので、開発中に「あれ？これってどうやるんだろう？」あるいは「この処理、かったるくてやってらんない」と思った場合は、howtoを御覧頂くか、あるいはエントリがない場合は<a href="ethna-community.html#content_1_4" title="ethna-community (619d)">ご意見/ご要望</a>ページでお知らせ下さい。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>セレクトボックスを作成する</li>
+<li>チェックボックスを作成する</li>
+<li>セッションを利用する</li>
+<li>ログを出力する</li>
+<li>DBを利用する</li>
+<li>アラートメールを送信する</li>
+<li>...</li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">消せよ...＞自分</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">とはいえ、テンプレート中の変数表示位置によっては、サニタイズは非常にナイーブな処理が必要になりますので過信は禁物です。特にタグ内の属性値に割り振られる変数には注意が必要です。</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

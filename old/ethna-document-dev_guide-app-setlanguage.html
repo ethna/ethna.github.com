@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+言語とエンコーディングの設定 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>言語とエンコーディングの設定 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-app.html">ethna-document-dev_guide-app</a> &gt; 言語とエンコーディングの設定 
+<h2 id="content_1_0">言語とエンコーディングの設定  <a class="anchor_super" id="uf44dd22" href="ethna-document-dev_guide-app-setlanguage.html#uf44dd22" title="uf44dd22"> </a></h2>
+<pre>注意：このページで記述している機能を使うには、Ethna 2.5.0 以降が必要です。</pre>
+<p>ここでは、Ethna での言語とエンコーディングの設定、およびそれを切り替える方法について説明します。<a id="notetext_1" href="#notefoot_1" class="note_super" title="Ethna 2.5.0 以降では、内部のエンコーディング、およびエラーメッセージが utf-8 決め打ちから、エンコーディングに依存しない方式に変更されました。それに伴う変更について述べています。">*1</a></p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#uf44dd22">  言語とエンコーディングの設定 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#v4c471ad">  Ethna における言語設定の要素とその設定 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#q5ae4f6f">  プロジェクトで使用するロケールの設定と影響範囲 </a></li>
+<li><a href="#kd2b4c1d">  プロジェクトで使用するエンコーディングの設定と影響範囲 </a></li></ul></li>
+<li><a href="#racdd706">  ethna コマンドでの言語設定 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#gccd6093">  ethna add-project コマンド </a></li>
+<li><a href="#o8497894">  ethna add-view, add-template コマンド </a></li></ul></li>
+<li><a href="#vb7a5a10">  言語設定を動的に変更する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#kadebb5f">  ロケールの変更 </a></li>
+<li><a href="#fed0b5fe">  プロジェクトで使用するエンコーディングの変更 </a></li>
+<li><a href="#y8a9062e">  Ethna_Controller#_setLanguage メソッドをオーバーライドする </a></li>
+<li><a href="#g13ca01b">  言語設定の変更は慎重に行うべき </a></li></ul></li>
+<li><a href="#h6412575">  言語設定を取得する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#kcd361c9">  ロケール名、エンコーディングの設定を一気に取得する </a></li>
+<li><a href="#ve0ec797">  ロケール名を取得する </a></li>
+<li><a href="#tda63aae">  エンコーディングを取得する </a></li></ul></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2008-06-30</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">Ethna における言語設定の要素とその設定  <a class="anchor_super" id="v4c471ad" href="ethna-document-dev_guide-app-setlanguage.html#v4c471ad" title="v4c471ad"> </a></h3>
+<p>Ethna では、[appid]_Controller の _getDefaultLanguage メソッドをオーバーライドすることで言語設定を行い、ロケール名とテンプレートのエンコーディング(クライアントエンコーディングと呼びます)を設定します。デフォルトの実装は以下のようになります。</p>
+<pre>/**
+ *  デフォルト状態での使用言語を取得する
+ *  外部に出力されるEthnaのエラーメッセージ等のエンコーディングを
+ *  切り替えたい場合は、このメソッドをオーバーライドする。
+ *
+ *  @access protected
+ */
+function _getDefaultLanguage()
+{
+    // ロケール名(e.x ja_JP, en_US 等),
+    // システムエンコーディング名,
+    // クライアントエンコーディング(= テンプレートのエンコーディング) の配列
+    return array('ja_JP', 'UTF-8', 'UTF-8');
+}</pre>
+<p>このメソッドでは、以下の3つの値を配列として返します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>1. ロケール名(デフォルト ja_JP)<br />
+ロケールとは地域の文化、言語等を表す規則です。具体的には ja_JP, en_US のように、[言語コード]_[国名コード] の値を設定します。<br />
+<br /></li>
+<li>2. システムエンコーディング（デフォルトUTF-8)<br />
+現状未使用ですが、将来の拡張のために予約されています。基本的には何を設定しても構いませんが、将来の拡張に備えて意味のあるエンコーディングを設定するようにしましょう。<br />
+<br /></li>
+<li>3. クライアントエンコーディング（デフォルトUTF-8）<br />
+ブラウザに表示するテンプレートのエンコーディングであり、プロジェクトの内部エンコーディングのことです。[appid]/template ディレクトリ以下に置くテンプレートのエンコーディングを設定します。以下で特に断らずに「エンコーディング」と述べている箇所は、このクライアントエンコーディングのことを指しています。<br /></li></ul>
+
+<h4 id="content_1_2">プロジェクトで使用するロケールの設定と影響範囲  <a class="anchor_super" id="q5ae4f6f" href="ethna-document-dev_guide-app-setlanguage.html#q5ae4f6f" title="q5ae4f6f"> </a></h4>
+<p>プロジェクトで設定するロケールは、ethnaコマンドの add-project 時に決まります([appid]_Controller の _getDefaultLanguage メソッドでも変更可)。すでに述べたように、何も指定しないとデフォルトのロケールとして ja_JP が仮定されますが、ethna コマンド実行時にそれを変更することも出来ます。</p>
+<pre>ethna add-project -l en_US sample</pre>
+<p>こうすると、デフォルトのロケールは en_US となり、テンプレートディレクトリとして [appid]/template/en_US が作られます。また、Ethnaが出力するエラーメッセージのカタログファイルが以下の場所に作成されます。</p>
+<pre>[appid]/locale/en_US/LC_MESSAGES/ethna_sysmsg.ini </pre>
+<p>つまり、Ethnaのロケール設定/変更 で影響するのは以下の二つです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>テンプレートのディレクトリ</li>
+<li>Ethnaが吐き出すエラーメッセージカタログのディレクトリ</li></ul>
+
+<h4 id="content_1_3">プロジェクトで使用するエンコーディングの設定と影響範囲  <a class="anchor_super" id="kd2b4c1d" href="ethna-document-dev_guide-app-setlanguage.html#kd2b4c1d" title="kd2b4c1d"> </a></h4>
+<p>ロケールと同様、プロジェクトで使用するエンコーディングは、ethnaコマンドの add-project 時に決まります([appid]_Controller の _getDefaultLanguage メソッドでも変更可)。すでに述べたように、何も指定しないとデフォルトのエンコーディングとして UTF-8 が仮定されますが、ethna コマンド実行時にそれを変更することも出来ます。</p>
+<pre>ethna add-project -e utf-8 sample</pre>
+<p>こうすると、プロジェクトのエンコーディングとして EUC_JP が仮定されます。但し、ここで設定するエンコーディングは、 <a href="http://www.php.net/manual/en/function.mb-list-encodings.php" rel="nofollow">PHPの mbstring が認識できるもの</a> を設定して下さい。<a id="notetext_2" href="#notefoot_2" class="note_super" title="PHP5以降でEthnaを使用した場合、-eオプションで不正なエンコーディングを入力するとエラーにしています。PHP4 では、サポートされるエンコーディングがわからないため、このチェックは行われません。(mb_list_encodings 関数がPHP5以降なため">*2</a></p>
+<p>つまり、Ethnaのエンコーディング設定/変更 で影響するのは以下の2つです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>テンプレートのエンコーディング（Ethnaから出力するエラーメッセージも含む)</li>
+<li>Ethna 内部で mbstring が使用する内部エンコーディング(validate, filterの際のエンコーディング等)</li></ul>
+
+<h3 id="content_1_4">ethna コマンドでの言語設定  <a class="anchor_super" id="racdd706" href="ethna-document-dev_guide-app-setlanguage.html#racdd706" title="racdd706"> </a></h3>
+<p>ethna コマンドには、ロケールやエンコーディング指定を行えるようになっているコマンドが複数あります。</p>
+
+<h4 id="content_1_5">ethna add-project コマンド  <a class="anchor_super" id="gccd6093" href="ethna-document-dev_guide-app-setlanguage.html#gccd6093" title="gccd6093"> </a></h4>
+<p>add-project コマンドでは、下の通りロケールとエンコーディングを指定できます。これによって、ロケールとプロジェクトのエンコーディングが指定できるようになっています。</p>
+<pre>ethna add-project ... [-l|--locale] [-e|--encoding] [Application id]</pre>
+
+<h4 id="content_1_6">ethna add-view, add-template コマンド  <a class="anchor_super" id="o8497894" href="ethna-document-dev_guide-app-setlanguage.html#o8497894" title="o8497894"> </a></h4>
+<p>add-view コマンドおよび、add-template コマンドでもロケールとエンコーディングを指定できます。これによって、テンプレートを置くディレクトリと、テンプレートの charset 属性が決まります。指定されたエンコーディングで文字が書き込まれるわけではないことに注意して下さい。</p>
+<p>また、add-view コマンドの場合は、-t オプションが指定されない限り、ロケールとエンコーディングのオプションは無視されます。</p>
+<pre>ethna add-view -&gt; add new view to project:
+   add-view [options... ] [view name]
+   [options ...] are as follows.
+       [-b|--basedir=dir] [-s|--skelfile=file]
+       [-w|--with-unittest] [-u|--unittestskel=file]
+       [-t|--template] [-l|--locale] [-e|--encoding]
+   NOTICE: &quot;-w&quot; and &quot;-u&quot; options are ignored when you specify -t option.
+           &quot;-l&quot; and &quot;-e&quot; options are enabled when you specify -t option.</pre>
+<pre>ethna add-template ... [-l|--locale] [-e|--encoding] [template]</pre>
+
+<h3 id="content_1_7">言語設定を動的に変更する  <a class="anchor_super" id="vb7a5a10" href="ethna-document-dev_guide-app-setlanguage.html#vb7a5a10" title="vb7a5a10"> </a></h3>
+<p>Web からのリクエストに応じて、[appid]_Controller の _getDefaultLanguage で行った設定を変えたい場合もあると思います。その方法を以下で説明します。</p>
+
+<h4 id="content_1_8">ロケールの変更  <a class="anchor_super" id="kadebb5f" href="ethna-document-dev_guide-app-setlanguage.html#kadebb5f" title="kadebb5f"> </a></h4>
+<p>Ethna_Controller#setLocale メソッドを使います。ただし、このメソッドを使うとテンプレートのディレクトリや、Ethna が出力するエラーメッセージのカタログディレクトリもそのロケールに変更されますので注意して下さい。</p>
+<p>[appid]/locale 指定したロケールファイルがない場合は、デフォルトの英語のシステムメッセージが使われます。また、[appid]/template 以下に指定したロケールのディレクトリがない場合は単にエラーになるでしょう。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+$ctl-&gt;setLocale('en_US');</pre>
+
+<h4 id="content_1_9">プロジェクトで使用するエンコーディングの変更  <a class="anchor_super" id="fed0b5fe" href="ethna-document-dev_guide-app-setlanguage.html#fed0b5fe" title="fed0b5fe"> </a></h4>
+<p>Ethna_Controller#setClientEncoding メソッドを使います。ただし、このメソッドを使うと Ethna が mbstring で使う内部エンコーディングも変更されるので注意して下さい。つまり、Ethnaが出力するエラーメッセージのエンコーディングも変更されます。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+$ctl-&gt;setClientEncoding('utf-8');</pre>
+
+<h4 id="content_1_10">Ethna_Controller#_setLanguage メソッドをオーバーライドする  <a class="anchor_super" id="y8a9062e" href="ethna-document-dev_guide-app-setlanguage.html#y8a9062e" title="y8a9062e"> </a></h4>
+<p>言語を変更するためのフックとして Ethna_Controllerクラスに _setLanguage メソッドが用意されています。このメソッドはアクションクラスが呼ばれる直前、かつ Session, Backend, ActionForm が初期化された直後に必ず呼び出されます。ここで、Ethna_Controller のプロパティを書き換えた上で、Ethna_I18n#setLanguage を呼び出してロケールやカタログの中身を再ロードさせるようにします。</p>
+<pre>   function _setLanguage($locale, $system_encoding = null, $client_encoding = null)
+   {
+       //  ロケールを ko_KR に、クライアントエンコーディングを
+       //  'EUC_KR' に変更する   
+       $this-&gt;locale = 'ko_KR';
+       $this-&gt;system_encoding = $system_encoding;
+       $this-&gt;client_encoding = 'EUC_KR';
+
+       //  ロケールを変更した際は、必ず $i18n のsetLanguageメソッド
+       //  も呼び出すこと。
+       $i18n =&amp; $this-&gt;getI18N();
+       $i18n-&gt;setLanguage($locale, $system_encoding, $client_encoding);
+   }</pre>
+<p>コントローラーを複数用意し、それぞれに _getDefaultLanguage をオーバライドしてエントリポイントから呼び出してやるという手もあります。</p>
+
+<h4 id="content_1_11">言語設定の変更は慎重に行うべき  <a class="anchor_super" id="g13ca01b" href="ethna-document-dev_guide-app-setlanguage.html#g13ca01b" title="g13ca01b"> </a></h4>
+<p>既に述べたように、言語設定の変更は、Ethnaが見に行くディレクトリの変更や、内部エンコーディングの変更など、内部の動作をそれなりに変更するものです。</p>
+<p>よって上記のAPIを用いるときは、<a href="ethna-document-dev_guide-app-setlanguage.html#q5ae4f6f" rel="nofollow">影響範囲に関する記述</a> を読み、自分が何をしているのかをしっかりと理解した上で慎重に使用するようにして下さい。</p>
+
+<h3 id="content_1_12">言語設定を取得する  <a class="anchor_super" id="h6412575" href="ethna-document-dev_guide-app-setlanguage.html#h6412575" title="h6412575"> </a></h3>
+<p>Ethna_Controller クラスに、_getDefaultLanguage メソッドや、set[Locale|ClientEncoding] メソッドで設定された言語設定を取得するAPIが定義されているので、それを使います。</p>
+
+<h4 id="content_1_13">ロケール名、エンコーディングの設定を一気に取得する  <a class="anchor_super" id="kcd361c9" href="ethna-document-dev_guide-app-setlanguage.html#kcd361c9" title="kcd361c9"> </a></h4>
+<p>Ethna_Controller#getLanguage メソッドを使います。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+list($locale, $system_encoding, $client_encoding) = $ctl-&gt;getLanguage();</pre>
+
+<h4 id="content_1_14">ロケール名を取得する  <a class="anchor_super" id="ve0ec797" href="ethna-document-dev_guide-app-setlanguage.html#ve0ec797" title="ve0ec797"> </a></h4>
+<p>Ethna_Controller#getLocale メソッドを使います。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+$locale = $ctl-&gt;getLocale();</pre>
+
+<h4 id="content_1_15">エンコーディングを取得する  <a class="anchor_super" id="tda63aae" href="ethna-document-dev_guide-app-setlanguage.html#tda63aae" title="tda63aae"> </a></h4>
+<p>Ethna_Controller#getClientEncoding メソッドを使います。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+$client_encoding = $ctl-&gt;getClientEncoding();</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">Ethna 2.5.0 以降では、内部のエンコーディング、およびエラーメッセージが utf-8 決め打ちから、エンコーディングに依存しない方式に変更されました。それに伴う変更について述べています。</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">PHP5以降でEthnaを使用した場合、-eオプションで不正なエンコーディングを入力するとエラーにしています。PHP4 では、サポートされるエンコーディングがわからないため、このチェックは行われません。(mb_list_encodings 関数がPHP5以降なため</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

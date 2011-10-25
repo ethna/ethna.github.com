@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+フォーム値の自動検証を行う(基本編) - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>フォーム値の自動検証を行う(基本編) </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-form.html">フォーム定義 </a> &gt; フォーム値の自動検証を行う(基本編) 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#z3a90a1a">  フォーム値の自動検証を行う(基本編) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#u8511fc4">  (1) 属性を設定する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#oc46874f">  type属性 </a></li>
+<li><a href="#p64c2b4d">  制限属性 </a></li>
+<li><a href="#l4567ccd">  VAR_TYPE_DATETIME に関する注意事項 </a></li>
+<li><a href="#laa76e75">  VAR_TYPE_STRING の max, min属性に関する注意事項 </a></li>
+<li><a href="#b184714a">  制限属性(配列使用時) </a></li>
+<li><a href="#k28ea116">  補足属性 </a></li>
+<li><a href="#n9f7986e">  属性設定例 </a></li></ul></li>
+<li><a href="#q3252e93">  (2) validate()メソッドを実行する </a></li>
+<li><a href="#n3bdf1a4">  (3) エラーメッセージを表示する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#s5490770">  エラーメッセージ一覧 </a></li>
+<li><a href="#d6b7dac9">  特定のフォームに対するエラーメッセージ </a></li></ul></li>
+<li><a href="#rc31d153">  補足 </a></li></ul></li></ul>
+</div>
+
+<h2 id="content_1_0">フォーム値の自動検証を行う(基本編)  <a class="anchor_super" id="z3a90a1a" href="ethna-document-dev_guide-form-validate.html#z3a90a1a" title="z3a90a1a"> </a></h2>
+<p>クライアントから送信されたフォーム値の検証は、ウェブアプリケーションにおいて重要な、そして面倒な処理の1つです。Ethnaではこの処理を出来る限り手間をかけずに行えるような自動検証機能を提供しています。</p>
+<p>フォーム値の自動検証を行う手順は簡単で、以下のようになります。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>アクションフォームの$formメンバにフォーム値の属性(受け取りたい値の型や最大値等)を設定します</li>
+<li>アクションフォームオブジェクトのvalidate()メソッドを実行します</li>
+<li>エラーメッセージを表示します</li></ol>
+<p>アクションフォームのvalidate()メソッドは、1.で設定した属性に基づいて、入力されたフォーム値を検証し、エラーが発生すると(つまり、属性で指定した制限を超えた値が入力されると)エラーをアクションエラーオブジェクトに登録します<a id="notetext_1" href="#notefoot_1" class="note_super" title="エラー処理の詳細についてはエラー処理ポリシー等を参照してください">*1</a>。</p>
+<p>validate()メソッドは戻り値として発生したエラーの数を返すので、1以上の値が返された場合は入力値でエラーが発生したと判断して、エラー用画面を表示します<a id="notetext_2" href="#notefoot_2" class="note_super" title="アプリケーション構築手順(3)も参照してください">*2</a>。</p>
+<p>具体的な手順については以下を御覧下さい。</p>
+
+<h3 id="content_1_1">(1) 属性を設定する  <a class="anchor_super" id="u8511fc4" href="ethna-document-dev_guide-form-validate.html#u8511fc4" title="u8511fc4"> </a></h3>
+<p>自動検証を行うには、まず属性としてフォーム値の型を指定します。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>type(フォーム値の型)</li></ol>
+<p>そして、自動検証で設定可能な属性は以下の4通りとなります(不要な属性は当然省略可能です)。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>required(必須チェック)</li>
+<li>min(最小文字数(バイト数)チェック)</li>
+<li>max(最大文字数(バイト数)チェック)</li>
+<li>regexp(正規表現によるチェック)</li>
+<li>mbregexp(マルチバイト対応正規表現によるチェック(2.3.2 以降))</li></ol>
+<p>また、補助的な値として以下の2つを設定することが出来ます。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>name(エラーメッセージ表示時等のための、表示用フォーム名)</li>
+<li>form_type(エラーメッセージ表示等のためのフォーム種別<a id="notetext_3" href="#notefoot_3" class="note_super" title="例えば、入力値が必須で合った場合のエラーメッセージはテキストボックスなら「入力してください」、セレクトボックスなら「選択してください」というように振り分ける">*3</a>)</li></ol>
+<p>上記に加えて、任意のメソッドによるチェックも可能です(メールアドレス、URL、アプリケーション固有ID等)。詳細は<a href="ethna-document-dev_guide-form-customvalidate.html" title="ethna-document-dev_guide-form-customvalidate (1120d)">フォーム値の自動検証を行う(カスタムチェック編)</a>を御覧下さい。</p>
+
+<h4 id="content_1_2">type属性  <a class="anchor_super" id="oc46874f" href="ethna-document-dev_guide-form-validate.html#oc46874f" title="oc46874f"> </a></h4>
+<p>type属性に設定可能な値は以下の通りとなりますので、受け取りたい値に応じて設定します。型として特に制限を設けない場合にはVAR_TYPE_STRINGを設定します。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">VAR_TYPE_INT</td><td class="style_td">整数(+/-)</td></tr><tr><td class="style_td">VAR_TYPE_FLOAT</td><td class="style_td">小数(+/-)</td></tr><tr><td class="style_td">VAR_TYPE_STRING</td><td class="style_td">文字列</td></tr><tr><td class="style_td">VAR_TYPE_DATETIME</td><td class="style_td">日付(YYYY/MM/DD HH:MM:SS等)</td></tr><tr><td class="style_td">VAR_TYPE_BOOLEAN</td><td class="style_td">真偽値(1 or 0)</td></tr><tr><td class="style_td">VAR_TYPE_FILE</td><td class="style_td">ファイル</td></tr></tbody></table></div>
+
+<h4 id="content_1_3">制限属性  <a class="anchor_super" id="p64c2b4d" href="ethna-document-dev_guide-form-validate.html#p64c2b4d" title="p64c2b4d"> </a></h4>
+<p>required/min/max/regexpの各属性はtype属性に設定された値によって意味合いが変化します。詳細は以下の通りです。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><thead><tr><td class="style_td">type属性</td><td class="style_td">required属性</td><td class="style_td">min属性</td><td class="style_td">max属性</td><td class="style_td">(mb)regexp属性</td></tr></thead><tbody><tr><td class="style_td">VAR_TYPE_INT</td><td class="style_td">必須チェック</td><td class="style_td">数値としての最小値</td><td class="style_td">数値としての最大値</td><td class="style_td">正規表現</td></tr><tr><td class="style_td">VAR_TYPE_FLOAT</td><td class="style_td">必須チェック</td><td class="style_td">数値としての最小値</td><td class="style_td">数値としての最大値</td><td class="style_td">正規表現</td></tr><tr><td class="style_td">VAR_TYPE_STRING</td><td class="style_td">必須チェック</td><td class="style_td">最小文字(バイト)数</td><td class="style_td">最大文字(バイト)数</td><td class="style_td">正規表現</td></tr><tr><td class="style_td">VAR_TYPE_DATETIME</td><td class="style_td">必須チェック</td><td class="style_td">入力可能な最も古い日付</td><td class="style_td">入力可能な最も新しい日付</td><td class="style_td">正規表現</td></tr><tr><td class="style_td">VAR_TYPE_BOOLEAN</td><td class="style_td">必須チェック</td><td class="style_td">-</td><td class="style_td">-</td><td class="style_td">-</td></tr><tr><td class="style_td">VAR_TYPE_FILE</td><td class="style_td">必須チェック</td><td class="style_td">ファイルの最小サイズ(KB)</td><td class="style_td">ファイルの最大サイズ(KB)</td><td class="style_td">-</td></tr></tbody></table></div>
+
+<h4 id="content_1_4">VAR_TYPE_DATETIME に関する注意事項  <a class="anchor_super" id="l4567ccd" href="ethna-document-dev_guide-form-validate.html#l4567ccd" title="l4567ccd"> </a></h4>
+<p>type 属性に VAR_TYPE_DATETIME を指定する場合は、PHP の <a href="http://jp.php.net/strtotime" rel="nofollow">strtotime関数</a> が動作する英文形式の入力があることを期待することに注意して下さい。そのため、日本語等のマルチバイト文字が含まれた日付等では max, min 属性は動作しません<a id="notetext_4" href="#notefoot_4" class="note_super" title="この件は、代替案がPHP 5.2.6の時点では見つかっていないことから、「仕様」としてプロジェクトとしてはWONTFIX(修正しない) 方針です。代替案の提案がある方は、IRCやメーリングリスト でお願いします。">*4</a>。また、負のUnixタイムスタンプに対応しているかどうか、そしてサポートするタイムスタンプの範囲もプラットフォーム依存です。</p>
+<p>よって、こうした制限事項にひっかかるような日付の入力値の検証を行いたい場合は、VAR_TYPE_DATETIME は使わないで下さい。その場合は、年・月・日 などのフィールドをそれぞれフォーム定義で指定するなどして、カスタムバリデータを書いたほうが無難です。</p>
+
+<h4 id="content_1_5">VAR_TYPE_STRING の max, min属性に関する注意事項  <a class="anchor_super" id="laa76e75" href="ethna-document-dev_guide-form-validate.html#laa76e75" title="laa76e75"> </a></h4>
+<p>Ethna 2.5.0 以降では、VAR_TYPE_STRING のフォーム定義に対して maxとmin の属性を設定するとデフォルトで最大（最小）文字数のチェックが行われるようになりました。これに対して 2.3.x より前のバージョンでは、最大（最小）バイト数でチェックを行います。</p>
+<p>2.5.0 以降でバイト数によるチェックを行いたい場合は、<a href="ethna-document-dev_guide-form-validate-vartypestring.html" title="ethna-document-dev_guide-form-validate-vartypestring (581d)">VAR_TYPE_STRING の max, min 属性に関する詳細</a> を参照して下さい。</p>
+
+<h4 id="content_1_6">制限属性(配列使用時)  <a class="anchor_super" id="b184714a" href="ethna-document-dev_guide-form-validate.html#b184714a" title="b184714a"> </a></h4>
+<p>type属性に<strong>配列が指定されている場合</strong>は、以下のルールに従って自動検証が行われます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>required属性の場合<br />
+<br />
+required 属性を true にすると、配列の場合はデフォルトで<strong>Submitされた配列の全ての要素</strong>が入力されていなければなりません。<br />
+<br />
+「特定の数以上の要素」が入力されなければならない場合は、'required' =&gt; true の指定に加え、以下のように <em>required_num</em> 属性を指定します。<br />
+<br />
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; array(VAR_TYPE_INT),
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required' =&gt; true,
+        'required_num' =&gt; 2,  //  sampleには2個以上の入力が必須
+    ),
+);</pre>
+<br />
+また、特定の要素（例：2番目の要素と3番目の要素）のみ入力を必須にしたい場合もあると思います。その場合は、'required' =&gt; true の指定に加え、以下の通り <em>required_key</em> 要素を指定します。この場合は 最初の要素を「0」として、その後順番に必要な要素の位置を指定します。<br />
+<br />
+<pre>$form = array(
+    'sample' =&gt; array(
+        'type' =&gt; array(VAR_TYPE_INT),
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'required' =&gt; true,
+        'required_key' =&gt; array(0,2,4),  //  1番目, 3番目, 5番目の要素入力が必須。
+    ),
+);</pre></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>required 属性以外の要素は、入力された各要素に対して、指定された属性を満たすかどうかのチェックが行われます。</li></ul>
+
+<h4 id="content_1_7">補足属性  <a class="anchor_super" id="k28ea116" href="ethna-document-dev_guide-form-validate.html#k28ea116" title="k28ea116"> </a></h4>
+<p>name属性にはフォームの表示名(フォーム名が'mailaddress'なら'メールアドレス'のようになる)を、form_type属性にはフォームの種別を設定します。form_typeに設定可能な値は以下の通りです。この属性は、フォームヘルパで特に重要です。</p>
+<p><a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパのページ</a> も参照してください。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">FORM_TYPE_TEXT</td><td class="style_td">テキストボックス</td></tr><tr><td class="style_td">FORM_TYPE_PASSWORD</td><td class="style_td">パスワード</td></tr><tr><td class="style_td">FORM_TYPE_TEXTAREA</td><td class="style_td">テキストエリア</td></tr><tr><td class="style_td">FORM_TYPE_SELECT</td><td class="style_td">セレクトボックス</td></tr><tr><td class="style_td">FORM_TYPE_RADIO</td><td class="style_td">ラジオボタン</td></tr><tr><td class="style_td">FORM_TYPE_CHECKBOX</td><td class="style_td">チェックボックス</td></tr><tr><td class="style_td">FORM_TYPE_BUTTON</td><td class="style_td">ボタン</td></tr><tr><td class="style_td">FORM_TYPE_FILE</td><td class="style_td">ファイル</td></tr><tr><td class="style_td">FORM_TYPE_HIDDEN</td><td class="style_td">隠れコントロール</td></tr></tbody></table></div>
+
+<h4 id="content_1_8">属性設定例  <a class="anchor_super" id="n9f7986e" href="ethna-document-dev_guide-form-validate.html#n9f7986e" title="n9f7986e"> </a></h4>
+<p>以下に、幾つかの設定例を挙げますので、ご参考にして下さい。</p>
+<p>sampleというテキストボックス(表示名「サンプル」)に16〜32文字の英字のみ許可(必須):</p>
+<pre>$form = array(
+    'sample' =&gt; array(
+        'name'      =&gt; 'サンプル',
+        'required'  =&gt; true,
+        'min'       =&gt; 16,
+        'max'       =&gt; 32,
+        'regexp'    =&gt; '/^[a-zA-Z]+$/',
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'type'      =&gt; VAR_TYPE_STRING,
+    ),
+);</pre>
+<p>foobar というテキストボックスに、全角ひらがなのみを入力することを許可する場合（必須）<br />
+<strong>regexp 属性と異なり、正規表現にスラッシュを付ける必要がないことに注意して下さい。</strong><a id="notetext_5" href="#notefoot_5" class="note_super" title="UTF-8 な文字列であれば、mbregexp を使わずに、/^ほげ$/u としてもマルチバイト対応の正規表現チェックが利用できます。">*5</a></p>
+<pre>$form = array(
+    'foobar' =&gt; array(
+        'name'      =&gt; 'ひらがなのみを許可するテキストボックス',
+        'required'  =&gt; true,
+        'mbregexp'  =&gt; '^[ぁ-んー]+$',  // 正規表現 前後にスラッシュは不要！
+        'mbregexp_encoding' =&gt; 'UTF-8', // マッチさせる文字列のエンコーディング
+        'form_type' =&gt; FORM_TYPE_TEXT,
+        'type'      =&gt; VAR_TYPE_STRING,
+    ),
+);</pre>
+<p>question[]というチェックボックス(表示名「質問」):</p>
+<pre>$form = array(
+    'question' =&gt; array(
+        'name'      =&gt; '質問',
+        'form_type' =&gt; FORM_TYPE_CHECKBOX,
+        'type'      =&gt; array(VAR_TYPE_BOOLEAN),
+    ),
+);</pre>
+
+<h3 id="content_1_9">(2) validate()メソッドを実行する  <a class="anchor_super" id="q3252e93" href="ethna-document-dev_guide-form-validate.html#q3252e93" title="q3252e93"> </a></h3>
+<p>上記のようにフォーム値を定義したら、あとはvalidate()メソッドを実行するだけです。validate()メソッドは、各アクションのprepare()メソッドで実行します。具体的には以下のようになります。</p>
+<pre>class Sample_Action_LoginDo extends Ethna_ActionClass
+{
+...
+    function prepare()
+    {
+        if ($this-&gt;af-&gt;validate() &gt; 0) {
+            // フォーム値の自動検証でエラーが発生している
+            // -&gt; 再度ログイン画面を表示
+            return 'login';
+        }
+
+        // エラーが無ければnullを返す(引き続いてperform()メソッドが実行される
+        return null;
+    }
+...
+}</pre>
+<p>要するに、アクションフォーム(アクションクラスのメンバ変数$action_formあるいは$afとして予め設定されています)のvalidate()メソッドを実行して、1以上の値が返されたら再度入力画面へ遷移すればよいだけです。</p>
+
+<h3 id="content_1_10">(3) エラーメッセージを表示する  <a class="anchor_super" id="n3bdf1a4" href="ethna-document-dev_guide-form-validate.html#n3bdf1a4" title="n3bdf1a4"> </a></h3>
+<p>入力画面でエラーが発生したら、当然ですがエラーメッセージを表示させなければなりません。ここではその方法をご説明します。とはいっても、全てのエラーメッセージはSmartyの変数としてアサインされているので、単純にそれの値にアクセスすればよいだけです。</p>
+<p>なお、ここで表示するエラーメッセージは勿論カスタマイズすることが出来ます。詳細は<a href="ethna-document-dev_guide-form-message.html" title="ethna-document-dev_guide-form-message (619d)">エラーメッセージをカスタマイズする</a>を御覧下さい。</p>
+
+<h4 id="content_1_11">エラーメッセージ一覧  <a class="anchor_super" id="s5490770" href="ethna-document-dev_guide-form-validate.html#s5490770" title="s5490770"> </a></h4>
+<p>何は無くとも全てのエラーメッセージを表示させる場合は、$errors変数を利用します。以下はその典型的な例となります。</p>
+<pre>{if count($errors)}
+ &lt;ul&gt;
+  {foreach from=$errors item=error}
+   &lt;li&gt;{$error}&lt;/li&gt;
+  {/foreach}
+ &lt;/ul&gt;
+{/if}</pre>
+
+<h4 id="content_1_12">特定のフォームに対するエラーメッセージ  <a class="anchor_super" id="d6b7dac9" href="ethna-document-dev_guide-form-validate.html#d6b7dac9" title="d6b7dac9"> </a></h4>
+<p>特定のフォームに対応するエラーメッセージを表示させるにはEthna組み込みのSmarty関数{message}を利用します。</p>
+<p>引数$nameにフォーム名を指定することでフォーム名に対応するエラーメッセージ(無ければ空文字列)が表示されます。以下はその例です:</p>
+<pre>&lt;input type=&quot;text&quot; name=&quot;mailaddress&quot; value=&quot;{$form.mailaddress}&quot;&gt;
+{message name=&quot;mailaddress&quot;}</pre>
+<p>また、特定のフォームでエラーが発生しているかどうかを知るには同じくEthna組み込みのSmarty関数{is_error}を利用します。</p>
+<pre>{if is_error('mailaddress')}
+エラー
+{/if}</pre>
+
+<h3 id="content_1_13">補足  <a class="anchor_super" id="rc31d153" href="ethna-document-dev_guide-form-validate.html#rc31d153" title="rc31d153"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>最近はフォーム属性をちまちま書くのすら面倒になってきました。もうちょっと楽できないものか考え中です</li>
+<li>アプリケーションでSmartyプラグインを追加することで以下のようにもうちょっと楽できます
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>エラーだったら&lt;span class=&quot;error&quot;&gt;&lt;/span&gt;で自動で囲ったり、required属性が設定されていたら自動で「(*)」を表示させたりするプラグインを書くことで、より楽をすることも出来ます(僕はしています)</li>
+<li>ついでに&lt;input&gt;タグもある程度自動で出力するプラグインを書くとさらに楽です(こちらはEthna組み込みで提供したいなー、と思っています。JavaScriptコードも自動生成する機能とかもつけて)</li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">エラー処理の詳細については<a href="ethna-document-dev_guide-error-policy.html" title="ethna-document-dev_guide-error-policy (1240d)">エラー処理ポリシー</a>等を参照してください</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small"><a href="ethna-document-tutorial-practice3.html#content_1_4" title="ethna-document-tutorial-practice3 (1240d)">アプリケーション構築手順(3)</a>も参照してください</span><br />
+<a id="notefoot_3" href="#notetext_3" class="note_super">*3</a>
+<span class="small">例えば、入力値が必須で合った場合のエラーメッセージはテキストボックスなら「入力してください」、セレクトボックスなら「選択してください」というように振り分ける</span><br />
+<a id="notefoot_4" href="#notetext_4" class="note_super">*4</a>
+<span class="small">この件は、代替案がPHP 5.2.6の時点では見つかっていないことから、「仕様」としてプロジェクトとしてはWONTFIX(修正しない) 方針です。代替案の提案がある方は、<a href="ethna-community.html" rel="nofollow">IRCやメーリングリスト</a> でお願いします。</span><br />
+<a id="notefoot_5" href="#notetext_5" class="note_super">*5</a>
+<span class="small">UTF-8 な文字列であれば、mbregexp を使わずに、/^ほげ$/u としてもマルチバイト対応の正規表現チェックが利用できます。</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+ユニットテストを行う - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>ユニットテストを行う </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-misc.html">その他 </a> &gt; ユニットテストを行う 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#i6490c0a">  ユニットテストを行う </a></li>
+<li><a href="#s989701c"> 概要 </a></li>
+<li><a href="#rb29fb5e"> テスト実行環境の作成 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#r84dd296"> SimpleTestのインストール </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#hceeb868">  PEARコマンドを使ってインストールする </a></li>
+<li><a href="#o93ba3c2">  直接ダウンロードしてインストールする </a></li></ul></li>
+<li><a href="#ha8e8dc0">  debugフラグの設定(必須！） </a></li></ul></li>
+<li><a href="#w3416fa4">  テストケースの作成 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#f3b097ad">  テストケースのスケルトンを生成する。 </a></li>
+<li><a href="#j4277083">  テストケースの記述 </a></li>
+<li><a href="#pfd70e14">  Ethna 2.3.5以前の、アクション・ビュー以外のテストケースの書き方 </a></li>
+<li><a href="#ec11f48a"> Ethna_UnitTestCase特有のメソッド </a></li></ul></li>
+<li><a href="#u0d31ccd"> テスト結果表示 </a></li></ul>
+</div>
+
+<h2 id="content_1_0">ユニットテストを行う  <a class="anchor_super" id="i6490c0a" href="ethna-document-dev_guide-misc-unittest.html#i6490c0a" title="i6490c0a"> </a></h2>
+<hr class="full_hr" />
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">sfio</td><td class="style_td"></td><td class="style_td"></td></tr><tr><td class="style_td">書いた人</td><td class="style_td">cockok</td><td class="style_td">2007-07-06</td><td class="style_td">テストケースの書き方追記</td></tr><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2008-05-07</td><td class="style_td">2.3.x系の情報に追随</td></tr></tbody></table></div>
+<hr class="full_hr" />
+
+<h2 id="content_1_1">概要  <a class="anchor_super" id="s989701c" href="ethna-document-dev_guide-misc-unittest.html#s989701c" title="s989701c"> </a></h2>
+<p><a href="http://simpletest.org" rel="nofollow">SimpleTest</a> を使った Ethna でのユニットテストの方法です。<br />
+Simpletest は、様々なユニットテストの実行、レポートの出力形式に対応したPHP向けのテスティングフレームワークです。</p>
+
+<h2 id="content_1_2">テスト実行環境の作成  <a class="anchor_super" id="rb29fb5e" href="ethna-document-dev_guide-misc-unittest.html#rb29fb5e" title="rb29fb5e"> </a></h2>
+
+<h3 id="content_1_3">SimpleTestのインストール  <a class="anchor_super" id="r84dd296" href="ethna-document-dev_guide-misc-unittest.html#r84dd296" title="r84dd296"> </a></h3>
+<p>まずはSimpletestをインストールする必要があります。インストールには以下の二つの方法があります。</p>
+
+<h4 id="content_1_4">PEARコマンドを使ってインストールする  <a class="anchor_super" id="hceeb868" href="ethna-document-dev_guide-misc-unittest.html#hceeb868" title="hceeb868"> </a></h4>
+<pre># pear channel-discover pear.ethna.jp
+# pear update-channels
+# pear install ethna/simpletest</pre>
+
+<h4 id="content_1_5">直接ダウンロードしてインストールする  <a class="anchor_super" id="o93ba3c2" href="ethna-document-dev_guide-misc-unittest.html#o93ba3c2" title="o93ba3c2"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="http://sourceforge.net/projects/simpletest" rel="nofollow">http://sourceforge.net/projects/simpletest</a></li></ul>
+
+<h3 id="content_1_6">debugフラグの設定(必須！）  <a class="anchor_super" id="ha8e8dc0" href="ethna-document-dev_guide-misc-unittest.html#ha8e8dc0" title="ha8e8dc0"> </a></h3>
+<p>設定ファイル（etc/{app_id}-ini.php)のdebugフラグをtrueに設定します。</p>
+<pre>$config = array(
+
+    // debug
+    // (to enable ethna_info and ethna_unittest, turn this true)
+-   'debug' =&gt; false,
++   'debug' =&gt; true,
+
+);</pre>
+<p>仮に trueに設定していないと、以下のようなメッセージが出てテストケースの実行に失敗します。(Ethna 2.3.5 以上<a id="notetext_1" href="#notefoot_1" class="note_super" title="Ethna 2.3.2以前では、このフラグがtrueになっていないと、 Ethna_UnitTestCase が 見つからない等と文句を言われます。www/unittest.php をブラウザから見た場合に画面が真っ白になった場合にも、この点を疑ったほうが良いです。">*1</a>)</p>
+<pre>Ethna cannot run Unit Test under your application setting.
+HINT: You must set {appid}/etc/{appid}-ini.php debug setting 'true'.
+
+In {appid}-ini.php, please set as follows :
+
+$config = array ( 'debug' =&gt; true, );</pre>
+
+<h2 id="content_1_7">テストケースの作成  <a class="anchor_super" id="w3416fa4" href="ethna-document-dev_guide-misc-unittest.html#w3416fa4" title="w3416fa4"> </a></h2>
+
+<h3 id="content_1_8">テストケースのスケルトンを生成する。  <a class="anchor_super" id="f3b097ad" href="ethna-document-dev_guide-misc-unittest.html#f3b097ad" title="f3b097ad"> </a></h3>
+<p>ethnaコマンドを実行し、テストケースのスケルトンを生成します。
+生成されたクラスにテストを記述していきます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>アクション&amp;フォーム用のテストケースのスケルトン作成<a id="notetext_2" href="#notefoot_2" class="note_super" title="Ethna-2.1.2以前でadd-action-testすると、app/action_cli以下にテストケースが出来てしまいます（バグです）。お手数ですがapp/action以下にファイルを移動してくださいm(_ _)m">*2</a>
+<pre>$ ethna add-action-test [アクション名]</pre></li></ul>
+<ul class="list2" style="padding-left:32px;margin-left:32px"><li>以下のアクションテストスケルトンが生成されます。
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>app/action/[アクション名]Test.php</li>
+<li>（クラス名は {appid}_Action_[アクション名]_TestCase)</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ビュー用のテストケースのスケルトン作成
+<pre>$ ethna add-view-test [ビュー名]</pre></li></ul>
+<ul class="list2" style="padding-left:32px;margin-left:32px"><li>以下のビューテストスケルトンが生成されます。<br />
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>app/view/[ビュー名]Test.php</li>
+<li>（クラス名は {appid}_View_[ビュー名]_TestCase)</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>アクション・ビュー「以外」の一般的なテストケースのスケルトン作成(2.3.5以降)<br />
+AppObjectやAppManager、その他のテスト用途に使います。
+<pre>$ ethna add-test [テストケース名]</pre></li></ul>
+<ul class="list2" style="padding-left:32px;margin-left:32px"><li>以下のテストスケルトンが生成されます。<br />
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li>app/test/[テストケースー名]Test.php</li>
+<li>（クラス名は {appid}_[テストケース名]_TestCase)</li>
+<li>{appid}_UnitTestManagerへのテストケースの追加をする必要はありません。</li></ul></li></ul>
+
+<h3 id="content_1_9">テストケースの記述  <a class="anchor_super" id="j4277083" href="ethna-document-dev_guide-misc-unittest.html#j4277083" title="j4277083"> </a></h3>
+<p>上記で生成されたテストケースのクラス中に、「test」から始まるメソッドとテストを追加していきます。ethnaコマンドで生成されるクラスは <a href="http://simpletest.org/api/SimpleTest/UnitTester/UnitTestCase.html" rel="nofollow">UnitTestCase</a> を継承した Ethna_UnitTestCase を継承していますので、<a href="http://simpletest.org/api/SimpleTest/UnitTester/UnitTestCase.html" rel="nofollow">UnitTestCase</a>のメソッドを $this 経由で呼び出すことが出来ます。</p>
+<pre>function test_actionSample()
+{
+    $this-&gt;assertTrue(true);
+}</pre>
+<p>simpletest でのテストケースの書き方の詳細は、以下を参照して下さい。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>WEB+DB PRESS Vol.29</li>
+<li><a href="http://bobchin.ddo.jp/simpletest" rel="nofollow">http://bobchin.ddo.jp/simpletest</a></li>
+<li><a href="http://simpletest.org/en/first_test_tutorial.html" rel="nofollow">http://simpletest.org/en/first_test_tutorial.html</a></li>
+<li><a href="http://simpletest.org/api/" rel="nofollow">http://simpletest.org/api/</a></li></ul>
+
+<h3 id="content_1_10">Ethna 2.3.5以前の、アクション・ビュー以外のテストケースの書き方  <a class="anchor_super" id="pfd70e14" href="ethna-document-dev_guide-misc-unittest.html#pfd70e14" title="pfd70e14"> </a></h3>
+<p>2.3.5 以前で、AppObjectやAppManagerのテストケースを作成する場合は、以下のようにします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>app/ 以下に適当なテストスクリプトを作成します。<br />
+テストは Ethna_UnitTestCase を継承したクラス内に記述します。</li></ul>
+<p>例：app/{appid}_UserManagerTest.php</p>
+<pre>class {appid}_UserManager_TestCase extends Ethna_UnitTestCase
+{
+     ....
+}</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>UnitTestManagerへのテストケースの追加<br />
+{appid}_UnitTestManager.php に追加したテストケースの定義を追加します<a id="notetext_3" href="#notefoot_3" class="note_super" title="アクションとビューのテストはethnaコマンドで生成した場合、{appid}_UnitTestManagerへのテストケースの追加をする必要はありません。">*3</a></li></ul>
+<pre>    var $testcase = array(
+        '{appid}_UserManager' =&gt; 'app/{appid}_UserManagerTest.php',
+    );</pre>
+
+<h3 id="content_1_11">Ethna_UnitTestCase特有のメソッド  <a class="anchor_super" id="ec11f48a" href="ethna-document-dev_guide-misc-unittest.html#ec11f48a" title="ec11f48a"> </a></h3>
+<p>テストケースの中で、アクションフォームやアクション、ビューのインスタンスを独自に必要とすることがあります。以下のメソッドはそうした用途に使います。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>createActionClass()
+アクションの作成</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>createActionForm()
+アクションフォームの作成</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>createPlainActionForm()
+単純なアクションフォームの作成</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>createViewClass()
+ビューの作成</li></ul>
+
+<h2 id="content_1_12">テスト結果表示  <a class="anchor_super" id="u0d31ccd" href="ethna-document-dev_guide-misc-unittest.html#u0d31ccd" title="u0d31ccd"> </a></h2>
+<p>www/unittest.phpをブラウザで表示。ローカルファイルを直接表示してもだめですよ。</p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">Ethna 2.3.2以前では、このフラグがtrueになっていないと、 Ethna_UnitTestCase が 見つからない等と文句を言われます。www/unittest.php をブラウザから見た場合に画面が真っ白になった場合にも、この点を疑ったほうが良いです。</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">Ethna-2.1.2以前でadd-action-testすると、app/action_cli以下にテストケースが出来てしまいます（バグです）。お手数ですがapp/action以下にファイルを移動してくださいm(_ _)m</span><br />
+<a id="notefoot_3" href="#notetext_3" class="note_super">*3</a>
+<span class="small">アクションとビューのテストはethnaコマンドで生成した場合、{appid}_UnitTestManagerへのテストケースの追加をする必要はありません。</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

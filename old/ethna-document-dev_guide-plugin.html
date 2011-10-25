@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna_Pluginのつかいかた(簡易) - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna_Pluginのつかいかた(簡易) </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; Ethna_Pluginのつかいかた(簡易) 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#t6802db7">  Ethna_Pluginのつかいかた(簡易) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#j3c3ba62">  プラグインオブジェクトの取得，実行 </a></li>
+<li><a href="#fbd43c78">  プラグインを用いた例 </a></li></ul></li>
+<li><a href="#y889e9ad">  Ethna_Pluginのつかいかた(詳細) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#h396963e">  概要 </a></li>
+<li><a href="#x1abd3f5">  Ethna_Plugin </a></li>
+<li><a href="#u6ec7c88">  命名規則 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#na6dc7e3">  Ethna本体に付属するプラグイン </a></li>
+<li><a href="#q34b0664">  アプリケーション固有のプラグイン </a></li>
+<li><a href="#k291692c">  $type ごとの親クラス </a></li></ul></li>
+<li><a href="#f25562db">  自動でincludeされるファイルについて </a></li>
+<li><a href="#j5664bd1">  Ethna_Plugin::includePlugin() </a></li>
+<li><a href="#e2023a8a">  アプリケーション固有のプラグインについて </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#f6e3f133">  特定のprefixをもつプラグインを使う </a></li></ul></li>
+<li><a href="#ofa431a2">  より細かい注意事項 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#ode269a7">  $typeと$nameについて </a></li>
+<li><a href="#jd2471b0">  親クラスについて </a></li></ul></li></ul></li>
+<li><a href="#p1474b8b">  3.0.0 以降で取り込まれる予定の変更について </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#f38855b0">  プラグインprefixの廃止 </a></li>
+<li><a href="#mca8ae70">  プラグイン検索ディレクトリの変更 </a></li>
+<li><a href="#cfd12354">  ファイル名の命名規則 </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">いちい</td><td class="style_td">新規</td></tr><tr><td class="style_td">編集した人</td><td class="style_td">sotarok</td><td class="style_td">2.5.0p4以降に関して</td></tr></tbody></table></div>
+<h2 id="content_1_0">Ethna_Pluginのつかいかた(簡易)  <a class="anchor_super" id="t6802db7" href="ethna-document-dev_guide-plugin.html#t6802db7" title="t6802db7"> </a></h2>
+<p>プラグインは$type(種類)と$name(名前)で区別されます。プラグインのマネージャ(Ethna_Pluginクラス)は，命名規則にしたがってファイルを探索し，インクルードとインスタンス作成を代行します。</p>
+<p>現時点では，</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Cachemanager (キャッシュマネージャ)</li>
+<li>Filter (実行時フィルタ)</li>
+<li>Handle (ethnaコマンドのハンドル)</li>
+<li>Logwriter (ログ)</li>
+<li>Validator (フォーム値の検証)</li></ul>
+<p>の5種類の$typeのプラグインが使えるようになっています。</p>
+
+<h3 id="content_1_1">プラグインオブジェクトの取得，実行  <a class="anchor_super" id="j3c3ba62" href="ethna-document-dev_guide-plugin.html#j3c3ba62" title="j3c3ba62"> </a></h3>
+<p>Ethna_Pluginがプラグインを管理しています。$type(=Hoge)と$name(=Fuga)を指定して，</p>
+<pre>$plugin =&amp; $controller-&gt;getPlugin();
+$hoge_plugin =&amp; $plugin-&gt;getPlugin('Hoge', 'Fuga');
+$hoge_plugin-&gt;doSomething();</pre>
+<p>のようにしてプラグインを使うことができます。</p>
+<p>アプリケーションごとのプラグインの一覧は<a href="ethna-document-dev_guide-misc-info.html" title="ethna-document-dev_guide-misc-info (1240d)">InfoManager</a>で見ることができます。</p>
+
+<h3 id="content_1_2">プラグインを用いた例  <a class="anchor_super" id="fbd43c78" href="ethna-document-dev_guide-plugin.html#fbd43c78" title="fbd43c78"> </a></h3>
+<p>プラグインを用いた例として，アクションフォームでプラグインを使ってフォーム値の検証を行う方法を簡単に説明します。</p>
+<p>Regexpバリデータプラグインは，パラメータとしてフォームの値と，バリデートするための正規表現を受け取り，フォームの値が正規表現にマッチするかを検証します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>クラス名: Ethna_Plugin_Validator_Regexp</li>
+<li>ファイル名: $ETHNA_HOME/Plugin/Validator/Ethna_Plugin_Validator_Regexp.php</li></ul>
+<p>バリデータプラグインの親クラスで，どのようなパラメータを受け取るのかなどが規定されています。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>クラス名: Ethna_Plugin_Validator</li>
+<li>ファイル名: $ETHNA_HOME/Plugin/Ethna_Plugin_Validator.php</li></ul>
+<p>アプリケーションのフォーム定義において，</p>
+<pre>var $use_validator_plugin = true;
+
+/**
+ *  @access private
+ *  @var    array   フォーム値定義
+ */
+var $form = array(
+        'sample' =&gt; array(
+            'form_type'     =&gt; FORM_TYPE_TEXT,
+            'type'          =&gt; VAR_TYPE_STRING,
+            'name'          =&gt; 'サンプル',
+            'regexp'        =&gt; '/[0-9]+/',
+            'regexp_error'  =&gt; '正規表現にマッチしません',
+        ),
+    );</pre>
+<p>のように指定すると， $this-&gt;af-&gt;validate() の中でアクションフォームがRegexpバリデータプラグインのインスタンスを取得し，</p>
+<pre>            'regexp'        =&gt; '/[0-9]+/',
+            'regexp_error'  =&gt; '正規表現にマッチしません',</pre>
+<p>の部分をパラメータとしてフォーム値の検証を行います。</p>
+<p>バリデータプラグインの詳細については、<a href="ethna-document-dev_guide-form-validate_with_plugin.html" title="ethna-document-dev_guide-form-validate_with_plugin (513d)">フォーム値の自動検証を行う(プラグイン編)</a>を参照してください。</p>
+<p>また、新規にプラグインを導入するときの具体例については、<a href="ethna-document-dev_guide-plugin-example.html" title="ethna-document-dev_guide-plugin-example (817d)">プラグイン導入の例</a>を参照してください。</p>
+
+<h2 id="content_1_3">Ethna_Pluginのつかいかた(詳細)  <a class="anchor_super" id="y889e9ad" href="ethna-document-dev_guide-plugin.html#y889e9ad" title="y889e9ad"> </a></h2>
+<p>Ethna-2.3.0からEthna_Pluginクラスが追加されました。Smartyのプラグインのように，Ethnaでもプラグイン方式の機能追加ができるようになります。</p>
+
+<h3 id="content_1_4">概要  <a class="anchor_super" id="h396963e" href="ethna-document-dev_guide-plugin.html#h396963e" title="h396963e"> </a></h3>
+<p>現状，プラグイン自体は「ある命名規則に従ったファイル名とクラス名をもったオブジェクト」でしかありません。Ethna_Plugin_Validatorのように，そのプラグインの種類に応じた親クラスを用意して，その継承クラスとして定義されることを期待しています。そして，Ethna_ActionFormのように，そのプラグインを呼び出す側もプラグインを使うことを意識しておかなければなりません。</p>
+<p>プラグインのマネージャとして，Ethna_Pluginクラス(class/Ethna_Plugin.php)があります。Ethna_Pluginは，種類($type)と名前($name)から，ある命名規則にしたがってプラグインのソースファイルを探索し，includeし，インスタンスを作ってアプリケーションに受け渡しをします。なお，Ethna_Pluginのインスタンス自体はEthna_ClassFactoryによって管理されます。</p>
+<p>プラグインは，Ethna本体に付属する形のものと，アプリケーション固有のものとがあります。たとえばすべてのアプリケーションに共通するプラグインをEthna本体のディレクトリに配置したり，特定のアプリケーションでのみ必要なプラグインを作ったりすることができます。また，Ethna本体のプラグインを，命名規則に従うことでアプリケーションのプラグインによって上書きすることができます。</p>
+
+<h3 id="content_1_5">Ethna_Plugin  <a class="anchor_super" id="x1abd3f5" href="ethna-document-dev_guide-plugin.html#x1abd3f5" title="x1abd3f5"> </a></h3>
+<p>Ethna_PluginクラスはEthnaにおけるプラグインの管理機構を提供します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>getPlugin()
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Plugin::getPlugin($type, $name) によって，プラグインのインスタンスを取得できます。</li>
+<li>各プラグインは，$type(種類)と$name(名前)のペアで識別されます。</li>
+<li>初めてgetPluginを呼び出すときに，プラグインのソースファイルを自動的に探索し，インスタンス化します。</li>
+<li>プラグインが見つからないときなどはエラーオブジェクトが返されます。(レジストリにはnullがセットされます。)</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>レジストリ
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna_Pluginは内部に，ソースファイルやクラス名のレジストリと，プラグインのインスタンスのレジストリを持っています。</li>
+<li>getPlugin()が呼び出されると，レジストリからインスタンス(の参照)を返します。</li>
+<li>毎回インスタンスを作り直しているわけでは<strong>ない</strong>ことに注意してください。(レジストリからunloadすることも一応できます。)</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ファイルの探索
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>後に説明する命名規則によってファイルを探索し，ファイルの存在確認，インクルード，クラスの存在確認，インスタンス化が行われます。</li>
+<li>プラグインはEthna本体に付属するものと，アプリケーション固有のものとがあります。同じ$typeと$nameを持つプラグインが両方に存在する場合，アプリケーション固有のものが優先されます。</li></ul></li></ul>
+<p>Ethna_Plugin自体のインスタンスはEthna_Controller::getPlugin()から取得することができます。</p>
+<pre>$plugin =&amp; $controller-&gt;getPlugin();
+$hoge_plugin =&amp; $plugin-&gt;getPlugin('Hoge', 'Fuga');
+$hoge_plugin-&gt;doSomething();</pre>
+
+<h3 id="content_1_6">命名規則  <a class="anchor_super" id="u6ec7c88" href="ethna-document-dev_guide-plugin.html#u6ec7c88" title="u6ec7c88"> </a></h3>
+<p>$type, $nameは大文字／小文字を区別しています。新たにプラグインを作る場合は、 <strong>Ucfirst</strong> のように，先頭を英大文字，以降を英小文字にすることを強くお勧めします。</p>
+
+<h4 id="content_1_7">Ethna本体に付属するプラグイン  <a class="anchor_super" id="na6dc7e3" href="ethna-document-dev_guide-plugin.html#na6dc7e3" title="na6dc7e3"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ディレクトリ
+<pre>$ETHNA_HOME/class/Plugin/{$type}/</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. /usr/share/php/Ethna/class/Plugin/Validator/</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ファイル名
+<pre>Ethna_Plugin_{$type}_{$name}.php</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex.  Ethna_Plugin_Validator_Regexp.php</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>クラス名
+<pre>Ethna_Plugin_{$type}_{$name}</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. class Ethna_Plugin_Validator_Regexp</li></ul></li></ul>
+
+<h4 id="content_1_8">アプリケーション固有のプラグイン  <a class="anchor_super" id="q34b0664" href="ethna-document-dev_guide-plugin.html#q34b0664" title="q34b0664"> </a></h4>
+<p>アプリケーション名をSampleとします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ディレクトリ
+<pre>sample/app/plugin/{$type}/</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. /var/www/sample/app/plugin/Filter/</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ファイル名
+<pre>Sample_Plugin_{$type}_{$name}.php</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. Sample_Plugin_Filter_ExecutionTime.php</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>クラス名
+<pre>Sample_Plugin_{$type}_{$name}</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. class Sample_Plugin_Filter_ExecutionTime</li></ul></li></ul>
+
+<h4 id="content_1_9">$type ごとの親クラス  <a class="anchor_super" id="k291692c" href="ethna-document-dev_guide-plugin.html#k291692c" title="k291692c"> </a></h4>
+<p>その $type の各 $name で共通したプロパティやインタフェースを定義します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ディレクトリ
+<pre>$ETHNA_HOME/class/Plugin/</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. /usr/share/php/Ethna/class/Plugin/</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>ファイル名
+<pre>Ethna_Plugin_{$type}.php</pre>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ex. Ethna_Plugin_Validator.php</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>クラス名
+<pre>Ethna_Plugin_{$type}</pre></li>
+<li>ex. class Ethna_Plugin_Validator</li></ul>
+
+<h3 id="content_1_10">自動でincludeされるファイルについて  <a class="anchor_super" id="f25562db" href="ethna-document-dev_guide-plugin.html#f25562db" title="f25562db"> </a></h3>
+<p>上で述べたように，同じ$type(種類)と$name(名前)をもつプラグインは，Ethna本体に付属するものとアプリケーション固有のものがあり，アプリケーション固有のものが優先されます。</p>
+<p>一方，クラス名においては， Ethna_Plugin_Validator_Regexp と Sample_Plugin_Validator_Regexp のように異なる名前を持つため，両方を共存させることができます。このことは特に，Ethna本体に付属するプラグインのクラスを継承してアプリケーション固有のプラグインを作りたい場合に重要です。</p>
+<p>Ethna_Plugin::getPlugin()は，指定された$typeと$nameから自動でソースファイルを探索しincludeしますが，インスタンスを作るべきクラスのソースファイルしかincludeしないことに注意してください。すなわち，アプリケーション固有のプラグインが存在する場合に，おなじ$typeと$nameを持つEthna本体付属のプラグインファイルは無視されます。</p>
+
+<h3 id="content_1_11">Ethna_Plugin::includePlugin()  <a class="anchor_super" id="j5664bd1" href="ethna-document-dev_guide-plugin.html#j5664bd1" title="j5664bd1"> </a></h3>
+<p>Ethna_Pluginには，内部で管理しているレジストリとは別に，命名規則にしたがってincludeのみを行うstaticメソッド</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_Plugin::includePlugin()</li>
+<li>Ethna_Plugin::includeEthnaPlugin()</li></ul>
+<p>が用意されました。Ethna_Pluginのインスタンスが手元にない，class定義の前に include しておきたいときなどに便利です。</p>
+<p>Ethna_Plugin_Validator_Regexp を継承して Sample_Plugin_Validator_Regexp を作る例:</p>
+<pre>&lt;?php
+Ethna_Plugin::includeEthnaPlugin('Validator', 'Regexp');
+class Hoge_Plugin_Validator_Fuga extends Ethna_Plugin_Validator_Regexp
+{
+    var $accept_array = true;
+    function &amp;validate($name, $var, $params)
+    {
+        $result = true;
+        foreach (to_array($var) as $v) {
+            $result = $result
+                      &amp;&amp; Ethna::isError(parent::validate($name, $v, $params));
+        }
+        return $result;
+    }
+}
+?&gt;</pre>
+<p>この例では，配列の個別要素に対して実行される正規表現バリデータを，配列をそのまま受け取るように変更した意味不明なバリデータになっているかもしれません(適当に書いただけなのでいつか直します)。</p>
+
+<h3 id="content_1_12">アプリケーション固有のプラグインについて  <a class="anchor_super" id="e2023a8a" href="ethna-document-dev_guide-plugin.html#e2023a8a" title="e2023a8a"> </a></h3>
+
+<h4 id="content_1_13">特定のprefixをもつプラグインを使う  <a class="anchor_super" id="f6e3f133" href="ethna-document-dev_guide-plugin.html#f6e3f133" title="f6e3f133"> </a></h4>
+<p>sample という名前のアプリケーションに固有なプラグインは、基本的には Sample_Plugin_Hoge_Fuga という命名規則をに従うことになります。</p>
+<p>Sample_Controller.phpの以下の設定を変更すれば、sampleに加えて特定のprefixを使うよう指示することもできます。</p>
+<pre>   var $plugin_search_appids = array(
+       /*
+        *  プラグイン検索時に検索対象となるアプリケーションIDのリストを記述します。
+        *
+        *  記述例：
+        *  Common_Plugin_Foo_Bar のような命名のプラグインがアプリケーションの
+        *  プラグインディレクトリに存在する場合、以下のように指定すると
+        *  Common_Plugin_Foo_Bar, {$project_id}_Plugin_Foo_Bar, Ethna_Plugin_Foo_Bar
+        *  の順にプラグインが検索されます。 
+        *
+        *  'Common', 'Sample', 'Ethna',
+        */
+       'Sample', 'Ethna',
+   );</pre>
+<p>ちなみに 'Ethna' は Ethna 本体に付属するプラグインのprefixとして予約されています。これを削ると、Ethna本体のプラグインはこのアプリケーションでは使わない、ということになります(どうなるか分からないので残しておいてください)。</p>
+
+<h3 id="content_1_14">より細かい注意事項  <a class="anchor_super" id="ofa431a2" href="ethna-document-dev_guide-plugin.html#ofa431a2" title="ofa431a2"> </a></h3>
+
+<h4 id="content_1_15">$typeと$nameについて  <a class="anchor_super" id="ode269a7" href="ethna-document-dev_guide-plugin.html#ode269a7" title="ode269a7"> </a></h4>
+<p>Ethna_Plugin::getPlugin($type, $name) は与えられた $type と $name を上の命名規則にそのまま代入します。ディレクトリ名やファイル名にそのまま使われるので、<strong>信用できない文字列を$type, $nameにそのまま代入しない</strong>よう気を付けてください。</p>
+<p>また、大文字／小文字の違いでプラグインファイルが見付からないこともありますので、プラグインが認識されないときなどはこの点にも注意してください。なお、アプリケーションのログレベルをdebugに設定すると、プラグインを探す過程が詳細に記録されます。</p>
+<p>$type, $name ともに、自作するときは <strong>Ucfirst</strong> (先頭が大文字、以降は小文字のアルファベット文字列) のような名前にすることを強くお薦めします。</p>
+
+<h4 id="content_1_16">親クラスについて  <a class="anchor_super" id="jd2471b0" href="ethna-document-dev_guide-plugin.html#jd2471b0" title="jd2471b0"> </a></h4>
+<p>親クラスは必ずしも必要ではありません。</p>
+<p>親クラスのファイルは(命名規則に従えば) Ethna 本体のディレクトリ内に置かれ、自動で include されます。そのため、たとえば root 権限がない環境で新しい $type のプラグインを定義できないかもしれません。</p>
+<p>このような場合は、単純に親クラスのことを忘れて、命名規則にしたがったクラスとファイルをアプリケーション側に用意してプラグインを使うことができます。</p>
+
+<h2 id="content_1_17">3.0.0 以降で取り込まれる予定の変更について  <a class="anchor_super" id="p1474b8b" href="ethna-document-dev_guide-plugin.html#p1474b8b" title="p1474b8b"> </a></h2>
+<p>取り込まれてから実際に詳細な使い方・プラグインの作り方は記述する予定ですが，ひとまず主な変更予定について記述します．</p>
+<p>なお，この変更により<strong>プラグイン機能は 3.0.0 preview1 以降では後方互換性がなくなります</strong>．</p>
+
+<h3 id="content_1_18">プラグインprefixの廃止  <a class="anchor_super" id="f38855b0" href="ethna-document-dev_guide-plugin.html#f38855b0" title="f38855b0"> </a></h3>
+<p>これまでは，'Ethna', 'APPID' などのprefixを，APPID_Controllerに</p>
+<pre>    /**
+     *  @var    array       list of application id where Ethna searches plugin.
+     */
+    var $plugin_search_appids = array(
+        'APPID', 'Ethna',
+    );</pre>
+<p>などと定義し，これらのprefixをもったプラグインのクラス名を前から順に検索していくという形でした．</p>
+<p>しかし，これのせいで，複数プロジェクトにまたがって利用したいプラグインや，ほかの人が作成したプラグインなどを自分のアプリケーションに取り込みたい場合の導入が面倒だった問題などがありました．</p>
+<p>3.0.0 preview1 以降では，<strong>この prefix は Ethna のみに固定されます</strong>．</p>
+<p>したがって，2.5.0 以前のような，「Ethna prefix のプラグインクラスを継承してAPPID prefixのプラグインを実装」のような使い方ができなくなります．（ref . <a href="#f25562db">自動でincludeされるファイルについて</a>）．</p>
+
+<h3 id="content_1_19">プラグイン検索ディレクトリの変更  <a class="anchor_super" id="mca8ae70" href="ethna-document-dev_guide-plugin.html#mca8ae70" title="mca8ae70"> </a></h3>
+<p>プラグイン検索ディレクトリは，以下の順序で行われます．</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>app/plugin/</li>
+<li>include_path 順に
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Ethna/exlib/Plugin</li>
+<li>Ethna/class/Plugin</li></ul></li></ul>
+<p>つまり，提供されるプラグインは大きく分けて，3種類ある，という扱いとなります．</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>アプリケーション固有のプラグイン (app/plugin)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>これは，app以下に定義されるプラグインです．これまでも，これが最優先で読み込まれていました．（ただし，これまでと違うところは，APPIDがprefixにつくのではなく，すべてEthnaとなります）．</li></ul></li>
+<li>コミュニティ提供のプラグイン (Ethna/extlib/Plugin)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>今回の変更の主な目的はこれで，さまざまな人がつくったプラグインを，Ethna本体のディレクトリ直下にあるextlibに設置することにより，これを読み込めるようになります．</li>
+<li>このような場所のディレクトリに設置した理由は，pear-local コマンドによるプラグイン提供をしやすくするためです．extlib以下にインストールされるようにビルド設定したPEAR形式でEthnaのプラグインを作成し，これをpear-localコマンドや（app/lib 以下にインストール），pearコマンド（サーバにインストールされます）で管理できます．</li></ul></li>
+<li>Ethna本体にバンドルされたプラグイン (Ethna/class/Plugin)
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>これまでどおり，Ethna本体に同梱されて配布されるプラグインです．</li></ul></li></ol>
+<p>アプリケーション固有のプラグイン以外は，<strong>include_pathを考慮した相対パスで読み込まれます</strong>．たとえば 「Ethna_Plugin_Hoge_Fuga」を読み込みたいとします．</p>
+<pre>/home/user/hogeproject</pre>
+<p>にプロジェクトが作成されているとして，</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>/home/user/hogeproject/lib/Ethna</li>
+<li>/usr/share/pear/Ethna
+の2箇所にEthnaの本体が置いてあるとします．（プロジェクトのlib以下にEthna本体を設置することはわりとよくあることです）
+この場合，初期設定<a id="notetext_1" href="#notefoot_1" class="note_super" title="Ethna 2.3.6 以降">*1</a>では，app/lib以下のinclude_pathが優先されるため，次の順序で検索されます．</li></ul>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>/home/user/hogeproject/app/plugin/Hoge/Fuga.php</li>
+<li>/home/user/hogeproject/lib/Ethna/class/Plugin/Hoge/Fuga.php</li>
+<li>/home/user/hogeproject/lib/Ethna/extlib/Plugin/Hoge/Fuga.php</li>
+<li>/usr/share/pear/Ethna/class/Plugin/Hoge/Fuga.php</li>
+<li>/usr/share/pear/Ethna/extlib/Plugin/Hoge/Fuga.php</li></ol>
+
+<h3 id="content_1_20">ファイル名の命名規則  <a class="anchor_super" id="cfd12354" href="ethna-document-dev_guide-plugin.html#cfd12354" title="cfd12354"> </a></h3>
+<p>上記の変更で，特定のprefixというルールが存在しないので，ファイル名の命名規則が変更になりました．これまで冗長だったファイル名が簡潔になります（PEAR形式になります）</p>
+<p>変更前：</p>
+<pre>Plugin/Hoge/Ethna_Plugin_Hoge_Fuga.php
+(クラス名は「Ethna_Plugin_Hoge_Fuga」)</pre>
+<p>変更後</p>
+<pre>Plugin/Hoge/Fuga.php
+(クラス名は「Ethna_Plugin_Hoge_Fuga」（変更なし）)</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">Ethna 2.3.6 以降</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? BEGIN id:attach -->
+<div id="attach">
+<hr class="full_hr" />添付ファイル: <a href="plugin=attach&amp;pcmd=open&amp;file=Tree.jpg&amp;refer=ethna-document-dev_guide-plugin.html" title="2008/06/02 16:35:58 752.0KB"><img src="image/file.png" width="20" height="20" alt="file" style="border-width:0px" />Tree.jpg</a> <span class="small">775件</span>
+<span class="small">[<a href="plugin=attach&amp;pcmd=info&amp;file=Tree.jpg&amp;refer=ethna-document-dev_guide-plugin.html" title="添付ファイルの情報">詳細</a>]</span>
+ 
+</div>
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

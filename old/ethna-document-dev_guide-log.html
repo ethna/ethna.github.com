@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna でのログ出力を制御する - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna でのログ出力を制御する </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; Ethna でのログ出力を制御する 
+<h2 id="content_1_0">Ethna でのログ出力を制御する  <a class="anchor_super" id="tc32a357" href="ethna-document-dev_guide-log.html#tc32a357" title="tc32a357"> </a></h2>
+<p>Ethna では、実行時に様々なログを出力することができます。これは開発時、リリース後の双方に必要な出力を考慮して設計されており、ログレベルを変えることで様々なニーズに応えることができます。</p>
+<p>ここでは、Ethna でサポートしているログ出力について説明します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#tc32a357">  Ethna でのログ出力を制御する </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#qfc3e2d8">  ログ出力の設定方法 </a></li>
+<li><a href="#md5faa05">  ログレベルについて </a></li>
+<li><a href="#l0627d02">  ログの出力方式と出力オプション </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#c33327bf">  echo </a></li>
+<li><a href="#mdd742a1">  file </a></li>
+<li><a href="#pc3e1321">  syslog </a></li>
+<li><a href="#ia88f74f">  Alertmail </a></li>
+<li><a href="#u381aa61">  default </a></li></ul></li>
+<li><a href="#d41b4d84">  ログ出力のフィルタ </a></li>
+<li><a href="#a3c9d31a">  プログラムでログ出力を制御する方法 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#r50d9af4">  Ethna_Logger へ直接指示する </a></li>
+<li><a href="#b27aaf40">  Ethna::raiseError() が実行されたとき </a></li>
+<li><a href="#xbdd6d3c">  trigger_error() や fatal errorなどが発生したとき </a></li></ul></li>
+<li><a href="#g2688ca5">  ログ出力設定のサンプル </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#x87bc522">  ログをファイルに出力する </a></li>
+<li><a href="#ed4210ad">  ログレベルに応じてアラートメールを送信させる </a></li>
+<li><a href="#y88cf8fa">  アプリ開発中の詳細なログ </a></li>
+<li><a href="#j2977732">  公開する本番環境のログ </a></li></ul></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">------</td><td class="style_td">----------</td><td class="style_td">新規作成</td></tr><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-05-24</td><td class="style_td">最新版に追随する形で全面的に修正</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">ログ出力の設定方法  <a class="anchor_super" id="qfc3e2d8" href="ethna-document-dev_guide-log.html#qfc3e2d8" title="qfc3e2d8"> </a></h3>
+<p>アプリケーションの etc/[アプリケーションID]-ini.php の $config グローバル変数に 'log' というキーで設定を記述します。その中にログ出力方式をキーとして設定を記述していきます。</p>
+<p>共通のログ設定については log_option, log_filter_do, log_filter_ignoreにて設定可能です。</p>
+<pre> $config = array( 
+
+     'log' =&gt; array(
+         //   各ログ出力方式に応じた設定
+         'echo' =&gt; array(  //   ログ出力法式(ここではecho)
+             'level'         =&gt; 'notice',            //  ログレベル
+             'option'        =&gt; 'pid,function,pos',  //  ログ出力オプション
+         ),
+         //
+         // ログ出力方式は複数設定可能
+         //
+     ),
+
+     //    グローバルな設定は以下のように設定可能
+     'log_option'        =&gt; 'pid,function,pos', // ログ出力オプション
+     'log_filter_do'     =&gt; '',                 // マッチしたログを出力
+     'log_filter_ignore' =&gt; 'Undefined index.*%%.*tpl', // 無視するパターン
+ );</pre>
+
+<h3 id="content_1_2">ログレベルについて  <a class="anchor_super" id="md5faa05" href="ethna-document-dev_guide-log.html#md5faa05" title="md5faa05"> </a></h3>
+<p>ログレベルは、出力する情報の重要度をあらわすものです。Ethnaでは、 「LOG_」 というプレフィックスがついたPHPの定数が定義されています。</p>
+<p>また、PHPスクリプトのパースエラー等のPHP組み込みのエラーについては、それらのエラーレベルに対応するログレベルが定義されています。利用できるログレベルは、緊急度の順に以下の通りです。</p>
+<p>Ethna では、設定されたログレベルより高いレベルのログを出力するようになっているので注意して下さい。たとえば、alert に設定した場合は alert と emerg は出力されますが、notice レベルのログは出力されません。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><thead><tr><td class="style_td">ログレベル</td><td class="style_td">設定ファイルへの記述</td><td class="style_td">説明</td><td class="style_td">対応するPHPの組み込みエラーレベル</td></tr></thead><tbody><tr><td class="style_td">LOG_EMERG</td><td class="style_td">emerg</td><td class="style_td">システムが使用不可となるような状態</td><td class="style_td">-----</td></tr><tr><td class="style_td">LOG_ALERT</td><td class="style_td">alert</td><td class="style_td">対応が直ちに必要な緊急の状態</td><td class="style_td">-----</td></tr><tr><td class="style_td">LOG_CRIT</td><td class="style_td">crit</td><td class="style_td">システムに対して致命的な影響があるもの</td><td class="style_td">E_PARSE</td></tr><tr><td class="style_td">LOG_ERR</td><td class="style_td">err</td><td class="style_td">エラーが発生する条件</td><td class="style_td">E_ERROR, E_USER_ERROR</td></tr><tr><td class="style_td">LOG_WARNING</td><td class="style_td">warning</td><td class="style_td">警告が発生する条件</td><td class="style_td">E_WARNING, E_USER_WARNING</td></tr><tr><td class="style_td">LOG_NOTICE</td><td class="style_td">notice</td><td class="style_td">通常の動作だが、特徴的な条件</td><td class="style_td">E_NOTICE, E_USER_NOTICE, E_STRICT</td></tr><tr><td class="style_td">LOG_INFO</td><td class="style_td">info</td><td class="style_td">情報を与えたい場合</td><td class="style_td">-----</td></tr><tr><td class="style_td">LOG_DEBUG</td><td class="style_td">debug</td><td class="style_td">デバッグ時の情報を与えたい場合</td><td class="style_td">上記以外の全て</td></tr></tbody></table></div>
+<p>ログレベルの決定方針は明確ではありませんが、LOG_NOTICE までは、アプリケーションとして正常な動作でも発生することがあります(フォーム値の検証でエラーが発生した場合など)。また、LOG_DEBUGレベルでは、Ethna内部で実行される情報がかなり詳細に出力されます(ethnaコマンドなど)。</p>
+
+<h3 id="content_1_3">ログの出力方式と出力オプション  <a class="anchor_super" id="l0627d02" href="ethna-document-dev_guide-log.html#l0627d02" title="l0627d02"> </a></h3>
+<p>Ethna_LoggerはLogwriterプラグインを使ってログの出力をします。Logwriterプラグインには以下の5通りが用意されています。それぞれのオプションについてはログの設定方法の項を参照してください。</p>
+
+<h4 id="content_1_4">echo  <a class="anchor_super" id="c33327bf" href="ethna-document-dev_guide-log.html#c33327bf" title="c33327bf"> </a></h4>
+<p>アプリケーションの実行画面(ブラウザ等)にそのまま表示します。具体的には、ログ出力が指示された段階でPHPの echo関数 を実行します。設定は以下のようにします。</p>
+<pre>'log' =&gt; array(
+    'echo' =&gt; array(
+        //  ログレベルを設定。
+        //  「ログレベルについて」の項を参照
+        'level'         =&gt; 'notice',
+        //  pid, function, pos を カンマ区切りで指定
+        //  pid      : pid を記録
+        //  function : 関数名を記録
+        //  pos      : ログを出力したファイル名と行を記録する
+        'option'        =&gt; 'pid,function,pos',
+    ),</pre>
+
+<h4 id="content_1_5">file  <a class="anchor_super" id="mdd742a1" href="ethna-document-dev_guide-log.html#mdd742a1" title="mdd742a1"> </a></h4>
+<p>アプリケーションのログディレクトリにログファイル (標準ではlog/appid.log)を作って出力します。設定は以下のようにします。</p>
+<pre>'log' =&gt; array(
+    'file' =&gt; array(
+        //  ログレベルを設定。
+        //  「ログレベルについて」の項を参照
+        'level'         =&gt; 'notice',
+        //  pid, function, pos を カンマ区切りで指定
+        //  pid      : pid を記録
+        //  function : 関数名を記録
+        //  pos      : ログを出力したファイル名と行を記録する
+        'option'        =&gt; 'pid,function,pos',
+        //  ログ出力ファイル名の設定
+        //  デフォルトは [アプリケーションID].log 
+        'file' =&gt; 'hoge.log',
+        //  上記の'file' が指定されていない場合、デフォルトの
+        //  [アプリケーションID].log を出力するディレクトリを指定
+        //  デフォルトは Ethna_Controller の log ディレクトリに
+        //  指定したもの
+        'dir' =&gt; '....',
+        //  ログファイルのパーミッション(chmodします)
+        //  デフォルトは666
+        'mode' =&gt; '666',
+    ),</pre>
+
+<h4 id="content_1_6">syslog  <a class="anchor_super" id="pc3e1321" href="ethna-document-dev_guide-log.html#pc3e1321" title="pc3e1321"> </a></h4>
+<p>syslogを使ってログを出力します。出力先は syslog の設定、及びプラットフォームによって異なります。設定は以下のようにしますが、使い方は echo のものと同様です。</p>
+<pre>'log' =&gt; array(
+    'syslog' =&gt; array(
+        //  ログレベルを設定。
+        //  「ログレベルについて」の項を参照
+        'level'         =&gt; 'notice',
+        //  pid, function, pos を カンマ区切りで指定
+        //  pid      : pid を記録
+        //  function : 関数名を記録
+        //  pos      : ログを出力したファイル名と行を記録する
+        'option'        =&gt; 'pid,function,pos',
+    ),</pre>
+
+<h4 id="content_1_7">Alertmail  <a class="anchor_super" id="ia88f74f" href="ethna-document-dev_guide-log.html#ia88f74f" title="ia88f74f"> </a></h4>
+<p>ログの内容を指定されたアドレスにメールで送信します。1回のログにつき1通のメールが送信され、backtraceが付加されます。緊急事態が発生したときなどに使います。設定は以下のようにします。</p>
+<pre>'log' =&gt; array(
+    'alertmail' =&gt; array(
+        //  ログレベルを設定。
+        //  「ログレベルについて」の項を参照
+        'level'         =&gt; 'crit',
+        //  pid, function, pos を カンマ区切りで指定
+        //  pid      : pid を記録
+        //  function : 関数名を記録
+        //  pos      : ログを出力したファイル名と行を記録する
+        'option'        =&gt; 'pid,function,pos',
+        //   送信先のメールアドレスを設定
+        //   カンマで区切って複数指定可能
+        'mailaddress'   =&gt; 'alert@ml.example.jp, bhoge@ml.example.com',
+    ),</pre>
+
+<h4 id="content_1_8">default  <a class="anchor_super" id="u381aa61" href="ethna-document-dev_guide-log.html#u381aa61" title="u381aa61"> </a></h4>
+<p>何もしません。設定では 'default' を というキーを使いますが、これを使用することはないでしょう。</p>
+
+<h3 id="content_1_9">ログ出力のフィルタ  <a class="anchor_super" id="d41b4d84" href="ethna-document-dev_guide-log.html#d41b4d84" title="d41b4d84"> </a></h3>
+<p>各ログの出力方式の設定には、'filter_do', 'filter_ignore' というキーでそれぞれ「マッチするログを出力する」, 「出力しない」、を設定できます。たとえば echoの設定を例にとると、以下のようになります。</p>
+<pre>'log' =&gt; array(
+    'echo' =&gt; array(
+        //  ログレベルを設定。
+        //  「ログレベルについて」の項を参照
+        'level'         =&gt; 'notice',
+        //  pid, function, pos を カンマ区切りで指定
+        //  pid      : pid を記録
+        //  function : 関数名を記録
+        //  pos      : ログを出力したファイル名と行を記録する
+        'option'        =&gt; 'pid,function,pos',
+        //   マッチするログのみを出力
+        //   設定が空ならば、全て出力されます。
+        'filter_do' =&gt; '',
+        //   マッチしたものを無視する
+        'filter_ignore' =&gt; 'Undefined index.*%%.*tpl',
+    ),</pre>
+
+<h3 id="content_1_10">プログラムでログ出力を制御する方法  <a class="anchor_super" id="a3c9d31a" href="ethna-document-dev_guide-log.html#a3c9d31a" title="a3c9d31a"> </a></h3>
+<p>Ethna では基本的にEthna_Loggerクラスを使ってアプリケーションのログを管理していますが、出力されるタイミングは以下の3つがあります。</p>
+
+<h4 id="content_1_11">Ethna_Logger へ直接指示する  <a class="anchor_super" id="r50d9af4" href="ethna-document-dev_guide-log.html#r50d9af4" title="r50d9af4"> </a></h4>
+<p>Ethna_Logger クラスは、Ethna_Controller, Ethna_Backend から以下の形で取得できます。</p>
+<pre>//   Ethna_Controller から直接取得する
+$ctl =&amp; Ethna_Controller::getInstance();
+$logger = $ctl-&gt;getLogger();
+
+//   Ethna_Backend から取得する(アクションクラス、ビュークラス上で有効
+$logger =&amp; $backend-&gt;getLogger();</pre>
+<p>こうして取得した Ethna_Loggerクラスのインスタンスに対して、ログレベルとメッセージを引数として以下の形で直接指示します。エラー関連の処理については <a href="ethna-document-dev_guide-error.html" title="ethna-document-dev_guide-error (1240d)">エラー処理</a> のページも参照してください。</p>
+<pre>//   NOTICE レベルのメッセージを出力
+$logger-&gt;log(LOG_NOTICE, &quot;メッセージ&quot;);</pre>
+
+<h4 id="content_1_12">Ethna::raiseError() が実行されたとき  <a class="anchor_super" id="b27aaf40" href="ethna-document-dev_guide-log.html#b27aaf40" title="b27aaf40"> </a></h4>
+<pre>$errobj =&amp; Ethna::raiseError(&quot;エラーだよ[%s]&quot;, E_USER_ERROR, $err_submsg);</pre>
+
+<h4 id="content_1_13">trigger_error() や fatal errorなどが発生したとき  <a class="anchor_super" id="xbdd6d3c" href="ethna-document-dev_guide-log.html#xbdd6d3c" title="xbdd6d3c"> </a></h4>
+<pre>trigger_error(&quot;大変だ！エラーだよ！&quot;);</pre>
+
+<h3 id="content_1_14">ログ出力設定のサンプル  <a class="anchor_super" id="g2688ca5" href="ethna-document-dev_guide-log.html#g2688ca5" title="g2688ca5"> </a></h3>
+<p>ここでは、ログ出力設定の典型的な例についていくつか紹介します。</p>
+
+<h4 id="content_1_15">ログをファイルに出力する  <a class="anchor_super" id="x87bc522" href="ethna-document-dev_guide-log.html#x87bc522" title="x87bc522"> </a></h4>
+<p>ログをファイルに出力するには、「file」という名前をキーにして設定を記述します。以下は、/tmp/hoge.log にパーミッション666で、noticeレベル以上のログを出力します。</p>
+<p>通知するレベルを変更するには、level の値を変更します。<a href="ethna-document-dev_guide-log.html#md5faa05" rel="nofollow">ログレベルの説明</a>も参照して下さい。</p>
+<pre>$config = array(
+    'log' =&gt; array(
+        'file' =&gt; array(
+            'level'         =&gt; 'notice',
+            'option'        =&gt; 'pid,function,pos',
+            'file' =&gt; 'hoge.log',
+            'dir' =&gt; '/tmp',
+            'mode' =&gt; '666',
+        ),
+    ),</pre>
+
+<h4 id="content_1_16">ログレベルに応じてアラートメールを送信させる  <a class="anchor_super" id="ed4210ad" href="ethna-document-dev_guide-log.html#ed4210ad" title="ed4210ad"> </a></h4>
+<p>以下のようにして、メールの送信先のメールアドレスを記述します。<br />
+カンマで区切って複数のメールアドレスが指定できます。</p>
+<p>通知するレベルを変更するには、level の値を変更します。<a href="ethna-document-dev_guide-log.html#md5faa05" rel="nofollow">ログレベルの説明</a>も参照して下さい。</p>
+<pre>$config = array(
+    'log' =&gt; array(
+        'alertmail' =&gt; array(
+            'level'         =&gt; 'err',
+            'mailaddress'   =&gt; 'alert@ml.example.jp',
+        ),</pre>
+
+<h4 id="content_1_17">アプリ開発中の詳細なログ  <a class="anchor_super" id="y88cf8fa" href="ethna-document-dev_guide-log.html#y88cf8fa" title="y88cf8fa"> </a></h4>
+<p>方針: typoを発見するためにLOG_NOTICEレベル(E_NOTICEを出力するレベル)まで画面に表示し、fileにはデータベースに問い合わせた全てのSQL文を出力する。</p>
+<pre> $config = array( 
+
+     'debug' =&gt; true,
+     // ....
+     'log' =&gt; array(
+         'echo' =&gt; array(
+             'level'         =&gt; 'notice',
+             'option'        =&gt; 'pid,function,pos',
+             'filter_do'     =&gt; '',
+             'filter_ignore' =&gt; 'Undefined index.*%%.*tpl',
+         ),
+         'file' =&gt; array(
+             'level'         =&gt; 'debug',
+             'option'        =&gt; 'pid,function,pos',
+             'filter_do'     =&gt; '',
+             'filter_ignore' =&gt; 'Undefined index.*%%.*tpl',
+         ),
+      ),</pre>
+
+<h4 id="content_1_18">公開する本番環境のログ  <a class="anchor_super" id="j2977732" href="ethna-document-dev_guide-log.html#j2977732" title="j2977732"> </a></h4>
+<p>方針: とにかく画面にはなにも表示しない。回避可能だが意図した動作になっていないなどのLOG_WARNINGレベルはファイルに出力。データベースに接続できないなどの緊急時に発生するLOG_ERRレベルのログはメールでアラート用メーリングリストに送信する。</p>
+<pre>$config = array( 
+
+    'debug' =&gt; false,
+    //  ...
+    'log' =&gt; array(
+        'echo' =&gt; array(
+            'level'         =&gt; 'crit',
+        ),
+        'file' =&gt; array(
+            'level'         =&gt; 'warning',
+        ),
+        'alertmail' =&gt; array(
+            'level'         =&gt; 'err',
+            'mailaddress'   =&gt; 'alert@ml.example.jp',
+        ),
+    ),
+    'log_option'        =&gt; 'pid,function,pos',
+    'log_filter_do'     =&gt; '',
+    'log_filter_ignore' =&gt; 'Undefined index.*%%.*tpl',</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

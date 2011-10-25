@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna_Rendererの使い方 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna_Rendererの使い方 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; Ethna_Rendererの使い方 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#t3298f04">  Ethna_Rendererの使い方 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#w7e09d2b">  はじめに </a></li>
+<li><a href="#p3fb012f">  Ethna_Rendererについて </a></li>
+<li><a href="#g3f828f9">  Ethna_Renderer_Smartyについて </a></li>
+<li><a href="#ed9b6402">  他のテンプレートエンジンの実装の仕方 </a></li>
+<li><a href="#m13ce6ec">  テンプレートエンジンのデフォルト設定 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#laabf886">  Ethna-2.1.2 まで </a></li></ul></li></ul></li></ul>
+</div>
+
+<h2 id="content_1_0">Ethna_Rendererの使い方  <a class="anchor_super" id="t3298f04" href="ethna-document-dev_guide-renderer.html#t3298f04" title="t3298f04"> </a></h2>
+
+<h3 id="content_1_1">はじめに  <a class="anchor_super" id="w7e09d2b" href="ethna-document-dev_guide-renderer.html#w7e09d2b" title="w7e09d2b"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethnaでは，レンダラが指定されたテンプレートを読み込み，処理されたデータを埋め込んでページを生成しています．</li>
+<li>ページ生成の処理を行うレンダラは，開発者の好みに合わせて変更することが可能です．</li>
+<li>デフォルトでは，レンダラとしてSmartyが使われています．</li></ul>
+
+<h3 id="content_1_2">Ethna_Rendererについて  <a class="anchor_super" id="p3fb012f" href="ethna-document-dev_guide-renderer.html#p3fb012f" title="p3fb012f"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_Rendererはバージョン2.3.0から実装されています．</li>
+<li>事実上開発途上で、smartyを使った例しかありません。今後Ethna_Renderer_Flexyなどが用意される予定です。</li></ul>
+
+<h3 id="content_1_3">Ethna_Renderer_Smartyについて  <a class="anchor_super" id="g3f828f9" href="ethna-document-dev_guide-renderer.html#g3f828f9" title="g3f828f9"> </a></h3>
+<p>Ethna_Renderer_SmartyはSmartyをEthna_Rendererの仕様に合わせてラッピングしたものです．
+基本的にはSmartyと同じ機能が使えます．（まだ未実装のものもあります．近々実装の予定です．）</p>
+
+<h3 id="content_1_4">他のテンプレートエンジンの実装の仕方  <a class="anchor_super" id="ed9b6402" href="ethna-document-dev_guide-renderer.html#ed9b6402" title="ed9b6402"> </a></h3>
+<p>Smarty以外のテンプレートエンジンを使いたい場合，Ethna_Rendererを継承して，新しいレンダラクラスをつくります．
+基本的な流れは，以下のとおりです．</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_Rendererを継承して，独自のレンダラクラスをつくる.</li>
+<li>($App)_Controllerで1で作成したレンダラクラスをインクルードする．</li>
+<li>($App)_Controllerのクラスファクトリ($class)の'renderer'に1で作成したレンダラクラスを指定する．</li></ol>
+
+<h3 id="content_1_5">テンプレートエンジンのデフォルト設定  <a class="anchor_super" id="m13ce6ec" href="ethna-document-dev_guide-renderer.html#m13ce6ec" title="m13ce6ec"> </a></h3>
+<p>テンプレートエンジンの共通変数などを設定する場合は、アプリケーションのビューの基底クラス Appid_ViewClass にある _setDefault() メソッドを実装してください。</p>
+<pre>function _setDefault(&amp;$renderer)
+{
+    //Rendererからテンプレートエンジンを取得
+    $smarty =&amp; $renderer-&gt;getEngine();
+
+    // セッション情報をセット
+    $smarty-&gt;assign_by_ref('session_name', session_name());
+    $smarty-&gt;assign_by_ref('session_id', session_id());
+
+    // smartyテンプレートのデリミタを変更
+    $smarty-&gt;left_delimiter = '&lt;!--{';
+    $smarty-&gt;right_delimiter = '}--&gt;';
+}</pre>
+<p>$renderer は Ethna_Renderer の継承クラスのインスタンスで、デフォルトでは Ethna_Renderer_Smarty です。 getEngine() メソッドで smarty のインスタンスを取得することができます。</p>
+
+<h4 id="content_1_6">Ethna-2.1.2 まで  <a class="anchor_super" id="laabf886" href="ethna-document-dev_guide-renderer.html#laabf886" title="laabf886"> </a></h4>
+<p>上の設定は Ethna-2.3.0 以降で Renderer が導入された場合の話ですが、 2.1.2 以前の場合は、アプリケーションのコントローラ Appid_Controller の _setDefaultTemplateEngine() メソッドで以下のように設定してください。 ($smartyはそのままsmartyオブジェクトです)</p>
+<pre>   function _setDefaultTemplateEngine(&amp;$smarty)
+   {
+       $smarty-&gt;assign_by_ref('session_name', session_name());
+       $smarty-&gt;assign_by_ref('session_id', session_id());
+   }</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

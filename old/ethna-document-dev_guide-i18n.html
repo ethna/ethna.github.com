@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+プロジェクトの国際化 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>プロジェクトの国際化 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; プロジェクトの国際化 
+<h2 id="content_1_0">プロジェクトの国際化  <a class="anchor_super" id="d3118a2c" href="ethna-document-dev_guide-i18n.html#d3118a2c" title="d3118a2c"> </a></h2>
+<pre>注意：このページで記述している機能を使うには、Ethna 2.5.0 以降が必要です。</pre>
+<p>Ethnaで作ったプロジェクトを複数の言語に対応させる方法は一応2.3系までも存在していました。しかし、切り替えるメッセージのカタログを作るための支援機能がなかったことと、ロケールの定義が曖昧だったことが原因で、楽なものではありませんでした。</p>
+<p>Ethna 2.5.0 以降では、これらの欠点を解消するために、メッセージカタログの自動生成機能を実装し、ロケール周りのAPIを整備しました。ここではそれらを使ってEthnaのプロジェクトを国際化したWebアプリにする方法を紹介します。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#d3118a2c">  プロジェクトの国際化 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#h96577e6">  基本的な手順 </a></li>
+<li><a href="#z679fa75">  プロジェクトの作成と設定 </a></li>
+<li><a href="#ze3f9fe7">  PHPスクリプト、テンプレートへのメッセージの埋め込み </a></li>
+<li><a href="#h1146b4d">  メッセージカタログの作成 </a></li>
+<li><a href="#cd7feeb1">  メッセージカタログの種類 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#mfd6ad8f">  iniファイル </a></li>
+<li><a href="#x044a331">  gettextのカタログファイル </a></li>
+<li><a href="#l4e0ac9b">  gettextを使うべき場合 </a></li></ul></li>
+<li><a href="#vad05648">  カタログを翻訳する </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#df7f11e3">  iniファイルの場合 </a></li>
+<li><a href="#v1b81a13">  gettextの場合 </a></li></ul></li>
+<li><a href="#f70053ce">  プログラム上でのロケール切り替え </a></li>
+<li><a href="#nc50883e">  制限事項、TODO </a></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2008-10-08</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">基本的な手順  <a class="anchor_super" id="h96577e6" href="ethna-document-dev_guide-i18n.html#h96577e6" title="h96577e6"> </a></h3>
+<p>国際化(i18n) に対応したプロジェクトを作るための手順は以下の通りです。
+特に 2. の部分は、メッセージが多ければ多いほど地道な作業になりがちで、後になればなるほど大変です。国際化を意識したプロジェクトを作る場合は、可能であれば早い段階からそれを意識して以下の作業をするとよいでしょう。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>プロジェクトを作成し、設定する</li>
+<li>国際化関数(テンプレートでは修正子)をPHPスクリプトに埋め込む</li>
+<li>ethna i18n コマンドを実行し、メッセージカタログを自動生成する</li>
+<li>自動生成したカタログを翻訳する</li>
+<li>必要に応じてPHPスクリプト上でロケールを切り替える</li></ol>
+
+<h3 id="content_1_2">プロジェクトの作成と設定  <a class="anchor_super" id="z679fa75" href="ethna-document-dev_guide-i18n.html#z679fa75" title="z679fa75"> </a></h3>
+<p>プロジェクトを作成し、デフォルトのロケール名<a id="notetext_1" href="#notefoot_1" class="note_super" title="ロケールとは、言語や特定の地域におけるお金、日付などの表記規則の集合のことです。ロケール名とは、ここでは特定の地域の名前くらいの意味で使っています。ロケール名の詳細については、gettextのマニュアル が非常にうまく説明しています。">*1</a>を設定します。
+文字コードはデフォルトの UTF-8 で作成することを強く推奨します<a id="notetext_2" href="#notefoot_2" class="note_super" title="複数の言語を同時に表現できる文字コードであればOKなのですが、、UTF-8が現実的な選択肢だと思います">*2</a>。</p>
+<pre>(/tmp ディレクトリに sampleプロジェクトを作成 文字コードはデフォルトのUTF-8)
+ethna add-project -b /tmp sample</pre>
+<p>デフォルトのロケール名は、Ethna_Controller#_getDefaultLanguage メソッドを以下のようにオーバーライドすることで設定します。詳しくは <a href="ethna-document-dev_guide-app-setlanguage.html#v4c471ad" rel="nofollow">言語とエンコーディングの設定</a> を参照して下さい。</p>
+<p>/tmp/sample/app/Sample_Controller.php には、デフォルトで以下のように、「ja_JP」が設定されています。</p>
+<pre>/**
+ *  デフォルト状態での使用言語を取得する
+ *  外部に出力されるEthnaのエラーメッセージ等のエンコーディングを
+ *  切り替えたい場合は、このメソッドをオーバーライドする。
+ *
+ *  @access protected
+ */
+function _getDefaultLanguage()
+{
+    // ロケール名(e.x ja_JP, en_US 等),
+    // システムエンコーディング名,
+    // クライアントエンコーディング(= テンプレートのエンコーディング) の配列
+    return array('ja_JP', 'UTF-8', 'UTF-8');
+}</pre>
+
+<h3 id="content_1_3">PHPスクリプト、テンプレートへのメッセージの埋め込み  <a class="anchor_super" id="ze3f9fe7" href="ethna-document-dev_guide-i18n.html#ze3f9fe7" title="ze3f9fe7"> </a></h3>
+<p>プロジェクト内のPHPスクリプト(テストスクリプトを除く)、テンプレートにメッセージを埋め込みます。PHPスクリプトでは _et 関数を使い、テンプレートには i18n 修正子を埋め込みます。</p>
+<p>以下では、i18ntest アクションを作成し、挨拶文を埋め込んでいます。</p>
+<pre>ethna add-action i18ntest</pre>
+<pre>class Sample_Form_I18ntest extends Sample_ActionForm
+{
+    var $form = array(
+        //   form 定義の 以下の要素も、i18nコマンドは抜き出して
+        //   くれます。なぜ抜き出してくれるかというと、メンバ変数
+        //   の初期化は _et() や、gettext の _() のような関数の戻
+        //   り値ではできないからです。
+        //
+        //   'name', 'required_error',
+        //   'type_error', 'min_error',
+        //   'max_error', 'regexp_error'
+    );
+} 
+
+class Sample_Action_I18ntest extends Sample_ActionClass
+{
+   function prepare()
+   {
+       return null;
+   }
+
+   function perform()
+   {
+       //  アクション内に国際化メッセージを埋め込む例
+       //  _et 関数に渡す値は固定文字列でなければなりません
+       //  そうでないと ethna i18n コマンドが解釈できません
+       $this-&gt;af-&gt;setApp('greetings', _et(&quot;hello world&quot;));
+       $this-&gt;af-&gt;setApp('part', _et(&quot;bye&quot;));
+       return 'i18ntest';
+   } 
+}</pre>
+<p>テンプレートは対応させるロケールの数だけ作成します。以下では、デフォルトの ja_JP(日本語) のものと、ko_KR(韓国語) のものを /tmp/sample/templates/[ja_JP|ko_KR]/i18ntest.tpl に 作成しています。</p>
+<pre>ethna add-template i18ntest
+ethna add-template -l ko_KR i18ntest</pre>
+<pre>{* /tmp/sample/templates/[ja_JP|ko_KR]/i18ntest.tpl *}
+{* PHPスクリプト内での国際化メッセージを埋め込んでもよいし *}
+{* 固定の文字列に i18n 修正子を通してもよい *}
+
+{$app.greetings}&lt;br&gt;
+{$app.part}&lt;br&gt;
+{'foo'|i18n}</pre>
+
+<h3 id="content_1_4">メッセージカタログの作成  <a class="anchor_super" id="h1146b4d" href="ethna-document-dev_guide-i18n.html#h1146b4d" title="h1146b4d"> </a></h3>
+<p>プロジェクト内のファイルにメッセージを埋め込んだら、メッセージカタログの作成です。これは、プロジェクトディレクトリに移動して <a href="ethna-document-dev_guide-ethna_command.html#vd9b3c8f" rel="nofollow">ethna i18n コマンド</a>を実行するだけです。これは、作成したロケールの数だけ実行する必要があります。</p>
+<p>実行すると、/tmp/sample/locale/[ja_JP|ko_KR]/LC_MESSAGES/[ja_JP|ko_KR].ini が生成されます。</p>
+<pre>ethna i18n -l ja_JP
+ethna i18n -l ko_KR</pre>
+<p>ethna i18n コマンドで作成できるカタログは、ethna 組み込みの iniファイルと、国際化用のソフトウェアとして広く知られている <a href="http://www.gnu.org/software/gettext/" rel="nofollow">gettext</a> 用の poファイルがあります。デフォルトでは ini ファイルが作成されますが、poファイルを作成するには [-g|--gettext] オプションを指定します。</p>
+<pre>ethna i18n -l ja_JP -g
+ethna i18n -l ko_KR -g</pre>
+<p>実行すると、/tmp/sample/locale/[ja_JP|ko_KR]/LC_MESSAGES/[ja_JP|ko_KR].po が生成されます。</p>
+<p>既にファイルがあった場合、iniファイルの場合は、既存の翻訳を引き継いだ上でファイルが上書きされます。gettext の場合は、最新のメッセージを抜き出した（但し翻訳語は空）の新しくファイルが作られます。gettext は、<a href="http://www.gnu.org/software/gettext/manual/html_node/msgmerge-Invocation.html#msgmerge-Invocation" rel="nofollow">msgmerge プログラム</a> を使うことで古い po ファイルと内容をマージすることが出来ます。</p>
+<p>ini ファイルと gettext の違いについては、以下で説明します。</p>
+
+<h3 id="content_1_5">メッセージカタログの種類  <a class="anchor_super" id="cd7feeb1" href="ethna-document-dev_guide-i18n.html#cd7feeb1" title="cd7feeb1"> </a></h3>
+
+<h4 id="content_1_6">iniファイル  <a class="anchor_super" id="mfd6ad8f" href="ethna-document-dev_guide-i18n.html#mfd6ad8f" title="mfd6ad8f"> </a></h4>
+<p>Ethna のデフォルトのカタログファイルです。gettext が入っていない環境を考慮して、このフォーマットがデフォルトになっています。内容は ini ファイルライクですが、翻訳後のメッセージと元のメッセージは必ず「ダブルクォート」で囲まれている必要があります。また、ファイルの文字コードは必ずUTF-8になります。</p>
+<p>内容としては、「&quot;元のメッセージ&quot; = &quot;翻訳語&quot;」 というフォーマットになります。</p>
+<p>これまで例として作ってきた sample プロジェクトに ethna i18n コマンドを実行すると、/tmp/sample/locale/ja_JP/LC_MESSAGES/ja_JP.ini は以下のようになります。</p>
+<pre>;
+;   ja_JP.ini
+;
+;   This file stores Ethna project(Sample) system
+;   message and error message and its translation. This
+;   file's encoding is always UTF-8.
+;
+;   This file is ini file like format. For example,
+;
+;   &quot;msgid&quot; = &quot;Translated string.&quot;
+;
+;   msgid and Translated string must be always double quoted.
+;   When you want to include double quote in msgid or Translated
+;   string, you must escape it by backslash character.
+;   Comment line is started by semicolon character.
+;
+;   DO NOT CHANGE msgid string!!!!
+;
+
+; /tmp/sample/app/action/I18ntest.php
+&quot;hello world&quot; = &quot;&quot;
+&quot;bye&quot; = &quot;&quot;
+
+; /tmp/sample/template/ja_JP/i18ntest.tpl
+&quot;foo&quot; = &quot;&quot;</pre>
+
+<h4 id="content_1_7">gettextのカタログファイル  <a class="anchor_super" id="x044a331" href="ethna-document-dev_guide-i18n.html#x044a331" title="x044a331"> </a></h4>
+<p>gettext 向けのカタログファイルは poファイルと呼ばれるものです。ただ、gettext を実際に使うときはこのファイルで動作するわけではありません。このファイルを翻訳した上でさらに <a href="http://www.gnu.org/software/gettext/manual/html_node/msgfmt-Invocation.html#msgfmt-Invocation" rel="nofollow">msgfmt コマンド</a> を実行し、moファイルと呼ばれるバイナリファイルを生成する必要があります。</p>
+<p>これまで例として作ってきた sample プロジェクトに ethna i18n -g コマンドを実行すると、/tmp/sample/locale/ja_JP/LC_MESSAGES/ja_JP.po は以下のようになります。</p>
+<pre>#
+# ja_JP.po
+# This is message catalog file for Ethna Project(Sample).
+# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
+#
+
+msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: PACKAGE VERSION\n&quot;
+&quot;Report-Msgid-Bugs-To: \n&quot;
+&quot;POT-Creation-Date: 2008-10-10 10:53+0900\n&quot;
+&quot;PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n&quot;
+&quot;Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n&quot;
+&quot;Language-Team: LANGUAGE &lt;LL@li.org&gt;\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+
+#: /tmp/sample/app/action/I18ntest.php:97
+msgid &quot;hello world&quot;
+msgstr &quot;&quot;
+
+#: /tmp/sample/app/action/I18ntest.php:98
+msgid &quot;bye&quot;
+msgstr &quot;&quot;
+ 
+#: /tmp/sample/template/ja_JP/i18ntest.tpl
+msgid &quot;foo&quot;
+msgstr &quot;&quot;</pre>
+
+<h4 id="content_1_8">gettextを使うべき場合  <a class="anchor_super" id="l4e0ac9b" href="ethna-document-dev_guide-i18n.html#l4e0ac9b" title="l4e0ac9b"> </a></h4>
+<p>Ethna 組み込みの iniファイル形式は、いわば「なんちゃって」に過ぎません。メッセージを抜き出すことを支援してはくれますが、長期に渡ってメンテナンスするのには向いていません。そうしたツールを実装していないからです。</p>
+<p>たとえば、ソースコードを見て古いものと新しいものを比較し、メッセージの状態（翻訳済、曖昧(fuzzy)な状態、未翻訳）に分けるような技は iniファイルではできません。また、複数形のような翻訳形式にも未対応です。gettext では、そうした状態を見た上で翻訳を編集するための便利なツールが既に数多くあります。</p>
+<p>おそらく、大きなソースを長期的にメンテナンスするのであれば、gettext が明らかに向いていますし、gettextの利用を強く推奨します。小さなプロジェクトであれば、iniファイルでもよいかもしれません。</p>
+<p>では、なぜそんななんちゃってモードを作ったのか？ それは gettext が入っていない環境を考えたことと、小さなプロジェクトなら gettext のような大げさなことをしなくてもいい場合があるだろう、と考えたからです。このモードの必要性についてはきっと多くの議論があることでしょう。是非<a href="ethna-community.html" rel="nofollow">コミュニティのページ</a> をご覧になり、開発者にフィードバックをお願いします。</p>
+
+<h3 id="content_1_9">カタログを翻訳する  <a class="anchor_super" id="vad05648" href="ethna-document-dev_guide-i18n.html#vad05648" title="vad05648"> </a></h3>
+
+<h4 id="content_1_10">iniファイルの場合  <a class="anchor_super" id="df7f11e3" href="ethna-document-dev_guide-i18n.html#df7f11e3" title="df7f11e3"> </a></h4>
+<p>ini ファイルの場合は、空文字列「&quot;&quot;」の部分に翻訳語を入れていきます。例えば以下のような形になります。これは生成したロケールのiniファイル全てに対して行います。</p>
+<pre>; /tmp/sample/app/action/I18ntest.php
+&quot;hello world&quot; = &quot;こんにちは世界&quot;
+&quot;bye&quot; = &quot;さようなら&quot;
+ 
+; /tmp/sample/template/ja_JP/i18ntest.tpl
+&quot;foo&quot; = &quot;ふー&quot;</pre>
+
+<h4 id="content_1_11">gettextの場合  <a class="anchor_super" id="v1b81a13" href="ethna-document-dev_guide-i18n.html#v1b81a13" title="v1b81a13"> </a></h4>
+<p>gettext の場合は、msgstr の部分に翻訳語を入れていく形式です。直接編集しても構わないのですが、翻訳の状態を見た上で便利にpoファイルを編集できる便利なツールが既に数多く存在します。これらを使って、生成したロケールのpoファイル全てに対して翻訳を行って下さい。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="http://www.gnu.org/software/automake/manual/gettext/PO-Mode.html" rel="nofollow">emacs の po-mode</a></li>
+<li><a href="http://www.poedit.net/" rel="nofollow">poEditor(Windows, *nix系向け)</a></li>
+<li><a href="http://www.kde.gr.jp/pukiwiki/index.php?KBabel" rel="nofollow">kbabel (X Window環境用)</a></li>
+<li>...などなど</li></ul>
+<p>翻訳が終わったら msgfmt コマンドで mo ファイルを生成して下さい。-oオプションの引数として必ず [ロケール名].mo を渡すようにして下さい。
+これは作成したロケールの poファイルすべてに対して行います。</p>
+<pre>cd /tmp/sample/locale/ja_JP/LC_MESSAGES/
+msgfmt -o ja_JP.mo ja_JP.po</pre>
+
+<h3 id="content_1_12">プログラム上でのロケール切り替え  <a class="anchor_super" id="f70053ce" href="ethna-document-dev_guide-i18n.html#f70053ce" title="f70053ce"> </a></h3>
+<p>複数のロケールに対してメッセージカタログを作成したら、あとは必要に応じて、PHPスクリプト内でロケールを切り替えるだけです。</p>
+<p>それには、適切な場所で Ethna_Controllerクラスの setLocale メソッドを使います。</p>
+<pre>$ctl = Ethna_Controller::getInstance();
+$ctl-&gt;setLocale('ko_KR');</pre>
+<p>Ethna_Controller には、アクションが実行される「直前」に呼ばれる _setLanguage というメソッドがあります。これをオーバライドすれば、条件に応じてデフォルトのロケールを上書きすることが出来ます。</p>
+<pre> function _setLanguage($locale, $system_encoding = null, $client_encoding = null)
+ {
+      //  ロケールを ko_KR に、クライアントエンコーディングを
+      //  'EUC_KR' に変更する   
+      $this-&gt;locale = 'ko_KR';
+      $this-&gt;system_encoding = $system_encoding;
+      $this-&gt;client_encoding = 'EUC_KR';
+
+      //  ロケールを変更した際は、必ず $i18n のsetLanguageメソッド
+      //  も呼び出すこと。
+      $i18n =&amp; $this-&gt;getI18N();
+      $i18n-&gt;setLanguage($locale, $system_encoding, $client_encoding);
+ }</pre>
+<p>または、言語毎にコントローラーを複数作り、そこの _getDefaultLanguage() メソッドでロケールをそれぞれ設定するというのも手です。以下のように作り、それを www 以下のエントリポイントから呼び出してやります。</p>
+<pre>// .snip
+
+/**
+ *  /tmp/sample/app/Sample_Controller をコピーして作ったもの
+ */
+class Sample_ko_KR_Controller extends Ethna_Controller
+{
+    // ... snip
+
+    function _getDefaultLanguage()
+    {
+        return array('ko_KR', 'UTF-8', 'UTF-8');
+    }
+}</pre>
+<pre>&lt;?php
+require_once '/tmp/sample/app/Sample_ko_KR_Controller.php';
+
+Sample_ko_KR_Controller::main('Sample_ko_KR_Controller', 'index');
+?&gt;</pre>
+<p>gettext を使う場合は、etc/[appid]-ini.php の use_gettext を true にする必要があります。</p>
+<pre>$config = array(
+    // i18n
+    'use_gettext' =&gt; true,
+);</pre>
+
+<h3 id="content_1_13">制限事項、TODO  <a class="anchor_super" id="nc50883e" href="ethna-document-dev_guide-i18n.html#nc50883e" title="nc50883e"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>既にサンプルソースのコメントでも述べていますが、_et 関数や i18n 修正子に渡す引数は固定文字列であることを強く推奨します。ethna i18n コマンドはその形式しか解釈できないからです。どうしても動的な(実行時にしか決まらない)値を渡したい場合は、自分でその値を見極めた上でカタログを手動で追加する必要があります。</li>
+<li><a href="ethna-document-dev_guide-i18n.html#l4e0ac9b" rel="nofollow">gettextを使うべき場合</a> でも述べていますが、Ethna は生成したメッセージカタログに対して状態を付加するなどして長期に渡ってメンテナンスするための便利な仕組みを持っていません。gettextの方がそうした点や翻訳のフォーマット（複数形など）の点で多くの機能を備えていますので、そういった要求がある場合はgettextの使用を強く推奨します。</li>
+<li>現行のEthnaの実装では、メッセージの翻訳(LC_MESSAGES)に対応しているだけで、その他のお金や日時の変換等のAPIは未実装です。それらについては独自に実装するなり、外部ライブラリを使うなりして、Ethna_I18n.php を拡張して頂ければと思います。</li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">ロケールとは、言語や特定の地域におけるお金、日付などの表記規則の集合のことです。ロケール名とは、ここでは特定の地域の名前くらいの意味で使っています。ロケール名の詳細については、<a href="http://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html#Locale-Names" rel="nofollow">gettextのマニュアル</a> が非常にうまく説明しています。</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">複数の言語を同時に表現できる文字コードであればOKなのですが、、UTF-8が現実的な選択肢だと思います</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+開発マニュアル - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>開発マニュアル </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; 開発マニュアル 
+<h2 id="content_1_0">開発マニュアル  <a class="anchor_super" id="kae62ae1" href="ethna-document-dev_guide.html#kae62ae1" title="kae62ae1"> </a></h2>
+<p>実際の開発に必要なドキュメントがまとめてあります。ドキュメントがない部分については順次追加予定です（ユーザの方々によるドキュメントもお待ちしています:）。</p>
+
+<h3 id="content_1_1">基本編  <a class="anchor_super" id="b6964420" href="ethna-document-dev_guide.html#b6964420" title="b6964420"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-action.html" title="ethna-document-dev_guide-action (1058d)">アクション定義</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-form.html" title="ethna-document-dev_guide-form (1006d)">フォーム定義・入力の自動検証</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-forward.html" title="ethna-document-dev_guide-forward (737d)">遷移先定義、テンプレートの扱い方</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-error.html" title="ethna-document-dev_guide-error (1240d)">エラー処理</a></li></ul>
+
+<h3 id="content_1_2">応用編  <a class="anchor_super" id="r2abfb5a" href="ethna-document-dev_guide.html#r2abfb5a" title="r2abfb5a"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-session.html" title="ethna-document-dev_guide-app-session (737d)">セッションを利用する</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-db.html" title="ethna-document-dev_guide-db (1240d)">データベースアクセス</a></li></ul>
+
+<h3 id="content_1_3">実践編  <a class="anchor_super" id="if8219fa" href="ethna-document-dev_guide.html#if8219fa" title="if8219fa"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-setlanguage.html" title="ethna-document-dev_guide-app-setlanguage (737d)">言語とエンコーディングの設定</a><br />
+言語設定に関する説明です。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-multientrypoint.html" title="ethna-document-dev_guide-app-multientrypoint (1181d)">複数のエントリポイントを作成する</a><br />
+/index.phpに加えて、/user/index.phpや/admin/index.phpのように複数のエントリポイントを簡単に作ることができます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-limitentrypoint.html" title="ethna-document-dev_guide-app-limitentrypoint (706d)">エントリポイント毎に実行可能なアクションを制限する</a><br />
+「/admin/index.phpでは管理権限関連のアクションのみを実行する」というように、各エントリポイント毎に実行可能なアクションを制限することができます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-fallbackentrypoint.html" title="ethna-document-dev_guide-app-fallbackentrypoint (1240d)">未定義のアクションがリクエストされた場合に特定のアクションを実行する</a><br />
+アプリケーションで定義されていない、あるいは許可されていないアクションがリクエストされた場合に、予め指定しておいた特定のアクションを実行させることができます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-filterchain.html" title="ethna-document-dev_guide-app-filterchain (1240d)">フィルタチェインを使用する</a><br />
+TomcatやMojaviにあるようなフィルタチェインを使用することができます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-misc-unittest.html" title="ethna-document-dev_guide-misc-unittest (1240d)">ユニットテストを実行する</a><br />
+simpletest を利用したユニットテストを行えます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-mail.html" title="ethna-document-dev_guide-app-mail (737d)">メールを送信する</a><br />
+Ethna_MailSender クラスを利用して、様々な種類のメールを送信できます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-duplicatepost.html" title="ethna-document-dev_guide-app-duplicatepost (1240d)">二重POSTを防止する</a><br />
+ブラウザ側で複数回ボタンを押した場合に、それを検知することができます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-static.html" title="ethna-document-dev_guide-app-static (1240d)">(ほぼ)スタティックなページを表示させる</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-config.html" title="ethna-document-dev_guide-app-config (858d)">アプリケーションの設定ファイル</a><br />
+etc/XXXX-ini.php に書く設定値に関する説明です。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-dynamicform.html" title="ethna-document-dev_guide-app-dynamicform (182d)">フォーム定義を動的に変更する</a><br />
+動的に、入力フォームとActionFormの定義を変更したい場合の対処法です。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-misc-pager.html" title="ethna-document-dev_guide-misc-pager (738d)">ページャを作成する</a><br />
+Ethna_Util クラスの getDirectLinkList メソッドを使って容易にページャを追加できます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-log.html" title="ethna-document-dev_guide-log (874d)">ログ出力を行う</a><br />
+ログ出力を行う方法と、必要なアプリケーションの設定について説明しています。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-urlhandler.html" title="ethna-document-dev_guide-urlhandler (926d)">URLルーティング</a><br />
+URLHandler と呼ばれる機能を利用すれば、RESTfulなURLを実現できます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-pearlocal.html" title="ethna-document-dev_guide-pearlocal (858d)">Ethnaプロジェクト内で PEAR パッケージを管理する</a><br />
+ethna コマンドの pear-local コマンドで、プロジェクト毎に独立してPEARパッケージを管理できます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-cli.html" title="ethna-document-dev_guide-cli (512d)">コマンドラインから実行するスクリプトを書く</a><br />
+バッチ処理など、CLIを使う処理もEthnaで簡単に記述できます。</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-ethna_command.html" title="ethna-document-dev_guide-ethna_command (520d)">ethnaコマンドリファレンス</a><br />
+プロジェクトに対して様々な操作を行う ethnaコマンドの操作一覧です。</li></ul>
+
+<h3 id="content_1_4">発展編  <a class="anchor_super" id="ie30054e" href="ethna-document-dev_guide.html#ie30054e" title="ie30054e"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-appobj-overview.html" title="ethna-document-dev_guide-appobj-overview (273d)">アプリケーションオブジェクト</a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>機能は弱いながら、ORマッピングのようなものを提供します。</li></ul></li>
+<li><a href="ethna-document-dev_guide-appobj-manager.html" title="ethna-document-dev_guide-appobj-manager (965d)">アプリケーションマネージャ</a><br />
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Webアプリケーションの共通処理を記述するオブジェクトについて説明します。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパ</a><br />
+テンプレートでフォームタグが簡単にかけるヘルパの説明です。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-view-form_helper-ref.html" title="ethna-document-dev_guide-view-form_helper-ref (999d)">フォームヘルパ タグリファレンス</a><br />
+フォームヘルパで使えるタグのリファレンスです。</li>
+<li><a href="ethna-document-dev_guide-view-form_helper-samples.html" title="ethna-document-dev_guide-view-form_helper-samples (999d)">フォームヘルパ サンプル集</a><br />
+フォームヘルパは強力な分複雑なので、サンプルを集めてみました。</li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-i18n.html" title="ethna-document-dev_guide-i18n (737d)">プロジェクトの国際化</a><br />
+Ethnaプロジェクトを複数の言語に対応(i18n)させる方法を紹介します。</li></ul>
+
+<h3 id="content_1_5">拡張編  <a class="anchor_super" id="paea4153" href="ethna-document-dev_guide.html#paea4153" title="paea4153"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethnaのプラグイン機構一般
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-plugin.html" title="ethna-document-dev_guide-plugin (737d)">Ethna_Pluginに関する説明(2.3.x, 2.5.0)</a></li></ul></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>プラグインを書いてみる
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-form-validate_with_plugin.html" title="ethna-document-dev_guide-form-validate_with_plugin (513d)">バリデータプラグイン</a></li>
+<li><a href="ethna-document-dev-guide-make-filterplugin.html" title="ethna-document-dev-guide-make-filterplugin (737d)">フィルタプラグイン</a></li>
+<li><a href="ethna-document-dev-guide-make-smartyplugin.html" title="ethna-document-dev-guide-make-smartyplugin (737d)">Smartyプラグイン</a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-view-smarty-plugin.html" title="ethna-document-dev_guide-view-smarty-plugin (737d)">Ethnaの組込みSmartyプラグイン一覧</a><br /></li></ul></li></ul></li></ul>
+
+<h3 id="content_1_6">補足編  <a class="anchor_super" id="p5423fcb" href="ethna-document-dev_guide.html#p5423fcb" title="p5423fcb"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>古いプロジェクトを新しいEthnaに対応させる<br />
+古いバージョンのEthnaで作ったプロジェクトを新しいバージョンに対応させるガイドです。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-misc-migrate_project250to260.html" title="ethna-document-dev_guide-misc-migrate_project250to260 (157d)">Ethna 2.5.x から 2.6.0 への移行ガイド (準備中)</a></li>
+<li><a href="ethna-document-dev_guide-misc-migrate_project230to250.html" title="ethna-document-dev_guide-misc-migrate_project230to250 (737d)">Ethna 2.3.x から 2.5.0 への移行ガイド</a></li>
+<li><a href="ethna-document-dev_guide-misc-migrate_project210to230.html" title="ethna-document-dev_guide-misc-migrate_project210to230 (1217d)">Ethna 2.1.x から 2.3.0 への移行ガイド</a><br />
+<br /></li></ul></li>
+<li><a href="ethna-document-dev_guide-misc-unify.html" title="ethna-document-dev_guide-misc-unify (1240d)">スクリプトを1ファイルに統合する</a><br />
+ファイルシステムへの負荷を低減したい場合、全てのスクリプトを1ファイルに統合することも出来ます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-misc-info.html" title="ethna-document-dev_guide-misc-info (1240d)">設定情報や定義済みアクション等を一覧する</a><br />
+バージョン0.1.2で追加された__ethna_info__アクションを利用することで、設定情報や定義したアクションやビューの状態を一覧することが出来ます</li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-app-sjis.html" title="ethna-document-dev_guide-app-sjis (1240d)">EthnaでShift_JISなサイトを作る</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_resourcefile.html" title="ethna-document-dev_resourcefile (1240d)">&quot;.ethna&quot;ファイルについて</a></li></ul>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-dev_guide-csrf.html" title="ethna-document-dev_guide-csrf (1240d)">クロスサイトリクエストフォージェリの対策コードについて</a></li></ul>
+
+<h2 id="content_1_7">開発FAQ  <a class="anchor_super" id="kca6d8b4" href="ethna-document-dev_guide.html#kca6d8b4" title="kca6d8b4"> </a></h2>
+<p>開発に関するFAQはこちらをご覧ください。</p>
+<p><strong><a href="ethna-document-faq-dev_guide_faq.html" title="ethna-document-faq-dev_guide_faq (155d)">開発FAQ</a></strong></p>
+
+<h2 id="content_1_8">その他  <a class="anchor_super" id="la427e0f" href="ethna-document-dev_guide.html#la427e0f" title="la427e0f"> </a></h2>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="ethna-document-misc-release.html" title="ethna-document-misc-release (855d)">リリース手順</a></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

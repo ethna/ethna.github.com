@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+多次元配列へのアクセス - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>多次元配列へのアクセス </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-form.html">フォーム定義 </a> &gt; 多次元配列へのアクセス 
+<h2 id="content_1_0">多次元配列へのアクセス  <a class="anchor_super" id="n1c71644" href="ethna-document-dev_guide-form-multiarray.html#n1c71644" title="n1c71644"> </a></h2>
+<p>配列をグループ化するために、多次元配列を使うこともできます。グループ化することで、
+フォーム項目の名前が重複したり、ひとつのフォーム内に複数のテーブルへの項目が存在
+していた場合に有利になる局面があります。</p>
+<p>多次元でフォーム定義を行うことで、通常のアクションフォームの使い方と同様のやり方で、グループ化して値を取得することができるようになります。</p>
+<pre>この機能を使うためには、Ethna 2.5.0 以降が必要です</pre>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#n1c71644">  多次元配列へのアクセス </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#w1b7c9bc">   基本的なやり方 </a></li>
+<li><a href="#lc14f037">  配列型を指定した場合 </a></li>
+<li><a href="#dc7e647c">  ファイルを指定した場合 </a></li>
+<li><a href="#r0639827">  テンプレート上での値の参照の仕方はどうなるの？ </a></li>
+<li><a href="#me8191df">  フォーム値の自動検証やフォームヘルパはどうなるの？ </a></li>
+<li><a href="#l153ad5d">  多次元配列を指定する場合の制限事項 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#z25ea3d8">  指定できる配列の階層の深さはデフォルト10階層まで </a></li>
+<li><a href="#ce69c0d9">  矛盾したフォーム指定をした場合 </a></li></ul></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-01-22</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">基本的なやり方  <a class="anchor_super" id="w1b7c9bc" href="ethna-document-dev_guide-form-multiarray.html#w1b7c9bc" title="w1b7c9bc"> </a></h3>
+<p>フォーム定義を以下のように [] 付きのキーで分類して定義するだけです。例を以下に示します。</p>
+<p>[phone][home]や、[phone][mobile] のように、複数の階層を使って定義することも可能です。</p>
+<pre>   var $form = array(
+       'User[name]' =&gt; array(
+           'name'          =&gt; '名前',
+           'type'          =&gt; VAR_TYPE_STRING,
+           'form_type'     =&gt; FORM_TYPE_TEXT,
+       ),
+       'User[phone][home]' =&gt; array(
+           'name'          =&gt; '自宅電話番号',
+           'type'          =&gt; VAR_TYPE_STRING,
+           'form_type'     =&gt; FORM_TYPE_TEXT,
+       ),
+       'User[phone][mobile]' =&gt; array(
+           'name'          =&gt; '携帯電話番号',
+           'type'          =&gt; VAR_TYPE_STRING,
+           'form_type'     =&gt; FORM_TYPE_TEXT,
+       ),</pre>
+<p>テンプレートに関しても特別な点はなく、通常のPHPでのフォーム多次元配列と同様です。</p>
+<pre>&lt;form method=&quot;post&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;User[name]&quot; value=&quot;宮崎あおい&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;User[phone][home]&quot; value=&quot;01-2345-6789&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;User[phone][mobile]&quot; value=&quot;090-1234-5678&quot; /&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre>
+<p>続いて、通常のフォームの配列と同様に、アクションクラスの prepare()あるいはperform()メソッドでアクションフォームを通じてフォーム値にアクセスするだけです。例えば以下のように</p>
+<pre>perform()
+{
+    var_dump($this-&gt;af-&gt;get('User'));
+}</pre>
+<p>とすると</p>
+<pre>array(2) {
+  [&quot;name&quot;]=&gt;
+  string(15) &quot;宮崎あおい&quot;
+  [&quot;phone&quot;]=&gt; array(2) {
+    [&quot;home&quot;]=&gt;
+    string(12) &quot;01-2345-6789&quot;
+    [&quot;mobile&quot;]=&gt;
+    string(13) &quot;090-1234-5678&quot;
+  }
+} </pre>
+<p>のように指定した階層以下の配列を全て取得することが出来ます。また、User[name] User[phone] のような、途中の階層を指定して以下のようにフォーム値を取得することもできます。</p>
+<pre>perform()
+{
+    //  string(15) &quot;宮崎あおい&quot; を取得
+    var_dump($this-&gt;af-&gt;get('User[name]'));
+
+    //  階層の途中の場合も、以下のように途中から
+    //  配列を取得可能
+    //
+    //  array(2) {
+    //    [&quot;home&quot;]=&gt;
+    //    string(12) &quot;01-2345-6789&quot;
+    //    [&quot;mobile&quot;]=&gt;
+    //    string(13) &quot;090-1234-5678&quot;
+    //  }
+    var_dump($this-&gt;af-&gt;get('User[phone]'));
+}</pre>
+<p>当然、以下のように最下層の値も取得可能です</p>
+<pre>perform()
+{
+    //  最下層の配列を指定した場合 
+    //  string(15) &quot;01-2345-6789&quot; を取得
+    var_dump($this-&gt;af-&gt;get('User[phone][home]'));
+
+    //  string(13) &quot;090-1234-5678&quot;
+    var_dump($this-&gt;af-&gt;get('User[phone][mobile]'));
+}</pre>
+<p>なお、フォーム値に何も入力されない、あるいはフォーム値自体が送信されなかった場合は
+配列の場合と同様に値は null となりますが、それぞれの項目自体は残ることに注意してください。たとえば、上記の例ですべての項目を入力せずに Submitした場合は、以下のようになります。</p>
+<pre>array(2) {
+  [&quot;name&quot;]=&gt;
+  NULL
+  [&quot;phone&quot;]=&gt; array(2) {
+    [&quot;home&quot;]=&gt;
+    NULL
+    [&quot;mobile&quot;]=&gt;
+    NULL
+  }
+} </pre>
+
+<h3 id="content_1_2">配列型を指定した場合  <a class="anchor_super" id="lc14f037" href="ethna-document-dev_guide-form-multiarray.html#lc14f037" title="lc14f037"> </a></h3>
+<p><a href="ethna-document-dev_guide-form-type.html" title="ethna-document-dev_guide-form-type (1006d)">ファイルや配列にアクセスする</a> のページも参照してください。</p>
+<p>上記のページが理解できていれば、配列の階層が増えるだけで、あとは通常のEthnaと変わりありません。</p>
+<p>たとえば、以下のようなフォームを定義したとします。typeにarray(VAR_TYPE_STRING)を指定しています。</p>
+<pre>   var $form = array(
+       'Artist[name]' =&gt; array(
+           'name'          =&gt; '好きなキャラクター',
+           'type'          =&gt; array(VAR_TYPE_STRING),
+           'form_type'     =&gt; FORM_TYPE_TEXT,
+       ),
+   );</pre>
+<p>テンプレートは以下のように書いたとします。</p>
+<pre>&lt;form method=&quot;post&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;Artist[name][]&quot; value=&quot;ほげ&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;Artist[name][]&quot; value=&quot;ふが&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;Artist[name][]&quot; value=&quot;むう&quot; /&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre>
+<p>この場合、以下の方法でフォームに入力された情報を取得出来ます。</p>
+<pre> //
+ // array(1) {
+ //   [&quot;name&quot;]=&gt;
+ //   array(3) {
+ //     [0]=&gt;
+ //     string(6) &quot;ほげ&quot;
+ //     [1]=&gt;
+ //     string(6) &quot;ふが&quot;
+ //     [2]=&gt;
+ //     string(6) &quot;むう&quot;
+ //   }
+ // }
+ $var1 = $this-&gt;af-&gt;get('Artist');
+
+ // array(3) {
+ //   [0]=&gt;
+ //   string(6) &quot;ほげ&quot;
+ //   [1]=&gt;
+ //   string(6) &quot;ふが&quot;
+ //   [2]=&gt;
+ //   string(6) &quot;むう&quot;
+ // }
+ $var2 = $this-&gt;af-&gt;get('Artist[name]');
+
+ //  string(6) &quot;ふが&quot;
+ $var3 = $this-&gt;af-&gt;get('Artist[name][0]'); // 一つ目のフォームの値
+ 
+ //  string(6) &quot;むう&quot;
+ $var4 = $this-&gt;af-&gt;get('Artist[name][1]'); // 二つ目のフォームの値</pre>
+
+<h3 id="content_1_3">ファイルを指定した場合  <a class="anchor_super" id="dc7e647c" href="ethna-document-dev_guide-form-multiarray.html#dc7e647c" title="dc7e647c"> </a></h3>
+<p><a href="ethna-document-dev_guide-form-type.html" title="ethna-document-dev_guide-form-type (1006d)">ファイルや配列にアクセスする</a> のページも参照してください。</p>
+<p>上記のページが理解できていれば、他の型を使用した場合と特に変化ありません。つまり、階層構造を指定すれば、それに従った階層構造で値が取得できるようになります。</p>
+<p>例えば、以下のような定義をしたとします。</p>
+<pre>   var $form = array(
+       'File[foo]' =&gt; array(
+           'name'          =&gt; 'ファイルfoo',
+           'type'          =&gt; VAR_TYPE_FILE,
+           'form_type'     =&gt; FORM_TYPE_FILE,
+       ),
+       'File[bar]' =&gt; array(
+           'name'          =&gt; 'ファイルbar',
+           'type'          =&gt; VAR_TYPE_FILE,
+           'form_type'     =&gt; FORM_TYPE_FILE,
+       ),
+   );</pre>
+<p>テンプレートは以下のように書いたとします。</p>
+<pre>&lt;form method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  &lt;input type=&quot;file&quot; name=&quot;File[foo]&quot; /&gt;
+  &lt;input type=&quot;file&quot; name=&quot;File[bar]&quot; /&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre>
+<p>そして、下記の取得でフォームの値を出力したとします。</p>
+<pre>   $var = $this-&gt;af-&gt;get('File');
+   print_r($var);</pre>
+<p>この場合の出力は以下となります。</p>
+<pre>array (
+  'foo' =&gt; 
+  array (
+    'name' =&gt; 'favicon.ico',
+    'type' =&gt; 'image/x-icon',
+    'size' =&gt; 318,
+    'tmp_name' =&gt; '/tmp/phps2O45r',
+    'error' =&gt; 0,
+  ),
+  'bar' =&gt; 
+  array (
+    'name' =&gt; 'authorized_keys.txt',
+    'type' =&gt; 'text/plain',
+    'size' =&gt; 611,
+    'tmp_name' =&gt; '/tmp/phpn3njWB',
+    'error' =&gt; 0,
+  ),
+)</pre>
+
+<h3 id="content_1_4">テンプレート上での値の参照の仕方はどうなるの？  <a class="anchor_super" id="r0639827" href="ethna-document-dev_guide-form-multiarray.html#r0639827" title="r0639827"> </a></h3>
+<p>これまで見てきた通り、アクションで多次元配列として定義したフォーム値は、連想配列としてSubmitされてきます。</p>
+<pre>   var $form = array(
+       'Artist[name]' =&gt; array(
+           'name'          =&gt; '好きなキャラクター',
+           'type'          =&gt; array(VAR_TYPE_STRING),
+           'form_type'     =&gt; FORM_TYPE_TEXT,
+       ),
+   );</pre>
+<p>よって、上記のような多次元配列のフォーム定義があるとすると、$Artist[name] の値は</p>
+<pre>$form.Artist.name</pre>
+<p>としてテンプレート上で参照できます。$form.Artist[name] ではないので注意して下さい。これは Smarty での連想配列の参照の仕方と同じです。</p>
+
+<h3 id="content_1_5">フォーム値の自動検証やフォームヘルパはどうなるの？  <a class="anchor_super" id="me8191df" href="ethna-document-dev_guide-form-multiarray.html#me8191df" title="me8191df"> </a></h3>
+<p>多次元配列の機能はフォーム値の自動検証、及びフォームヘルパに影響しません。</p>
+<p>グループ化してフォームを定義した場合でも、<a href="ethna-document-dev_guide-form-multiarray.html#ce69c0d9" rel="nofollow">矛盾したフォーム定義をしない限り</a>自動検証の機能がそれぞれの項目について有効になります。</p>
+<p>フォームヘルパの場合でも、以下のように普通に定義できます。</p>
+<pre>{form_input name=&quot;User[phone][name]&quot;}</pre>
+<p>フォーム値の自動検証については、<a href="ethna-document-dev_guide-form.html" title="ethna-document-dev_guide-form (1006d)">フォーム定義のページ</a>を参照してください。<br />
+フォームヘルパについては、<a href="ethna-document-dev_guide-form-multiarray.html" title="ethna-document-dev_guide-form-multiarray (737d)">フォームヘルパ</a> を参照してください。</p>
+
+<h3 id="content_1_6">多次元配列を指定する場合の制限事項  <a class="anchor_super" id="l153ad5d" href="ethna-document-dev_guide-form-multiarray.html#l153ad5d" title="l153ad5d"> </a></h3>
+<p>多次元配列を指定できるということは、重複したキーや、深すぎる階層など、PHPの実装上都合の悪い指定もまた、指定できてしまうということを意味しています。ここでは、Ethna の多次元配列の実装上「できないこと」を説明します。</p>
+
+<h4 id="content_1_7">指定できる配列の階層の深さはデフォルト10階層まで  <a class="anchor_super" id="z25ea3d8" href="ethna-document-dev_guide-form-multiarray.html#z25ea3d8" title="z25ea3d8"> </a></h4>
+<p>Ethna では、以下のような深い階層も指定できます。但し、その階層の深さはデフォルト10階層までです。</p>
+<p>Ethna では、多次元配列の処理に再帰処理を使用しています。よって、PHPの仕様により、処理できる階層は100までに制限されますが、Ethnaの内部ではこれより深い階層の値を指定しても「NULL」しか取得できません。</p>
+<pre>//  10階層(1番上の &quot;a&quot; も含む)
+'a[b][c][d][e][f][g][h][i][j]' =&gt; array(
+    'name'          =&gt; '10階層の多次元配列',
+    'type'          =&gt; VAR_TYPE_STRING,
+    'form_type'     =&gt; FORM_TYPE_TEXT,
+),
+
+//  11階層(1番上の &quot;a&quot; も含む)
+//  この値は、最下層の値を取得しようとしてもNULLとなる
+'a[b][c][d][e][f][g][h][i][j][k]' =&gt; array(
+    'name'          =&gt; '11階層の多次元配列',
+    'type'          =&gt; VAR_TYPE_STRING,
+    'form_type'     =&gt; FORM_TYPE_TEXT,
+),</pre>
+
+<h4 id="content_1_8">矛盾したフォーム指定をした場合  <a class="anchor_super" id="ce69c0d9" href="ethna-document-dev_guide-form-multiarray.html#ce69c0d9" title="ce69c0d9"> </a></h4>
+<p>同じ項目名で、多次元配列とそうでない項目を指定したり等の矛盾した定義はできません。</p>
+<p>片方で多次元配列でない普通のスカラーを指定し、他方で同じ名前の多次元配列のフォーム定義を複数行った場合、正確に全ての値が取得できません。（正確には、いずれかの値が取得できることもあるし、全て取得できないこともあります） 他の矛盾したフォーム定義の場合も同様です。</p>
+<p>たとえば以下の場合、多次元配列である&quot;sample[str]&quot;に対して、フォーム配列の&quot;sample&quot;で指定した値の検証が有効になりますし、値が正確に取得できないため、いずれの値の検証機能もうまく動かないことがあります。</p>
+<pre> 'sample' =&gt; array(
+     'name'          =&gt; '数値のみ指定可能な配列。取得できる値はスカラー',
+     'required'      =&gt; true,
+     'type'          =&gt; array(VAR_TYPE_INT),
+     'form_type'     =&gt; FORM_TYPE_TEXT,
+ ),
+ 'sample[str]' =&gt; array(
+     'name'          =&gt; '文字列が指定可能な多次元フォーム',
+     'required'      =&gt; true,
+     'type'          =&gt; VAR_TYPE_STRING,
+     'form_type'     =&gt; FORM_TYPE_TEXT,
+ ),</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

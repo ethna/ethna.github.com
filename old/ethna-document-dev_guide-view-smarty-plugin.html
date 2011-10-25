@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna組込みのSmartyプラグイン - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna組込みのSmartyプラグイン </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-view.html">ビュー定義 </a> &gt; <a href="ethna-document-dev_guide-view-smarty.html">smartyを使ったviewのレンダリング </a> &gt; Ethna組込みのSmartyプラグイン 
+<h2 id="content_1_0">Ethna組込みのSmartyプラグイン  <a class="anchor_super" id="q8721130" href="ethna-document-dev_guide-view-smarty-plugin.html#q8721130" title="q8721130"> </a></h2>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#q8721130">  Ethna組込みのSmartyプラグイン </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#z37591c7">  概要 </a></li>
+<li><a href="#w1d1dc3e">  modifier </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#sd39a0ad">  {...|number_format} </a></li>
+<li><a href="#s6e2099e">  {...|strftime} </a></li>
+<li><a href="#a87881df">  {...|count} </a></li>
+<li><a href="#xea72868">  {...|join} </a></li>
+<li><a href="#z9e2a437">  {...|filter} </a></li>
+<li><a href="#w56ea453">  {...|explode} </a></li>
+<li><a href="#y34bb5d9">  {...|unique} </a></li>
+<li><a href="#c39ad432">  {...|wordwrap_i18n} </a></li>
+<li><a href="#n15883e8">  {...|truncate_i18n} </a></li>
+<li><a href="#hb086473">  {...|i18n} </a></li>
+<li><a href="#w5e2d67e">  {...|checkbox}, {...|select}, {...|form_value} </a></li></ul></li>
+<li><a href="#jb6c34d2">  function </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#ef634ae8">  {message} </a></li>
+<li><a href="#l7b00d3d">  {url} </a></li>
+<li><a href="#s97b2520">  {form_name} </a></li>
+<li><a href="#c1428cb7">  {form_submit} </a></li>
+<li><a href="#ub5cb6ab">  {form_input} </a></li>
+<li><a href="#tf9b83f9">  {csrfid} </a></li>
+<li><a href="#b81022e5">  {is_error}, {uniqid}, {select}, {checkbox_list} </a></li></ul></li>
+<li><a href="#g3dec9f6">  block </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#wd0aba94">  {form}...{/form} </a></li></ul></li></ul></li></ul>
+</div>
+
+<p>書いた人: いちい</p>
+
+<h3 id="content_1_1">概要  <a class="anchor_super" id="z37591c7" href="ethna-document-dev_guide-view-smarty-plugin.html#z37591c7" title="z37591c7"> </a></h3>
+<p>EthnaでSmartyを使う場合に利用できる、組込みの便利なプラグイン(modfier, function, block)についての説明です。</p>
+<p>基本的に Ethna_ViewClass で提供されているヘルパ関数や、 php の組込み関数、 Ethna_Util の関数などを呼び出すラッパーになっています。</p>
+
+<h3 id="content_1_2">modifier  <a class="anchor_super" id="w1d1dc3e" href="ethna-document-dev_guide-view-smarty-plugin.html#w1d1dc3e" title="w1d1dc3e"> </a></h3>
+
+<h4 id="content_1_3">{...|number_format}  <a class="anchor_super" id="sd39a0ad" href="ethna-document-dev_guide-view-smarty-plugin.html#sd39a0ad" title="sd39a0ad"> </a></h4>
+<p>number_format()関数のラッパーです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{&quot;12345&quot;|number_format}</pre></li>
+<li>出力
+<pre>12,345</pre></li></ul>
+
+<h4 id="content_1_4">{...|strftime}  <a class="anchor_super" id="s6e2099e" href="ethna-document-dev_guide-view-smarty-plugin.html#s6e2099e" title="s6e2099e"> </a></h4>
+<p>strftime()関数のラッパーです。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{&quot;2004/01/01 01:01:01&quot;|strftime:&quot;%Y年%m月%d日&quot;}</pre></li>
+<li>出力
+<pre>2004年01月01日</pre></li></ul>
+
+<h4 id="content_1_5">{...|count}  <a class="anchor_super" id="a87881df" href="ethna-document-dev_guide-view-smarty-plugin.html#a87881df" title="a87881df"> </a></h4>
+<p>(配列にたいする) count() 関数のラッパーです。</p>
+<pre>{$array|count}</pre>
+
+<h4 id="content_1_6">{...|join}  <a class="anchor_super" id="xea72868" href="ethna-document-dev_guide-view-smarty-plugin.html#xea72868" title="xea72868"> </a></h4>
+<p>配列を連結して文字列にする join() 関数のラッパーです。</p>
+<pre>{$str_array|join:&quot;,&quot;}</pre>
+
+<h4 id="content_1_7">{...|filter}  <a class="anchor_super" id="z9e2a437" href="ethna-document-dev_guide-view-smarty-plugin.html#z9e2a437" title="z9e2a437"> </a></h4>
+<p>連想配列のリストから、指定されたキーの値だけを取り出して配列を再構成します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>$smarty-&gt;assign(&quot;array&quot;, array(
+    array(&quot;foo&quot; =&gt; 1, &quot;bar&quot; =&gt; 4),
+    array(&quot;foo&quot; =&gt; 2, &quot;bar&quot; =&gt; 5),
+    array(&quot;foo&quot; =&gt; 3, &quot;bar&quot; =&gt; 6),
+));</pre>
+<br />
+<pre>{$array|filter:&quot;foo&quot;|join:&quot;,&quot;}</pre></li>
+<li>出力
+<pre>1,2,3</pre></li></ul>
+
+<h4 id="content_1_8">{...|explode}  <a class="anchor_super" id="w56ea453" href="ethna-document-dev_guide-view-smarty-plugin.html#w56ea453" title="w56ea453"> </a></h4>
+<p>文字列に対する explode() 関数のラッパーです。
+第一引数の文字列を第二引数の文字列により分割し、配列にします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>$smarty-&gt;assign(&quot;1,2,3&quot;, &quot;,&quot;);</pre>
+<br />
+<pre>{$array|explode:&quot;,&quot;}</pre></li>
+<li>出力
+<pre>array(1, 2, 3)</pre></li></ul>
+
+<h4 id="content_1_9">{...|unique}  <a class="anchor_super" id="y34bb5d9" href="ethna-document-dev_guide-view-smarty-plugin.html#y34bb5d9" title="y34bb5d9"> </a></h4>
+<p>配列に対する unique() 関数のラッパーです。第2引数にキーをあたえることで、 filter を同時に行うことができます。</p>
+<pre>{$array|unique:&quot;foo&quot;}</pre>
+
+<h4 id="content_1_10">{...|wordwrap_i18n}  <a class="anchor_super" id="c39ad432" href="ethna-document-dev_guide-view-smarty-plugin.html#c39ad432" title="c39ad432"> </a></h4>
+<p><strong>utf-8のみ対応</strong> 指定された文字数で文字列をワードラップします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>----12345678----
+{&quot;あいうaえaおaかきaaaくけこ&quot;|wordrap_i18n:8:&quot;\n&quot;:4}</pre></li>
+<li>出力
+<pre>----12345678----
+    あいうa
+    えaおaか
+    きaaaく
+    けこ</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ワードラップする文字数 (必須)</li>
+<li>改行文字</li>
+<li>半角スペースでのインデント数</li></ul></li></ul>
+
+<h4 id="content_1_11">{...|truncate_i18n}  <a class="anchor_super" id="n15883e8" href="ethna-document-dev_guide-view-smarty-plugin.html#n15883e8" title="n15883e8"> </a></h4>
+<p>文字列を指定された文字数で切り詰めます。 mb_strimwidth() を用いています。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{&quot;日本語です&quot;|truncate_i18n:5:&quot;...&quot;}</pre></li>
+<li>出力
+<pre>日本...</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>切り詰める文字数</li>
+<li>切り詰めた後に付加する文字列</li></ul></li></ul>
+
+<h4 id="content_1_12">{...|i18n}  <a class="anchor_super" id="hb086473" href="ethna-document-dev_guide-view-smarty-plugin.html#hb086473" title="hb086473"> </a></h4>
+<p>i18nメッセージを取得します。 Ethna_I18N クラスを利用します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{&quot;english&quot;|i18n}</pre></li>
+<li>出力(例)
+<pre>英語</pre></li></ul>
+
+<h4 id="content_1_13">{...|checkbox}, {...|select}, {...|form_value}  <a class="anchor_super" id="w5e2d67e" href="ethna-document-dev_guide-view-smarty-plugin.html#w5e2d67e" title="w5e2d67e"> </a></h4>
+<p>詳しくはAPIドキュメントをご覧ください。多くの場合、もっと簡単な代替手段があります。</p>
+
+<h3 id="content_1_14">function  <a class="anchor_super" id="jb6c34d2" href="ethna-document-dev_guide-view-smarty-plugin.html#jb6c34d2" title="jb6c34d2"> </a></h3>
+
+<h4 id="content_1_15">{message}  <a class="anchor_super" id="ef634ae8" href="ethna-document-dev_guide-view-smarty-plugin.html#ef634ae8" title="ef634ae8"> </a></h4>
+<p>指定されたフォームにエラーがある場合にメッセージを出力します。エラーがないときはなにも出力されません。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>&lt;input type=&quot;text&quot; name=&quot;foo&quot;&gt;{message name=&quot;foo&quot;}</pre></li>
+<li>出力
+<pre>&lt;input type=&quot;text&quot; name=&quot;foo&quot;&gt;fooを入力してください</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>アクションフォームで定義したフォーム名を指定します。</li></ul></li></ul>
+
+<h4 id="content_1_16">{url}  <a class="anchor_super" id="l7b00d3d" href="ethna-document-dev_guide-view-smarty-plugin.html#l7b00d3d" title="l7b00d3d"> </a></h4>
+<p>Ethna_UrlHandler を使って、アクション名とパラメータからURLを生成します。UrlHandlerについての説明については<a href="ethna-document-dev_guide-urlhandler.html" title="ethna-document-dev_guide-urlhandler (926d)">Ethna_UrlHandler</a>を参照してください。</p>
+<p>以下では、アプリの設定ファイル (app-ini.php) で 'url' =&gt; '<a href="http://example.jp/index.php'" rel="nofollow">http://example.jp/index.php'</a> が設定され、 /show/article/3/2 で show_article アクションにパラメータ chapter=3, sectio=2 を与えるものとします。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{url action=&quot;show_article&quot; chapter=&quot;3&quot; section=&quot;1&quot; style=&quot;plain&quot; scheme=&quot;https&quot; anchor=&quot;subsection2&quot;}</pre></li>
+<li>出力
+<pre>https://example.jp/index.php/show/article/3/2?style=plain#subsection2</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>action: UrlHandlerに渡すアクション名を指定します。(必須)</li>
+<li>scheme: 'url' に http:// などの scheme が指定されていた場合に、それを置き換えることができます。</li>
+<li>anchor: '#anchor' 形式のアンカーを付加します。</li>
+<li>上にあげた以外のパラメータ: GETパラメータとしてURLに付加されます。</li></ul></li></ul>
+
+<h4 id="content_1_17">{form_name}  <a class="anchor_super" id="s97b2520" href="ethna-document-dev_guide-view-smarty-plugin.html#s97b2520" title="s97b2520"> </a></h4>
+<p>アクションフォームで定義された、フォームの表示名を取得します。Ethna_ViewClassのgetFormName()を用いています。</p>
+<pre>var $form = array(
+    'text' =&gt; array(
+        'type' =&gt; VAR_TYPE_TEXT,
+        'name' =&gt; 'テキスト',
+        ...</pre>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{form_name name=&quot;text&quot; action=&quot;foo&quot;}</pre></li>
+<li>出力
+<pre>テキスト</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>name: フォーム名(連想配列$formのキー)を指定します。(必須)</li>
+<li>action: フォーム定義を取得するアクションを指定します。省略時の動作については<a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパ</a>を参照してください。</li></ul></li></ul>
+
+<h4 id="content_1_18">{form_submit}  <a class="anchor_super" id="c1428cb7" href="ethna-document-dev_guide-view-smarty-plugin.html#c1428cb7" title="c1428cb7"> </a></h4>
+<p>フォームのsubmitボタンを生成します。Ethna_ViewClassのgetFormSubmit()を用いています。詳しくは<a href="ethna-document-dev_guide-view.html" title="ethna-document-dev_guide-view (1240d)">Ethna_ViewClass</a>を参照してください。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{form_submit value=&quot;送信&quot;}</pre></li>
+<li>出力
+<pre>[送信] (実際はブラウザのボタン)</pre></li>
+<li>引数
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>すべて getFormSubmit() にそのまま渡されます。</li></ul></li></ul>
+
+<h4 id="content_1_19">{form_input}  <a class="anchor_super" id="ub5cb6ab" href="ethna-document-dev_guide-view-smarty-plugin.html#ub5cb6ab" title="ub5cb6ab"> </a></h4>
+<p>Ethna_ViewClassのgetFormInput() (および _getFormInput_*()) を使い、アクションフォームのフォーム定義から、自動的にそのフォームを送信するためのHTMLタグを生成します。</p>
+<p>詳細は<a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパ</a>を参照してください。</p>
+
+<h4 id="content_1_20">{csrfid}  <a class="anchor_super" id="tf9b83f9" href="ethna-document-dev_guide-view-smarty-plugin.html#tf9b83f9" title="tf9b83f9"> </a></h4>
+<p>CSRF対策のためのIDをhiddenタグもしくはGETのリクエストパラメータとして出力します。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>入力
+<pre>{csrfid}
+&lt;a href=&quot;index.php?action_do_something=true&amp;{csrfid type=&quot;get&quot;}&gt;</pre></li>
+<li>出力
+<pre>&lt;input type=&quot;hidden&quot; name=&quot;csrfid&quot; value=&quot;a0f24f75e...e48864d3e&quot;&gt;
+&lt;a href=&quot;index.php?action_do_something=true&amp;csrfid=a0f24f75e...e48864d3e&quot;&gt;</pre></li></ul>
+
+<h4 id="content_1_21">{is_error}, {uniqid}, {select}, {checkbox_list}  <a class="anchor_super" id="b81022e5" href="ethna-document-dev_guide-view-smarty-plugin.html#b81022e5" title="b81022e5"> </a></h4>
+<p>詳しくはAPIドキュメントをご覧ください。多くの場合、もっと簡単な代替手段があります。</p>
+
+<h3 id="content_1_22">block  <a class="anchor_super" id="g3dec9f6" href="ethna-document-dev_guide-view-smarty-plugin.html#g3dec9f6" title="g3dec9f6"> </a></h3>
+
+<h4 id="content_1_23">{form}...{/form}  <a class="anchor_super" id="wd0aba94" href="ethna-document-dev_guide-view-smarty-plugin.html#wd0aba94" title="wd0aba94"> </a></h4>
+<p>詳細は<a href="ethna-document-dev_guide-view-form_helper.html" title="ethna-document-dev_guide-view-form_helper (998d)">フォームヘルパ</a>を参照してください。</p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

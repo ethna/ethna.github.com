@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+Ethna オフラインミーティング @Cake開発合宿 - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>Ethna オフラインミーティング @Cake開発合宿 </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-yakiniku.html">ethna-yakiniku</a> &gt; <a href="ethna-yakiniku-cakephp.html">ethna-yakiniku-cakephp</a> &gt; <a href="ethna-yakiniku-cakephp-onsen.html">ethna-yakiniku-cakephp-onsen</a> &gt; Ethna オフラインミーティング @Cake開発合宿 
+<h2 id="content_1_0">Ethna オフラインミーティング @Cake開発合宿  <a class="anchor_super" id="qc9871a1" href="ethna-yakiniku-cakephp-onsen-20090411.html#qc9871a1" title="qc9871a1"> </a></h2>
+<p>箱根で行われた CakePHP 開発合宿にて、Ethnaのコミッタが集う機会がありました。その際に行われた議論を以下に残しておきます。</p>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#qc9871a1">  Ethna オフラインミーティング @Cake開発合宿 </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#j636dd2a">  Ethna_ActionForm#validate + フィルタの実行タイミング </a></li>
+<li><a href="#hd331d23">  JavaScript の連携 </a></li>
+<li><a href="#m5e4e31c">  フォームヘルパについて </a></li>
+<li><a href="#kd6667c4">  ドキュメント </a></li>
+<li><a href="#r40239ae">  プラグイン読み込み順序の変更 </a></li>
+<li><a href="#qd14e4a0">  tarball 配布パッケージ化 </a></li>
+<li><a href="#g7c80511"> 複数定義にまたがる ActionForm 定義の記述法 </a></li>
+<li><a href="#j95bdcb3">  skel ファイルの命名規則 </a></li>
+<li><a href="#ub051872">  拡張子を判断した View の挙動変更 </a></li>
+<li><a href="#scdcca2b">  ViewHelper の汎用化 </a></li>
+<li><a href="#o495e13e">  各自の作業内容 </a>
+<ul class="list3" style="padding-left:16px;margin-left:16px"><li><a href="#v194d4b2">  mumumu </a></li>
+<li><a href="#zef61a13">  sotarok </a></li>
+<li><a href="#e19afa31">  ichii386 </a></li>
+<li><a href="#a5708eb8">  maru_cc </a></li></ul></li></ul></li></ul>
+</div>
+
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">書いた人</td><td class="style_td">mumumu</td><td class="style_td">2009-04-11</td><td class="style_td">新規作成</td></tr></tbody></table></div>
+
+<h3 id="content_1_1">Ethna_ActionForm#validate + フィルタの実行タイミング  <a class="anchor_super" id="j636dd2a" href="ethna-yakiniku-cakephp-onsen-20090411.html#j636dd2a" title="j636dd2a"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>現在はActionFormのvalidateメソッド実行時に、filter定義を実行してから、validateを実行している。
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>このフィルタ実行のタイミングはもっとユーザが制御できてもいいのではないか</li>
+<li>validateせずにfilter定義のみを実行したいというニーズもあるはず</li>
+<li>フィルタ処理をメソッドとして独立させればよいのではないか</li></ul></li></ul>
+
+<h3 id="content_1_2">JavaScript の連携  <a class="anchor_super" id="hd331d23" href="ethna-yakiniku-cakephp-onsen-20090411.html#hd331d23" title="hd331d23"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>JavaScriptの連携がもっとあってもいいはず
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>js ファイルが定義されていたら勝手にincludeしてくれるとか</li></ul></li></ul>
+
+<h3 id="content_1_3">フォームヘルパについて  <a class="anchor_super" id="m5e4e31c" href="ethna-yakiniku-cakephp-onsen-20090411.html#m5e4e31c" title="m5e4e31c"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>{form} で生成されるタグにid属性つけてもよくね？
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>それは配列を使うフォームでおかしくなる場合がある（CHECKBOX, RADIO等）のでやらない</li></ul></li>
+<li>booleanなcheckboxをuncheckedでpostしてもpostされない(?)ので、default値を設定するとそれで上書きされてしまう</li></ul>
+
+<h3 id="content_1_4">ドキュメント  <a class="anchor_super" id="kd6667c4" href="ethna-yakiniku-cakephp-onsen-20090411.html#kd6667c4" title="kd6667c4"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>entrypoint, configのurl, mod_rewriteとかの設定のサンプル</li>
+<li>環境差異の設定サンプル</li></ul>
+
+<h3 id="content_1_5">プラグイン読み込み順序の変更  <a class="anchor_super" id="r40239ae" href="ethna-yakiniku-cakephp-onsen-20090411.html#r40239ae" title="r40239ae"> </a></h3>
+<p>これは，やる．
+extlibディレクトリの配置とか．(sotarok)</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="https://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=15930" rel="nofollow">https://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=15930</a></li></ul>
+
+<h3 id="content_1_6">tarball 配布パッケージ化  <a class="anchor_super" id="qd14e4a0" href="ethna-yakiniku-cakephp-onsen-20090411.html#qd14e4a0" title="qd14e4a0"> </a></h3>
+<p>(sotarok)
+これも，やる</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="https://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=15931" rel="nofollow">https://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=15931</a></li></ul>
+
+<h3 id="content_1_7">複数定義にまたがる ActionForm 定義の記述法  <a class="anchor_super" id="g7c80511" href="ethna-yakiniku-cakephp-onsen-20090411.html#g7c80511" title="g7c80511"> </a></h3>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>required_if とか(sotarok)</li>
+<li>DBが絡むものは手をつけない．とりあえずaf内でできることだけ</li></ul>
+
+<h3 id="content_1_8">skel ファイルの命名規則  <a class="anchor_super" id="j95bdcb3" href="ethna-yakiniku-cakephp-onsen-20090411.html#j95bdcb3" title="j95bdcb3"> </a></h3>
+<p>決定したい．</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>skel/action.foo.php</li>
+<li>skel/view.foo.php
+とかとか</li></ul>
+
+<h3 id="content_1_9">拡張子を判断した View の挙動変更  <a class="anchor_super" id="ub051872" href="ethna-yakiniku-cakephp-onsen-20090411.html#ub051872" title="ub051872"> </a></h3>
+<p>たとえば，<a href="http://example.com/hoge/fuga" rel="nofollow">http://example.com/hoge/fuga</a> などでは，デフォルトのヘッダとデフォルトのテンプレート (たとえば， fuga.tpl) で，<a href="http://example.com/hoge/fuga.js" rel="nofollow">http://example.com/hoge/fuga.js</a> でアクセスすると， js用のヘッダ，fuga.js.tpl を探す，など．</p>
+<p>URLハンドラーがかかってくるのでURLハンドラーの変更のがあってからかな？と．
+案くらいはまとめたい</p>
+
+<h3 id="content_1_10">ViewHelper の汎用化  <a class="anchor_super" id="scdcca2b" href="ethna-yakiniku-cakephp-onsen-20090411.html#scdcca2b" title="scdcca2b"> </a></h3>
+<p>ViewHelperが現状は Smartyプラグインとして実装されているため、他の Rendererに変更しづらい
+ViewHelperの機能は、ViewHelperとして個別のプラグインに分割する
+Smartyのプラグインとしての register 方法は要検討
+＞Smartyを継承して プラグインサーチの方法を拡張する？</p>
+
+<h3 id="content_1_11">各自の作業内容  <a class="anchor_super" id="o495e13e" href="ethna-yakiniku-cakephp-onsen-20090411.html#o495e13e" title="o495e13e"> </a></h3>
+
+<h4 id="content_1_12">mumumu  <a class="anchor_super" id="v194d4b2" href="ethna-yakiniku-cakephp-onsen-20090411.html#v194d4b2" title="v194d4b2"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna Viewまわりの改善(4/11中に済ませる,required)</li>
+<li>動的フォームAPIの追加(フォームヘルパ用, required)</li>
+<li>チケット潰し(required)</li>
+<li>ORMの改善（optional)</li></ul>
+
+<h4 id="content_1_13">sotarok  <a class="anchor_super" id="zef61a13" href="ethna-yakiniku-cakephp-onsen-20090411.html#zef61a13" title="zef61a13"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>プラグイン読み込み順序の変更</li>
+<li>tarball 配布パッケージ化</li>
+<li>複数定義にまたがる ActionForm 定義の記述法</li>
+<li>book.ethna.jp は仕様きめて作り出す</li></ul>
+
+<h4 id="content_1_14">ichii386  <a class="anchor_super" id="e19afa31" href="ethna-yakiniku-cakephp-onsen-20090411.html#e19afa31" title="e19afa31"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>現状にcatch up</li>
+<li>ドキュメント整備(catch upしつつ)</li>
+<li>&lt;select&gt;のoptgroup対応</li></ul>
+
+<h4 id="content_1_15">maru_cc  <a class="anchor_super" id="a5708eb8" href="ethna-yakiniku-cakephp-onsen-20090411.html#a5708eb8" title="a5708eb8"> </a></h4>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>新規プロジェクト時のエントリポイントのフルパスを相対パスに
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16089" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16089</a></li></ul></li>
+<li>add-entry-point の挙動も要変更ではないか？
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>あと、作成すると同盟の actionを作ろうとするのは変なのでは？</li>
+<li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16102" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16102</a></li></ul></li>
+<li>Ethna_Renderer_Php.php Ethna_Renderer_Flexy.php とか
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>Smartyプラグインにべったりな部分を ViewHelperとして切り出したい</li>
+<li>プラグインの仕様変更の話が出たのでそれ次第</li></ul></li>
+<li>ethnaコマンドが縦に長すぎる件をなんとかする
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16093" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16093</a></li></ul></li>
+<li>存在しない action名を指定された場合に app/action 以下を全includeをなんとかしたい
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>テストがapp/action以下にあることも関係しているが、不正なアクセス時に全ファイル読み込みという状況が発生してしまっている</li>
+<li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16094" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16094</a></li></ul></li>
+<li>testを別ディレクトリ、appと並列なtestディレクトリに移動したい</li>
+<li>add-project 時に、APPIDのディレクトリを自動作成する挙動を無くしたい
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>APPIDを固定にしようかという話が議題に出ていまして、それにも関係するかと思ってます</li>
+<li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16103" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16103</a></li></ul></li>
+<li>APPID_Controller.php から var $smarty_xxx_plugin 関連の定義を消したい
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16107" rel="nofollow">http://sourceforge.jp/ticket/browse.php?group_id=1343&amp;tid=16107</a></li></ul></li></ul>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

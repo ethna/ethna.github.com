@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+エラー処理ポリシー - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>エラー処理ポリシー </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-error.html">エラー処理 </a> &gt; エラー処理ポリシー 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#m27b8582">  エラー処理ポリシー </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#dfe142c9">  Ethna_Error </a></li>
+<li><a href="#ded53322">  ActionError </a></li></ul></li></ul>
+</div>
+
+<h2 id="content_1_0">エラー処理ポリシー  <a class="anchor_super" id="m27b8582" href="ethna-document-dev_guide-error-policy.html#m27b8582" title="m27b8582"> </a></h2>
+<p>アプリケーションの実行中に生じるエラーは、次の２つにわけられます。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>System error
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>システムが原因で起きるエラー。DBエラーなど。</li></ul></li>
+<li>User error
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li>ユーザがフォームに入力した値が不正である場合のエラー。</li></ul></li></ul>
+<p>Ethnaフレームワークでは、これらのエラーは全てEthna_Error（またはPEAR_Error）によって処理されます。</p>
+<p><a href="plugin=attach&amp;refer=ethna-document-dev_guide-error-policy&amp;openfile=Ethna_Error1.png.html" title="Ethna_Error1.png"><img src="http://ethna.jp/index.php?plugin=ref&amp;page=ethna-document-dev_guide-error-policy&amp;src=Ethna_Error1.png" alt="Ethna_Error1.png" title="Ethna_Error1.png" width="281" height="288" /></a></p>
+
+<h3 id="content_1_1">Ethna_Error  <a class="anchor_super" id="dfe142c9" href="ethna-document-dev_guide-error-policy.html#dfe142c9" title="dfe142c9"> </a></h3>
+<p>Ethna_Errorには、エラーコードとエラーメッセージが格納されています。
+Ethna_Errorはシステムとしてエラーハンドリングを行うので，実際のアプリケーションでは，Ethna_Errorをアクションクラスで処理し，ユーザに必要な情報のみを提示します．</p>
+<pre>    function perform()
+    {
+        $sm =&amp; new {アプリケーションID}_SampleManager();
+         $result = $sm-&gt;test();
+        if (Ethna::isError($result)) {
+
+             //エラーの場合の処理
+             .....
+         }
+
+         ....
+     }</pre>
+<p>EthnaクラスのisError()メソッドで、エラーの有無を確認できます。
+ここではtest()メソッドからエラーオブジェクトが返ってきた場合に，エラー処理を行うようにしています。</p>
+<p>アプリケーションのManagerでエラーオブジェクトを返すには、次のようにします。</p>
+<pre>class {アプリケーションID}_SampleManager
+{
+    function test($data)
+    {
+        // 実際には，まともなエラー処理を行う．
+        if (! $data) {
+            return Ethna::raiseNotice('データがありません', E_SAMPLE_TEST);
+        }
+        return 0;
+    }
+}</pre>
+<p>エラーオブジェクトには、Notice,Warning,Errorの3つがあります。
+エラーの内容に応じて，これらを使い分けます．
+アプリケーション固有のエラーメッセージを渡したい場合は、EthnaクラスのraiseNotice,raiseWarning,raiseErrorメソッドを使って，Ethna_Errorオブジェクトを生成します．
+この例では，raiseNoticeを用いてエラーオブジェクトを返しています．
+引数には，メッセージとエラーコードを与えます．</p>
+<p><strong><a href="ethna-document-dev_guide-error-definecode.html" title="ethna-document-dev_guide-error-definecode (1240d)">アプリケーションエラーコードの定義</a></strong></p>
+
+<h3 id="content_1_2">ActionError  <a class="anchor_super" id="ded53322" href="ethna-document-dev_guide-error-policy.html#ded53322" title="ded53322"> </a></h3>
+<p><a href="plugin=attach&amp;refer=ethna-document-dev_guide-error-policy&amp;openfile=Ethna_ActionError.png.html" title="Ethna_ActionError.png"><img src="http://ethna.jp/index.php?plugin=ref&amp;page=ethna-document-dev_guide-error-policy&amp;src=Ethna_ActionError.png" alt="Ethna_ActionError.png" title="Ethna_ActionError.png" width="266" height="304" /></a></p>
+<p>エラーの内容をユーザに提示した場合，アクションクラスで受け取ったエラーオブジェクトをActionErrorに格納します。
+具体的には、下記のようにae(actionError)のaddObjectメソッドを使います。</p>
+<pre>       if (Ethna::isError($result)) {
+             $this-&gt;ae-&gt;addObject('testError', $result);
+       }</pre>
+<p>また、エラーメッセージとエラーコードから、エラーオブジェクトを生成して、ActionErrorに追加するaddメソッドもあります。</p>
+<p>ActionErrorの内容を表示するには，ビューで次のように書きます．</p>
+<pre>  &lt;tr&gt;
+     &lt;td&gt;エラーメッセージ&lt;/td&gt; 
+     &lt;td&gt;{message name=&quot;testError&quot;}&lt;/td&gt;
+  &lt;/tr&gt;</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? BEGIN id:attach -->
+<div id="attach">
+<hr class="full_hr" />添付ファイル: <a href="plugin=attach&amp;pcmd=open&amp;file=Ethna_ActionError.png&amp;refer=ethna-document-dev_guide-error-policy.html" title="2008/06/02 16:35:58 13.5KB"><img src="image/file.png" width="20" height="20" alt="file" style="border-width:0px" />Ethna_ActionError.png</a> <span class="small">1569件</span>
+<span class="small">[<a href="plugin=attach&amp;pcmd=info&amp;file=Ethna_ActionError.png&amp;refer=ethna-document-dev_guide-error-policy.html" title="添付ファイルの情報">詳細</a>]</span>
+ <a href="plugin=attach&amp;pcmd=open&amp;file=Ethna_Error1.png&amp;refer=ethna-document-dev_guide-error-policy.html" title="2008/06/02 16:35:58 17.4KB"><img src="image/file.png" width="20" height="20" alt="file" style="border-width:0px" />Ethna_Error1.png</a> <span class="small">1467件</span>
+<span class="small">[<a href="plugin=attach&amp;pcmd=info&amp;file=Ethna_Error1.png&amp;refer=ethna-document-dev_guide-error-policy.html" title="添付ファイルの情報">詳細</a>]</span>
+ 
+</div>
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

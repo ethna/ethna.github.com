@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+アプリケーション構築手順(2) - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>アプリケーション構築手順(2) </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-tutorial.html">チュートリアル </a> &gt; アプリケーション構築手順(2) 
+<h2 id="content_1_0">アプリケーション構築手順(2)  <a class="anchor_super" id="b6f7acf5" href="ethna-document-tutorial-practice2.html#b6f7acf5" title="b6f7acf5"> </a></h2>
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#b6f7acf5">  アプリケーション構築手順(2) </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#d167a6af">  (4) アクション定義の追加(省略可) </a></li>
+<li><a href="#je4912be">  (5) アクションクラスの記述 </a></li>
+<li><a href="#qae768c0">  (6) ビュー定義の追加(省略可) </a></li>
+<li><a href="#a54d13a1">  (7) ビュークラスの記述 </a></li>
+<li><a href="#r41bbb2b">  (8) テンプレートの記述 </a></li>
+<li><a href="#q78ef858">  (9) 確認 </a></li></ul></li></ul>
+</div>
+
+<p>実際のアプリケーション構築は、「アクション」を追加していく作業の繰り返しとなります。</p>
+<p>「アクション」とは何ですか？というのを正確に定義するのはちょっと難しいですが、要するに</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>ユーザから何らかのリクエストを受け取って(例えばURLへのアクセスや、submitボタンのクリック)</li>
+<li>サーバ側で何らかの処理をして</li>
+<li>結果をブラウザに出力する</li></ol>
+<p>という一連の処理単位だとお考え下さい。</p>
+<p>ここでは単純な例として、まず「ログイン画面の表示」というアクションを追加してみます。このとき必要となる作業は、以下の図のようになります(半透明なブロックは、省略可能な作業であることを示しています)。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig4.png" alt="ethna-fig4.png" title="ethna-fig4.png" /></div>
+
+
+<h3 id="content_1_1">(4) アクション定義の追加(省略可)  <a class="anchor_super" id="d167a6af" href="ethna-document-tutorial-practice2.html#d167a6af" title="d167a6af"> </a></h3>
+<p>Controllerにアクション定義を追加します。具体的には、app/Sample_Controller.phpを以下のように編集します。</p>
+<pre>   var $action = array(
+       /*
+        *  TODO: ここにaction定義を記述してください
+        *
+        *  記述例：
+        *
+        *  'index'     =&gt; array(),
+        */
++      'login'             =&gt; array(
++          'class_name' =&gt; 'Sample_Action_Login'
+      ),
+   );</pre>
+<p>これは「login」というアクションに、'Sample_Action_Login'というクラス名を関連付けることを意味します。</p>
+<p>なお、慣れてくると毎回'class_name'属性等を記述するのは面倒になってくるので、実際にはこれを省略することも可能です(コメント部分に記述されている'index'アクションは省略された形です)。さらには、アクション定義自体(このステップ)を省略することも可能です。</p>
+<p>アクション定義と、インクルードされるスクリプトファイル名やアクションクラス名の関係、省略方法については、下記をご覧下さい。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-action-omit.html" title="ethna-document-dev_guide-action-omit (1240d)">アクション定義を省略する</a></p>
+
+<h3 id="content_1_2">(5) アクションクラスの記述  <a class="anchor_super" id="je4912be" href="ethna-document-tutorial-practice2.html#je4912be" title="je4912be"> </a></h3>
+<p>(4)で定義したアクションに対応するクラスを作成します(このクラスを「アクションクラス」と呼んでいます)。アクションに対応するクラスは以下のように記述します。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>Ethna_ActionClassを継承したクラスを定義します</li>
+<li>Ethna_ActionClassのperform()メソッドをオーバーライドして、サーバ側で行いたい処理を記述します</li>
+<li>perform()メソッドの戻り値として遷移先の名前(後述)を返します</li></ol>
+<p>さて、ここでは上記のとおり「Sample_Action_Login」を作成してみます。アクションクラスを定義したファイル(アクションスクリプトと呼んでいます<a id="notetext_1" href="#notefoot_1" class="note_super" title="FLASHと紛らわしいですが">*1</a>)は、app/actionに以下のような命名規則で作成します('_'をディレクトリで区切り、ファイル名は大文字で開始します)。</p>
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>アクション名の先頭を大文字にします</li>
+<li>'_'を'/'に置き換え(= ディレクトリで区切り)続く文字を大文字にします</li></ol>
+<p>ですので以下のようになります。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">アクション名</td><td class="style_td">スクリプトファイル</td></tr><tr><td class="style_td">login</td><td class="style_td">app/action/Login.php</td></tr><tr><td class="style_td">user_list_add</td><td class="style_td">app/action/User/List/Add.php</td></tr></tbody></table></div>
+<p>ですので、ここでは'login'というアクションに対応するファイルを作成するので、app/action/Login.phpというファイルを以下のように作成すればよいことになります。</p>
+<pre>&lt;?php
+class Sample_Action_Login extends Ethna_ActionClass
+{
+    function perform()
+    {
+        return 'login';
+    }
+}
+?&gt;</pre>
+<p>このクラスでは、サーバ側では何も処理を行わずに'login'という遷移先を返しています。つまり</p>
+<p><em>なにもしないで'login'というビューを表示する</em></p>
+<p>という処理になります。</p>
+<p>実際には、毎回アクションスクリプトを1から記述するのは煩雑なので、ethnaコマンドのadd-actionオプションを利用して、スケルトンファイルを生成することも出来ます。</p>
+<p>例:</p>
+<pre>$ ethna add-action login</pre>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-action-skelton.html" title="ethna-document-dev_guide-action-skelton (1240d)">アクションスクリプトのスケルトンを生成する</a></p>
+<p>なお、アクションスクリプトを配置するディレクトリは適宜変更することが可能です。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-action-dir.html" title="ethna-document-dev_guide-action-dir (1240d)">アクションスクリプトの配置ディレクトリを変更する</a></p>
+<p>また、前述したアクションクラスやアクションスクリプトのファイル命名規則等も変更することが可能です。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-action-namingconvention.html" title="ethna-document-dev_guide-action-namingconvention (1240d)">アクション定義省略時の命名規則を変更する</a></p>
+
+<h3 id="content_1_3">(6) ビュー定義の追加(省略可)  <a class="anchor_super" id="qae768c0" href="ethna-document-tutorial-practice2.html#qae768c0" title="qae768c0"> </a></h3>
+<p>次に、アクションクラスが返す遷移先(この場合'login'という遷移先)を定義します。</p>
+<p>具体的には、Controllerに遷移先定義を追加します。app/Sample_Controller.phpを以下のように編集してください。</p>
+<pre> /**
+  *  @var    array   forward定義
+  */
+ var $forward = array(
+      /*
+       *  TODO: ここにforward先を記述してください
+       *
+       *  記述例：
+       *
+       *  'index'         =&gt; array(
+       *      'view_name' =&gt; 'Sample_View_Index',
+       *  ),
+       */
++    'login' =&gt; array(
++        'view_name' =&gt; 'Sample_View_Login',
++        'forward_path' =&gt; 'login.tpl'
+    ),
+ );</pre>
+<p>これで、'login'という遷移先にSample_View_Loginというビュークラスと、login.tplというテンプレートファイルが関連付けられます。</p>
+<p>なお、Ethnaのビューは、以下のように構成されています。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig5.png" alt="ethna-fig5.png" title="ethna-fig5.png" /></div>
+
+<ol class="list1" style="padding-left:16px;margin-left:16px"><li>Action Classは、実行中に取得したダイナミックな表示データをAction Formオブジェクトに格納します(Action Formオブジェクトはコンテナとして振舞います)</li>
+<li>アクションクラスは、コントローラに遷移先を返します</li>
+<li>コントローラは、アクションクラスから返された遷移先に基づいて、ビューオブジェクトを生成します</li>
+<li>ビューオブジェクトは、ダイナミックな表示データをアクションフォームから取得します</li>
+<li>ビューオブジェクトはSmartyオブジェクトを生成し、必要な変数をSmartyオブジェクトに設定します</li>
+<li>テンプレートを出力します</li></ol>
+<p>なお、実際にビュー1つ作るたびにこのような定義を記述するのは煩雑なので、アクション定義と同様にビュー定義も省略することが可能です。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-forward-omit.html" title="ethna-document-dev_guide-forward-omit (1240d)">遷移先定義を省略する</a></p>
+<p>さらに、アクションクラス等と同様に、省略時のビュークラスやテンプレートファイル名の命名規則を変更することも可能です。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-forward-view_namingconvention.html" title="ethna-document-dev_guide-forward-view_namingconvention (1240d)">ビューの命名規則を変更する</a></p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-forward-template_namingconvention.html" title="ethna-document-dev_guide-forward-template_namingconvention (1240d)">テンプレートの命名規則を変更する</a></p>
+
+<h3 id="content_1_4">(7) ビュークラスの記述  <a class="anchor_super" id="a54d13a1" href="ethna-document-tutorial-practice2.html#a54d13a1" title="a54d13a1"> </a></h3>
+<p>ここでは、(6)で定義したビュークラスSample_View_Loginを作成します。ビュークラスを定義したファイル(ビュースクリプト、とでも呼んでおきます)は、アクションクラスと同様にapp/viewに以下のような命名規則で作成します('_'をディレクトリで区切り、ファイル名は大文字で開始します)。</p>
+<div class="ie5"><table class="style_table" cellspacing="1" border="0"><tbody><tr><td class="style_td">遷移名</td><td class="style_td">スクリプトファイル</td></tr><tr><td class="style_td">login</td><td class="style_td">app/view/Login.php</td></tr><tr><td class="style_td">user_list_add</td><td class="style_td">app/view/User/List/Add.php</td></tr></tbody></table></div>
+<p>ですので、ここでは'login'という遷移名に対応するファイルを作成するので、app/view/Login.phpというファイルを以下のように作成します。</p>
+<pre>&lt;?php
+class Sample_View_Login extends Ethna_ViewClass
+{
+    function preforward()
+    {
+        $this-&gt;af-&gt;setApp('now', strftime('%Y/%m/%d'));
+    }
+}
+?&gt;</pre>
+<p>preforward()メソッドはテンプレート表示前に呼び出され、テンプレートに関連した各種データ(セレクトボックスの表示項目等)を設定することが可能です。ここでは、コンテナに'now'という名前で現在時刻を格納しています。</p>
+<p>実際には、毎回ビュースクリプトを1から記述するのは煩雑なので、ethnaコマンドのadd-viewオプションを利用して、スケルトンファイルを生成することも出来ます。</p>
+<p>例:</p>
+<pre>$ ethna add-view login</pre>
+<p>この時に-tオプションをつける事によって、同時にテンプレートのスケルトンファイルが生成されます。</p>
+<p>例:</p>
+<pre>$ ethna add-view -t login</pre>
+<p>また、ビュークラスが不要な場合(単純にテンプレートを表示したい場合等)は、ビュークラスの記述を省略することも可能です。</p>
+
+<h3 id="content_1_5">(8) テンプレートの記述  <a class="anchor_super" id="r41bbb2b" href="ethna-document-tutorial-practice2.html#r41bbb2b" title="r41bbb2b"> </a></h3>
+<p>次に、テンプレートファイルを作成します。テンプレートディレクトリはtemplate/jaディレクトリで、(6)で'login.tpl'をテンプレートファイルに指定しているので、template/ja/login.tplを作成します。</p>
+<pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+Login View&lt;br /&gt;
+current time: {$app.now}
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>実際には、毎回アクションスクリプトを1から記述するのは煩雑なので、ethnaコマンドのadd-template オプションを利用して、スケルトンファイルを生成することも出来ます。</p>
+<pre>$ ethna add-template login</pre>
+<p>上記のとおり、テンプレートに{$app.<em>foo</em>}と記述すると、アクションクラス、あるいはビュークラスで</p>
+<pre>$this-&gt;af-&gt;setApp('foo', 'bar');</pre>
+<p>として設定した値にアクセスすることが出来ます。</p>
+<p>なお、テンプレートディレクトリを変更することも可能です。</p>
+<p><em>see also:</em> <a href="ethna-document-dev_guide-forward-template_dir.html" title="ethna-document-dev_guide-forward-template_dir (432d)">テンプレートディレクトリを変更する</a></p>
+
+<h3 id="content_1_6">(9) 確認  <a class="anchor_super" id="q78ef858" href="ethna-document-tutorial-practice2.html#q78ef858" title="q78ef858"> </a></h3>
+<p>以上でアクションの追加は完了ですので、実際にアクセスして動作を確認します。</p>
+<pre>http://some.host/~foo/?action_login=true</pre>
+<p>(4)〜(8)で定義した通りに、以下のような画面が表示されれば成功です。</p>
+<div class="img_margin" style="text-align:left"><img src="http://ethna.jp/image/ethna-fig6.jpg" alt="ethna-fig6.jpg" title="ethna-fig6.jpg" /></div>
+
+<p>もう少し複雑なアクションについては、次節<a href="ethna-document-tutorial-practice3.html" title="ethna-document-tutorial-practice3 (1240d)">アプリケーション構築手順(3)</a>をご覧下さい。</p>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">FLASHと紛らわしいですが</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+開発FAQ - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>開発FAQ </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-faq.html">FAQ </a> &gt; 開発FAQ 
+<div class="contents">
+<a id="contents_1"></a>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li><a href="#ef9f7667">  開発FAQ </a>
+<ul class="list2" style="padding-left:16px;margin-left:16px"><li><a href="#ia61dad9"> Q. Ethnaって使えるの? </a></li>
+<li><a href="#sbdcfd5b"> Q. Ethna は何故 Ethna_ViewClass っていう層を設けているの？ Cakeとかのフレームワークにはこんなのないよ！ </a></li>
+<li><a href="#l678b69c"> Q.テンプレートエンジンはSmartyしか使えないの? </a></li>
+<li><a href="#veb40f55"> Q.?action_login=trueでアクションを選ぶのが嫌 </a></li>
+<li><a href="#re97f1d9"> Q.デバッグはどうするの？ </a></li>
+<li><a href="#jee57430"> Q.複数のフォーム値をまたぐチェックはどうやってやるの？ </a></li>
+<li><a href="#q18ef69b"> Q.locationさせるメソッドはないの？ </a></li>
+<li><a href="#c36d2e53"> Q. DocumentRoot配下にEthnaとEthnaアプリケーションを置きたいけど・・・ </a></li>
+<li><a href="#hbb81d02"> Q.　ビュークラスは省略できるの？ </a></li>
+<li><a href="#yce6cfc4"> Q.　アクションクラスは省略できるの？ </a></li>
+<li><a href="#s590e3c3"> Q.　アクションフォームクラスは省略できるの？ </a></li></ul></li>
+<li><a href="#l988ae48"> Comment </a></li></ul>
+</div>
+
+<h2 id="content_1_0">開発FAQ  <a class="anchor_super" id="ef9f7667" href="ethna-document-faq-dev_guide_faq.html#ef9f7667" title="ef9f7667"> </a></h2>
+<p>Ethnaを使い始めてとりあえずでてくる悩みとその解決方法について列挙</p>
+
+<h3 id="content_1_1">Q. Ethnaって使えるの?  <a class="anchor_super" id="ia61dad9" href="ethna-document-faq-dev_guide_faq.html#ia61dad9" title="ia61dad9"> </a></h3>
+<p><a href="ethna-about-cases.html" title="ethna-about-cases (194d)">導入事例</a>をごらんください。
+「理想の追及」よりも「実際のアプリケーション開発」に重点をおいたフレームワークだと思ってます。</p>
+
+<h3 id="content_1_2">Q. Ethna は何故 Ethna_ViewClass っていう層を設けているの？ Cakeとかのフレームワークにはこんなのないよ！  <a class="anchor_super" id="sbdcfd5b" href="ethna-document-faq-dev_guide_faq.html#sbdcfd5b" title="sbdcfd5b"> </a></h3>
+<p>Ethna は View（テンプレート）に書かれるコンテキストに依存した(if分岐等の)処理や、定型的(JSON, リダイレクト、定型ヘッダ等) な出力処理を View に書くのが流儀です。</p>
+
+<h3 id="content_1_3">Q.テンプレートエンジンはSmartyしか使えないの?  <a class="anchor_super" id="l678b69c" href="ethna-document-faq-dev_guide_faq.html#l678b69c" title="l678b69c"> </a></h3>
+<p>現状は、デフォルトの状態ではSmartyしか使えません。
+Ethna_Rendererを継承したクラスを作成すればSmarty以外でも可能です。</p>
+<p>Flexyを使った例
+<a href="ethna-flexy.html" rel="nofollow">http://ethna.jp/ethna-flexy.html</a></p>
+<p>PHPを使った例
+<a href="http://eringi.com/weblog/archives/2007/02/ethna_renderer.html" rel="nofollow">http://eringi.com/weblog/archives/2007/02/ethna_renderer.html</a></p>
+<p><strong><a href="ethna-document-dev_guide-renderer.html" rel="nofollow">Ethna_Rendererの使い方</a></strong></p>
+
+<h3 id="content_1_4">Q.?action_login=trueでアクションを選ぶのが嫌  <a class="anchor_super" id="veb40f55" href="ethna-document-faq-dev_guide_faq.html#veb40f55" title="veb40f55"> </a></h3>
+<p>アクションを呼び出す方法は自由にカスタマイズできます。</p>
+<p><strong><a href="ethna-document-dev_guide-action-formname.html" title="ethna-document-dev_guide-action-formname (1026d)">アクション名の決定方法を変更する</a></strong></p>
+
+<h3 id="content_1_5">Q.デバッグはどうするの？  <a class="anchor_super" id="re97f1d9" href="ethna-document-faq-dev_guide_faq.html#re97f1d9" title="re97f1d9"> </a></h3>
+<p>ethnaが作ったプロジェクトの中のetcディレクトリに設定項目ファイルがあります。(ProjectName-ini.phpみたいな)</p>
+<p>デフォルトであれば、$configという配列を指定することになってるので、</p>
+<pre>$config = array(
+	// *****
+	'debug'	=&gt; true,
+	'log_facility'  =&gt; 'file',
+	'log_level' =&gt; 'debug',
+	// *****
+);</pre>
+<p>としてやれば、logディレクトリに発行したSQLや実行したActionなどの詳細なログが溜まります。
+ログレベルは</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>debug</li>
+<li>info</li>
+<li>notice</li>
+<li>warning</li>
+<li>err</li>
+<li>crit</li>
+<li>alert</li>
+<li>emerg</li></ul>
+<p>があります。</p>
+<p>ログ関連の情報については下記が参考になります。</p>
+<p><strong><a href="ethna-document-dev_guide-log.html" title="ethna-document-dev_guide-log (874d)">ログ</a></strong></p>
+
+<h3 id="content_1_6">Q.複数のフォーム値をまたぐチェックはどうやってやるの？  <a class="anchor_super" id="jee57430" href="ethna-document-faq-dev_guide_faq.html#jee57430" title="jee57430"> </a></h3>
+<p>例：ラジオボタンAをチェックすると、テキストボックスBの入力が必須になる場合など</p>
+<p>74 ：72：2005/12/17(土) 02:51:25 ID:???</p>
+<pre>   たとえば、「Aのフォームでhogeを選択した場合にBが必須になる」くらいだったら
+   簡単だよね。
+   validateメソッドでチェックする前に、ActionFormの定義値を変えてやればいい。
+   HOGE_ActionClass::prepareの中で
+   if ($this-&gt;af-&gt;get('a') == 'hoge') {
+       $this-&gt;af-&gt;form['b']['required'] = true;
+   } 
+   if ($this-&gt;validate() &gt; 0) {
+       return 'post';
+   } 
+   とかかな。これがEthnaの流儀かどうかはしらんが、ActionFormを使うならこうするかな。 </pre>
+<p>validate前に動的にフォーム定義の内容を変更する技がある。<a id="notetext_1" href="#notefoot_1" class="note_super" title="ふじもとさん自身も [Ethna-users:00012] で似たような事をおっしゃってますね。*2">*1</a></p>
+
+<h3 id="content_1_7">Q.locationさせるメソッドはないの？  <a class="anchor_super" id="q18ef69b" href="ethna-document-faq-dev_guide_faq.html#q18ef69b" title="q18ef69b"> </a></h3>
+<p>今のところ、locationをさせるメソッドはありません。
+Ethna_ActionClass::performあたりで</p>
+<pre>header('location: http://exsample.com/');
+exit;</pre>
+<p>とでもしましょう。
+そのうち、どこかにメソッドとして実装されかなぁ・・？<a id="notetext_3" href="#notefoot_3" class="note_super" title="Mojaviのmoveメソッドみたいな感じ？あくまで希望">*3</a></p>
+
+<h3 id="content_1_8">Q. DocumentRoot配下にEthnaとEthnaアプリケーションを置きたいけど・・・  <a class="anchor_super" id="c36d2e53" href="ethna-document-faq-dev_guide_faq.html#c36d2e53" title="c36d2e53"> </a></h3>
+<p>一部の(lolipopとか)サーバではDocumentRoot配下にしかファイルを置けません。その場合、project-IDが分かってしまうと、logやテンプレートソースが見えてしまいます。
+.htaccessが使える場合は、</p>
+<pre>deny from all</pre>
+<p>と書いてEthnaとEthnaアプリケーションの一番上においておくと良いと思います。</p>
+
+<h3 id="content_1_9">Q.　ビュークラスは省略できるの？  <a class="anchor_super" id="hbb81d02" href="ethna-document-faq-dev_guide_faq.html#hbb81d02" title="hbb81d02"> </a></h3>
+<p>できます。
+ビュークラスの処理内容が空の場合は、ファイルそのものを作らないことができます。</p>
+<p>ビュークラスファイルを作らなかった場合は、{App}_ViewClassが代わりに呼ばれます。</p>
+
+<h3 id="content_1_10">Q.　アクションクラスは省略できるの？  <a class="anchor_super" id="yce6cfc4" href="ethna-document-faq-dev_guide_faq.html#yce6cfc4" title="yce6cfc4"> </a></h3>
+<p>場合によってはできます。</p>
+<p>[Action_A]が[View_AまたはView_B]に遷移するケースで、[View_B]が必ず[Action_A]からのみ呼ばれるのなら、[Action_B]は必要ありません。</p>
+
+<h3 id="content_1_11">Q.　アクションフォームクラスは省略できるの？  <a class="anchor_super" id="s590e3c3" href="ethna-document-faq-dev_guide_faq.html#s590e3c3" title="s590e3c3"> </a></h3>
+<p>できます。</p>
+<p>フォーム値を何も受け取らない画面では、フォームクラス作成しなくてもＯＫです。(その場合は{App}_ActionFormが代わりに呼ばれます)</p>
+
+<h2 id="content_1_12">Comment  <a class="anchor_super" id="l988ae48" href="ethna-document-faq-dev_guide_faq.html#l988ae48" title="l988ae48"> </a></h2>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>Locationとか、Viewからのアクションの指定はEthna_Utilやsmarty_functionでできるといいですね。 -- <span class="noexists">halt<a href="cmd=edit&amp;page=halt&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2005-12-20 (火) 14:43:23</span></li>
+<li><a href="http://comimi.net/ethna/Aero_Util.phps" rel="nofollow">http://comimi.net/ethna/Aero_Util.phps</a>　こんな感じでどーでしょ。本体につっこむなら、もっとイケテルな方法ありそうですが。 -- <span class="noexists">個々一番<a href="cmd=edit&amp;page=%B8%C4%A1%B9%B0%EC%C8%D6&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2005-12-20 (火) 21:26:17</span></li>
+<li>さくら(SAKURA)のレンタルサーバも DocumentRoot 配下でないとファイルを置けません。シンボリックリンクは使用できず 500 エラーになります。これに気づかず時間を無駄にしました。 -- <span class="noexists">p2<a href="cmd=edit&amp;page=p2&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2007-04-12 (木) 00:05:54</span></li>
+<li><a href="ethna-document-dev_guide-db.html" rel="nofollow">http://ethna.jp/ethna-document-dev_guide-db.html</a> のページがクラックされたのか書き換わってます。本ページ管理者さんへメールなどしようと思いましたが連絡先が見当たらない為、このComment欄にて失礼します。後でこのコメントを削除していただければと思います。 -- <span class="noexists">ume<a href="cmd=edit&amp;page=ume&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2007-11-14 (水) 15:25:58</span></li>
+<li>Ethna_Plugin_Cachemanager_Memcacheでの文字列をmemcachedサーバの台数で割っていますが、文字列を数値でわると「0」になると思うのですがどうでしょうか。 -- <span class="noexists">hoge<a href="cmd=edit&amp;page=hoge&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2008-11-14 (金) 20:37:16</span></li>
+<li>good -- <span class="noexists">niba<a href="cmd=edit&amp;page=niba&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2009-10-29 (木) 14:37:24</span></li>
+<li>いいな -- <span class="noexists">えすな<a href="cmd=edit&amp;page=%A4%A8%A4%B9%A4%CA&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2009-11-25 (水) 18:40:22</span></li>
+<li>Cachemanager_Memcacheのindex計算は確かにバグっていた気がします。 -- <span class="noexists">DQNEO<a href="cmd=edit&amp;page=DQNEO&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2010-04-10 (土) 03:37:22</span></li>
+<li>fdf -- <span class="noexists">fdf<a href="cmd=edit&amp;page=fdf&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2011-05-18 (水) 10:49:57</span></li>
+<li>ff -- <span class="noexists">af<a href="cmd=edit&amp;page=af&amp;refer=ethna-document-faq-dev_guide_faq.html">?</a></span> <span class="comment_date">2011-05-23 (月) 16:26:16</span></li></ul>
+<br />
+<form action="http://ethna.jp/index.php" method="post"> 
+<div><input type="hidden" name="encode_hint" value="ぷ" /></div>
+ <div>
+  <input type="hidden" name="plugin" value="comment" />
+  <input type="hidden" name="refer"  value="ethna-document-faq-dev_guide_faq" />
+  <input type="hidden" name="comment_no" value="0" />
+  <input type="hidden" name="nodate" value="0" />
+  <input type="hidden" name="above"  value="1" />
+  <input type="hidden" name="digest" value="a251531a610be6805025f9f16875ecb2" />
+  <label for="_p_comment_name_0">お名前: </label><input type="text" name="name" id="_p_comment_name_0" size="15" />
+
+  <input type="text"   name="msg" id="_p_comment_comment_0" size="70" />
+  <input type="submit" name="comment" value="コメントの挿入" />
+ </div>
+</form>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">ふじもとさん自身も<a href="http://ml.ethna.jp/pipermail/users/2005-March/000012.html" rel="nofollow"> [Ethna-users:00012] </a>で似たような事をおっしゃってますね。<a id="notetext_2" href="#notefoot_2" class="note_super" title="というか、そっちが先:-) ">*2</a></span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">というか、そっちが先:-) </span><br />
+<a id="notefoot_3" href="#notetext_3" class="note_super">*3</a>
+<span class="small">Mojaviのmoveメソッドみたいな感じ？あくまで希望</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>

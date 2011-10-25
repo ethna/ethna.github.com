@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+ <meta http-equiv="content-style-type" content="text/css" />
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<title>
+EthnaでShift_JISなサイトを作る - Ethna - PHPウェブアプリケーションフレームワーク</title>
+ <link rel="stylesheet" href="skin/ethna/ethna.css" title="ethna" type="text/css" charset="utf-8" />
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="cmd=rss.html" />
+
+ <script type="text/javascript" src="skin/trackback.js"></script>
+
+
+</head>
+
+<body>
+<div id="alert-message-top">ここは以前の ethna.jp サイトを表示したものです。ここにあるドキュメントはバージョン2.6以降更新されません。<br/>
+最新のドキュメントは <a href="http://ethna.jp/">現在のethna.jp</a> を閲覧してください。現ドキュメントが整備されるまでは、ここを閲覧してください。</div>
+<div id="wrapper"><!-- ??BEGIN id:wrapper -->
+<!-- ?? Navigator ?? ======================================================= -->
+<div id="navigator">
+    <p class="navlogo"><a href="/"><img src="image/navlogo.gif" height="22" width="82" alt="Ethna" /></a>
+	<p><a href="ethna.html" title="ethna (11d)">トップ</a>
+<a href="ethna-news.html" title="ethna-news (11d)">二ュース</a>
+<a href="ethna-about.html" title="ethna-about (11d)">概要</a>
+<a href="ethna-download.html" title="ethna-download (25d)">ダウンロード</a>
+<a href="ethna-document.html" title="ethna-document (884d)">ドキュメント</a>
+<a href="ethna-community.html" title="ethna-community (619d)">コミュニティ</a>
+<a href="ethna-document-faq.html" title="ethna-document-faq (1240d)">FAQ</a></p>
+</p>
+</div>
+
+<!-- ?? Header ?? ========================================================== -->
+<div id="header">
+<div id="logo" class="normalpage"><div class="headline"><div class="pagetitle"><h1>EthnaでShift_JISなサイトを作る </h1></div></div></div>
+</div>
+
+<!-- ?? Content ?? ========================================================= -->
+
+<div id="main"><!-- ??BEGIN id:main -->
+<div id="wrap_content"><!-- ??BEGIN id:wrap_content -->
+<div id="content"><!-- ??BEGIN id:content -->
+<div id="page_navigator"><!-- ??BEGIN id:page_navigator -->
+	
+</div><!-- ??END id:PageNavigator -->
+
+<div id="body"><!-- ??BEGIN id:body -->
+<a href="index.html">Ethna </a> &gt; <a href="ethna-document.html">ドキュメント </a> &gt; <a href="ethna-document-dev_guide.html">開発マニュアル </a> &gt; <a href="ethna-document-dev_guide-app.html">ethna-document-dev_guide-app</a> &gt; EthnaでShift_JISなサイトを作る 
+<h2 id="content_1_0">EthnaでShift_JISなサイトを作る  <a class="anchor_super" id="a4bcb9a0" href="ethna-document-dev_guide-app-sjis.html#a4bcb9a0" title="a4bcb9a0"> </a></h2>
+<hr class="full_hr" />
+<p>書いた人:cocoiti</p>
+<hr class="full_hr" />
+
+<h3 id="content_1_1">概要  <a class="anchor_super" id="h7e429fc" href="ethna-document-dev_guide-app-sjis.html#h7e429fc" title="h7e429fc"> </a></h3>
+<p>Ethnaは、内部コードがutf-8でできています。(変換かければ、どうにでもなりますが)。<br />
+基本的に問題はないのですが、携帯サイトなどを作る時に、やむえず、出力をShift_JISにしたくなるときがあります。</p>
+<p>その方法について記述していきます。</p>
+<p>なお、以下のポリシーで記述しています。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>内部コードはutf-8</li>
+<li>入力コードはShift_JIS(自動判別のフィルタを書く方法は別途記述）</li>
+<li>出力コードはShift_JIS(sjis-win)</li></ul>
+
+<h3 id="content_1_2">内部コードはutf-8で書く  <a class="anchor_super" id="r1470ae9" href="ethna-document-dev_guide-app-sjis.html#r1470ae9" title="r1470ae9"> </a></h3>
+<p>各種テンプレート（HTML、メール）も含め通常通り、utf-8で記述します。</p>
+
+<h3 id="content_1_3">入力のShift_JISを内部コードに変換  <a class="anchor_super" id="m4997005" href="ethna-document-dev_guide-app-sjis.html#m4997005" title="m4997005"> </a></h3>
+<p>まずは、Ethnaのフィルタで入力コードを変換してしまいます。</p>
+<pre>function preFilter()
+{
+    $_POST = InputEncoding($_POST);
+    $_GET  = InputEncoding($_GET);
+}
+(省略)
+
+function InputEncoding($data)
+{
+    static $encoding = null;
+    static $internal_encoding = null;
+    if (is_null($encoding)) {
+        $encoding = 'sjis-win';
+    }
+
+    if (is_null($internal_encoding)) {
+        $internal_encoding = 'eucjp-win';
+    }
+
+    if (is_array($data)) {
+        return array_map('InputEncoding', $data);
+    }else{
+        return mb_convert_encoding($data, $internal_encoding, $encoding);
+    }
+ }</pre>
+<p>こんな感じで、sjis-win =&gt; euc-winに変換します。</p>
+
+<h3 id="content_1_4">出力コードを変換する  <a class="anchor_super" id="eac25063" href="ethna-document-dev_guide-app-sjis.html#eac25063" title="eac25063"> </a></h3>
+<p>Smartyフィルタで、出力コードをShift_JISにしてしまいます。</p>
+<pre>function smarty_outputfilter_encode($output, &amp;$smarty){
+    return mb_convert_encoding($output, &quot;SJIS-win&quot;, &quot;eucJP-win&quot;);
+}</pre>
+<p>これでWeb上の文字コードはShift_JISになります。</p>
+<ul class="list1" style="padding-left:16px;margin-left:16px"><li>これの代わりにprefilter()でmb_http_output(&quot;SJIS&quot;);mb_internal_encoding(&quot;utf-8&quot;);をするのはありでしょうか？ (n071316)</li></ul>
+
+<h3 id="content_1_5">コントローラに追加する  <a class="anchor_super" id="s176e6e2" href="ethna-document-dev_guide-app-sjis.html#s176e6e2" title="s176e6e2"> </a></h3>
+<p>変換コードを書いたら、それをappやlibに保存して、プロジェクトのコントローラの先頭部分でrequireしましょう。</p>
+
+<h3 id="content_1_6">MailSenderのSmartyでフィルタが有効になっている問題  <a class="anchor_super" id="v17b7aef" href="ethna-document-dev_guide-app-sjis.html#v17b7aef" title="v17b7aef"> </a></h3>
+<p>通常なら、上記までで十分なのですが、Ethna 0.2.0までの全てのバージョンは、Ethna_MailSenderにおいて、Smartyを使用しています。</p>
+<p>これはこれでかまわないのですが、先ほどのSmartyフィルタが有効になっているため、utf-8 =&gt; sjis-winと変換されメール送信アルゴリズムが動作します。<a id="notetext_1" href="#notefoot_1" class="note_super" title="これはこれで、まずいと思う。">*1</a></p>
+<p>さらにここまでもまぁ問題ないのですが、運がわるいことに、Ethna_MailSernder::_parse()がShift_JISだとうまくパースできない場合があるので<a id="notetext_2" href="#notefoot_2" class="note_super" title="無限ループっぽくなる。詳しくは追ってない。">*2</a>、これをutf-8に戻してやります。</p>
+<p>幸いにもEthna_MailSenderは継承して使用するのが基本なので、継承したついでに継承後のクラスに以下を追記します。</p>
+<pre>function _parse($mail)
+{
+    $mail = mb_convert_encoding($mail, &quot;eucjp-win&quot;, &quot;sjis-win&quot;);
+    return parent::_parse($mail);
+}</pre>
+</div><!-- ??END id:body -->
+<div id="summary"><!-- ??BEGIN id:summary -->
+<!-- ??BEGIN id:note -->
+<div id="note">
+<hr class="note_hr" /><a id="notefoot_1" href="#notetext_1" class="note_super">*1</a>
+<span class="small">これはこれで、まずいと思う。</span><br />
+<a id="notefoot_2" href="#notetext_2" class="note_super">*2</a>
+<span class="small">無限ループっぽくなる。詳しくは追ってない。</span><br /></div>
+<!-- ??END id:note -->
+<div id="trackback"><!-- ??BEGIN id:trackback -->
+
+</div><!-- ?? END id:trackback -->
+
+
+<!-- ?? END id:attach -->
+</div><!-- ?? END id:summary -->
+</div><!-- ??END id:content -->
+</div><!-- ?? END id:wrap_content -->
+<!-- ??sidebar?? ========================================================== -->
+<div id="wrap_sidebar"><!-- ??BEGIN id:wrap_sidebar -->
+<div id="sidebar">
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>検索</h2></div>
+<div class="sidebar_body">
+        <div>
+    <form action="http://ethna.jp/index.php?cmd=search" method="post">
+            <input type="hidden" name="encode_hint" value="??" />
+            <input type="text"  name="word" value="" size="20" />
+            <input type="submit" value="検索" /><br />
+            <input type="radio" name="type" value="AND" checked="checked" id="and_search" /><label for="and_search">AND検索</label>
+            <input type="radio" name="type" value="OR" id="or_search" /><label for="or_search">OR検索</label>
+    </form>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>ダウンロード</h2></div>
+    <div class="sidebar_body">
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.6.0(beta2)</a></p>
+        <p><a href="ethna-download.html"><img src="image/minilogo.gif" />Ethna-2.5.0(stable)</a></p>
+</p>
+</div>
+</div><!-- END id:download_link -->
+
+
+<div id="download_link" class="bar"><!-- ??BEGIN id:download_link -->
+    <div class="sidebar_head"><h2>Quick Links</h2></div>
+    <div class="sidebar_body" style="padding: 4px 8px 4px 12px;">
+	    <ul style="list-style-type: none;">
+		<li style="padding: 1px;"><a href="ethna-community-forum.html">フォーラム(質問/要望等)</a></li>
+		<li style="padding: 1px;"><a href="http://ml.ethna.jp/mailman/listinfo/users">メーリングリスト</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="ethna-document-tutorial.html">チュートリアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-dev_guide.html">開発マニュアル</a></li>
+		<li style="padding: 1px;"><a href="ethna-document-changes.html">変更点一覧</a></li>
+	    </ul>
+	    <ul style="list-style-type: none; padding-top: 8px;">
+		<li style="padding: 1px;"><a href="TODO.html">TODO(ロードマップ)</a></li>
+		<li style="padding: 1px;"><a href="ethna-logo.html">ロゴ</a></li>
+	    </ul>
+    </div>
+</div><!-- END id:download_link -->
+
+
+
+
+<div id="search_form" class="bar"><!-- ??BEGIN id:search_form -->
+<div class="sidebar_head"><h2>Powered by GREE</h2></div>
+<div class="sidebar_body">
+        <div style="padding-left: 8px;">
+		<a href="http://labs.gree.jp/" target="_blank"><img src="http://labs.gree.jp/image/greelabs_logo.gif" alt="GREE Labs" /></a>
+        </div>
+</div>
+</div><!-- END id:search_form -->
+
+
+<div>
+	<a href="http://sourceforge.jp/"><img src="http://sourceforge.jp/sflogo.php?group_id=1343" width="96" height="31" border="0" alt="SourceForge.jp"></a></div>
+
+</div><!-- ??END id:sidebar -->
+</div><!-- ??END id:wrap_sidebar -->
+</div><!-- ??END id:main -->
+<!-- ?? Footer ?? ========================================================== -->
+<div id="footer"><!-- ??BEGIN id:footer -->
+<div id="copyright"><!-- ??BEGIN id:copyright -->
+ <strong>PukiWiki 1.4.6</strong> Copyright &copy; 2001-2005 <a href="http://pukiwiki.sourceforge.jp/">PukiWiki Developers Team</a>. License is <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>.<br /> Based on "PukiWiki" 1.3 by <a href="http://factage.com/yu-ji/">yu-ji</a>.
+</div><!-- ??END id:copyright -->
+</div><!-- ??END id:footer -->
+<!-- ?? END ?? ============================================================= -->
+</div><!-- ??END id:wrapper -->
+
+</body>
+</html>
