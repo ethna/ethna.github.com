@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2011/10/27 Ethna 2.6.0 beat3 リリース &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="index.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="index.html">
+  <img src="_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/latest_news.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ethna-2-6-0-beat3">
+<h1>2011/10/27 Ethna 2.6.0 beat3 リリース<a class="headerlink" href="#ethna-2-6-0-beat3" title="Permalink to this headline">¶</a></h1>
+<p>Ethna 2.6.0 beta3 をリリースしました。2.6.0 beta2 から主に以下の変更がされています。</p>
+<ul class="simple">
+<li>PHP 5.3 非推奨な記述の除去 (beta2 での抜けていた分の対応等)</li>
+<li>iniに url が設定されていない場合のURL判定機能</li>
+<li>シンプルな UrlHandler 実装 Ethna_UrlHandler_Simple の同梱 (thx. &#64;riaf)</li>
+<li>simpletest 1.1 alpha3 への対応</li>
+<li>オプションパッケージ Smarty3、simpletest1.1 のPEARパッケージングとEthnaチャネルでの配布</li>
+<li>サポートしないドライバの削除: Ethna_Renderer_Rhaco, Ethna_DB_Creole</li>
+<li>その他バグフィックス</li>
+</ul>
+<p>その他変更点の詳細は、 <a class="reference external" href="https://github.com/ethna/ethna/blob/2.6.0beta3/CHANGES.rst">CHANGES</a> をご覧ください。</p>
+<p>また、beta2 から beta3 の間に、以下のとおり運用環境も変更されています。</p>
+<ul class="simple">
+<li>ソースコードを SourceForge.JP から GitHub に移行しました</li>
+<li>それにともない、バグトラッキングも GitHub の Issues を利用しています<ul>
+<li>リポジトリはこちらです: <a class="reference external" href="https://github.com/ethna/ethna">https://github.com/ethna/ethna</a>
+バグトラックや、Pull Request 受け付けております</li>
+</ul>
+</li>
+<li>ドキュメントを、SourceForge.JP のサーバの PukiWiki から、GitHub Pages + Sphinx に変更しました<ul>
+<li>ドキュメントのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/ethna.github.com">https://github.com/ethna/ethna.github.com</a>
+誤字脱字の修正、記事の追加、以前のサイトからの記事の移行等、Pull Request 受け付けております</li>
+<li>以前の PukiWiki にあったドキュメントは、静的ファイル化し、 <a class="reference external" href="http://ethna.jp/old/">http://ethna.jp/old/</a> に移動しました。</li>
+</ul>
+</li>
+<li>PEAR チャネルサーバを、SourceForge.JPのサーバの Chiara から、GitHub Pages + Pirum による運用に変更しました<ul>
+<li>PEARサーバのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/pear">https://github.com/ethna/pear</a>
+こちらは、メンテナ以外が編集する必要性等はありません。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p>以前からEthnaを利用していて、PEARのチャネルに pear.ethna.jp が登録さてれいる方は、必ず <tt class="docutils literal"><span class="pre">channel-update</span></tt> を行なってください。</p>
+<div class="last highlight-python"><pre>$ pear channel-update pear.ethna.jp</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Ethna v2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

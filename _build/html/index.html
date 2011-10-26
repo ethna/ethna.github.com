@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Overview &mdash; Ethna v2.6 documentation</title>
+    <title>Ethna &mdash; Ethna v2.6 documentation</title>
     <link rel="stylesheet" href="_static/ethna.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -22,11 +23,12 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="Ethna v2.6 documentation" href="#" /> 
+    <link rel="top" title="Ethna v2.6 documentation" href="#" />
+    <link rel="next" title="インストール" href="install.html" /> 
   </head>
   <body>
 <div id="ethna-header">
-  <a href="README.html">
+  <a href="#">
   <img src="_static/logo_transpand.png" alt="Ethna" />
   </a>
 </div>
@@ -35,13 +37,38 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+          <a href="install.html" title="インストール"
+             accesskey="N">next</a></li>
+        <li><a href="#">Ethna v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ethna</a><ul>
+<li><a class="reference internal" href="#id1">ようこそ!</a></li>
+<li><a class="reference internal" href="#id2">最新のニュース</a><ul>
+<li><a class="reference internal" href="#ethna-2-6-0-beat3">2011/10/27 Ethna 2.6.0 beat3 リリース</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#id3">ドキュメント</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#index-link">リンク</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">インストール</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -63,32 +90,168 @@
         <div class="bodywrapper">
           <div class="body">
             
-
-<h1>Ethna ドキュメント</h1>
-<p>
-Ethna のドキュメントへようこそ。
-</p>
-
-<h2>ここについて</h2>
-<p>
-ここはEthnaの新しいウェブサイトです。
-</p>
-<p>
-現在ドキュメント整備のため、Sourceforge.JP 上の PukiWiki から、GitHub Pages 上の Sphinx ドキュメントへと移行作業をしています。<br />
-2.6.0 安定版のリリースに合わせる形で整備中のため、それまでは<a href="../old">旧ドキュメント</a>のほうを参照してください。<br />
-</p>
-<ul>
-  <li><a href="README.html">Ethna ドキュメント (整備中)</a></li>
+  <div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>このウェブサイトは現在、2.6リリースにむけて新しく整備中です (また、Sphinx での運用をテスト中です)</p>
+<p>ドキュメントが完全に整備されるまでは、以前のドキュメントのアーカイブを参照してください</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://ethna.jp/old/">http://ethna.jp/old/</a></li>
 </ul>
-
-
-<h2>クイックリンク</h2>
-
-<ul>
-  <li><a href="../old">旧 Ethna ドキュメント</a></li>
-  <li><a href="http://ethna.jp/" class="external">Ethna 公式サイト</a></li>
-  <li><a href="https://github.com/ethna/ethna" class="external">ethna/ethna - Github</a></li>
+</div>
+<div class="section" id="ethna">
+<span id="index"></span><h1>Ethna<a class="headerlink" href="#ethna" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>ようこそ!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><cite>Ethna</cite> (えすな)は、PHPを利用したウェブアプリケーションフレームワークです。</p>
+<p><cite>Ethna</cite> 以下のような特徴をもっています:</p>
+<ul class="simple">
+<li>わかりやすい MVC 風の構造</li>
+<li>圧倒的に簡潔で強力なフォーム機能</li>
+<li>「理想の追及」よりも「実際のアプリケーション開発」に重点をおいた現実的な設計思想</li>
 </ul>
+<p>Ethna には <cite>『絶妙に妥協』</cite> という合言葉があります。いかに PHP らしく複雑すぎず簡単に、しかしロジカルにアプリケーションを記述するか、その絶妙なバランス感を持つフレームワークです。</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference internal" href="install.html#install"><em>インストール</em></a></li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference internal" href="news.html#news"><em>ニュース</em></a></li>
+</ul>
+</td></tr></table>
+</div>
+<div class="section" id="id2">
+<h2>最新のニュース<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ethna-2-6-0-beat3">
+<h3>2011/10/27 Ethna 2.6.0 beat3 リリース<a class="headerlink" href="#ethna-2-6-0-beat3" title="Permalink to this headline">¶</a></h3>
+<p>Ethna 2.6.0 beta3 をリリースしました。2.6.0 beta2 から主に以下の変更がされています。</p>
+<ul class="simple">
+<li>PHP 5.3 非推奨な記述の除去 (beta2 での抜けていた分の対応等)</li>
+<li>iniに url が設定されていない場合のURL判定機能</li>
+<li>シンプルな UrlHandler 実装 Ethna_UrlHandler_Simple の同梱 (thx. &#64;riaf)</li>
+<li>simpletest 1.1 alpha3 への対応</li>
+<li>オプションパッケージ Smarty3、simpletest1.1 のPEARパッケージングとEthnaチャネルでの配布</li>
+<li>サポートしないドライバの削除: Ethna_Renderer_Rhaco, Ethna_DB_Creole</li>
+<li>その他バグフィックス</li>
+</ul>
+<p>その他変更点の詳細は、 <a class="reference external" href="https://github.com/ethna/ethna/blob/2.6.0beta3/CHANGES.rst">CHANGES</a> をご覧ください。</p>
+<p>また、beta2 から beta3 の間に、以下のとおり運用環境も変更されています。</p>
+<ul class="simple">
+<li>ソースコードを SourceForge.JP から GitHub に移行しました</li>
+<li>それにともない、バグトラッキングも GitHub の Issues を利用しています<ul>
+<li>リポジトリはこちらです: <a class="reference external" href="https://github.com/ethna/ethna">https://github.com/ethna/ethna</a>
+バグトラックや、Pull Request 受け付けております</li>
+</ul>
+</li>
+<li>ドキュメントを、SourceForge.JP のサーバの PukiWiki から、GitHub Pages + Sphinx に変更しました<ul>
+<li>ドキュメントのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/ethna.github.com">https://github.com/ethna/ethna.github.com</a>
+誤字脱字の修正、記事の追加、以前のサイトからの記事の移行等、Pull Request 受け付けております</li>
+<li>以前の PukiWiki にあったドキュメントは、静的ファイル化し、 <a class="reference external" href="http://ethna.jp/old/">http://ethna.jp/old/</a> に移動しました。</li>
+</ul>
+</li>
+<li>PEAR チャネルサーバを、SourceForge.JPのサーバの Chiara から、GitHub Pages + Pirum による運用に変更しました<ul>
+<li>PEARサーバのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/pear">https://github.com/ethna/pear</a>
+こちらは、メンテナ以外が編集する必要性等はありません。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p>以前からEthnaを利用していて、PEARのチャネルに pear.ethna.jp が登録さてれいる方は、必ず <tt class="docutils literal"><span class="pre">channel-update</span></tt> を行なってください。</p>
+<div class="last highlight-python"><pre>$ pear channel-update pear.ethna.jp</pre>
+</div>
+</div>
+<p>&gt; <a class="reference internal" href="news.html#news-archive"><em>ニュースアーカイブ</em></a></p>
+</div>
+</div>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>PEAR をつかって今すぐ Ethna をインストール</p>
+<div class="highlight-python"><pre>$ pear channel-discover pear.ethna.jp
+$ pear install -a ethna/ethna</pre>
+</div>
+<p>Ethna コマンドでプロジェクトを作成</p>
+<div class="highlight-python"><pre>$ ethna add-project myproject</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>ドキュメント<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">インストール</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">チュートリアル</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/01-setup.html">1. プロジェクトのセットアップ</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/02-action-view-tpl.html">2. アクション、ビュー、テンプレートの作成</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/03-logic.html">3. ログインのロジックを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/99-outline.html">動作概要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">リファレンス</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/action.html">ActionClass</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/action/authenticate.html">authenticate()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/action/nameresolve.html">アクション名の解決と定義の省略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/action/formname.html">アクション名の決定方法を変更する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/action/formnamereason.html">action_ である理由</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/actionform.html">ActionForm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/define.html">フォームの定義</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/file.html">ファイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/array.html">配列のフォーム定義</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/multiarray.html">多次元配列のフォーム定義</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/validation.html">バリデーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/filter.html">フィルタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/customcheck.html">カスタムチェック</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/complexvalidation.html">複合的なバリデーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/errormsg.html">エラーメッセージのカスタマイズ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/actionform/formtemplate.html">フォームテンプレート</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/view.html">ViewClass</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/actionerror.html">ActionError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/appobject.html">AppObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/appmanager.html">AppManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/urlhandler.html">UrlHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/template.html">テンプレート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/i18n.html">国際化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/testing.html">テスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/plugin.html">プラグイン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/command.html">コマンド</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/migration.html">バージョン移行ガイド</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">クックブック</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/config.html">アプリケーションの設定ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/log.html">ログ出力を行う</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/entrypoint.html">エントリポイント</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">アップグレード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="article.html">その他の記事</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docdoc.html">このドキュメントについて</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="index-link">
+<span id="id4"></span><h2>リンク<a class="headerlink" href="#index-link" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://ethna.jp">Ethna</a></li>
+<li><a class="reference external" href="https://github.com/ethna/ethna">Github ethna/ethna</a></li>
+</ul>
+</div>
+</div>
 
 
           </div>
@@ -100,9 +263,9 @@ Ethna のドキュメントへようこそ。
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li><a href="README.html">Ethna v2.6 documentation</a> &raquo;</li> 
+          <a href="install.html" title="インストール"
+             >next</a></li>
+        <li><a href="#">Ethna v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

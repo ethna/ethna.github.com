@@ -10,7 +10,7 @@ PEAR コマンドを使ったインストール
 -----------------------------------
 
 PEAR コマンドを使ったインストールが最も簡単であるため、推奨します。
-システムに PEAR がインストールされている必要があります。 
+システムに PEAR がインストールされている必要があります。
 (PEARコマンドが使えない場合の説明は後述)
 
 最初の1回だけ、 ``channel-discover`` で Ethna のチャネルを登録する必要があります。 ::
@@ -31,7 +31,7 @@ Ethna の PEAR チャネルが登録されたら、次のようにインスト�
 
     $ ethna -v
     Ethna 2.6.0 (using PHP 5.3.6-6~dotdeb.1)
-    
+
     Copyright (c) 2004-2011,
       Masaki Fujimoto <fujimoto@php.net>
       halt feits <halt.feits@gmail.com>
@@ -40,7 +40,7 @@ Ethna の PEAR チャネルが登録されたら、次のようにインスト�
       cocoitiban <cocoiti@comio.info>
       Yoshinari Takaoka <takaoka@beatcraft.com>
       Sotaro Karasawa <sotaro.k@gmail.com>
-    
+
     http://ethna.jp/
 
 
