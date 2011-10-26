@@ -38,7 +38,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'README'
+master_doc = 'index'
 
 # General information about the project.
 project = u'Ethna'
@@ -102,7 +102,7 @@ html_theme = 'ethna'
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_theme']
 
-html_index = 'index.html'
+#html_index = 'index.html'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -139,14 +139,14 @@ html_static_path = ['_static']
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 html_additional_pages = {
-    "index": "index.html",
+    # "index": "index.html",
 }
 
 # If false, no module index is generated.
 #html_domain_indices = True
 
 # If false, no index is generated.
-html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -183,7 +183,7 @@ htmlhelp_basename = 'Ethnadoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('README', 'Ethna.tex', u'ethna Documentation',
+  ('index', 'Ethna.tex', u'Ethna Documentation',
    u'sotarok', 'manual'),
 ]
 
@@ -216,7 +216,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('README', 'ethna', u'Ethna Documentation',
+    ('index', 'ethna', u'Ethna Documentation',
      [u'sotarok'], 1)
 ]
 
