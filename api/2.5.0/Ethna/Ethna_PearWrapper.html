@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_PearWrapper</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_PearWrapper</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">wrapper class for PEAR_Command   This class should be instantiated in ethna handler.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> ICHII Takashi &lt;<a href="mailto:ichii386@schweetheart.jp">ichii386@schweetheart.jp</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_PearWrapper.php.html">/class/Ethna_PearWrapper.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a26">26</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																												<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">string</span>
+										<a href="#getPackageNameFromTgz" title="details" class="method-name">&amp;getPackageNameFromTgz</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$filename</span>)
+									</div>
+																																																																												<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_PearWrapper</span>
+										<a href="#Ethna_PearWrapper" title="details" class="method-name">Ethna_PearWrapper</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#confirmDialog" title="details" class="method-name">confirmDialog</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">'yes'</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#displayTable" title="details" class="method-name">displayTable</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$caption</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$headline</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$rows</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doChannelDiscover" title="details" class="method-name">&amp;doChannelDiscover</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doChannelUpdate" title="details" class="method-name">&amp;doChannelUpdate</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doClearCache" title="details" class="method-name">&amp;doClearCache</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doInfo" title="details" class="method-name">&amp;doInfo</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doInstall" title="details" class="method-name">&amp;doInstall</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$state</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doInstallFromTgz" title="details" class="method-name">&amp;doInstallFromTgz</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_file</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doList" title="details" class="method-name">&amp;doList</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doRemoteInfo" title="details" class="method-name">&amp;doRemoteInfo</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doRemoteList" title="details" class="method-name">&amp;doRemoteList</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doUninstall" title="details" class="method-name">&amp;doUninstall</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doUpgrade" title="details" class="method-name">&amp;doUpgrade</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$state</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doUpgradeAll" title="details" class="method-name">&amp;doUpgradeAll</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#doUpgradeFromTgz" title="details" class="method-name">&amp;doUpgradeFromTgz</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_file</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getCanonicalPackageName" title="details" class="method-name">&amp;getCanonicalPackageName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getInstalledPackageList" title="details" class="method-name">&amp;getInstalledPackageList</a>
+										()
+									</div>
+																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getState" title="details" class="method-name">getState</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getVersion" title="details" class="method-name">getVersion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+										<a href="#init" title="details" class="method-name">&amp;init</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$target</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$app_dir</span> = <span class="var-default">null</span>], [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$channel</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isChannelExists" title="details" class="method-name">isChannelExists</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isInstalled" title="details" class="method-name">isInstalled</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setPearOpt" title="details" class="method-name">setPearOpt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$pearopt</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getPearOpt" title="details" class="method-name">_getPearOpt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$cmd_obj</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$cmd_str</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$opt_array</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodgetPackageNameFromTgz" id="getPackageNameFromTgz"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static getPackageNameFromTgz</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a452">452</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get package info from tar/tgz file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> package name</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			&amp;getPackageNameFromTgz
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$filename</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$filename</span><span class="var-description">: package file name.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodEthna_PearWrapper" id="Ethna_PearWrapper"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_PearWrapper</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a63">63</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_PearWrapper constructor</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_PearWrapper</span>
+		<span class="method-name">
+			Ethna_PearWrapper
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodconfirmDialog" id="confirmDialog"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">confirmDialog</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a607">607</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">provide yes-or-no dialog.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			confirmDialog
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">'yes'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$message</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$default</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddisplayTable" id="displayTable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">displayTable</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a620">620</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">provide table layout</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			displayTable
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$caption</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$headline</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$rows</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$headline</span><span class="var-description">: headline</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$rows</span><span class="var-description">: rows which have the same size as headline's.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$caption</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoChannelDiscover" id="doChannelDiscover"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doChannelDiscover</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a247">247</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do channel-discover</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doChannelDiscover
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoChannelUpdate" id="doChannelUpdate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doChannelUpdate</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a276">276</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do channel-update</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doChannelUpdate
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoClearCache" id="doClearCache"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doClearCache</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a230">230</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do clear-cache</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doClearCache
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoInfo" id="doInfo"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doInfo</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a508">508</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do info (packages installed with ethna command)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doInfo
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoInstall" id="doInstall"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doInstall</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a321">321</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do install</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doInstall
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$state</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pkg_name</span><span class="var-description">: package name.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$state</span><span class="var-description">: package state.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoInstallFromTgz" id="doInstallFromTgz"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doInstallFromTgz</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a339">339</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do install from local tgz file</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doInstallFromTgz
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_file</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pkg_file</span><span class="var-description">: package filename</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoList" id="doList"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a545">545</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do list (packages installed with ethna command)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoRemoteInfo" id="doRemoteInfo"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doRemoteInfo</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a521">521</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do info (packages installable with ethna command)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doRemoteInfo
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoRemoteList" id="doRemoteList"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doRemoteList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a557">557</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do remote-list (packages installable with ethna command)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doRemoteList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoUninstall" id="doUninstall"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doUninstall</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a426">426</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do uninstall (packages installed with ethna command)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doUninstall
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$package</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoUpgrade" id="doUpgrade"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doUpgrade</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a354">354</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do upgrade</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doUpgrade
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$state</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pkg_name</span><span class="var-description">: package name.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$state</span><span class="var-description">: package state.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoUpgradeAll" id="doUpgradeAll"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doUpgradeAll</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a533">533</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do upgrade-all</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doUpgradeAll
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoUpgradeFromTgz" id="doUpgradeFromTgz"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doUpgradeFromTgz</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a372">372</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">do upgrade from local tgz file</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;doUpgradeFromTgz
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pkg_file</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pkg_file</span><span class="var-description">: package filename</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCanonicalPackageName" id="getCanonicalPackageName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCanonicalPackageName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a473">473</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get canonical package name (case sensitive)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> canonical name</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			&amp;getCanonicalPackageName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetInstalledPackageList" id="getInstalledPackageList"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getInstalledPackageList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a491">491</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get installed package list</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> installed package list</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			&amp;getInstalledPackageList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetState" id="getState"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getState</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a413">413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get package version</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> version string</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getState
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetVersion" id="getVersion"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getVersion</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a399">399</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get package version</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> version string</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getVersion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinit" id="init"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">init</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a81">81</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">setup PEAR_Config and so on.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">true|<a href="../Ethna/Ethna_Error.html">Ethna_Error</a></span>
+		<span class="method-name">
+			&amp;init
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$target</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$app_dir</span> = <span class="var-default">null</span>], [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$channel</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$target</span><span class="var-description">: whether 'master' or 'local'</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$app_dir</span><span class="var-description">: local application directory.</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$channel</span><span class="var-description">: channel for the package repository.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisChannelExists" id="isChannelExists"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isChannelExists</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a264">264</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">whether channel discovered or not</p>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isChannelExists
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisInstalled" id="isInstalled"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isInstalled</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a386">386</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">check package installed</p>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isInstalled
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$package</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$package</span><span class="var-description">: package name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPearOpt" id="setPearOpt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setPearOpt</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a638">638</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">(experimental)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPearOpt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$pearopt</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pearopt</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getPearOpt" id="_getPearOpt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getPearOpt</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_PearWrapper.php.html#a647">647</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">(experimental)</p>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getPearOpt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$cmd_obj</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$cmd_str</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$opt_array</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$cmd_obj</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$cmd_str</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$opt_array</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:59 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_Handle</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_Handle</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Manager class of Ethna (Command Line) Handlers</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_Handle.php.html">/class/Ethna_Handle.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a20">20</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#getAppController" title="details" class="method-name">&amp;getAppController</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$app_dir</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#getEthnaController" title="details" class="method-name">&amp;getEthnaController</a>
+										()
+									</div>
+																																																												<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_Handle</span>
+										<a href="#Ethna_Handle" title="details" class="method-name">Ethna_Handle</a>
+										()
+									</div>
+																																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getHandler" title="details" class="method-name">&amp;getHandler</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getHandlerList" title="details" class="method-name">getHandlerList</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getMasterSetting" title="details" class="method-name">&amp;getMasterSetting</a>
+											([<span class="var-type">$section</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#handleError" title="details" class="method-name">handleError</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$eobj</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_handler_sort_callback" title="details" class="method-name">_handler_sort_callback</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$a</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$b</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodgetAppController" id="getAppController"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static getAppController</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a116">116</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションのコントローラファイル/クラスを検索する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;getAppController
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$app_dir</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$app_dir</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetEthnaController" id="getEthnaController"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static getEthnaController</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a103">103</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Controllerのインスタンスを取得する   (Ethna_Handlerの文脈で呼び出されることが前提)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;getEthnaController
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodEthna_Handle" id="Ethna_Handle"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_Handle</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a43">43</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Handle constructor (stub for php4)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_Handle</span>
+		<span class="method-name">
+			Ethna_Handle
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetHandler" id="getHandler"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getHandler</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a60">60</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get handler object</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;getHandler
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetHandlerList" id="getHandlerList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getHandlerList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a78">78</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get an object list of all available handlers</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getHandlerList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetMasterSetting" id="getMasterSetting"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getMasterSetting</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a177">177</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna 本体の設定を取得する (ethnaコマンド用)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;getMasterSetting
+		</span>
+					([<span class="var-type">$section</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$section</span>
+				<span class="var-name">$section</span><span class="var-description">: ini ファイルの section</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodhandleError" id="handleError"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">handleError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a204">204</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna コマンドでのエラーハンドリング</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			handleError
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$eobj</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$eobj</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_handler_sort_callback" id="_handler_sort_callback"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_handler_sort_callback</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Handle.php.html#a89">89</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">sort callback method</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_handler_sort_callback
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$a</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$b</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$a</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$b</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:44 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_AppObject</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_AppObject</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションオブジェクトのベースクラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">todo:</span> 複数テーブルの対応</li>
+				<li><span class="field">todo:</span> remove dependency on PEAR::DB</li>
+				<li><span class="field">todo:</span> quoteidentifier は Ethna_AppSQL に持っていくべき</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---AppObject.php.html">/class/AppObject.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a23">23</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																																																																																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$action_form" title="details" class="var-name">$action_form</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$af" title="details" class="var-name">$af</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$backend" title="details" class="var-name">$backend</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$config" title="details" class="var-name">$config</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$db_prefix" title="details" class="var-name">$db_prefix</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$i18n" title="details" class="var-name">$i18n</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$id" title="details" class="var-name">$id</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$id_def" title="details" class="var-name">$id_def</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$prop" title="details" class="var-name">$prop</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$prop_backup" title="details" class="var-name">$prop_backup</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$prop_def" title="details" class="var-name">$prop_def</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$prop_def_cache_lifetime" title="details" class="var-name">$prop_def_cache_lifetime</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$session" title="details" class="var-name">$session</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$table_def" title="details" class="var-name">$table_def</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>&nbsp;<span class="var-name">$backend</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key_type</span> = <span class="var-default">null</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$prop</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#add" title="details" class="method-name">add</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#dump" title="details" class="method-name">dump</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;csv&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#exportForm" title="details" class="method-name">exportForm</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#get" title="details" class="method-name">get</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getDef" title="details" class="method-name">getDef</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#getId" title="details" class="method-name">getId</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#getIdDef" title="details" class="method-name">getIdDef</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getLongName" title="details" class="method-name">getLongName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getName" title="details" class="method-name">getName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getNameObject" title="details" class="method-name">getNameObject</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#importForm" title="details" class="method-name">importForm</a>
+											([<span class="var-type">int</span>&nbsp;<span class="var-name">$option</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isActive" title="details" class="method-name">isActive</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isValid" title="details" class="method-name">isValid</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#remove" title="details" class="method-name">remove</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#replace" title="details" class="method-name">replace</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#searchId" title="details" class="method-name">searchId</a>
+											([<span class="var-type">array</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#searchProp" title="details" class="method-name">searchProp</a>
+											([<span class="var-type">array</span>&nbsp;<span class="var-name">$keys</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#set" title="details" class="method-name">set</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#update" title="details" class="method-name">update</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_dump_csv" title="details" class="method-name">_dump_csv</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_fieldNameToFormName" title="details" class="method-name">_fieldNameToFormName</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$field_def</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getDBList" title="details" class="method-name">_getDBList</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getPropDef" title="details" class="method-name">_getPropDef</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getTableDef" title="details" class="method-name">_getTableDef</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#_setDefault" title="details" class="method-name">_setDefault</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key_type</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_SQLPlugin_SearchPropDef" title="details" class="method-name">_SQLPlugin_SearchPropDef</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_SQLPlugin_SearchTable" title="details" class="method-name">_SQLPlugin_SearchTable</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$action_form" id="$action_form"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$action_form</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a40">40</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$af" id="$af"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$af</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a43">43</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$backend" id="$backend"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$backend</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a31">31</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$config" id="$config"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$config</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a34">34</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$db_prefix" id="$db_prefix"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$db_prefix</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a49">49</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$i18n" id="$i18n"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$i18n</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a37">37</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$id" id="$id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$id</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a70">70</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$id_def" id="$id_def"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$id_def</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a67">67</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$prop" id="$prop"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$prop</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a58">58</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$prop_backup" id="$prop_backup"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$prop_backup</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a61">61</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$prop_def" id="$prop_def"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$prop_def</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a55">55</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$prop_def_cache_lifetime" id="$prop_def_cache_lifetime"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$prop_def_cache_lifetime</span>
+			 = <span class="var-default"> 86400</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a64">64</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$session" id="$session"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$session</span>
+						(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a46">46</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$table_def" id="$table_def"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$table_def</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a52">52</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a87">87</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_AppObjectクラスのコンストラクタ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 -1:キー/プロパティ未指定 Ethna_Error:エラー</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>&nbsp;<span class="var-name">$backend</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key_type</span> = <span class="var-default">null</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$prop</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>
+				<span class="var-name">$backend</span><span class="var-description">: Ethna_Backendオブジェクト</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key_type</span><span class="var-description">: レコードを特定するためのカラム名                               (通常はプライマリーキーのフィールド)</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: レコードを特定するためのカラム値</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$prop</span><span class="var-description">: プロパティ(レコードの値)一覧</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodadd" id="add"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">add</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a413">413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトを追加する(INSERT)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 Ethna_Error:エラー</li>
+				<li><span class="field">todo:</span> remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			add
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddump" id="dump"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">dump</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a352">352</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティを指定の形式でダンプする(現在はCSV形式のみサポート)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ダンプ結果(エラーの場合はnull)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			dump
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;csv&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: ダンプ形式(&quot;csv&quot;...)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodexportForm" id="exportForm"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">exportForm</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a397">397</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティをフォーム値にエクスポートする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			exportForm
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget" id="get"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a260">260</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティへのアクセサ(R)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プロパティ(カラムの値)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			get
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: プロパティ名(カラム名)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDef" id="getDef"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDef</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a220">220</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトのプロパティ定義(カラム定義)を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> オブジェクトのプロパティ定義</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getDef
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetId" id="getId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getId</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a246">246</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトID(primary keyの値)を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> オブジェクトID</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetIdDef" id="getIdDef"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getIdDef</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a233">233</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">プライマリキー定義を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プライマリキーとなるプロパティ名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getIdDef
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLongName" id="getLongName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLongName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a300">300</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティ表示名(詳細)へのアクセサ   プロパティ値と、表示用の値が違う場合 (「県」等）に、   オーバーライドして下さい。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プロパティ(カラム)の表示名(詳細)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getLongName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: プロパティ(カラム)名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetName" id="getName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a285">285</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティ表示名へのアクセサ   プロパティ値と、表示用の値が違う場合 (「県」等）に、   オーバーライドして下さい。</p>
+<p class="description"><p>表示用の値を返す形で実装します。</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プロパティ(カラム)の表示名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: プロパティ(カラム)名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetNameObject" id="getNameObject"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getNameObject</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a314">314</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">プロパティ表示名を格納した連想配列を取得する   すべての getName メソッドの戻り値を配列として返します。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プロパティ表示名を格納した連想配列</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getNameObject
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodimportForm" id="importForm"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">importForm</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a372">372</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">フォーム値からオブジェクトプロパティをインポートする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			importForm
+		</span>
+					([<span class="var-type">int</span>&nbsp;<span class="var-name">$option</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$option</span><span class="var-description">: インポートオプション                   OBJECT_IMPORT_IGNORE_NULL: フォーム値が送信されていない場合はスキップ                   OBJECT_IMPORT_CONVERT_NULL: フォーム値が送信されていない場合、空文字列に変換</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisActive" id="isActive"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isActive</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a204">204</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクティブなオブジェクトかどうかを返す</p>
+<p class="description"><p>isValid()メソッドはオブジェクト自体が有効かどうかを判定するのに対し   isActive()はオブジェクトがアプリケーションとして有効かどうかを返す</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:アクティブ false:非アクティブ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isActive
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisValid" id="isValid"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isValid</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a184">184</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">有効なオブジェクトかどうかを返す   プライマリーキーの値が設定されてなければ不正なオブジェクトです。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:有効 false:無効</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isValid
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodremove" id="remove"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">remove</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a596">596</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト(レコード)を削除する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 Ethna_Error:エラー</li>
+				<li><span class="field">todo:</span> remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			remove
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodreplace" id="replace"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">replace</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a559">559</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトを置換する</p>
+<p class="description"><p>MySQLのREPLACE文に相当する動作を行う(add()で重複エラーが発生したら   update()を行う)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 &gt;0:オブジェクトID(追加時) Ethna_Error:エラー</li>
+				<li><span class="field">todo:</span> remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			replace
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsearchId" id="searchId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">searchId</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a627">627</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトID(プライマリーキーの値)を検索する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array(0 =&gt; 検索条件にマッチした件数, <ol><li>=&gt; $offset, $countにより指定された件数のオブジェクトID一覧)</li></ol>                  Ethna_Error:エラー   TODO: remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			searchId
+		</span>
+					([<span class="var-type">array</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$filter</span><span class="var-description">: WHERE検索条件(カラム名をキー、値には実際の条件値か、Ethna_AppSearchObjectを指定)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$order</span><span class="var-description">: 検索結果ソート条件                               (カラム名をキー。値には、昇順の場合は OBJECT_SORT_ASC, 降順の場合は　OBJECT_SORT_DESC)</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$offset</span><span class="var-description">: 検索結果取得オフセット</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$count</span><span class="var-description">: 検索結果取得数</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsearchProp" id="searchProp"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">searchProp</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a682">682</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティ(レコード)を検索する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array(0 =&gt; 検索条件にマッチした件数, <ol><li>=&gt; $offset, $countにより指定された件数のオブジェクトプロパティ一覧)</li></ol>                  Ethna_Error:エラー   TODO: remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			searchProp
+		</span>
+					([<span class="var-type">array</span>&nbsp;<span class="var-name">$keys</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$keys</span><span class="var-description">: 取得するプロパティ(カラム名)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$filter</span><span class="var-description">: WHERE検索条件(カラム名をキー、値には実際の条件値か、Ethna_AppSearchObjectを指定)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$order</span><span class="var-description">: 検索結果ソート条件                               (カラム名をキー。値には、昇順の場合は OBJECT_SORT_ASC, 降順の場合は　OBJECT_SORT_DESC)</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$offset</span><span class="var-description">: 検索結果取得オフセット</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$count</span><span class="var-description">: 検索結果取得数</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodset" id="set"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">set</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a334">334</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティ(カラムに対応した値)を設定します。</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			set
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: プロパティ(カラム)名</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: プロパティ値</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdate" id="update"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">update</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a503">503</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトを更新する(UPDATE)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 Ethna_Error:エラー</li>
+				<li><span class="field">todo:</span> remove dependency on PEAR::DB</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			update
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_dump_csv" id="_dump_csv"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_dump_csv</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1426">1426</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトプロパティをCSV形式でダンプする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ダンプ結果</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_dump_csv
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_fieldNameToFormName" id="_fieldNameToFormName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_fieldNameToFormName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1651">1651</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">データベースフィールド名に対応するフォーム名を取得する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_fieldNameToFormName
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$field_def</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$field_def</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getDBList" id="_getDBList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getDBList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1502">1502</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DBオブジェクト(read only/read-write)を取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array('ro' =&gt; {read only db object}, 'rw' =&gt; {read-write db object})</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getDBList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getPropDef" id="_getPropDef"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getPropDef</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1576">1576</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">プロパティ定義を取得します。キャッシュされている場合は、   そこから取得します。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プロパティ定義</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getPropDef
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getTableDef" id="_getTableDef"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getTableDef</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1550">1550</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">テーブル定義を取得する</p>
+<p class="description"><p>(クラス名→テーブル名のルールを変えたい場合は   このメソッドをオーバーライドします)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> テーブル定義</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getTableDef
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_setDefault" id="_setDefault"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setDefault</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a729">729</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクトのアプリケーションデフォルトプロパティを設定する</p>
+<p class="description"><p>コンストラクタにより指定されたキーにマッチするエントリがなかった場合の   デフォルトプロパティをここで設定することが出来る</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			_setDefault
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key_type</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key_type</span><span class="var-description">: 検索キー名</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: 検索キー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_SQLPlugin_SearchPropDef" id="_SQLPlugin_SearchPropDef"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_SQLPlugin_SearchPropDef</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1413">1413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト検索SQLプラグイン(追加条件定義)</p>
+<p class="description"><p>sample:   <div class="src-code"><ol><li><div class="src-line">&nbsp;&nbsp;<span class="src-var">$search_prop_def&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'group_id'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'primary'&nbsp;</span>=&gt;&nbsp;<span class="src-id">true</span><span class="src-sym">,&nbsp;</span><span class="src-str">'key'&nbsp;</span>=&gt;&nbsp;<span class="src-id">true</span><span class="src-sym">,&nbsp;</span><span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-id"><a href="../Ethna/_Ethna.php.html#defineVAR_TYPE_INT">VAR_TYPE_INT</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'form_name'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'group_id'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'table'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'group_user_tbl'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$search_prop_def</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 追加条件定義</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_SQLPlugin_SearchPropDef
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_SQLPlugin_SearchTable" id="_SQLPlugin_SearchTable"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_SQLPlugin_SearchTable</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classAppObject.php.html#a1389">1389</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト検索SQLプラグイン(追加テーブル)</p>
+<p class="description"><p>sample:   <div class="src-code"><ol><li><div class="src-line">&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-str">&quot;&nbsp;LEFT&nbsp;JOIN&nbsp;bar_tbl&nbsp;ON&nbsp;foo_tbl.user_id=bar_tbl.user_id&quot;</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> テーブルJOINのSQL文</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_SQLPlugin_SearchTable
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:57:40 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

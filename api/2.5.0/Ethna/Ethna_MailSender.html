@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_MailSender</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_MailSender</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メール送信クラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_MailSender.php.html">/class/Ethna_MailSender.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a24">24</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_MailSender</span>
+										<a href="#Ethna_MailSender" title="details" class="method-name">Ethna_MailSender</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>&nbsp;<span class="var-name">&$backend</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+										<a href="#getRenderer" title="details" class="method-name">&amp;getRenderer</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+										<a href="#getTemplateEngine" title="details" class="method-name">&amp;getTemplateEngine</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#send" title="details" class="method-name">send</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$to</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$template</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$macro</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$attach</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setOption" title="details" class="method-name">setOption</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$option</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_setDefaultMacro" title="details" class="method-name">_setDefaultMacro</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$macro</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodEthna_MailSender" id="Ethna_MailSender"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_MailSender</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a57">57</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_MailSenderクラスのコンストラクタ</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_MailSender</span>
+		<span class="method-name">
+			Ethna_MailSender
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>&nbsp;<span class="var-name">&$backend</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>
+				<span class="var-name">&$backend</span><span class="var-description">: backendオブジェクト</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetRenderer" id="getRenderer"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getRenderer</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a273">273</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メールフォーマット用レンダラオブジェクト取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> レンダラオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+		<span class="method-name">
+			&amp;getRenderer
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetTemplateEngine" id="getTemplateEngine"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getTemplateEngine</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a285">285</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メールフォーマット用レンダラオブジェクト取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> レンダラオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+		<span class="method-name">
+			&amp;getTemplateEngine
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsend" id="send"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">send</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a95">95</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メールを送信する</p>
+<p class="description"><p>$attach の指定方法: <ul><li>既存のファイルを添付するとき
+  <div class="src-code"><ol><li><div class="src-line">&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'filename'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'/tmp/hoge.xls'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'content-type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'application/vnd.ms-excel'</span><span class="src-sym">)</span></div></li>
+</ol></div></li><li>文字列に名前を付けて添付するとき
+  <div class="src-code"><ol><li><div class="src-line">&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'name'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo.txt'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'content'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'this&nbsp;is&nbsp;foo.'</span><span class="src-sym">)</span></div></li>
+</ol></div></li></ul>  'content-type' 省略時は 'application/octet-stream' となる。   複数添付するときは上の配列を添字0から始まるふつうの配列に入れる。</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			send
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$to</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$template</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$macro</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$attach</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$to</span><span class="var-description">: メール送信先アドレス (nullのときは送信せずに内容を return する)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$template</span><span class="var-description">: メールテンプレート名 or タイプ</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$macro</span><span class="var-description">: テンプレートマクロ or $templateがMAILSENDER_TYPE_DIRECTのときはメール送信内容)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$attach</span><span class="var-description">: 添付ファイル</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetOption" id="setOption"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setOption</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a69">69</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メールオプションを設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setOption
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$option</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$option</span><span class="var-description">: メール送信オプション</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_setDefaultMacro" id="_setDefaultMacro"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setDefaultMacro</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_MailSender.php.html#a232">232</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーション固有のマクロを設定する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アプリケーション固有処理済みマクロ</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_setDefaultMacro
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$macro</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$macro</span><span class="var-description">: ユーザ定義マクロ</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:55 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

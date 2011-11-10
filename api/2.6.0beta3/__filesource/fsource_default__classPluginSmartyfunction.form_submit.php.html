@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for function.form_submit.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file function.form_submit.php</h1>
+<p>Documentation is available at <a href="../default/_class---Plugin---Smarty---function.form_submit.php.html">function.form_submit.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;smarty&nbsp;function:フォームのsubmitボタン生成</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$submit&nbsp;</span><span class="src-doc">&nbsp;&nbsp;フォーム項目名</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-key">function&nbsp;</span><a href="../default/_class---Plugin---Smarty---function.form_submit.php.html#functionsmarty_function_form_submit">smarty_function_form_submit</a><span class="src-sym">(</span><span class="src-var">$params</span><span class="src-sym">,&nbsp;</span><span class="src-sym">&amp;</span><span class="src-var">$smarty</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$c&nbsp;</span>=&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Controller.html">Ethna_Controller</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Controller.html#methodgetInstance">getInstance</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$view&nbsp;</span>=&nbsp;<span class="src-var">$c</span><span class="src-sym">-&gt;</span><span class="src-id">getView</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$view&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$view</span><span class="src-sym">-&gt;</span><span class="src-id">getFormSubmit</span><span class="src-sym">(</span><span class="src-var">$params</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:58:09 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Debugtoolbar.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Debugtoolbar.php</h1>
+<p>Documentation is available at <a href="../Ethna/_extlib---Plugin---Filter---Debugtoolbar.php.html">Debugtoolbar.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_Plugin_Filter_DebugToolbar.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sotaro&nbsp;KARASAWA&nbsp;&lt;sotaro.k@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;DebugToolbar&nbsp;Plugin&nbsp;Filter</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-tag">@description</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;DebugToolbar&nbsp;plugin&nbsp;standard&nbsp;set</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sotaro&nbsp;KARASAWA&nbsp;&lt;sotaro.k@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html">Ethna_Plugin_Filter_Debugtoolbar</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter.html">Ethna_Plugin_Filter</a></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#var$version">$version</a>&nbsp;=&nbsp;<span class="src-str">'1.0.0&nbsp;-&nbsp;$Id:&nbsp;912d8a4702c148eb8a7a0fb8e2afa9efde156191&nbsp;$'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">private&nbsp;</span><span class="src-var">$_type_mapping&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_INT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_INT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_FLOAT&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_FLOAT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_STRING&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_STRING'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_DATETIME&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_DATETIME'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_BOOLEAN&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_BOOLEAN'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">VAR_TYPE_FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'VAR_TYPE_FILE'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">private&nbsp;</span><span class="src-var">$_form_type_mapping&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_TEXT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_PASSWORD&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_PASSWORD'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_TEXTAREA&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_TEXTAREA'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_SELECT&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_SELECT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_RADIO&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_RADIO'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_CHECKBOX&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_CHECKBOX'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_SUBMIT&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_SUBMIT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_FILE'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_BUTTON&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_BUTTON'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">FORM_TYPE_HIDDEN&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FORM_TYPE_HIDDEN'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">private&nbsp;</span><span class="src-var">$_stime</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#method__destruct">__destruct</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodpreFilter">preFilter</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$stime&nbsp;</span>=&nbsp;<a href="http://www.php.net/microtime">microtime</a><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_stime&nbsp;</span>=&nbsp;<span class="src-var">$stime</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;filter&nbsp;which&nbsp;will&nbsp;be&nbsp;executed&nbsp;at&nbsp;the&nbsp;end.</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodpostFilter">postFilter</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/is_null">is_null</a><span class="src-sym">(</span><span class="src-var">$view&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getView</span><span class="src-sym">(</span><span class="src-sym">))&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!</span><span class="src-var">$view</span><span class="src-sym">-&gt;</span><span class="src-id">has_default_header</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodinit">init</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpInfo">dumpInfo</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpConfig">dumpConfig</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpActionForm">dumpActionForm</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodsmartyDebug">smartyDebug</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodinit">init</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$url&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getConfig</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">get</span><span class="src-sym">(</span><span class="src-str">'url'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">1</span><span class="src-sym">)&nbsp;</span>!=&nbsp;<span class="src-str">'/'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$url&nbsp;</span>.=&nbsp;<span class="src-str">'/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;CSS</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;style&nbsp;type=&quot;text/css&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOF</div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>.xdebug-var-dump&nbsp;{</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;background:&nbsp;#f0f0f0;</div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;padding:&nbsp;2px;</div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;font-family:&nbsp;monospace;</div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;line-height:&nbsp;150%;</div></li>
+<li><div class="src-line"><a name="a90"></a>}</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>/*&nbsp;ethna&nbsp;debug&nbsp;style</div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a95"></a>/*</div></li>
+<li><div class="src-line"><a name="a96"></a>0&nbsp;=&gt;&nbsp;string&nbsp;'EMERG'&nbsp;(length=5)</div></li>
+<li><div class="src-line"><a name="a97"></a>1&nbsp;=&gt;&nbsp;string&nbsp;'ALERT'&nbsp;(length=5)</div></li>
+<li><div class="src-line"><a name="a98"></a>2&nbsp;=&gt;&nbsp;string&nbsp;'CRIT'&nbsp;(length=4)</div></li>
+<li><div class="src-line"><a name="a99"></a>3&nbsp;=&gt;&nbsp;string&nbsp;'ERR'&nbsp;(length=3)</div></li>
+<li><div class="src-line"><a name="a100"></a>4&nbsp;=&gt;&nbsp;string&nbsp;'WARNING'&nbsp;(length=7)</div></li>
+<li><div class="src-line"><a name="a101"></a>5&nbsp;=&gt;&nbsp;string&nbsp;'NOTICE'&nbsp;(length=6)</div></li>
+<li><div class="src-line"><a name="a102"></a>6&nbsp;=&gt;&nbsp;string&nbsp;'INFO'&nbsp;(length=4)</div></li>
+<li><div class="src-line"><a name="a103"></a>7&nbsp;=&gt;&nbsp;string&nbsp;'DEBUG'&nbsp;(length=5)</div></li>
+<li><div class="src-line"><a name="a104"></a>*/</div></li>
+<li><div class="src-line"><a name="a105"></a>.ethna-debug-pre</div></li>
+<li><div class="src-line"><a name="a106"></a>{</div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;line-height:&nbsp;55%;</div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;border:&nbsp;solid&nbsp;2px&nbsp;#333;</div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;padding:&nbsp;8px;</div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;margin:&nbsp;10px;</div></li>
+<li><div class="src-line"><a name="a111"></a>}</div></li>
+<li><div class="src-line"><a name="a112"></a>.ethna-debug-pre-blink</div></li>
+<li><div class="src-line"><a name="a113"></a>{</div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a115"></a>}</div></li>
+<li><div class="src-line"><a name="a116"></a>.ethna-debug-title&nbsp;,</div></li>
+<li><div class="src-line"><a name="a117"></a>.ethna-debug-subtitle&nbsp;{</div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;font-family:&nbsp;Verdana,&nbsp;&quot;Hiragino&nbsp;Kaku&nbsp;Gothic&nbsp;Pro&nbsp;W3&quot;,&nbsp;&quot;Meiryo&quot;&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;font-size:&nbsp;18px;</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;font-weight:&nbsp;bold;</div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;line-height:&nbsp;2.6em;</div></li>
+<li><div class="src-line"><a name="a122"></a>}</div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a124"></a>.ethna-debug&nbsp;{</div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;font-family:&nbsp;Verdana&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;position:&nbsp;fixed;</div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;bottom:&nbsp;0px;</div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;left:&nbsp;0px;</div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;width:&nbsp;100%;</div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;max-height:&nbsp;50%;</div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;padding-top:&nbsp;20px;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;padding-bottom:&nbsp;50px;</div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;overflow:&nbsp;auto;</div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;background:&nbsp;#ccc&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;border-top:&nbsp;solid&nbsp;3px&nbsp;#fff;</div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;color:&nbsp;#333&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;display:none;</div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;font-size:&nbsp;12px;</div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;opacity:&nbsp;0.9;</div></li>
+<li><div class="src-line"><a name="a140"></a>}</div></li>
+<li><div class="src-line"><a name="a141"></a>.ethna-debug&nbsp;td,</div></li>
+<li><div class="src-line"><a name="a142"></a>.ethna-debug&nbsp;th&nbsp;{</div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;color:&nbsp;#333&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a144"></a>}</div></li>
+<li><div class="src-line"><a name="a145"></a>.ethna-debug&nbsp;div&nbsp;{</div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;padding-left:&nbsp;20px;</div></li>
+<li><div class="src-line"><a name="a147"></a>}</div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a149"></a>#ethna-debug-switch-outline&nbsp;{</div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;background:&nbsp;#666;</div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;color:&nbsp;#fff;</div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;margin:&nbsp;0;</div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;padding:&nbsp;0;</div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;position:&nbsp;fixed;</div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;bottom:&nbsp;0px;</div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;left:&nbsp;0px;</div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;font-size:&nbsp;14px;</div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;font-family:&nbsp;Verdana,&nbsp;&quot;Hiragino&nbsp;Kaku&nbsp;Gothic&nbsp;Pro&nbsp;W3&quot;,&nbsp;&quot;Meiryo&quot;&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;opacity:&nbsp;0.8;</div></li>
+<li><div class="src-line"><a name="a160"></a>}</div></li>
+<li><div class="src-line"><a name="a161"></a>#ethna-debug-switch-outline&nbsp;li&nbsp;{</div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;padding:&nbsp;7px&nbsp;10px&nbsp;7px&nbsp;22px;</div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;&nbsp;margin:&nbsp;0;</div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;float:left;</div></li>
+<li><div class="src-line"><a name="a165"></a>&nbsp;&nbsp;list-style:none;</div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;z-index:&nbsp;1000;</div></li>
+<li><div class="src-line"><a name="a167"></a>}</div></li>
+<li><div class="src-line"><a name="a168"></a>li.ethna-debug-switch&nbsp;{</div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;/*&nbsp;background-position:&nbsp;2px&nbsp;12px;&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;background-position:&nbsp;4px&nbsp;50%;</div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;background-repeat:&nbsp;no-repeat;</div></li>
+<li><div class="src-line"><a name="a172"></a>}</div></li>
+<li><div class="src-line"><a name="a173"></a>li.ethna-debug-switch:hover&nbsp;{</div></li>
+<li><div class="src-line"><a name="a174"></a>&nbsp;&nbsp;background-color:&nbsp;#fff&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;color:&nbsp;#333&nbsp;!important;</div></li>
+<li><div class="src-line"><a name="a176"></a>}</div></li>
+<li><div class="src-line"><a name="a177"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a178"></a>li#ethna-debug-switch-EthnaClose&nbsp;{</div></li>
+<li><div class="src-line"><a name="a179"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHdSURBVDjLpZNraxpBFIb3a0ggISmmNISWXmOboKihxpgUNGWNSpvaS6RpKL3Ry//Mh1wgf6PElaCyzq67O09nVjdVlJbSDy8Lw77PmfecMwZg/I/GDw3DCo8HCkZl/RlgGA0e3Yfv7+DbAfLrW+SXOvLTG+SHV/gPbuMZRnsyIDL/OASziMxkkKkUQTJJsLaGn8/iHz6nd+8mQv87Ahg2H9Th/BxZqxEkEgSrq/iVCvLsDK9awtvfxb2zjD2ARID+lVVlbabTgWYTv1rFL5fBUtHbbeTJCb3EQ3ovCnRC6xAgzJtOE+ztheYIEkqbFaS3vY2zuIj77AmtYYDusPy8/zuvunJkDKXM7tYWTiyGWFjAqeQnAD6+7ueNx/FLpRGAru7mcoj5ebqzszil7DggeF/DX1nBN82rzPqrzbRayIsLhJqMPT2N83Sdy2GApwFqRN7jFPL0tF+10cDd3MTZ2AjNUkGCoyO6y9cRxfQowFUbpufr1ct4ZoHg+Dg067zduTmEbq4yi/UkYidDe+kaTcP4ObJIajksPd/eyx3c+N2rvPbMDPbUFPZSLKzcGjKPrbJaDsu+dQO3msfZzeGY2TCvKGYQhdSYeeJjUt21dIcjXQ7U7Kv599f4j/oF55W4g/2e3b8AAAAASUVORK5CYII=&quot;);</div></li>
+<li><div class="src-line"><a name="a180"></a>&nbsp;&nbsp;background-position:&nbsp;center&nbsp;3px;</div></li>
+<li><div class="src-line"><a name="a181"></a>&nbsp;&nbsp;border:&nbsp;none;</div></li>
+<li><div class="src-line"><a name="a182"></a>&nbsp;&nbsp;text-indent:&nbsp;-9999px;</div></li>
+<li><div class="src-line"><a name="a183"></a>}</div></li>
+<li><div class="src-line"><a name="a184"></a>li#ethna-debug-switch-Ethna&nbsp;{</div></li>
+<li><div class="src-line"><a name="a185"></a>&nbsp;&nbsp;padding-right:&nbsp;4px;;</div></li>
+<li><div class="src-line"><a name="a186"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABUSURBVHjaYvz//z8DKYCJgVSA34b/YPC+zO0/DLAQo40iJzECzWZkZMRqw4dyd5x++I8XIPuBZCdBPQ10FZFhiM8P1AmlQaiB5FBiISkhAQFAgAEA1FBb2xYZTGEAAAAASUVORK5CYII=&quot;);</div></li>
+<li><div class="src-line"><a name="a187"></a>&nbsp;&nbsp;/*&nbsp;background-image:&nbsp;url(../images/ethna-debug-switch-Ethna.png);&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a188"></a>}</div></li>
+<li><div class="src-line"><a name="a189"></a>#ethna-debug-switch-outline&nbsp;li.ethna-debug-switch:nth-of-type(2)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a190"></a>&nbsp;&nbsp;padding:&nbsp;7px&nbsp;10px;</div></li>
+<li><div class="src-line"><a name="a191"></a>}</div></li>
+<li><div class="src-line"><a name="a192"></a>#ethna-debug-switch-Timer&nbsp;{</div></li>
+<li><div class="src-line"><a name="a193"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,&quot;);</div></li>
+<li><div class="src-line"><a name="a194"></a>}</div></li>
+<li><div class="src-line"><a name="a195"></a>#ethna-debug-switch-ActionForm&nbsp;{</div></li>
+<li><div class="src-line"><a name="a196"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZdJREFUeNqcUz2LwkAQfdFFEAQRRU1zrXYWgiCineX1Xi+50srOwn8gtv4OewsRBTsR/0CKgKCFH/gRNbczR5bEeCD3IOy+nZnH28ms1u12PwHoeAOPx8PHHcex0Ol0vp03MZvNfLzdbhvifr+TEn8uxuMxLMtSXNd11Go12LbNeYPBAIZhYL/fQ8hDjayNRiMkEgkUCgVEIhE0Gg0lMJ1O2f71emWBZrPJ6263g7jdbixQrVY5mRxlMhmsVislQJxyDocDhsOhOjdNkx1wkApdZLPZlw28XC6+2Ha7hZC2tGeB+XyO9XqteDqdRrlcVg694B7Q4WKxwPl8RrFYRDQaDfTALQwIuA7y+bxKSKVSvh4Qd2cgICDvFbhCPB7/c4j+dOANLJdLbDYbxZPJJF+NIP9a0AEVTyYTnoNcLodYLIZ6vf6yB5VKhffhcPhX4Hg8ajQUpVJJWSUhbw+IUw7FyEGr1UK/3ychTciRFaFQiKfPhXfvgnJOpxOvvV6PVzmJQpMN+5LKH2++RvtJ1NS8j+g/+BFgAJmwQl7DhC7TAAAAAElFTkSuQmCC&quot;);</div></li>
+<li><div class="src-line"><a name="a197"></a>}</div></li>
+<li><div class="src-line"><a name="a198"></a>#ethna-debug-switch-Log&nbsp;{</div></li>
+<li><div class="src-line"><a name="a199"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJxSURBVHjajJPLbxJBHMe/+wCk0gJKbW0DxERbG+qD9CAeSjzIAUNibJuY9OaFxIvnXvgnqgkJdy9cDBcS8WT0YNCaphEjjUSgLa+Wx5ZdBJZdnKEBS4uJ32Qyu/Ob32fm9xim2+0iGo0ysVgs4PF4nnSIQETXVVVFq9Vid3Z2kqFQaKNSqWSpTaPRIBKJwOv1gseJWKvVeuMukSzL6APoaLfbsFgsToZhNMFg8EWtVsvjlFicEdl4YiAzz7HkNC0BgVlbW1sNBAIvTSbTDAWfA1BHlmUH41BsIp7Ko1bchXCYQTqdYVyu+yt+v3/TbDYPIPxpAMdx6CgKfhQEvN4u4Ft6D5uLCUwV4ijiGiTDOuPz+VYFQfhJABtDAHoqR66cKUt4mxLwIXsMtlqFtlPB1YsFmEpf0ZAcmJp7CrvdPksO5IibMhSCogJfcnXE8w3sFctQGwIYMQteLoNTJIjJCOSmBJ1Odz4HNGltQvh8UMd2uggSPKxGGb+7TTRECS1SHKmaQ5NAaah9DeWAJ4ZiRYBFKcP3QAvHvIitjgWp/UVYxDTarBG8Vj+o1BCArGJ87AKeLY2jdOsIBnMBpcYvlNs5fNdL0E9O4t6EF6ZLV4bKfuYGPDx3FvBu9z0+ZT/iuF5Bq6FCEbW4bHRifmkFBoNh9A3oIsMyMIyZ8PD6c0yyDiT3t9DSyZi134RzbhnT0zO9+P8JoEba/8YJM5ZvP4Zr4VHvn+M5Umam19q03CMB1Lmf3UGXabihd0EHz/Ojq5DL5WqJROJIUZROHzBqJs58Pp+v2Wy2vwDSGGo4HH71hgj/IfJCD9xut0q//wgwALyXGwTcoR6SAAAAAElFTkSuQmCC&quot;);</div></li>
+<li><div class="src-line"><a name="a200"></a>}</div></li>
+<li><div class="src-line"><a name="a201"></a>#ethna-debug-switch-Info&nbsp;{</div></li>
+<li><div class="src-line"><a name="a202"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAH2SURBVHjapFPPS1RRFP7uvfOQQnRsnGkR4iJkwEUFiZsBBXPllHshaJP0w6WgCP0HLURhxkD/gaBFigaSi+El0bJWYRQ0iWI9JycJdebNvNe5P971RbSaB9+99z3O953vnHseC8MQrTwJuTDG7Ifr+Yc9tE0R8oSs+bxD2CAUPmw8241iZXKmFiNA5PvJjvZibuCa09d7BfVGA4xznNUbKO99x5b7zqewxySy8o+AJPf39S7fGcmhfHCIn9XfOCUiJwGJy6kkAoR4XXqLo+qvSSliBW7cftRDmb88mBh3Pn7dR4XIEZFzAS70uf3iBQRBiNVXm9LJ1ffrS7vclDM1PppzvKNjlVlQsBACC3P3MD97l96FQs1voK3NweDATcf0CZFAPpXswKfyAWUTGpzbxioHQrs5qzeRyXTDNFnfAtnPshgxsj0z/1yfY2XIs2CKlrUCKgvjymYU+HR6wjp4UnxphLQTxmLu5EI1f675vrUpMbf4wgapHgjdF3mGHr4dK1CpHq992/eQSXWaerXIeQ9EzIGAd1iBGSzbxMLqZsmXuulLnbZpVsAQJYIggPtmW15jQU1xfJC6upLLY6NDaAZMTd95SbovTYotlVx4nvf3IMVHmbbireGck06nkUgkFPGk5uOH58F1t/8/yi39TK08fwQYAJFWzPPb9QZyAAAAAElFTkSuQmCC&quot;);</div></li>
+<li><div class="src-line"><a name="a203"></a>}</div></li>
+<li><div class="src-line"><a name="a204"></a>#ethna-debug-switch-SmartyDebug&nbsp;{</div></li>
+<li><div class="src-line"><a name="a205"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJcSURBVHjabFJLT1NREJ7zuo8+eFRAqYoESi0aEgwJaqxRXBQTEzDGiAsNO7f+ALdsTPwFunHlygUbE6NBVBAXjUYN8rCgUIjIK1Sgpff23jOee6sJqJNZzDmZx/d9MyT3+jzsNkTCTJRFFQEQ+MfoX29EW9R28X1JdK0/XxKk7df/pwAJ1Vg4rkd7qXkY3aI3igpW0UZYSDVTGdxPc1CWPADoUuOAFmoAs66ipX/n60MMJngkSQjbydwrg+ReUijGAo3obKOb16taZ+ZyE1PDACzefD3RdEK6YC8/k84WocKfgIhOQdSliBbhnL4YfpWdvXHm5DoV7WPp8Pzi5VSq2938rPoCaD4HymUhay08YlRmMovZ2Tv9fUuxI3ZT9P3NvoX11ccT4+NcCEIIeLB90oQZzkaabIxMTn1Idq4oqKWSckfuZJKdm9NfJvXYLb2hn5oHFRz6WzhFhhqIkuyRXpV+AnCAmmL/RSN2WwnIwSeh1fdg1enWxPzYaE1T45oqUxpSBm/SgbaODln4bq+m3dw7WVyiIF2t9oJe3+M6pfjR5trowNOhSqGDFoDnL8PByMDxlkh+4q4i6W7PoLQVEiGtH8Vv94FQRxin2rsGnxxbWX4rOCwsNfZeSQH8ROl4mhJeXhy6W5MKvRegRerCH6cSo+lqzpimGVevFYBXUjPqbG6U6fmkiSBUJ9RQjtYyFTV68Gyoptvk1Jp74OE2D3nC+MZ3iyKRmKJ46Vx0ZGiQWqw9XgyUWH46S0SlurFyDtlz3qoNDxvBaizMoTotwu0S+jvGMgFlvwQYAL5QCxf9wMU0AAAAAElFTkSuQmCC&quot;);</div></li>
+<li><div class="src-line"><a name="a206"></a>}</div></li>
+<li><div class="src-line"><a name="a207"></a>#ethna-debug-switch-Config&nbsp;{</div></li>
+<li><div class="src-line"><a name="a208"></a>&nbsp;&nbsp;background-image:&nbsp;url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAoJJREFUeNqkU01oE1EQnk02iTFQE7QihUKRkKTF1iU9+FdQCoWYgAcPegkIeiiIWiHgwUvpQXs1Ggo99OYlFwUhWAhYhZJWUmhMxJbYYk1LFDcmJraSv911vjQbevPgg9kZ5vu+eW9n3hM0TaP/WSI+gUCADAYDmUwmEgSBUNRoNJ5jaKjNSyuKsqRjjUaDVFWlWCy2X0BfDJ5nd5r9KxZI0Wh0BuRgMHibcznGrrD/wD6hawwHxBdcLte12dnZGYfDcYOFhkJBpnL5F3Y0IAcMHHB1nYAj+Xw+xHeZ8FSWf1BPTw+trqY2JElyAkilUhsej8dZKhWpu/s4jY+P3+P0s/n5+f0TVCoVqlarL0Oh0KTZbCZZlmlgoN+pqgrBEO/u/iZg4IALTecX+BQX6/X69Xw+v8e7bYqiSMvLy+t+f2AGhhg5YOCAC43+7+T1eh+srCS1hYU32tJSQkun09rg4NA0TwLTIMTIAQMHXGigbU2hVqsZq9UaNZsKKYrKoxRZKDYwKizEyAEDB1xoOk3kzo6xP4PExMT9WyMjl/q2t7+npqYevkBucvLx1d7eE9Li4tutcPjJXEsoCO+z2WxcP0GcC3zmDt8ZHj7bVyyWyO32SLHYOwl4ufyTdna+ELCuriN2nlSEC2x1mshdRZGbkchcSJaLfCOtFI+//prLbRIMMXLAwAEXmk4T+ZLALo+Ojj1PJtc1t7s/bLfbHyUSGQ2GGDlg4IALTesd6Y8JY7JarX6bzTZtsVhOwq+tfdMymZx2MAcOuPrmrSYKaDHRUbZjbIcA8sM6xQ9sADFP4xNf54/t21tnk9kKrG3qBdCLw20T//GCFbY9tj+sVf8KMAACOoVxz9PPRwAAAABJRU5ErkJggg==&quot;);</div></li>
+<li><div class="src-line"><a name="a209"></a>}</div></li>
+<li><div class="src-line"><a name="a210"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a211"></a>#ethna-debug-timewindow&nbsp;{</div></li>
+<li><div class="src-line"><a name="a212"></a>}</div></li>
+<li><div class="src-line"><a name="a213"></a>#ethna-debug-logwindow&nbsp;{</div></li>
+<li><div class="src-line"><a name="a214"></a>}</div></li>
+<li><div class="src-line"><a name="a215"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a216"></a>.ethna-debug-log&nbsp;{</div></li>
+<li><div class="src-line"><a name="a217"></a>&nbsp;&nbsp;margin:&nbsp;0;</div></li>
+<li><div class="src-line"><a name="a218"></a>&nbsp;&nbsp;padding:&nbsp;2px&nbsp;10px;</div></li>
+<li><div class="src-line"><a name="a219"></a>&nbsp;&nbsp;color:&nbsp;#000;</div></li>
+<li><div class="src-line"><a name="a220"></a>}</div></li>
+<li><div class="src-line"><a name="a221"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a222"></a>.ethna-debug-log-EMERG&nbsp;{</div></li>
+<li><div class="src-line"><a name="a223"></a>}</div></li>
+<li><div class="src-line"><a name="a224"></a>.ethna-debug-log-ALERM&nbsp;{</div></li>
+<li><div class="src-line"><a name="a225"></a>}</div></li>
+<li><div class="src-line"><a name="a226"></a>.ethna-debug-log-CRIT&nbsp;{</div></li>
+<li><div class="src-line"><a name="a227"></a>}</div></li>
+<li><div class="src-line"><a name="a228"></a>.ethna-debug-log-ERR&nbsp;{</div></li>
+<li><div class="src-line"><a name="a229"></a>&nbsp;&nbsp;background:&nbsp;#ffaaaa;</div></li>
+<li><div class="src-line"><a name="a230"></a>}</div></li>
+<li><div class="src-line"><a name="a231"></a>.ethna-debug-log-WARNING&nbsp;{</div></li>
+<li><div class="src-line"><a name="a232"></a>&nbsp;&nbsp;background:&nbsp;#ffaaaa;</div></li>
+<li><div class="src-line"><a name="a233"></a>}</div></li>
+<li><div class="src-line"><a name="a234"></a>.ethna-debug-log-NOTICE&nbsp;{</div></li>
+<li><div class="src-line"><a name="a235"></a>&nbsp;&nbsp;background:&nbsp;#ffcccc;</div></li>
+<li><div class="src-line"><a name="a236"></a>}</div></li>
+<li><div class="src-line"><a name="a237"></a>.ethna-debug-log-INFO&nbsp;{</div></li>
+<li><div class="src-line"><a name="a238"></a>&nbsp;&nbsp;background:&nbsp;#ccccff;</div></li>
+<li><div class="src-line"><a name="a239"></a>}</div></li>
+<li><div class="src-line"><a name="a240"></a>.ethna-debug-log-DEBUG&nbsp;{</div></li>
+<li><div class="src-line"><a name="a241"></a>&nbsp;&nbsp;background:&nbsp;#ccc;</div></li>
+<li><div class="src-line"><a name="a242"></a>}</div></li>
+<li><div class="src-line"><a name="a243"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a244"></a>.ethna-debug-log-loglevel&nbsp;{</div></li>
+<li><div class="src-line"><a name="a245"></a>&nbsp;&nbsp;font-weight:&nbsp;bold;</div></li>
+<li><div class="src-line"><a name="a246"></a>}</div></li>
+<li><div class="src-line"><a name="a247"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a248"></a>.ethna-debug-log-loglevel-EMERG&nbsp;{</div></li>
+<li><div class="src-line"><a name="a249"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a250"></a>}</div></li>
+<li><div class="src-line"><a name="a251"></a>.ethna-debug-log-loglevel-ALERM&nbsp;{</div></li>
+<li><div class="src-line"><a name="a252"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a253"></a>}</div></li>
+<li><div class="src-line"><a name="a254"></a>.ethna-debug-log-loglevel-CRIT&nbsp;{</div></li>
+<li><div class="src-line"><a name="a255"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a256"></a>}</div></li>
+<li><div class="src-line"><a name="a257"></a>.ethna-debug-log-loglevel-ERR&nbsp;{</div></li>
+<li><div class="src-line"><a name="a258"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a259"></a>}</div></li>
+<li><div class="src-line"><a name="a260"></a>.ethna-debug-log-loglevel-WARNING&nbsp;{</div></li>
+<li><div class="src-line"><a name="a261"></a>&nbsp;&nbsp;color:&nbsp;#f00;</div></li>
+<li><div class="src-line"><a name="a262"></a>}</div></li>
+<li><div class="src-line"><a name="a263"></a>.ethna-debug-log-loglevel-NOTICE&nbsp;{</div></li>
+<li><div class="src-line"><a name="a264"></a>&nbsp;&nbsp;color:&nbsp;#f66;</div></li>
+<li><div class="src-line"><a name="a265"></a>}</div></li>
+<li><div class="src-line"><a name="a266"></a>.ethna-debug-log-loglevel-INFO&nbsp;{</div></li>
+<li><div class="src-line"><a name="a267"></a>&nbsp;&nbsp;color:&nbsp;#00f;</div></li>
+<li><div class="src-line"><a name="a268"></a>}</div></li>
+<li><div class="src-line"><a name="a269"></a>.ethna-debug-log-loglevel-DEBUG&nbsp;{</div></li>
+<li><div class="src-line"><a name="a270"></a>}</div></li>
+<li><div class="src-line"><a name="a271"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a272"></a>.ethna-debug-window&nbsp;{</div></li>
+<li><div class="src-line"><a name="a273"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a274"></a>}</div></li>
+<li><div class="src-line"><a name="a275"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a276"></a>.ethna-debug-table&nbsp;{</div></li>
+<li><div class="src-line"><a name="a277"></a>&nbsp;&nbsp;border-collapse:&nbsp;collapse;</div></li>
+<li><div class="src-line"><a name="a278"></a>&nbsp;&nbsp;border:&nbsp;solid&nbsp;1px&nbsp;#333;</div></li>
+<li><div class="src-line"><a name="a279"></a>}</div></li>
+<li><div class="src-line"><a name="a280"></a>.ethna-debug-table&nbsp;th&nbsp;,</div></li>
+<li><div class="src-line"><a name="a281"></a>.ethna-debug-table&nbsp;td&nbsp;{</div></li>
+<li><div class="src-line"><a name="a282"></a>&nbsp;&nbsp;padding:&nbsp;3px&nbsp;5px;</div></li>
+<li><div class="src-line"><a name="a283"></a>&nbsp;&nbsp;border-collapse:&nbsp;collapse;</div></li>
+<li><div class="src-line"><a name="a284"></a>&nbsp;&nbsp;border:&nbsp;solid&nbsp;1px&nbsp;#333;</div></li>
+<li><div class="src-line"><a name="a285"></a>&nbsp;&nbsp;font-size:&nbsp;12px;</div></li>
+<li><div class="src-line"><a name="a286"></a>}</div></li>
+<li><div class="src-line"><a name="a287"></a>.ethna-debug-table&nbsp;th&nbsp;{</div></li>
+<li><div class="src-line"><a name="a288"></a>&nbsp;&nbsp;background:&nbsp;#9c9;</div></li>
+<li><div class="src-line"><a name="a289"></a>}</div></li>
+<li><div class="src-line"><a name="a290"></a>.ethna-debug-table&nbsp;td.e&nbsp;{</div></li>
+<li><div class="src-line"><a name="a291"></a>&nbsp;&nbsp;background:&nbsp;#aca;</div></li>
+<li><div class="src-line"><a name="a292"></a>}</div></li>
+<li><div class="src-line"><a name="a293"></a>EOF<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a294"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/style&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a295"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a296"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a297"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;load&nbsp;JavaScript</span></div></li>
+<li><div class="src-line"><a name="a298"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOL</div></li>
+<li><div class="src-line"><a name="a299"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&nbsp;src=&quot;http://www.google.com/jsapi&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a300"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a301"></a>&nbsp;&nbsp;&nbsp;&nbsp;google.load(&quot;jquery&quot;,&nbsp;&quot;1.3&quot;);</div></li>
+<li><div class="src-line"><a name="a302"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a303"></a>EOL<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a304"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a305"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a306"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;jquery.cookie.plugin</span></div></li>
+<li><div class="src-line"><a name="a307"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOF</div></li>
+<li><div class="src-line"><a name="a308"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a309"></a>/**</div></li>
+<li><div class="src-line"><a name="a310"></a>&nbsp;*&nbsp;Cookie&nbsp;plugin</div></li>
+<li><div class="src-line"><a name="a311"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a312"></a>&nbsp;*&nbsp;Copyright&nbsp;(c)&nbsp;2006&nbsp;Klaus&nbsp;Hartl&nbsp;(stilbuero.de)</div></li>
+<li><div class="src-line"><a name="a313"></a>&nbsp;*&nbsp;Dual&nbsp;licensed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;and&nbsp;GPL&nbsp;licenses:</div></li>
+<li><div class="src-line"><a name="a314"></a>&nbsp;*&nbsp;http://www.opensource.org/licenses/mit-license.php</div></li>
+<li><div class="src-line"><a name="a315"></a>&nbsp;*&nbsp;http://www.gnu.org/licenses/gpl.html</div></li>
+<li><div class="src-line"><a name="a316"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a317"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a318"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a319"></a>/**</div></li>
+<li><div class="src-line"><a name="a320"></a>&nbsp;*&nbsp;Create&nbsp;a&nbsp;cookie&nbsp;with&nbsp;the&nbsp;given&nbsp;name&nbsp;and&nbsp;value&nbsp;and&nbsp;other&nbsp;optional&nbsp;parameters.</div></li>
+<li><div class="src-line"><a name="a321"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a322"></a>&nbsp;*&nbsp;@example&nbsp;$.cookie('the_cookie',&nbsp;'the_value');</div></li>
+<li><div class="src-line"><a name="a323"></a>&nbsp;*&nbsp;@desc&nbsp;Set&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a324"></a>&nbsp;*&nbsp;@example&nbsp;$.cookie('the_cookie',&nbsp;'the_value',&nbsp;{&nbsp;expires:&nbsp;7,&nbsp;path:&nbsp;'/',&nbsp;domain:&nbsp;'jquery.com',&nbsp;secure:&nbsp;true&nbsp;});</div></li>
+<li><div class="src-line"><a name="a325"></a>&nbsp;*&nbsp;@desc&nbsp;Create&nbsp;a&nbsp;cookie&nbsp;with&nbsp;all&nbsp;available&nbsp;options.</div></li>
+<li><div class="src-line"><a name="a326"></a>&nbsp;*&nbsp;@example&nbsp;$.cookie('the_cookie',&nbsp;'the_value');</div></li>
+<li><div class="src-line"><a name="a327"></a>&nbsp;*&nbsp;@desc&nbsp;Create&nbsp;a&nbsp;session&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a328"></a>&nbsp;*&nbsp;@example&nbsp;$.cookie('the_cookie',&nbsp;null);</div></li>
+<li><div class="src-line"><a name="a329"></a>&nbsp;*&nbsp;@desc&nbsp;Delete&nbsp;a&nbsp;cookie&nbsp;by&nbsp;passing&nbsp;null&nbsp;as&nbsp;value.&nbsp;Keep&nbsp;in&nbsp;mind&nbsp;that&nbsp;you&nbsp;have&nbsp;to&nbsp;use&nbsp;the&nbsp;same&nbsp;path&nbsp;and&nbsp;domain</div></li>
+<li><div class="src-line"><a name="a330"></a>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;when&nbsp;the&nbsp;cookie&nbsp;was&nbsp;set.</div></li>
+<li><div class="src-line"><a name="a331"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a332"></a>&nbsp;*&nbsp;@param&nbsp;String&nbsp;name&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a333"></a>&nbsp;*&nbsp;@param&nbsp;String&nbsp;value&nbsp;The&nbsp;value&nbsp;of&nbsp;the&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a334"></a>&nbsp;*&nbsp;@param&nbsp;Object&nbsp;options&nbsp;An&nbsp;object&nbsp;literal&nbsp;containing&nbsp;key/value&nbsp;pairs&nbsp;to&nbsp;provide&nbsp;optional&nbsp;cookie&nbsp;attributes.</div></li>
+<li><div class="src-line"><a name="a335"></a>&nbsp;*&nbsp;@option&nbsp;Number|Date&nbsp;expires&nbsp;Either&nbsp;an&nbsp;integer&nbsp;specifying&nbsp;the&nbsp;expiration&nbsp;date&nbsp;from&nbsp;now&nbsp;on&nbsp;in&nbsp;days&nbsp;or&nbsp;a&nbsp;Date&nbsp;object.</div></li>
+<li><div class="src-line"><a name="a336"></a>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;a&nbsp;negative&nbsp;value&nbsp;is&nbsp;specified&nbsp;(e.g.&nbsp;a&nbsp;date&nbsp;in&nbsp;the&nbsp;past),&nbsp;the&nbsp;cookie&nbsp;will&nbsp;be&nbsp;deleted.</div></li>
+<li><div class="src-line"><a name="a337"></a>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;set&nbsp;to&nbsp;null&nbsp;or&nbsp;omitted,&nbsp;the&nbsp;cookie&nbsp;will&nbsp;be&nbsp;a&nbsp;session&nbsp;cookie&nbsp;and&nbsp;will&nbsp;not&nbsp;be&nbsp;retained</div></li>
+<li><div class="src-line"><a name="a338"></a>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;the&nbsp;the&nbsp;browser&nbsp;exits.</div></li>
+<li><div class="src-line"><a name="a339"></a>&nbsp;*&nbsp;@option&nbsp;String&nbsp;path&nbsp;The&nbsp;value&nbsp;of&nbsp;the&nbsp;path&nbsp;atribute&nbsp;of&nbsp;the&nbsp;cookie&nbsp;(default:&nbsp;path&nbsp;of&nbsp;page&nbsp;that&nbsp;created&nbsp;the&nbsp;cookie).</div></li>
+<li><div class="src-line"><a name="a340"></a>&nbsp;*&nbsp;@option&nbsp;String&nbsp;domain&nbsp;The&nbsp;value&nbsp;of&nbsp;the&nbsp;domain&nbsp;attribute&nbsp;of&nbsp;the&nbsp;cookie&nbsp;(default:&nbsp;domain&nbsp;of&nbsp;page&nbsp;that&nbsp;created&nbsp;the&nbsp;cookie).</div></li>
+<li><div class="src-line"><a name="a341"></a>&nbsp;*&nbsp;@option&nbsp;Boolean&nbsp;secure&nbsp;If&nbsp;true,&nbsp;the&nbsp;secure&nbsp;attribute&nbsp;of&nbsp;the&nbsp;cookie&nbsp;will&nbsp;be&nbsp;set&nbsp;and&nbsp;the&nbsp;cookie&nbsp;transmission&nbsp;will</div></li>
+<li><div class="src-line"><a name="a342"></a>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require&nbsp;a&nbsp;secure&nbsp;protocol&nbsp;(like&nbsp;HTTPS).</div></li>
+<li><div class="src-line"><a name="a343"></a>&nbsp;*&nbsp;@type&nbsp;undefined</div></li>
+<li><div class="src-line"><a name="a344"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a345"></a>&nbsp;*&nbsp;@name&nbsp;$.cookie</div></li>
+<li><div class="src-line"><a name="a346"></a>&nbsp;*&nbsp;@cat&nbsp;Plugins/Cookie</div></li>
+<li><div class="src-line"><a name="a347"></a>&nbsp;*&nbsp;@author&nbsp;Klaus&nbsp;Hartl/klaus.hartl@stilbuero.de</div></li>
+<li><div class="src-line"><a name="a348"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a349"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a350"></a>/**</div></li>
+<li><div class="src-line"><a name="a351"></a>&nbsp;*&nbsp;Get&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cookie&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</div></li>
+<li><div class="src-line"><a name="a352"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a353"></a>&nbsp;*&nbsp;@example&nbsp;$.cookie('the_cookie');</div></li>
+<li><div class="src-line"><a name="a354"></a>&nbsp;*&nbsp;@desc&nbsp;Get&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a355"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a356"></a>&nbsp;*&nbsp;@param&nbsp;String&nbsp;name&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a357"></a>&nbsp;*&nbsp;@return&nbsp;The&nbsp;value&nbsp;of&nbsp;the&nbsp;cookie.</div></li>
+<li><div class="src-line"><a name="a358"></a>&nbsp;*&nbsp;@type&nbsp;String</div></li>
+<li><div class="src-line"><a name="a359"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a360"></a>&nbsp;*&nbsp;@name&nbsp;$.cookie</div></li>
+<li><div class="src-line"><a name="a361"></a>&nbsp;*&nbsp;@cat&nbsp;Plugins/Cookie</div></li>
+<li><div class="src-line"><a name="a362"></a>&nbsp;*&nbsp;@author&nbsp;Klaus&nbsp;Hartl/klaus.hartl@stilbuero.de</div></li>
+<li><div class="src-line"><a name="a363"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a364"></a>jQuery.cookie&nbsp;=&nbsp;function(name,&nbsp;value,&nbsp;options)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a365"></a>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(typeof&nbsp;value&nbsp;!=&nbsp;'undefined')&nbsp;{&nbsp;//&nbsp;name&nbsp;and&nbsp;value&nbsp;given,&nbsp;set&nbsp;cookie</div></li>
+<li><div class="src-line"><a name="a366"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;=&nbsp;options&nbsp;||&nbsp;{};</div></li>
+<li><div class="src-line"><a name="a367"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(value&nbsp;===&nbsp;null)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a368"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;'';</div></li>
+<li><div class="src-line"><a name="a369"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options.expires&nbsp;=&nbsp;-1;</div></li>
+<li><div class="src-line"><a name="a370"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a371"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;expires&nbsp;=&nbsp;'';</div></li>
+<li><div class="src-line"><a name="a372"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(options.expires&nbsp;&amp;&amp;&nbsp;(typeof&nbsp;options.expires&nbsp;==&nbsp;'number'&nbsp;||&nbsp;options.expires.toUTCString))&nbsp;{</div></li>
+<li><div class="src-line"><a name="a373"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;date;</div></li>
+<li><div class="src-line"><a name="a374"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(typeof&nbsp;options.expires&nbsp;==&nbsp;'number')&nbsp;{</div></li>
+<li><div class="src-line"><a name="a375"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;=&nbsp;new&nbsp;Date();</div></li>
+<li><div class="src-line"><a name="a376"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date.setTime(date.getTime()&nbsp;+&nbsp;(options.expires&nbsp;*&nbsp;24&nbsp;*&nbsp;60&nbsp;*&nbsp;60&nbsp;*&nbsp;1000));</div></li>
+<li><div class="src-line"><a name="a377"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</div></li>
+<li><div class="src-line"><a name="a378"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;=&nbsp;options.expires;</div></li>
+<li><div class="src-line"><a name="a379"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a380"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expires&nbsp;=&nbsp;';&nbsp;expires='&nbsp;+&nbsp;date.toUTCString();&nbsp;//&nbsp;use&nbsp;expires&nbsp;attribute,&nbsp;max-age&nbsp;is&nbsp;not&nbsp;supported&nbsp;by&nbsp;IE</div></li>
+<li><div class="src-line"><a name="a381"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a382"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;CAUTION:&nbsp;Needed&nbsp;to&nbsp;parenthesize&nbsp;options.path&nbsp;and&nbsp;options.domain</div></li>
+<li><div class="src-line"><a name="a383"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;the&nbsp;following&nbsp;expressions,&nbsp;otherwise&nbsp;they&nbsp;evaluate&nbsp;to&nbsp;undefined</div></li>
+<li><div class="src-line"><a name="a384"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;the&nbsp;packed&nbsp;version&nbsp;for&nbsp;some&nbsp;reason...</div></li>
+<li><div class="src-line"><a name="a385"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;path&nbsp;=&nbsp;options.path&nbsp;?&nbsp;';&nbsp;path='&nbsp;+&nbsp;(options.path)&nbsp;:&nbsp;'';</div></li>
+<li><div class="src-line"><a name="a386"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;domain&nbsp;=&nbsp;options.domain&nbsp;?&nbsp;';&nbsp;domain='&nbsp;+&nbsp;(options.domain)&nbsp;:&nbsp;'';</div></li>
+<li><div class="src-line"><a name="a387"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;secure&nbsp;=&nbsp;options.secure&nbsp;?&nbsp;';&nbsp;secure'&nbsp;:&nbsp;'';</div></li>
+<li><div class="src-line"><a name="a388"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.cookie&nbsp;=&nbsp;[name,&nbsp;'=',&nbsp;encodeURIComponent(value),&nbsp;expires,&nbsp;path,&nbsp;domain,&nbsp;secure].join('');</div></li>
+<li><div class="src-line"><a name="a389"></a>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{&nbsp;//&nbsp;only&nbsp;name&nbsp;given,&nbsp;get&nbsp;cookie</div></li>
+<li><div class="src-line"><a name="a390"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;cookieValue&nbsp;=&nbsp;null;</div></li>
+<li><div class="src-line"><a name="a391"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(document.cookie&nbsp;&amp;&amp;&nbsp;document.cookie&nbsp;!=&nbsp;'')&nbsp;{</div></li>
+<li><div class="src-line"><a name="a392"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;cookies&nbsp;=&nbsp;document.cookie.split(';');</div></li>
+<li><div class="src-line"><a name="a393"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;cookies.length;&nbsp;i++)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a394"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;cookie&nbsp;=&nbsp;jQuery.trim(cookies[i]);</div></li>
+<li><div class="src-line"><a name="a395"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Does&nbsp;this&nbsp;cookie&nbsp;string&nbsp;begin&nbsp;with&nbsp;the&nbsp;name&nbsp;we&nbsp;want?</div></li>
+<li><div class="src-line"><a name="a396"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(cookie.substring(0,&nbsp;name.length&nbsp;+&nbsp;1)&nbsp;==&nbsp;(name&nbsp;+&nbsp;'='))&nbsp;{</div></li>
+<li><div class="src-line"><a name="a397"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cookieValue&nbsp;=&nbsp;decodeURIComponent(cookie.substring(name.length&nbsp;+&nbsp;1));</div></li>
+<li><div class="src-line"><a name="a398"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</div></li>
+<li><div class="src-line"><a name="a399"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a400"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a401"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a402"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cookieValue;</div></li>
+<li><div class="src-line"><a name="a403"></a>&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a404"></a>};</div></li>
+<li><div class="src-line"><a name="a405"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a406"></a>EOF<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a407"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a408"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a409"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;JavaScript&nbsp;for&nbsp;Debugtoolbar</span></div></li>
+<li><div class="src-line"><a name="a410"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOL</div></li>
+<li><div class="src-line"><a name="a411"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a412"></a>//jQuery.noConflict();</div></li>
+<li><div class="src-line"><a name="a413"></a>jQuery(function()</div></li>
+<li><div class="src-line"><a name="a414"></a>{</div></li>
+<li><div class="src-line"><a name="a415"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a416"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;buttonOutline&nbsp;=&nbsp;document.createElement('ul');</div></li>
+<li><div class="src-line"><a name="a417"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonOutline).attr('id',&nbsp;'ethna-debug-switch-outline');</div></li>
+<li><div class="src-line"><a name="a418"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery('html&nbsp;&gt;&nbsp;body').append(buttonOutline);</div></li>
+<li><div class="src-line"><a name="a419"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a420"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;buttonEthna&nbsp;=&nbsp;document.createElement('li');</div></li>
+<li><div class="src-line"><a name="a421"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonEthna).attr('id',&nbsp;'ethna-debug-switch-Ethna');</div></li>
+<li><div class="src-line"><a name="a422"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonEthna).attr('class',&nbsp;'ethna-debug-switch');</div></li>
+<li><div class="src-line"><a name="a423"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonEthna).text(&quot;Ethna&quot;);</div></li>
+<li><div class="src-line"><a name="a424"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonOutline).append(buttonEthna);</div></li>
+<li><div class="src-line"><a name="a425"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a426"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;state&nbsp;=&nbsp;{};</div></li>
+<li><div class="src-line"><a name="a427"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a428"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery('.ethna-debug').each(function()</div></li>
+<li><div class="src-line"><a name="a429"></a>&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a430"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;name&nbsp;=&nbsp;jQuery(this).children('div.ethna-debug-title').text();</div></li>
+<li><div class="src-line"><a name="a431"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//var&nbsp;stateName&nbsp;=&nbsp;^</div></li>
+<li><div class="src-line"><a name="a432"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a433"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;showMessage&nbsp;=&nbsp;'&nbsp;'&nbsp;+&nbsp;name;</div></li>
+<li><div class="src-line"><a name="a434"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;hideMessage&nbsp;=&nbsp;'&nbsp;'&nbsp;+&nbsp;name;</div></li>
+<li><div class="src-line"><a name="a435"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[name]&nbsp;=&nbsp;false;</div></li>
+<li><div class="src-line"><a name="a436"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a437"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;targetId&nbsp;=&nbsp;jQuery(this).attr('id');</div></li>
+<li><div class="src-line"><a name="a438"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;buttonId&nbsp;=&nbsp;'ethna-debug-switch-'&nbsp;+&nbsp;name;</div></li>
+<li><div class="src-line"><a name="a439"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;button&nbsp;=&nbsp;document.createElement('li');</div></li>
+<li><div class="src-line"><a name="a440"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).attr('id',&nbsp;buttonId);</div></li>
+<li><div class="src-line"><a name="a441"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).attr('class',&nbsp;'ethna-debug-switch');</div></li>
+<li><div class="src-line"><a name="a442"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).text(showMessage);</div></li>
+<li><div class="src-line"><a name="a443"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a444"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).click(function()</div></li>
+<li><div class="src-line"><a name="a445"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a446"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery('.ethna-debug').each(function()</div></li>
+<li><div class="src-line"><a name="a447"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a448"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(this).hide();</div></li>
+<li><div class="src-line"><a name="a449"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;local_name&nbsp;=&nbsp;jQuery(this).children('div.ethna-debug-title').text();</div></li>
+<li><div class="src-line"><a name="a450"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a451"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(name&nbsp;!=&nbsp;local_name)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a452"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[local_name]&nbsp;=&nbsp;false;</div></li>
+<li><div class="src-line"><a name="a453"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery.cookie(local_name,&nbsp;0);</div></li>
+<li><div class="src-line"><a name="a454"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a455"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a456"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a457"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!state[name])&nbsp;{</div></li>
+<li><div class="src-line"><a name="a458"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(this).text(hideMessage);</div></li>
+<li><div class="src-line"><a name="a459"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//jQuery('#ethna-debug-logwindow').show();</div></li>
+<li><div class="src-line"><a name="a460"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery('#'&nbsp;+&nbsp;targetId).show();</div></li>
+<li><div class="src-line"><a name="a461"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery.cookie(name,&nbsp;1);</div></li>
+<li><div class="src-line"><a name="a462"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[name]&nbsp;=&nbsp;true;</div></li>
+<li><div class="src-line"><a name="a463"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a464"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</div></li>
+<li><div class="src-line"><a name="a465"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(this).text(showMessage);</div></li>
+<li><div class="src-line"><a name="a466"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//jQuery('#ethna-debug-logwindow').hide();</div></li>
+<li><div class="src-line"><a name="a467"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery('#'&nbsp;+&nbsp;targetId).hide();</div></li>
+<li><div class="src-line"><a name="a468"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery.cookie(name,&nbsp;0);</div></li>
+<li><div class="src-line"><a name="a469"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[name]&nbsp;=&nbsp;false;</div></li>
+<li><div class="src-line"><a name="a470"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a471"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a472"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a473"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a474"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).hover(function()</div></li>
+<li><div class="src-line"><a name="a475"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a476"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(this).css('cursor',&nbsp;'pointer');</div></li>
+<li><div class="src-line"><a name="a477"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</div></li>
+<li><div class="src-line"><a name="a478"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function()</div></li>
+<li><div class="src-line"><a name="a479"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a480"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(this).css('cursor',&nbsp;'default');</div></li>
+<li><div class="src-line"><a name="a481"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a482"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a483"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonOutline).append(button);</div></li>
+<li><div class="src-line"><a name="a484"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a485"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(jQuery.cookie(name)&nbsp;==&nbsp;1)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a486"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery('#'&nbsp;+&nbsp;targetId).show();</div></li>
+<li><div class="src-line"><a name="a487"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[name]&nbsp;=&nbsp;true;</div></li>
+<li><div class="src-line"><a name="a488"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a489"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a490"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;log&nbsp;window&nbsp;coloring</div></li>
+<li><div class="src-line"><a name="a491"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(jQuery('#'&nbsp;+&nbsp;targetId)</div></li>
+<li><div class="src-line"><a name="a492"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.is(&quot;:has('.ethna-debug-log-EMERG,.ethna-debug-log-ALERM,.ethna-debug-log-CRIT,.ethna-debug-log-ERR,.ethna-debug-log-WARNING,.ethna-debug-log-NOTICE')&quot;))</div></li>
+<li><div class="src-line"><a name="a493"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a494"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(button).css('background-color',&nbsp;&quot;#f00&quot;)</div></li>
+<li><div class="src-line"><a name="a495"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.css('color',&nbsp;&quot;#fff&quot;);</div></li>
+<li><div class="src-line"><a name="a496"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a497"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a498"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a499"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a500"></a>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;close&nbsp;button</div></li>
+<li><div class="src-line"><a name="a501"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;closeButtonEthna&nbsp;=&nbsp;document.createElement('li');</div></li>
+<li><div class="src-line"><a name="a502"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(closeButtonEthna).attr('id',&nbsp;'ethna-debug-switch-EthnaClose');</div></li>
+<li><div class="src-line"><a name="a503"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(closeButtonEthna).attr('class',&nbsp;'ethna-debug-switch');</div></li>
+<li><div class="src-line"><a name="a504"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(closeButtonEthna).text(&quot;close&quot;);</div></li>
+<li><div class="src-line"><a name="a505"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(closeButtonEthna).click(function(e)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a506"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonOutline).hide();</div></li>
+<li><div class="src-line"><a name="a507"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;</div></li>
+<li><div class="src-line"><a name="a508"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a509"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(buttonOutline).append(closeButtonEthna);</div></li>
+<li><div class="src-line"><a name="a510"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a511"></a>});</div></li>
+<li><div class="src-line"><a name="a512"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a513"></a>EOL<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a514"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a515"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a516"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;time</span></div></li>
+<li><div class="src-line"><a name="a517"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$etime&nbsp;</span>=&nbsp;<a href="http://www.php.net/microtime">microtime</a><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a518"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$time&nbsp;&nbsp;&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;%.4f&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$etime&nbsp;</span>-&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_stime</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a519"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a520"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug&quot;&nbsp;id=&quot;ethna-debug-evwindow&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a521"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-title&quot;&gt;'&nbsp;</span>.&nbsp;<span class="src-id"><a href="../Ethna/_Ethna.php.html#defineETHNA_VERSION">ETHNA_VERSION</a></span></div></li>
+<li><div class="src-line"><a name="a522"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;<span class="src-str">':&nbsp;'&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getCurrentActionName</span><span class="src-sym">(</span><span class="src-sym">)&nbsp;&nbsp;</span>.&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a523"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a524"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-id"><a href="../Ethna/_Ethna.php.html#defineETHNA_VERSION">ETHNA_VERSION</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a525"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a526"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a527"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;Ethna_Plugin_Debugtoolbar&nbsp;Version&quot;&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#var$version">version</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a528"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a529"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a530"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$time_warning_class&nbsp;</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a531"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-num">0.5&nbsp;</span>&lt;&nbsp;<span class="src-var">$time</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a532"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$time_warning_class&nbsp;</span>=<span class="src-str">&quot;&nbsp;ethna-debug-log-WARNING&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a533"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a534"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><span class="src-num">2&nbsp;</span>&lt;&nbsp;<span class="src-var">$time</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a535"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$time_warning_class&nbsp;</span>=<span class="src-str">&quot;&nbsp;ethna-debug-log-ERR&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a536"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a537"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Time&nbsp;Elapsed&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a538"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;</span><span class="src-str">&lt;div&nbsp;class=\&quot;ethna-debug-log&nbsp;<span class="src-var">$time_warning_class</span>\&quot;&gt;</span><span class="src-str">&quot;&nbsp;</span>.&nbsp;<span class="src-str">&quot;</span><span class="src-str">${<span class="src-str">time</span><span class="src-sym">}</span>&nbsp;sec.</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a539"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a540"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a541"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Action/View/Forward&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a542"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;id=&quot;ethna-debug-info-actionenv&quot;&nbsp;style=&quot;&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a543"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$info&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a544"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'action'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getCurrentActionName</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a545"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'action_form'&nbsp;</span>=&gt;&nbsp;<a href="http://www.php.net/get_class">get_class</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a546"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'view'&nbsp;</span>=&gt;&nbsp;<a href="http://www.php.net/get_class">get_class</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getView</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a547"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'forward'&nbsp;</span>=&gt;&nbsp;<span class="src-sym">(</span><a href="http://www.php.net/is_null">is_null</a><span class="src-sym">(</span><span class="src-var">$view&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getView</span><span class="src-sym">(</span><span class="src-sym">)))&nbsp;</span>?&nbsp;<span class="src-str">&quot;&quot;&nbsp;</span>:&nbsp;<span class="src-var">$view</span><span class="src-sym">-&gt;</span><span class="src-id">getCurrentForwardName</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a548"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'encoding'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getClientEncoding</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a549"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a550"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$info</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a551"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a552"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a553"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a554"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a555"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a556"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;dump&nbsp;php&nbsp;info</span></div></li>
+<li><div class="src-line"><a name="a557"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a558"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a559"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a560"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpInfo">dumpInfo</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a561"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a562"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug&quot;&nbsp;id=&quot;ethna-debug-infowindow&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a563"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-title&quot;&gt;Info&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a564"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a565"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a566"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;PHPINFO&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a567"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&nbsp;id=&quot;ethna-debug-info-env-title&quot;&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;Environment&nbsp;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a568"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;id=&quot;ethna-debug-info-env&quot;&nbsp;style=&quot;display:none;&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a569"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodparsePHPInfo">parsePHPInfo</a><span class="src-sym">(</span><span class="src-id">INFO_ENVIRONMENT</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a570"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a571"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a572"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&nbsp;id=&quot;ethna-debug-info-var-title&quot;&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;Variables&nbsp;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a573"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;id=&quot;ethna-debug-info-var&quot;&nbsp;style=&quot;display:none;&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a574"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodparsePHPInfo">parsePHPInfo</a><span class="src-sym">(</span><span class="src-id">INFO_VARIABLES</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a575"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a576"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a577"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&nbsp;id=&quot;ethna-debug-info-modules-title&quot;&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;Installed&nbsp;Modules&nbsp;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a578"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;id=&quot;ethna-debug-info-modules&quot;&nbsp;style=&quot;display:none;&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a579"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodparsePHPInfo">parsePHPInfo</a><span class="src-sym">(</span><span class="src-id">INFO_MODULES</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a580"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$this-&gt;dumpArray(get_loaded_extensions());</span></div></li>
+<li><div class="src-line"><a name="a581"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a582"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a583"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOF</div></li>
+<li><div class="src-line"><a name="a584"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a585"></a>jQuery(function()</div></li>
+<li><div class="src-line"><a name="a586"></a>{</div></li>
+<li><div class="src-line"><a name="a587"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-env-title&nbsp;a&quot;).click(function()&nbsp;{</div></li>
+<li><div class="src-line"><a name="a588"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-env&quot;).toggle();</div></li>
+<li><div class="src-line"><a name="a589"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a590"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-var-title&nbsp;a&quot;).click(function()&nbsp;{</div></li>
+<li><div class="src-line"><a name="a591"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-var&quot;).toggle();</div></li>
+<li><div class="src-line"><a name="a592"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a593"></a>&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-modules-title&nbsp;a&quot;).click(function()&nbsp;{</div></li>
+<li><div class="src-line"><a name="a594"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery(&quot;#ethna-debug-info-modules&quot;).toggle();</div></li>
+<li><div class="src-line"><a name="a595"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a596"></a>});</div></li>
+<li><div class="src-line"><a name="a597"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a598"></a>EOF<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a599"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a600"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a601"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a602"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a603"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a604"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a605"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a606"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodparsePHPInfo">parsePHPInfo</a><span class="src-sym">(</span><span class="src-var">$info</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a607"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a608"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ob_start">ob_start</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a609"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$phpinfo&nbsp;</span>=&nbsp;<a href="http://www.php.net/phpinfo">phpinfo</a><span class="src-sym">(</span><span class="src-var">$info</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a610"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$info&nbsp;</span>=&nbsp;<a href="http://www.php.net/ob_get_contents">ob_get_contents</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a611"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ob_end_clean">ob_end_clean</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a612"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a613"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$dom&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">DOMDocument</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a614"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$dom</span><span class="src-sym">-&gt;</span><span class="src-id">loadHTML</span><span class="src-sym">(</span><span class="src-var">$info</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a615"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$info_html&nbsp;</span>=&nbsp;<span class="src-sym">@</span><a href="http://www.php.net/simplexml_import_dom">simplexml_import_dom</a><span class="src-sym">(</span><span class="src-var">$dom</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a616"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<span class="src-var">$info_html</span><span class="src-sym">-&gt;</span><span class="src-id">xpath</span><span class="src-sym">(</span><span class="src-str">&quot;//body&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a617"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-str">&quot;/&lt;table/&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;&lt;table&nbsp;class=\&quot;ethna-debug-table&nbsp;ethna-debug-table-info\&quot;&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$body</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">asXML</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a618"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a619"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a620"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a621"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;dump&nbsp;action&nbsp;form&nbsp;defined&nbsp;values&nbsp;and&nbsp;posted&nbsp;values</span></div></li>
+<li><div class="src-line"><a name="a622"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a623"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a624"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a625"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpActionForm">dumpActionForm</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a626"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a627"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$af&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a628"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$af&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a629"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a630"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a631"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug&quot;&nbsp;id=&quot;ethna-debug-afwindow&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a632"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-title&quot;&gt;ActionForm&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a633"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a634"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Posted&nbsp;Value&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a635"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a636"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$action_form_array&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">getArray</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a637"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$action_form_array</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a638"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a639"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a640"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Definition&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a641"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a642"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$action_form_def&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">getDef</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a643"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$action_form_def</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a644"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a645"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a646"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;App&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a647"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a648"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$app_vars&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">getAppArray</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a649"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$app_vars</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a650"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a651"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a652"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;AppNe&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a653"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a654"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$app_ne_vars&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">getAppNEArray</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a655"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$app_ne_vars</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a656"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a657"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a658"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;$_GET&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a659"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a660"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$_GET</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a661"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a662"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a663"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;$_POST&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a664"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a665"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$_POST</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a666"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a667"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a668"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a669"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a670"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a671"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpConfig">dumpConfig</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a672"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a673"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$config&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$controller">controller</a><span class="src-sym">-&gt;</span><span class="src-id">getConfig</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a674"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug&quot;&nbsp;id=&quot;ethna-debug-configwindow&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a675"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-title&quot;&gt;Config&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a676"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a677"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//var_dump($this-&gt;controller-&gt;action_form-&gt;getArray());</span></div></li>
+<li><div class="src-line"><a name="a678"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$config</span><span class="src-sym">-&gt;</span><span class="src-id">config</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a679"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a680"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a681"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a682"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a683"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methodsmartyDebug">smartyDebug</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a684"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a685"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/defined">defined</a><span class="src-sym">(</span><span class="src-str">'Smarty::SMARTY_VERSION'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a686"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a687"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a688"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$c&nbsp;</span>=&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Controller.html">Ethna_Controller</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Controller.html#methodgetInstance">getInstance</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a689"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$debug_tpl&nbsp;</span>=&nbsp;<span class="src-var">$c</span><span class="src-sym">-&gt;</span><span class="src-id">getDirectory</span><span class="src-sym">(</span><span class="src-str">'template'</span><span class="src-sym">)&nbsp;</span>.&nbsp;<span class="src-str">&quot;/smarty_debug.tpl&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a690"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a691"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//if&nbsp;smarty2</span></div></li>
+<li><div class="src-line"><a name="a692"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//if&nbsp;(!file_exists($debug_tpl))&nbsp;{</span></div></li>
+<li><div class="src-line"><a name="a693"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;Ethna::raiseWarning(sprintf(&quot;Smarty&nbsp;debug&nbsp;template&nbsp;not&nbsp;found,&nbsp;please&nbsp;set&nbsp;%s.&quot;,&nbsp;$debug_tpl),&nbsp;E_USER_WARNING);</span></div></li>
+<li><div class="src-line"><a name="a694"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</span></div></li>
+<li><div class="src-line"><a name="a695"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}</span></div></li>
+<li><div class="src-line"><a name="a696"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a697"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-inc">require_once&nbsp;</span><span class="src-id">SMARTY_SYSPLUGINS_DIR&nbsp;</span>.&nbsp;<span class="src-str">'smarty_internal_debug.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a698"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a699"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;get&nbsp;template&nbsp;directory</span></div></li>
+<li><div class="src-line"><a name="a700"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$c</span><span class="src-sym">-&gt;</span><span class="src-id">getRenderer</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a701"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$smarty&nbsp;</span>=&nbsp;<span class="src-var">$r</span><span class="src-sym">-&gt;</span><span class="src-id">getEngine</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a702"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a703"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$vars&nbsp;</span>=&nbsp;<span class="src-id">Smarty_Internal_Debug</span><span class="src-sym">::</span><span class="src-id">get_debug_vars</span><span class="src-sym">(</span><span class="src-var">$smarty</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a704"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a705"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty_original_debugging&nbsp;=&nbsp;$smarty-&gt;debugging;</span></div></li>
+<li><div class="src-line"><a name="a706"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty_original_debugtpl&nbsp;=&nbsp;$smarty-&gt;debug_tpl;</span></div></li>
+<li><div class="src-line"><a name="a707"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a708"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty-&gt;debugging&nbsp;=&nbsp;true;</span></div></li>
+<li><div class="src-line"><a name="a709"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty-&gt;debug_tpl&nbsp;=&nbsp;$debug_tpl;</span></div></li>
+<li><div class="src-line"><a name="a710"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty-&gt;assign('_smarty_debug_output',&nbsp;'html');</span></div></li>
+<li><div class="src-line"><a name="a711"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a712"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug&quot;&nbsp;id=&quot;ethna-debug-smartydebugwindow&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a713"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-title&quot;&gt;SmartyDebug&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a714"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a715"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Smarty&nbsp;template&nbsp;vars&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a716"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a717"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$vars</span><span class="src-sym">-&gt;</span><span class="src-id">tpl_vars&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a718"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$v&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">-&gt;</span><span class="src-id">value</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a719"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a720"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a721"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a722"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a723"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;ethna-debug-subtitle&quot;&gt;Smarty&nbsp;config&nbsp;vars&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a724"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;ethna-debug-log\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a725"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$vars</span><span class="src-sym">-&gt;</span><span class="src-id">config_vars&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a726"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$v&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">-&gt;</span><span class="src-id">value</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a727"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a728"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//self::dumpArray($v-&gt;value);</span></div></li>
+<li><div class="src-line"><a name="a729"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a730"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a731"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a732"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/div&gt;&nbsp;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a733"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'&lt;/div&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a734"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a735"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty-&gt;debugging&nbsp;=&nbsp;$smarty_original_debugging;</span></div></li>
+<li><div class="src-line"><a name="a736"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$smarty-&gt;debug_tpl&nbsp;=&nbsp;$smarty_original_debugtpl;</span></div></li>
+<li><div class="src-line"><a name="a737"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a738"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a739"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">static&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Filter_Debugtoolbar.html#methoddumpArray">dumpArray</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$array</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a740"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a741"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;table&nbsp;class=\&quot;ethna-debug-table\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a742"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$array&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a743"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;tr&gt;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a744"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;</span><span class="src-str">&lt;th&gt;{<span class="src-var">$k</span><span class="src-sym">}</span>&lt;/th&gt;</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a745"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a746"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a747"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-id">dumpArray</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a748"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a749"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a750"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_bool">is_bool</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a751"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;&quot;&nbsp;</span>.&nbsp;<span class="src-sym">(</span><span class="src-var">$v&nbsp;</span>?&nbsp;<span class="src-str">'&lt;span&nbsp;style=&quot;color:&nbsp;#090;&quot;&gt;true&lt;/span&gt;'&nbsp;</span>:&nbsp;<span class="src-str">'&lt;span&nbsp;style=&quot;color:&nbsp;#900;&quot;&gt;false&lt;/span&gt;'</span><span class="src-sym">)&nbsp;&nbsp;</span>.&nbsp;<span class="src-str">&quot;&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a752"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a753"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_null">is_null</a><span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a754"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;NULL&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a755"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a756"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_scalar">is_scalar</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a757"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;form&nbsp;type&nbsp;mapping&nbsp;check</span></div></li>
+<li><div class="src-line"><a name="a758"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$key&nbsp;</span>=&nbsp;<span class="src-str">'_'&nbsp;</span>.&nbsp;<span class="src-var">$k&nbsp;</span>.&nbsp;<span class="src-str">'_mapping'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a759"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$ar&nbsp;</span>=&nbsp;isset<span class="src-sym">(</span><span class="src-id">self</span><span class="src-sym">::</span><span class="src-var">$key</span><span class="src-sym">)&nbsp;</span>?&nbsp;<span class="src-id">self</span><span class="src-sym">::</span><span class="src-var">$key&nbsp;</span>:&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a760"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">((</span><span class="src-var">$k&nbsp;</span>===&nbsp;<span class="src-str">'type'&nbsp;</span>||&nbsp;<span class="src-var">$k&nbsp;</span>===&nbsp;<span class="src-str">'form_type'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a761"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;isset<span class="src-sym">(</span><span class="src-var">$ar</span><span class="src-sym">[</span><span class="src-var">$v</span><span class="src-sym">]</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line"><a name="a762"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a763"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a764"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$v&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a765"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;Undefined&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a766"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a767"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$ar</span><span class="src-sym">[</span><span class="src-var">$v</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a768"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a769"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a770"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a771"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a772"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;</span><span class="src-str">&lt;td&gt;{<span class="src-var">$v</span><span class="src-sym">}</span>&lt;/td&gt;</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a773"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a774"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a775"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_object">is_object</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a776"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;(Object)&nbsp;&quot;&nbsp;</span>.&nbsp;<a href="http://www.php.net/get_class">get_class</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">)&nbsp;</span>.&nbsp;<span class="src-str">&quot;&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a777"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a778"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a779"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;td&gt;&quot;&nbsp;</span>.&nbsp;<a href="http://www.php.net/gettype">gettype</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">)&nbsp;</span>.&nbsp;<span class="src-str">&quot;&lt;/td&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a780"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a781"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/tr&gt;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a782"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a783"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&lt;/table&gt;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a784"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a785"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a786"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:58:00 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Ethna_Plugin_Handle_AddAppManager.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Ethna_Plugin_Handle_AddAppManager.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Plugin---Handle---Ethna_Plugin_Handle_AddAppManager.php.html">Ethna_Plugin_Handle_AddAppManager.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_Plugin_Handle_AddAppManager.php</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nozzzzz&nbsp;&lt;nozzzzz@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id$</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-inc">require_once&nbsp;</span><span class="src-id">ETHNA_BASE&nbsp;</span>.&nbsp;<span class="src-str">'/class/Plugin/Handle/Ethna_Plugin_Handle_AddAppObject.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_Plugin_Handle_AddAppManager</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;add-app-manager&nbsp;handler</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nozzzzz&nbsp;&lt;nozzzzz@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppManager.html">Ethna_Plugin_Handle_AddAppManager</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppObject.html">Ethna_Plugin_Handle_AddAppObject</a></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;add&nbsp;app-manager</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppManager.html#methodperform">perform</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppObject.html#method_perform">_perform</a><span class="src-sym">(</span><span class="src-str">'AppManager'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;get&nbsp;handler's&nbsp;description</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppManager.html#methodgetDescription">getDescription</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span>&lt;&lt;&lt;EOS</div></li>
+<li><div class="src-line"><a name="a41"></a>add&nbsp;new&nbsp;app-manager&nbsp;to&nbsp;project:</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;{<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Ethna/Ethna_Plugin_Handle.html#var$id">id</a></span><span class="src-sym">}</span>&nbsp;[-b|--basedir=dir]&nbsp;[app-manager&nbsp;name]</div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>EOS<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;get&nbsp;usage</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_AddAppManager.html#methodgetUsage">getUsage</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span>&lt;&lt;&lt;EOS</div></li>
+<li><div class="src-line"><a name="a55"></a>ethna&nbsp;{<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Ethna/Ethna_Plugin_Handle.html#var$id">id</a></span><span class="src-sym">}</span>&nbsp;[-b|--basedir=dir]&nbsp;[app-manager&nbsp;name]</div></li>
+<li><div class="src-line"><a name="a56"></a>EOS<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:00:21 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

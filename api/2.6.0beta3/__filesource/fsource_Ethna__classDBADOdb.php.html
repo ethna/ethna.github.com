@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for ADOdb.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file ADOdb.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---DB---ADOdb.php.html">ADOdb.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;ADOdb.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt&nbsp;feits&nbsp;&lt;halt.feits@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;6bbc97699c0d61dcb402736b3e8786a46d9b7c74&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;ADOdb&nbsp;config&nbsp;setting</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a14"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'ADODB_OUTP'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'ethna_adodb_logger'</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//disable&nbsp;output&nbsp;error</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'adodb/adodb.inc.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-key">function&nbsp;</span><a href="../Ethna/_class---DB---ADOdb.php.html#functionethna_adodb_logger">ethna_adodb_logger</a>&nbsp;<span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-var">$newline</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$c&nbsp;</span>=&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Controller.html">Ethna_Controller</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Controller.html#methodgetInstance">getInstance</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$logger&nbsp;</span>=&nbsp;<span class="src-var">$c</span><span class="src-sym">-&gt;</span><span class="src-id">getLogger</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$logger</span><span class="src-sym">-&gt;</span><a href="http://www.php.net/log">log</a><span class="src-sym">(</span><span class="src-id">LOG_DEBUG</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/strip_tags">strip_tags</a><span class="src-sym">(</span><a href="http://www.php.net/str_replace">str_replace</a><span class="src-sym">(</span><span class="src-str">&quot;\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$msg</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_DB_ADOdb</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;EthnaのフレームワークでADOdbオブジェクトを扱うための抽象クラス</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt&nbsp;feits&nbsp;&lt;halt.feits@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html">Ethna_DB_ADOdb</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_DB.html">Ethna_DB</a></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@+</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@access&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-tag">@XXX</span><span class="src-doc">&nbsp;stay&nbsp;public&nbsp;because&nbsp;of&nbsp;B.C.</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-tag">@protected</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;object&nbsp;&nbsp;DB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBオブジェクト</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">$db</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-tag">@protected</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;&nbsp;dsn&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$dsn">$dsn</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@-*/</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;コンストラクタ</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Ethna_Controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;コントローラオブジェクト</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$dsn&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSN</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$persistent&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持続接続設定</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#method__construct">__construct</a><span class="src-sym">(</span><span class="src-var">$controller</span><span class="src-sym">,&nbsp;</span><span class="src-var">$dsn</span><span class="src-sym">,&nbsp;</span><span class="src-var">$persistent</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><a href="../Ethna/Ethna_DB.html#method__construct">__construct</a><span class="src-sym">(</span><span class="src-var">$controller</span><span class="src-sym">,&nbsp;</span><span class="src-var">$dsn</span><span class="src-sym">,&nbsp;</span><span class="src-var">$persistent</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">logger&nbsp;</span>=&nbsp;<span class="src-var">$controller</span><span class="src-sym">-&gt;</span><span class="src-id">getLogger</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;connect</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBに接続する</span></div></li>
+<li><div class="src-line"><a name="a70"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a71"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;true:成功&nbsp;false:失敗</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodconnect">connect</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$dsn&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB.html#methodparseDSN">parseDSN</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$dsn">dsn</a><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dsn</span><span class="src-sym">[</span><span class="src-str">'phptype'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'sqlite'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$path&nbsp;</span>=&nbsp;<span class="src-var">$dsn</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a>&nbsp;=&nbsp;<span class="src-id">ADONewConnection</span><span class="src-sym">(</span><span class="src-str">&quot;sqlite&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">Connect</span><span class="src-sym">(</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a>&nbsp;=&nbsp;<span class="src-id">ADONewConnection</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$dsn">dsn</a><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a>&nbsp;<span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">SetFetchMode</span><span class="src-sym">(</span><span class="src-id">ADODB_FETCH_ASSOC</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;disconnect</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a97"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DB接続を切断する</span></div></li>
+<li><div class="src-line"><a name="a98"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a99"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a100"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methoddisconnect">disconnect</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//$this-&gt;db-&gt;close();</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;isValid</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a110"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DB接続状態を返す</span></div></li>
+<li><div class="src-line"><a name="a111"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a112"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a113"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;true:正常(接続済み)&nbsp;false:エラー/未接続</span></div></li>
+<li><div class="src-line"><a name="a114"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodisValid">isValid</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(&nbsp;</span><a href="http://www.php.net/is_object">is_object</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">)&nbsp;)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;begin</span></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a127"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを開始する</span></div></li>
+<li><div class="src-line"><a name="a128"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a129"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a130"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a131"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodbegin">begin</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">BeginTrans</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;rollback</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a140"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを中断する</span></div></li>
+<li><div class="src-line"><a name="a141"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a142"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a143"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a144"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodrollback">rollback</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">RollbackTrans</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;commit</span></div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a154"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを終了する</span></div></li>
+<li><div class="src-line"><a name="a155"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a156"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a157"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a158"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodcommit">commit</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">CommitTrans</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a165"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;query</span></div></li>
+<li><div class="src-line"><a name="a167"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a168"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;クエリを発行する</span></div></li>
+<li><div class="src-line"><a name="a169"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a170"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a171"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL文</span></div></li>
+<li><div class="src-line"><a name="a172"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;DB_Result:結果オブジェクト&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a173"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a174"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodquery">query</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a176"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_query</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a177"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a178"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a179"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a180"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;_query</span></div></li>
+<li><div class="src-line"><a name="a181"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a182"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;クエリを発行する</span></div></li>
+<li><div class="src-line"><a name="a183"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a184"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a185"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL文</span></div></li>
+<li><div class="src-line"><a name="a186"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;DB_Result:結果オブジェクト&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a187"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a188"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">private&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">_query</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a189"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a190"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">logger</span><span class="src-sym">-&gt;</span><span class="src-id">log</span><span class="src-sym">(</span><span class="src-id">LOG_DEBUG</span><span class="src-sym">,&nbsp;</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a191"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">execute</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a192"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a193"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$r&nbsp;</span>===&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a194"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a195"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$error&nbsp;</span>=&nbsp;<span class="src-id"><a href="../Ethna/Ethna.html">Ethna</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna.html#methodraiseError">raiseError</a><span class="src-sym">(</span><span class="src-str">'エラー&nbsp;SQL[%s]&nbsp;CODE[%d]&nbsp;MESSAGE[%s]'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a196"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Ethna/_Ethna.php.html#defineE_DB_QUERY">E_DB_QUERY</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a197"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$query</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a198"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">ErrorNo</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a199"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">ErrorMsg</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a200"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a201"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$error</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a202"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a203"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a204"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a205"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$r</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a206"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a207"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a208"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a209"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;getAll</span></div></li>
+<li><div class="src-line"><a name="a210"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a211"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果レコードセットを返す</span></div></li>
+<li><div class="src-line"><a name="a212"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a213"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a214"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL</span></div></li>
+<li><div class="src-line"><a name="a215"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span><span class="src-doc">&nbsp;プレースホルダ(スカラまたは配列)</span></div></li>
+<li><div class="src-line"><a name="a216"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;$rows&nbsp;&nbsp;&nbsp;連想配列のリスト</span></div></li>
+<li><div class="src-line"><a name="a217"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a218"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodgetAll">getAll</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a219"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a220"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">SetFetchMode</span><span class="src-sym">(</span><span class="src-id">ADODB_FETCH_ASSOC</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a221"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">getAll</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a222"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a223"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a224"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a225"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;getOne</span></div></li>
+<li><div class="src-line"><a name="a226"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a227"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果レコードセットのうち第１行第１列目の値を返す</span></div></li>
+<li><div class="src-line"><a name="a228"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a229"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a230"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL</span></div></li>
+<li><div class="src-line"><a name="a231"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span><span class="src-doc">&nbsp;プレースホルダ(スカラまたは配列)</span></div></li>
+<li><div class="src-line"><a name="a232"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;$value</span></div></li>
+<li><div class="src-line"><a name="a233"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a234"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodgetOne">getOne</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a235"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a236"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">GetOne</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a237"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a238"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a239"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a240"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;getRow</span></div></li>
+<li><div class="src-line"><a name="a241"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a242"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果レコードセットのうち第１行目を返す</span></div></li>
+<li><div class="src-line"><a name="a243"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a244"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a245"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL</span></div></li>
+<li><div class="src-line"><a name="a246"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span><span class="src-doc">&nbsp;プレースホルダ(スカラまたは配列)</span></div></li>
+<li><div class="src-line"><a name="a247"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;$row&nbsp;&nbsp;連想配列</span></div></li>
+<li><div class="src-line"><a name="a248"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a249"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodgetRow">getRow</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a250"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a251"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">GetRow</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a252"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a253"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a254"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a255"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;getCol</span></div></li>
+<li><div class="src-line"><a name="a256"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a257"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果レコードセットのうち第１列目の値リストを返す</span></div></li>
+<li><div class="src-line"><a name="a258"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a259"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL</span></div></li>
+<li><div class="src-line"><a name="a260"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span><span class="src-doc">&nbsp;プレースホルダ(スカラまたは配列)</span></div></li>
+<li><div class="src-line"><a name="a261"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;$values&nbsp;値リスト</span></div></li>
+<li><div class="src-line"><a name="a262"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a263"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodgetCol">getCol</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a264"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a265"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">GetCol</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a266"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a267"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a268"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a269"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a270"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果レコードセットを連想配列の連想配列にして返す</span></div></li>
+<li><div class="src-line"><a name="a271"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a272"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">&nbsp;SQL</span></div></li>
+<li><div class="src-line"><a name="a273"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span><span class="src-doc">&nbsp;プレースホルダ(スカラまたは配列)</span></div></li>
+<li><div class="src-line"><a name="a274"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">$rows&nbsp;第一カラムの値をキーとする連想配列</span></div></li>
+<li><div class="src-line"><a name="a275"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a276"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodgetAssoc">getAssoc</a><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">,&nbsp;</span><span class="src-var">$force_array&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">,&nbsp;</span><span class="src-var">$first2cols&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a277"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a278"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">GetAssoc</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">,&nbsp;</span><span class="src-var">$force_array</span><span class="src-sym">,&nbsp;</span><span class="src-var">$first2cols</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a279"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a280"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a281"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a282"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;execute</span></div></li>
+<li><div class="src-line"><a name="a283"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodexecute">execute</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a284"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a285"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">Execute</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a286"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a287"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a288"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a289"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;replace</span></div></li>
+<li><div class="src-line"><a name="a290"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodreplace">replace</a><span class="src-sym">(</span><span class="src-var">$table</span><span class="src-sym">,&nbsp;</span><span class="src-var">$arrFields</span><span class="src-sym">,&nbsp;</span><span class="src-var">$keyCols</span><span class="src-sym">,&nbsp;</span><span class="src-var">$autoQuote&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a291"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a292"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">Replace</span><span class="src-sym">(</span><span class="src-var">$table</span><span class="src-sym">,&nbsp;</span><span class="src-var">$arrFields</span><span class="src-sym">,&nbsp;</span><span class="src-var">$keyCols</span><span class="src-sym">,&nbsp;</span><span class="src-var">$autoQuote</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a293"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a294"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a295"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a296"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;autoExecute</span></div></li>
+<li><div class="src-line"><a name="a297"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodautoExecute">autoExecute</a><span class="src-sym">(</span><span class="src-var">$table</span><span class="src-sym">,&nbsp;</span><span class="src-var">$fields</span><span class="src-sym">,&nbsp;</span><span class="src-var">$mode</span><span class="src-sym">,&nbsp;</span><span class="src-var">$where&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">,&nbsp;</span><span class="src-var">$forceUpdate&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">,&nbsp;</span><span class="src-var">$magicq&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a298"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a299"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">AutoExecute</span><span class="src-sym">(</span><span class="src-var">$table</span><span class="src-sym">,&nbsp;</span><span class="src-var">$fields</span><span class="src-sym">,&nbsp;</span><span class="src-var">$mode</span><span class="src-sym">,&nbsp;</span><span class="src-var">$where</span><span class="src-sym">,&nbsp;</span><span class="src-var">$forceUpdate</span><span class="src-sym">,&nbsp;</span><span class="src-var">$magicq</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a300"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a301"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a302"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a303"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//{{{&nbsp;pageExecute</span></div></li>
+<li><div class="src-line"><a name="a304"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a305"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;pageExecute</span></div></li>
+<li><div class="src-line"><a name="a306"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a307"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$query&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a308"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$nrows&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a309"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">integer&nbsp;</span><span class="src-doc-var">$page&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a310"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$inputarr&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a311"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a312"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_ADOdb.html#methodpageExecute">pageExecute</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$nrows</span><span class="src-sym">,&nbsp;</span><span class="src-var">$page</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a313"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a314"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_DB_ADOdb.html#var$db">db</a><span class="src-sym">-&gt;</span><span class="src-id">PageExecute</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">,&nbsp;</span><span class="src-var">$nrows</span><span class="src-sym">,&nbsp;</span><span class="src-var">$page</span><span class="src-sym">,&nbsp;</span><span class="src-var">$inputarr</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a315"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a316"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//}}}</span></div></li>
+<li><div class="src-line"><a name="a317"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a318"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:57:31 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

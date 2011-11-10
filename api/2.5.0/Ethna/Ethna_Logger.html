@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_Logger</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_Logger</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログ管理クラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_Logger.php.html">/class/Ethna_Logger.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a30">30</a></span>)
+		</p>
+		
+				
+		<pre><a href="../Ethna/Ethna_AppManager.html">Ethna_AppManager</a>
+   |
+   --Ethna_Logger</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">array</span>
+										<a href="#errorLevelToLogLevel" title="details" class="method-name">errorLevelToLogLevel</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$errno</span>)
+									</div>
+																																																				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_Logger</span>
+										<a href="#Ethna_Logger" title="details" class="method-name">Ethna_Logger</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$controller</span>, <span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>&nbsp;<span class="var-name">$controller</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#begin" title="details" class="method-name">begin</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#end" title="details" class="method-name">end</a>
+										()
+									</div>
+																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#getLogFacility" title="details" class="method-name">getLogFacility</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#log" title="details" class="method-name">log</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$level</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#_alert" title="details" class="method-name">_alert</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object LogWriter</span>
+										<a href="#_getLogWriter" title="details" class="method-name">&amp;_getLogWriter</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$option</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$facility</span> = <span class="var-default">null</span>])
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methoderrorLevelToLogLevel" id="errorLevelToLogLevel"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static errorLevelToLogLevel</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a225">225</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">PHPエラーレベルをログレベルに変換する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ログレベル(LOG_NOTICE,...), エラーレベル表示名(&quot;E_NOTICE&quot;...)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			errorLevelToLogLevel
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$errno</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$errno</span><span class="var-description">: PHPエラーレベル</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodEthna_Logger" id="Ethna_Logger"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_Logger</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a111">111</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Loggerクラスのコンストラクタ</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_Logger</span>
+		<span class="method-name">
+			Ethna_Logger
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$controller</span>, <span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>&nbsp;<span class="var-name">$controller</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>
+				<span class="var-name">$controller</span><span class="var-description">: controllerオブジェクト</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$controller</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodbegin" id="begin"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">begin</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a248">248</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログ出力を開始する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			begin
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodend" id="end"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">end</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a340">340</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログ出力を終了する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			end
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLogFacility" id="getLogFacility"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLogFacility</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a203">203</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログファシリティを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ログファシリティ(ファシリティが1つ以下ならscalar、                   2つ以上なら配列を返す for B.C.)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getLogFacility
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodlog" id="log"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">log</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a288">288</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログを出力する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			log
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$level</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$level</span><span class="var-description">: ログレベル(LOG_DEBUG, LOG_NOTICE...)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: ログメッセージ(+引数)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_alert" id="_alert"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_alert</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a409">409</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アラートメールを送信する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了</li>
+				<li><span class="field">deprecated:</span> </li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			_alert
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: ログメッセージ</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getLogWriter" id="_getLogWriter"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getLogWriter</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Logger.php.html#a359">359</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">LogWriterオブジェクトを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> LogWriterオブジェクト</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object LogWriter</span>
+		<span class="method-name">
+			&amp;_getLogWriter
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$option</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$facility</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$option</span><span class="var-description">: ログオプション</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$facility</span><span class="var-description">: ログファシリティ</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Ethna/Ethna_AppManager.html">Ethna_AppManager</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodEthna_AppManager">Ethna_AppManager::Ethna_AppManager()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetAttrList">Ethna_AppManager::getAttrList()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetAttrLongName">Ethna_AppManager::getAttrLongName()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetAttrName">Ethna_AppManager::getAttrName()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetObjectList">Ethna_AppManager::getObjectList()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetObjectProp">Ethna_AppManager::getObjectProp()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_AppManager.html#methodgetObjectPropList">Ethna_AppManager::getObjectPropList()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:54 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

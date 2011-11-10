@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Ethna_Renderer.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Ethna_Renderer.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Ethna_Renderer.php.html">Ethna_Renderer.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_Renderer.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kazuhiro&nbsp;Hosoi&nbsp;&lt;hosoi@gree.co.jp&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id$</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_Renderer</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;レンダラクラス（Mojaviのまね）</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kazuhiro&nbsp;Hosoi&nbsp;&lt;hosoi@gree.co.jp&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Renderer.html">Ethna_Renderer</a></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@+</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@access&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Ethna_Controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;controllerオブジェクト&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$controller</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Ethna_Controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;controllerオブジェクト($controllerの省略形)&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$ctl</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;&nbsp;[appid]-ini.phpのレンダラ設定&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$config</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;template&nbsp;directory&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$template_dir</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;template&nbsp;engine&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$engine</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;template&nbsp;file&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$template</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;テンプレート変数&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$prop</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;レンダラプラグイン(Ethna_Pluginとは関係なし)&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$plugin_registry</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;Ethna_Rendererクラスのコンストラクタ</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">Ethna_Renderer</span><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$controller</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">controller&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$controller</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">ctl&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">controller</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">engine&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">plugin_registry&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$config&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">ctl</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Controller.html#methodgetConfig">getConfig</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">config&nbsp;</span>=&nbsp;<span class="src-var">$config</span><span class="src-sym">-&gt;</span><span class="src-id">get</span><span class="src-sym">(</span><span class="src-str">'renderer'</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;ビューを出力する</span></div></li>
+<li><div class="src-line"><a name="a70"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a71"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$template&nbsp;</span><span class="src-doc">&nbsp;&nbsp;テンプレート</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$capture&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;true&nbsp;ならば出力を表示せずに返す</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Sample/_misc---sample_plugin.php.html#functionperform">perform</a><span class="src-sym">(</span><span class="src-var">$template&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$capture&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$template&nbsp;</span>==&nbsp;<span class="src-id">null&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template&nbsp;</span>==&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id"><a href="../Ethna/Ethna.html">Ethna</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna.html#methodraiseWarning">raiseWarning</a><span class="src-sym">(</span><span class="src-str">'template&nbsp;is&nbsp;not&nbsp;defined'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$template&nbsp;</span>!=&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template&nbsp;</span>=&nbsp;<span class="src-var">$template</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;テンプレートの有無のチェック</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_readable">is_readable</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template</span><span class="src-sym">)&nbsp;</span>===&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id"><a href="../Ethna/Ethna.html">Ethna</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna.html#methodraiseWarning">raiseWarning</a><span class="src-sym">(</span><span class="src-str">&quot;template&nbsp;is&nbsp;not&nbsp;found:&nbsp;&quot;&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$capture&nbsp;</span>===&nbsp;<span class="src-id">true</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ob_start">ob_start</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-inc">include_once&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$captured&nbsp;</span>=&nbsp;<a href="http://www.php.net/ob_get_contents">ob_get_contents</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ob_end_clean">ob_end_clean</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$captured</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-inc">include_once&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a104"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレートエンジンを取得する</span></div></li>
+<li><div class="src-line"><a name="a105"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a106"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-type">Template&nbsp;</span><span class="src-doc">Engine.</span></div></li>
+<li><div class="src-line"><a name="a107"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a108"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a109"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-sym">&amp;</span><span class="src-id">getEngine</span><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">engine</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a116"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレートディレクトリを取得する</span></div></li>
+<li><div class="src-line"><a name="a117"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a118"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;Template&nbsp;Directory</span></div></li>
+<li><div class="src-line"><a name="a119"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a120"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">getTemplateDir</span><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a128"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数を取得する</span></div></li>
+<li><div class="src-line"><a name="a129"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a130"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$name&nbsp;</span><span class="src-doc">&nbsp;変数名</span></div></li>
+<li><div class="src-line"><a name="a131"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a132"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;変数</span></div></li>
+<li><div class="src-line"><a name="a133"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a134"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a135"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-sym">&amp;</span><span class="src-id">getProp</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a146"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数を削除する</span></div></li>
+<li><div class="src-line"><a name="a147"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a148"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">name&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;変数名</span></div></li>
+<li><div class="src-line"><a name="a149"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a150"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a151"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-sym">&amp;</span><span class="src-id">removeProp</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset<span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a160"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数に配列を割り当てる</span></div></li>
+<li><div class="src-line"><a name="a161"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a162"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$array&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a163"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a164"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a165"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setPropArray</span><span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a167"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop&nbsp;</span>=&nbsp;<a href="http://www.php.net/array_merge">array_merge</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">,&nbsp;</span><span class="src-var">$array</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a172"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数に配列を参照として割り当てる</span></div></li>
+<li><div class="src-line"><a name="a173"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a174"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$array&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a175"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a176"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a177"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a178"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setPropArrayByRef</span><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$array</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a179"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a180"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$keys&nbsp;&nbsp;</span>=&nbsp;<a href="http://www.php.net/array_keys">array_keys</a><span class="src-sym">(</span><span class="src-var">$array</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a181"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$count&nbsp;</span>=&nbsp;<a href="http://www.php.net/sizeof">sizeof</a><span class="src-sym">(</span><span class="src-var">$keys</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a182"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a183"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">for&nbsp;</span><span class="src-sym">(</span><span class="src-var">$i&nbsp;</span>=&nbsp;<span class="src-num">0</span><span class="src-sym">;&nbsp;</span><span class="src-var">$i&nbsp;</span>&lt;&nbsp;<span class="src-var">$count</span><span class="src-sym">;&nbsp;</span><span class="src-var">$i</span>++<span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a184"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$keys</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">]]&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$array</span><span class="src-sym">[</span><span class="src-var">$keys</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">]]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a185"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a186"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a187"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a188"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a189"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;テンプレート変数を割り当てる</span></div></li>
+<li><div class="src-line"><a name="a190"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a191"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$name&nbsp;</span><span class="src-doc">変数名</span></div></li>
+<li><div class="src-line"><a name="a192"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc-var">$value&nbsp;</span><span class="src-doc">値</span></div></li>
+<li><div class="src-line"><a name="a193"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a194"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a195"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a196"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setProp</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$value</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a197"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a198"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$value</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a199"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a200"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a201"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a202"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数に参照を割り当てる</span></div></li>
+<li><div class="src-line"><a name="a203"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a204"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$name&nbsp;</span><span class="src-doc">変数名</span></div></li>
+<li><div class="src-line"><a name="a205"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc-var">$value&nbsp;</span><span class="src-doc">値</span></div></li>
+<li><div class="src-line"><a name="a206"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a207"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a208"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a209"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setPropByRef</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-sym">&amp;</span><span class="src-var">$value</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a210"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a211"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">prop</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$value</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a212"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a213"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a214"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a215"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレートを割り当てる</span></div></li>
+<li><div class="src-line"><a name="a216"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a217"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$template&nbsp;</span><span class="src-doc">テンプレート名</span></div></li>
+<li><div class="src-line"><a name="a218"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a219"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a220"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a221"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setTemplate</span><span class="src-sym">(</span><span class="src-var">$template</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a222"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a223"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template&nbsp;</span>=&nbsp;<span class="src-var">$template</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a224"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a225"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a226"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a227"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレートディレクトリを割り当てる</span></div></li>
+<li><div class="src-line"><a name="a228"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a229"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$dir&nbsp;</span><span class="src-doc">ディレクトリ名</span></div></li>
+<li><div class="src-line"><a name="a230"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a231"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a232"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a233"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setTemplateDir</span><span class="src-sym">(</span><span class="src-var">$dir</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a234"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a235"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>=&nbsp;<span class="src-var">$dir</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a236"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a237"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">1</span><span class="src-sym">)&nbsp;</span>!=&nbsp;<span class="src-str">'/'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a238"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.=&nbsp;<span class="src-str">'/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a239"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a240"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a241"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a242"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a243"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレートの有無をチェックする</span></div></li>
+<li><div class="src-line"><a name="a244"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a245"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$template&nbsp;</span><span class="src-doc">テンプレート名</span></div></li>
+<li><div class="src-line"><a name="a246"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a247"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a248"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a249"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">templateExists</span><span class="src-sym">(</span><span class="src-var">$template</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a250"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a251"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">1</span><span class="src-sym">)&nbsp;</span>!=&nbsp;<span class="src-str">'/'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a252"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.=&nbsp;<span class="src-str">'/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a253"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a254"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a255"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_readable">is_readable</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">template_dir&nbsp;</span>.&nbsp;<span class="src-var">$template</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a256"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a257"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a258"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a259"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;プラグインをセットする</span></div></li>
+<li><div class="src-line"><a name="a260"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a261"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$name　プラグイン名&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a262"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$type&nbsp;</span><span class="src-doc">プラグインタイプ</span></div></li>
+<li><div class="src-line"><a name="a263"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$plugin&nbsp;</span><span class="src-doc">プラグイン本体</span></div></li>
+<li><div class="src-line"><a name="a264"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a265"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a266"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a267"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">setPlugin</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$type</span><span class="src-sym">,&nbsp;</span><span class="src-var">$plugin</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a268"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a269"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">plugin_registry</span><span class="src-sym">[</span><span class="src-var">$type</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-var">$name</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$plugin</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a270"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a271"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a272"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;proxy&nbsp;methods&nbsp;(for&nbsp;B.C.)</span></div></li>
+<li><div class="src-line"><a name="a273"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a274"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数を割り当てる(後方互換)</span></div></li>
+<li><div class="src-line"><a name="a275"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a276"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a277"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a278"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">assign</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$value</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a279"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a280"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">setProp</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$value</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a281"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a282"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a283"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a284"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テンプレート変数に参照を割り当てる(後方互換)</span></div></li>
+<li><div class="src-line"><a name="a285"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a286"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a287"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a288"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">assign_by_ref</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-sym">&amp;</span><span class="src-var">$value</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a289"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a290"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">setPropByRef</span><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$value</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a291"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a292"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a293"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a294"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;ビューを出力する</span></div></li>
+<li><div class="src-line"><a name="a295"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a296"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a297"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a298"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><span class="src-id">display</span><span class="src-sym">(</span><span class="src-var">$template&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a299"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a300"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Sample/_misc---sample_plugin.php.html#functionperform">perform</a><span class="src-sym">(</span><span class="src-var">$template</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a301"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a302"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a303"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a304"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a305"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:00:47 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

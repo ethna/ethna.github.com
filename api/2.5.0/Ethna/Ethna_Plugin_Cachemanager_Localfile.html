@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_Plugin_Cachemanager_Localfile</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_Plugin_Cachemanager_Localfile</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">キャッシュマネージャクラス(ローカルファイルキャッシュ版)</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Plugin---Cachemanager---Ethna_Plugin_Cachemanager_Localfile.php.html">/class/Plugin/Cachemanager/Ethna_Plugin_Cachemanager_Localfile.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a19">19</a></span>)
+		</p>
+		
+				
+		<pre><a href="../Ethna/Ethna_Plugin_Cachemanager.html">Ethna_Plugin_Cachemanager</a>
+   |
+   --Ethna_Plugin_Cachemanager_Localfile</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#clear" title="details" class="method-name">clear</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#get" title="details" class="method-name">get</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#getLastModified" title="details" class="method-name">getLastModified</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#isCached" title="details" class="method-name">isCached</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#set" title="details" class="method-name">set</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$timestamp</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodclear" id="clear"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">clear</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a208">208</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">キャッシュ値を削除する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			clear
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: キャッシュキー</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$namespace</span><span class="var-description">: キャッシュネームスペース</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodclear">Ethna_Plugin_Cachemanager::clear()</a></dt>
+						<dd>キャッシュから値を削除する</dd>
+					</dl>
+			
+	</div>
+<a name="methodget" id="get"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a39">39</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">キャッシュに設定された値を取得する</p>
+<p class="description"><p>キャッシュに値が設定されている場合はキャッシュ値   が戻り値となる。キャッシュに値が無い場合やlifetime   を過ぎている場合、エラーが発生した場合はEthna_Error   オブジェクトが戻り値となる。</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> キャッシュ値</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			get
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: キャッシュキー</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lifetime</span><span class="var-description">: キャッシュ有効期間</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$namespace</span><span class="var-description">: キャッシュネームスペース</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodget">Ethna_Plugin_Cachemanager::get()</a></dt>
+						<dd>キャッシュに設定された値を取得する</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetLastModified" id="getLastModified"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLastModified</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a104">104</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">キャッシュの最終更新日時を取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 最終更新日時(unixtime)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			getLastModified
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: キャッシュキー</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$namespace</span><span class="var-description">: キャッシュネームスペース</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodgetLastModified">Ethna_Plugin_Cachemanager::getLastModified()</a></dt>
+						<dd>キャッシュの最終更新日時を取得する</dd>
+					</dl>
+			
+	</div>
+<a name="methodisCached" id="isCached"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isCached</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a125">125</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">値がキャッシュされているかどうかを取得する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isCached
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: キャッシュキー</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lifetime</span><span class="var-description">: キャッシュ有効期間</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$namespace</span><span class="var-description">: キャッシュネームスペース</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodisCached">Ethna_Plugin_Cachemanager::isCached()</a></dt>
+						<dd>値がキャッシュされているかどうかを取得する</dd>
+					</dl>
+			
+	</div>
+<a name="methodset" id="set"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">set</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classPluginCachemanagerEthna_Plugin_Cachemanager_Localfile.php.html#a154">154</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">キャッシュに値を設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			set
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$timestamp</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$namespace</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: キャッシュキー</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: キャッシュ値</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: キャッシュ最終更新時刻(unixtime)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$namespace</span><span class="var-description">: キャッシュネームスペース</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodset">Ethna_Plugin_Cachemanager::set()</a></dt>
+						<dd>キャッシュに値を設定する</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Ethna/Ethna_Plugin_Cachemanager.html">Ethna_Plugin_Cachemanager</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodEthna_Plugin_Cachemanager">Ethna_Plugin_Cachemanager::Ethna_Plugin_Cachemanager()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodclear">Ethna_Plugin_Cachemanager::clear()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodget">Ethna_Plugin_Cachemanager::get()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodgetLastModified">Ethna_Plugin_Cachemanager::getLastModified()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodgetNamespace">Ethna_Plugin_Cachemanager::getNamespace()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodisCached">Ethna_Plugin_Cachemanager::isCached()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodlock">Ethna_Plugin_Cachemanager::lock()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodset">Ethna_Plugin_Cachemanager::set()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodsetCompress">Ethna_Plugin_Cachemanager::setCompress()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodsetNamespace">Ethna_Plugin_Cachemanager::setNamespace()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Ethna/Ethna_Plugin_Cachemanager.html#methodunlock">Ethna_Plugin_Cachemanager::unlock()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:00:05 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

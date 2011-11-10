@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Urlhandler.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Urlhandler.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Plugin---Urlhandler.php.html">Urlhandler.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker&nbsp;tabstop=4&nbsp;shiftwidth=4&nbsp;autoindent</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Urlhandler.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;50fdda60c3d92d427093bb06aeb7283c81ad1b94&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_Plugin_Urlhandler</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Urlhandlerプラグインの基底クラス</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Plugin_Urlhandler.html">Ethna_Plugin_Urlhandler</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_Plugin_Abstract.html">Ethna_Plugin_Abstract</a></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@+</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@access&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@-*/</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;アクションをユーザリクエストに変換する</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$action&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$param&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">array($path_string,&nbsp;$path_key)</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Urlhandler.html#methodactionToRequest">actionToRequest</a><span class="src-sym">(</span><span class="src-var">$action</span><span class="src-sym">,&nbsp;</span><span class="src-var">$param</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">die</span><span class="src-sym">(</span><span class="src-str">'override!'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;ユーザリクエストをアクションに変換する</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$http_vars&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">$http_vars&nbsp;with&nbsp;'action_foobar'&nbsp;=&gt;&nbsp;'true'&nbsp;element.</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Urlhandler.html#methodrequestToAction">requestToAction</a><span class="src-sym">(</span><span class="src-var">$http_vars</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">die</span><span class="src-sym">(</span><span class="src-str">'override!'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;アクションをリクエストパラメータに変換する</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$http_vars&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$action&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">$http_vars&nbsp;</span><span class="src-doc">with&nbsp;'action_foobar'&nbsp;element.</span></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Urlhandler.html#methodbuildActionParameter">buildActionParameter</a><span class="src-sym">(</span><span class="src-var">$http_vars</span><span class="src-sym">,&nbsp;</span><span class="src-var">$action</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$action&nbsp;</span>==&nbsp;<span class="src-str">&quot;&quot;</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$http_vars</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$key&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'action_%s'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$action</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$http_vars</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">'true'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$http_vars</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;パラメータをURLに変換する</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc-var">$query&nbsp;</span><span class="src-doc">query&nbsp;list</span></div></li>
+<li><div class="src-line"><a name="a76"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">query&nbsp;string</span></div></li>
+<li><div class="src-line"><a name="a77"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Urlhandler.html#methodbuildQueryParameter">buildQueryParameter</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$param&nbsp;</span>=&nbsp;<span class="src-str">''</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$query&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$key&nbsp;</span>=&gt;&nbsp;<span class="src-var">$value</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$value&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$k&nbsp;</span>=&gt;&nbsp;<span class="src-var">$v</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_numeric">is_numeric</a><span class="src-sym">(</span><span class="src-var">$k</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$k&nbsp;</span>=&nbsp;<span class="src-str">''</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$param&nbsp;</span>.=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'%s=%s&amp;'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'%s[%s]'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">,&nbsp;</span><span class="src-var">$k</span><span class="src-sym">))</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_null">is_null</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">)&nbsp;</span>==&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$param&nbsp;</span>.=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'%s=%s&amp;'</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><span class="src-var">$key</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$param</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a99"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a100"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:15 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

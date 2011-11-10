@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for ClearCache.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file ClearCache.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Plugin---Handle---ClearCache.php.html">ClearCache.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;ClearCache.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICHII&nbsp;Takashi&nbsp;&lt;ichii386@schweetheart.jp&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;67b3ea376cc12a750d41139576dcab97ed7dc586&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-inc">require_once&nbsp;</span><span class="src-id">ETHNA_BASE&nbsp;</span>.&nbsp;<span class="src-str">'/class/PearWrapper.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_Plugin_Handle_ClearCache</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;clear-cache&nbsp;handler</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICHII&nbsp;Takashi&nbsp;&lt;ichii386@schweetheart.jp&gt;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_ClearCache.html">Ethna_Plugin_Handle_ClearCache</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle.html">Ethna_Plugin_Handle</a></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;clear&nbsp;cache&nbsp;files.</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@todo</span><span class="src-doc">&nbsp;&nbsp;&nbsp;implement&nbsp;Ethna_Renderer::clear_cache();</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@todo</span><span class="src-doc">&nbsp;&nbsp;&nbsp;implement&nbsp;Ethna_Plugin_Cachemanager::clear_cache();</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@todo</span><span class="src-doc">&nbsp;&nbsp;&nbsp;avoid&nbsp;echo,&nbsp;printf</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_ClearCache.html#methodperform">perform</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Handle.html#method_getopt">_getopt</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'basedir='</span><span class="src-sym">,&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'any-tmp-files'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'smarty'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'pear'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'cachemanager'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-id"><a href="../Ethna/Ethna.html">Ethna</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna.html#methodisError">isError</a><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$r</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">,</span><span class="src-sym">)&nbsp;</span>=&nbsp;<span class="src-var">$r</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$basedir&nbsp;</span>=&nbsp;isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'basedir'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>?&nbsp;<a href="http://www.php.net/realpath">realpath</a><span class="src-sym">(</span><a href="http://www.php.net/end">end</a><span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'basedir'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span>:&nbsp;<a href="http://www.php.net/getcwd">getcwd</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$controller&nbsp;</span>=&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Handle.html">Ethna_Handle</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Handle.html#methodgetAppController">getAppController</a><span class="src-sym">(</span><span class="src-var">$basedir</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-id"><a href="../Ethna/Ethna.html">Ethna</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna.html#methodisError">isError</a><span class="src-sym">(</span><span class="src-var">$controller</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$controller</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp_dir&nbsp;</span>=&nbsp;<span class="src-var">$controller</span><span class="src-sym">-&gt;</span><span class="src-id">getDirectory</span><span class="src-sym">(</span><span class="src-str">'tmp'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'smarty'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'any-tmp-files'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;cleaning&nbsp;smarty&nbsp;caches,&nbsp;compiled&nbsp;templates...&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$renderer&nbsp;</span>=&nbsp;<span class="src-var">$controller</span><span class="src-sym">-&gt;</span><span class="src-id">getRenderer</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strtolower">strtolower</a><span class="src-sym">(</span><a href="http://www.php.net/get_class">get_class</a><span class="src-sym">(</span><span class="src-var">$renderer</span><span class="src-sym">))&nbsp;</span>==&nbsp;<span class="src-str">&quot;ethna_renderer_smarty&quot;</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$renderer</span><span class="src-sym">-&gt;</span><span class="src-id">engine</span><span class="src-sym">-&gt;</span><span class="src-id">clear_all_cache</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$renderer</span><span class="src-sym">-&gt;</span><span class="src-id">engine</span><span class="src-sym">-&gt;</span><span class="src-id">clear_compiled_tpl</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&nbsp;done\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'cachemanager'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'any-tmp-files'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;cleaning&nbsp;Ethna_Plugin_Cachemanager&nbsp;caches...&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$cache_dir&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;%s/cache&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tmp_dir</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Util.html">Ethna_Util</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Util.html#methodpurgeDir">purgeDir</a><span class="src-sym">(</span><span class="src-var">$cache_dir</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&nbsp;done\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$args</span><span class="src-sym">[</span><span class="src-str">'any-tmp-files'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;cleaning&nbsp;tmp&nbsp;dirs...&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;purge&nbsp;only&nbsp;entries&nbsp;in&nbsp;tmp.</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dh&nbsp;</span>=&nbsp;<a href="http://www.php.net/opendir">opendir</a><span class="src-sym">(</span><span class="src-var">$tmp_dir</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">while&nbsp;</span><span class="src-sym">((</span><span class="src-var">$entry&nbsp;</span>=&nbsp;<a href="http://www.php.net/readdir">readdir</a><span class="src-sym">(</span><span class="src-var">$dh</span><span class="src-sym">))&nbsp;</span>!==&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$entry&nbsp;</span>===&nbsp;<span class="src-str">'.'&nbsp;</span>||&nbsp;<span class="src-var">$entry&nbsp;</span>===&nbsp;<span class="src-str">'..'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">continue</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Util.html">Ethna_Util</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Util.html#methodpurgeDir">purgeDir</a><span class="src-sym">(</span><span class="src-str">&quot;</span>{<span class="src-var">$tmp_dir<span class="src-str"></span><span class="src-sym">}</span>/{<span class="src-var">$entry</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/closedir">closedir</a><span class="src-sym">(</span><span class="src-var">$dh</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">&quot;&nbsp;done\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;getDescription()</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a86"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_ClearCache.html#methodgetDescription">getDescription</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span>&lt;&lt;&lt;EOS</div></li>
+<li><div class="src-line"><a name="a90"></a>clear&nbsp;project's&nbsp;cache&nbsp;files:</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;{<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Ethna/Ethna_Plugin_Handle.html#var$id">id</a></span><span class="src-sym">}</span>&nbsp;[-b|--basedir=dir]&nbsp;[-a|--any-tmp-files]&nbsp;[-s|--smarty]&nbsp;[-p|--pear]&nbsp;[-c|--cachemanager]</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a93"></a>EOS<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;{{{&nbsp;getUsage()</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a99"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a100"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Handle_ClearCache.html#methodgetUsage">getUsage</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span>&lt;&lt;&lt;EOS</div></li>
+<li><div class="src-line"><a name="a104"></a>ethna&nbsp;{<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Ethna/Ethna_Plugin_Handle.html#var$id">id</a></span><span class="src-sym">}</span>&nbsp;[-b|--basedir=dir]&nbsp;[-a|--any-tmp-files]&nbsp;[-s|--smarty]&nbsp;[-p|--pear]&nbsp;[-c|--cachemanager]</div></li>
+<li><div class="src-line"><a name="a105"></a>EOS<span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;}}}</span></div></li>
+<li><div class="src-line"><a name="a108"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a109"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:57:45 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

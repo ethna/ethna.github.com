@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Ethna_DB_Creole.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Ethna_DB_Creole.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---DB---Ethna_DB_Creole.php.html">Ethna_DB_Creole.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_DB_Creole.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt&nbsp;feits&nbsp;&lt;halt.feits@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id$</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'creole/Creole.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna用DB抽象クラス</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;EthnaのフレームワークでDBオブジェクトを扱うための抽象クラス</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;(のつもり...あぁすばらしきPHP&nbsp;4)</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt&nbsp;feits&nbsp;&lt;halt.feits@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html">Ethna_DB_Creole</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_DB.html#methodEthna_DB">Ethna_DB</a></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@+</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@access&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">DB&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBオブジェクト&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$db</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;dsn&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><span class="src-var">$dsn</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@-*/</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;コンストラクタ</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Ethna_Controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">&amp;$controller&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;コントローラオブジェクト</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$dsn&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSN</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$persistent&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持続接続設定</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodEthna_DB_Creole">Ethna_DB_Creole</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$controller</span><span class="src-sym">,&nbsp;</span><span class="src-var">$dsn</span><span class="src-sym">,&nbsp;</span><span class="src-var">$persistent</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><a href="../Ethna/Ethna_DB.html#methodEthna_DB">Ethna_DB</a><span class="src-sym">(</span><span class="src-var">$controller</span><span class="src-sym">,&nbsp;</span><span class="src-var">$dsn</span><span class="src-sym">,&nbsp;</span><span class="src-var">$persistent</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBに接続する</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodconnect">connect</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db&nbsp;</span>=&nbsp;<span class="src-id">Creole</span><span class="src-sym">::</span><span class="src-id">getConnection</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">dsn</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DB接続を切断する</span></div></li>
+<li><div class="src-line"><a name="a65"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a66"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methoddisconnect">disconnect</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db</span><span class="src-sym">-&gt;</span><span class="src-id">close</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DB接続状態を返す</span></div></li>
+<li><div class="src-line"><a name="a76"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a77"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a78"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;true:正常(接続済み)&nbsp;false:エラー/未接続</span></div></li>
+<li><div class="src-line"><a name="a79"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodisValid">isValid</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(&nbsp;</span><a href="http://www.php.net/is_object">is_object</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db</span><span class="src-sym">)&nbsp;)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a90"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを開始する</span></div></li>
+<li><div class="src-line"><a name="a91"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a92"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a93"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a94"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodbegin">begin</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a101"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを中断する</span></div></li>
+<li><div class="src-line"><a name="a102"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a103"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a104"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a105"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodrollback">rollback</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db</span><span class="src-sym">-&gt;</span><span class="src-id">rollback</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a113"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;DBトランザクションを終了する</span></div></li>
+<li><div class="src-line"><a name="a114"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a115"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a116"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">&nbsp;&nbsp;0:正常終了&nbsp;Ethna_Error:エラー</span></div></li>
+<li><div class="src-line"><a name="a117"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodcommit">commit</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db</span><span class="src-sym">-&gt;</span><span class="src-id">commit</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-num">0</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a125"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a126"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;PrepareStatement</span></div></li>
+<li><div class="src-line"><a name="a127"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a128"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Object&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a129"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a130"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_DB_Creole.html#methodprepareStatement">prepareStatement</a><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">db</span><span class="src-sym">-&gt;</span><span class="src-id">prepareStatement</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a135"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a136"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:38 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethnaフレームワーククラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Ethna.php.html">/Ethna.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a330">330</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#clearErrorCallback" title="details" class="method-name">clearErrorCallback</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#handleError" title="details" class="method-name">handleError</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>&nbsp;<span class="var-name">&$error</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">mixed</span>
+										<a href="#isError" title="details" class="method-name">isError</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$msgcode</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#raiseError" title="details" class="method-name">&amp;raiseError</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#raiseNotice" title="details" class="method-name">&amp;raiseNotice</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#raiseWarning" title="details" class="method-name">&amp;raiseWarning</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#setErrorCallback" title="details" class="method-name">setErrorCallback</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$callback</span>)
+									</div>
+																																																																							</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodclearErrorCallback" id="clearErrorCallback"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static clearErrorCallback</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a445">445</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">エラー発生時の(フレームワークとしての)コールバック関数をクリアする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			clearErrorCallback
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhandleError" id="handleError"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static handleError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a457">457</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">エラー発生時の処理を行う(コールバック関数/メソッドを呼び出す)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			handleError
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>&nbsp;<span class="var-name">&$error</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>
+				<span class="var-name">&$error</span><span class="var-description">: Ethna_Errorオブジェクト</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisError" id="isError"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static isError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a343">343</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">渡されたオブジェクトが Ethna_Error オブジェクト   またはそのサブクラスのオブジェクトかどうかチェックします。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 変数が、Ethna_Error の場合に TRUEを返します。                 第2引数が設定された場合は、さらに 所与された $msgcode                 を含む場合のみ TRUEを返します。</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			isError
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$msgcode</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: チェックする変数</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$msgcode</span><span class="var-description">: チェックするエラーメッセージまたはエラーコード</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodraiseError" id="raiseError"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static raiseError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a370">370</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Errorオブジェクトを生成する(エラーレベル:E_USER_ERROR)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;raiseError
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: エラーメッセージ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$code</span><span class="var-description">: エラーコード</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodraiseNotice" id="raiseNotice"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static raiseNotice</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a413">413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Errorオブジェクトを生成する(エラーレベル:E_USER_NOTICE)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;raiseNotice
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: エラーメッセージ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$code</span><span class="var-description">: エラーコード</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodraiseWarning" id="raiseWarning"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static raiseWarning</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a391">391</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Errorオブジェクトを生成する(エラーレベル:E_USER_WARNING)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			&amp;raiseWarning
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">E_GENERAL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: エラーメッセージ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$code</span><span class="var-description">: エラーコード</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetErrorCallback" id="setErrorCallback"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static setErrorCallback</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__Ethna.php.html#a434">434</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">エラー発生時の(フレームワークとしての)コールバック関数を設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setErrorCallback
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$callback</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$callback</span><span class="var-description">: string:コールバック関数名 array:コールバッククラス(名|オブジェクト)+メソッド名</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:58:56 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

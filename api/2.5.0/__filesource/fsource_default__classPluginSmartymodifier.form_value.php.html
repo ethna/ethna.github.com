@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for modifier.form_value.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file modifier.form_value.php</h1>
+<p>Documentation is available at <a href="../default/_class---Plugin---Smarty---modifier.form_value.php.html">modifier.form_value.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;smarty&nbsp;modifier:フォーム値出力フィルタ</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;フォーム名を変数で指定してフォーム値を取得したい場合に使用する</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;sample:</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;$this-&gt;af-&gt;set('foo',&nbsp;'bar');</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;$smarty-&gt;assign('key',&nbsp;'foo');</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;{$key|form_value}</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;bar</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$string&nbsp;</span><span class="src-doc">フォーム項目名</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;フォーム値</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-key">function&nbsp;</span><a href="../default/_class---Plugin---Smarty---modifier.form_value.php.html#functionsmarty_modifier_form_value">smarty_modifier_form_value</a><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$c&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-id"><a href="../Ethna/Ethna_Controller.html">Ethna_Controller</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Controller.html#methodgetInstance">getInstance</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$af&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$c</span><span class="src-sym">-&gt;</span><span class="src-id">getActionForm</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$elts&nbsp;</span>=&nbsp;<a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-str">&quot;.&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$string</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$af</span><span class="src-sym">-&gt;</span><span class="src-id">get</span><span class="src-sym">(</span><span class="src-var">$elts</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">for&nbsp;</span><span class="src-sym">(</span><span class="src-var">$i&nbsp;</span>=&nbsp;<span class="src-num">1</span><span class="src-sym">;&nbsp;</span><span class="src-var">$i&nbsp;</span>&lt;&nbsp;<a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$elts</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-var">$i</span>++<span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$r</span><span class="src-sym">[</span><span class="src-var">$elts</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">]]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">,&nbsp;</span><span class="src-id">ENT_QUOTES</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:01:16 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

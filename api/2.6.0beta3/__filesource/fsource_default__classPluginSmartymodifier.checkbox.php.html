@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for modifier.checkbox.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file modifier.checkbox.php</h1>
+<p>Documentation is available at <a href="../default/_class---Plugin---Smarty---modifier.checkbox.php.html">modifier.checkbox.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;smarty&nbsp;modifier:チェックボックス用フィルタ</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;sample:</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;test&quot;&nbsp;{&quot;&quot;|checkbox}&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;test&quot;&nbsp;{&quot;1&quot;|checkbox}&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;test&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;test&quot;&nbsp;checked=&quot;checked&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$string&nbsp;</span><span class="src-doc">チェックボックスに渡されたフォーム値(スカラーのみ)</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;$stringが空文字列あるいは0,&nbsp;null,&nbsp;false&nbsp;以外の場合は&quot;checked&quot;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-key">function&nbsp;</span><a href="../default/_class---Plugin---Smarty---modifier.checkbox.php.html#functionsmarty_modifier_checkbox">smarty_modifier_checkbox</a><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_scalar">is_scalar</a><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$string&nbsp;</span>!=&nbsp;<span class="src-str">&quot;&quot;&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$string&nbsp;</span>!=&nbsp;<span class="src-str">&quot;0&quot;</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-str">'checked=&quot;checked&quot;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:58:43 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

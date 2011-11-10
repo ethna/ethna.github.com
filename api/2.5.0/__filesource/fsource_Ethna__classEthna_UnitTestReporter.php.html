@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Ethna_UnitTestReporter.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file Ethna_UnitTestReporter.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Ethna_UnitTestReporter.php.html">Ethna_UnitTestReporter.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethna_UnitTestReporter.php</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Takuya&nbsp;Ookubo&nbsp;&lt;sfio@sakura.ai.to&gt;</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id$</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'simpletest/scorer.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;Ethnaマネージャクラス</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Takuya&nbsp;Ookubo&nbsp;&lt;sfio@sakura.ai.to&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html">Ethna_UnitTestReporter</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">SimpleReporter&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$_character_set">$_character_set</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">$report</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$result">$result</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;Ethna_UnitTestReporterのコンストラクタ</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$character_set&nbsp;</span><span class="src-doc">&nbsp;キャラクタセット</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodEthna_UnitTestReporter">Ethna_UnitTestReporter</a><span class="src-sym">(</span><span class="src-var">$character_set&nbsp;</span>=&nbsp;<span class="src-str">'UTF-8'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">SimpleReporter</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$_character_set">_character_set</a>&nbsp;=&nbsp;<span class="src-var">$character_set</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$result">result</a>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;結果</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$test_name&nbsp;</span><span class="src-doc">&nbsp;テスト名称</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintFooter">paintFooter</a><span class="src-sym">(</span><span class="src-var">$test_name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$colour&nbsp;</span>=&nbsp;<span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getFailCount</span><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span>+&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getExceptionCount</span><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span>&gt;&nbsp;<span class="src-num">0&nbsp;</span>?&nbsp;<span class="src-str">&quot;red&quot;&nbsp;</span>:&nbsp;<span class="src-str">&quot;green&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$result">result</a>&nbsp;=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'TestCaseProgress'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getTestCaseProgress</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'TestCaseCount'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getTestCaseCount</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'PassCount'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getPassCount</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'FailCount'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getFailCount</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'ExceptionCount'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getExceptionCount</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;パス</span></div></li>
+<li><div class="src-line"><a name="a61"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a62"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a63"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*�　@param&nbsp;string&nbsp;&nbsp;&nbsp;$message&nbsp;&nbsp;&nbsp;&nbsp;メッセージ</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintPass">paintPass</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><span class="src-id">paintPass</span><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$test_list&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getTestList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Pass'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$test_list</span><span class="src-sym">[</span><span class="src-num">2</span><span class="src-sym">]</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'message'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$message</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a78"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;失敗</span></div></li>
+<li><div class="src-line"><a name="a79"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a80"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a81"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*�　@param&nbsp;string&nbsp;&nbsp;&nbsp;$message&nbsp;&nbsp;&nbsp;&nbsp;メッセージ</span></div></li>
+<li><div class="src-line"><a name="a82"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintFail">paintFail</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><span class="src-id">paintFail</span><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$test_list&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getTestList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Fail'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$test_list</span><span class="src-sym">[</span><span class="src-num">2</span><span class="src-sym">]</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'message'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$message</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a96"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;例外</span></div></li>
+<li><div class="src-line"><a name="a97"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a98"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a99"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*�　@param&nbsp;string&nbsp;&nbsp;&nbsp;$message&nbsp;&nbsp;&nbsp;&nbsp;メッセージ</span></div></li>
+<li><div class="src-line"><a name="a100"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintException">paintException</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><span class="src-id">paintException</span><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$breadcrumb&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">getTestList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$test&nbsp;</span>=&nbsp;<span class="src-var">$breadcrumb</span><span class="src-sym">[</span><span class="src-num">2</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/array_shift">array_shift</a><span class="src-sym">(</span><span class="src-var">$breadcrumb</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Exception'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$test</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'breadcrumb'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$breadcrumb</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'message'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$message</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a117"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テストケース開始</span></div></li>
+<li><div class="src-line"><a name="a118"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a119"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a120"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$test_name&nbsp;</span><span class="src-doc">&nbsp;テスト名称</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintCaseStart">paintCaseStart</a><span class="src-sym">(</span><span class="src-var">$test_name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><span class="src-id">paintCaseStart</span><span class="src-sym">(</span><span class="src-var">$test_name</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'CaseStart'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test_name'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$test_name</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a133"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;テストケース終了</span></div></li>
+<li><div class="src-line"><a name="a134"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a135"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a136"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$test_name&nbsp;</span><span class="src-doc">&nbsp;テスト名称</span></div></li>
+<li><div class="src-line"><a name="a137"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintCaseEnd">paintCaseEnd</a><span class="src-sym">(</span><span class="src-var">$test_name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">parent</span><span class="src-sym">::</span><span class="src-id">paintCaseEnd</span><span class="src-sym">(</span><span class="src-var">$test_name</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'CaseEnd'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a148"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;フォーマット済みメッセージ</span></div></li>
+<li><div class="src-line"><a name="a149"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a150"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a151"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*�　@param&nbsp;string&nbsp;&nbsp;&nbsp;$message&nbsp;&nbsp;&nbsp;&nbsp;メッセージ</span></div></li>
+<li><div class="src-line"><a name="a152"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#methodpaintFormattedMessage">paintFormattedMessage</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$report">report</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'type'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'FormattedMessage'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'message'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#method_htmlEntities">_htmlEntities</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a162"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;HTMLエンティティ変換</span></div></li>
+<li><div class="src-line"><a name="a163"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a164"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*　@access&nbsp;protected</span></div></li>
+<li><div class="src-line"><a name="a165"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*　@param&nbsp;string&nbsp;&nbsp;&nbsp;$message&nbsp;&nbsp;&nbsp;&nbsp;プレーンテキスト</span></div></li>
+<li><div class="src-line"><a name="a166"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*　@return&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTMLエンティティ変換済みメッセージ</span></div></li>
+<li><div class="src-line"><a name="a167"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_UnitTestReporter.html#method_htmlEntities">_htmlEntities</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/htmlentities">htmlentities</a><span class="src-sym">(</span><span class="src-var">$message</span><span class="src-sym">,&nbsp;</span><span class="src-id">ENT_COMPAT</span><span class="src-sym">,&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_UnitTestReporter.html#var$_character_set">_character_set</a><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a172"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a173"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:01:00 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

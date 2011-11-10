@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for AppSearchObject.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file AppSearchObject.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---AppSearchObject.php.html">AppSearchObject.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;AppSearchObject.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;2f03a93cc2c557028057ab580bfb0a2805368db4&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;!=&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a13"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_NE'</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;==&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a16"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_EQ'</span><span class="src-sym">,&nbsp;</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;LIKE&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a19"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_LIKE'</span><span class="src-sym">,&nbsp;</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;&gt;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a22"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_GT'</span><span class="src-sym">,&nbsp;</span><span class="src-num">3</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;&lt;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a25"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_LT'</span><span class="src-sym">,&nbsp;</span><span class="src-num">4</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;&gt;=&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a28"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_GE'</span><span class="src-sym">,&nbsp;</span><span class="src-num">5</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;&lt;=&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a31"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_LE'</span><span class="src-sym">,&nbsp;</span><span class="src-num">6</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;AND&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a34"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_AND'</span><span class="src-sym">,&nbsp;</span><span class="src-num">7</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">/**&nbsp;アプリケーションオブジェクト検索条件:&nbsp;OR&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a37"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'OBJECT_CONDITION_OR'</span><span class="src-sym">,&nbsp;</span><span class="src-num">8</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_AppSearchObject</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;アプリケーションオブジェクト検索条件クラス</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html">Ethna_AppSearchObject</a></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@+</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@access&nbsp;private</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-tag">@protected</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;検索値&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$value">$value</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**&nbsp;</span><span class="src-doc-tag">@protected</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索条件&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$condition">$condition</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a62"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-tag">@protected</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;&nbsp;&nbsp;追加検索条件を保持したEthna_AppSearchObjectの一覧</span></div></li>
+<li><div class="src-line"><a name="a63"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$object_list">$object_list</a>&nbsp;=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/**#@-*/</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a70"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;Ethna_AppSearchObjectのコンストラクタ</span></div></li>
+<li><div class="src-line"><a name="a71"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$value&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索値</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">int&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$condition&nbsp;</span><span class="src-doc">&nbsp;検索条件(OBJECT_CONDITION_NE,...)</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#method__construct">__construct</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">,&nbsp;</span><span class="src-var">$condition</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$value">value</a>&nbsp;=&nbsp;<span class="src-var">$value</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$condition">condition</a>&nbsp;=&nbsp;<span class="src-var">$condition</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a83"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;検索条件をOR/ANDで追加する</span></div></li>
+<li><div class="src-line"><a name="a84"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a86"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$name&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索対象カラム名</span></div></li>
+<li><div class="src-line"><a name="a87"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">object&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Ethna_AppSearchObject&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$search_object&nbsp;</span><span class="src-doc">&nbsp;追加する検索条件</span></div></li>
+<li><div class="src-line"><a name="a88"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">int&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$condition&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;追加条件(OR/AND)</span></div></li>
+<li><div class="src-line"><a name="a89"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#methodaddObject">addObject</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$search_object</span><span class="src-sym">,&nbsp;</span><span class="src-var">$condition</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$name</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp</span><span class="src-sym">[</span><span class="src-str">'object'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$search_object</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp</span><span class="src-sym">[</span><span class="src-str">'condition'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$condition</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$object_list">object_list</a><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$tmp</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a100"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;指定されたフィールドが検索対象となっているかどうかを返す</span></div></li>
+<li><div class="src-line"><a name="a101"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a102"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a103"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#methodisTarget">isTarget</a><span class="src-sym">(</span><span class="src-var">$field</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$object_list">object_list</a>&nbsp;<span class="src-key">as&nbsp;</span><span class="src-var">$object</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$object</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-var">$field</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_object">is_object</a><span class="src-sym">(</span><span class="src-var">$object</span><span class="src-sym">[</span><span class="src-str">'object'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-var">$object</span><span class="src-sym">[</span><span class="src-str">'object'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">isTarget</span><span class="src-sym">(</span><span class="src-var">$field</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;検索条件SQL文を返す</span></div></li>
+<li><div class="src-line"><a name="a122"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a123"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a124"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;検索対象カラム名</span></div></li>
+<li><div class="src-line"><a name="a125"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">SQL文&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a126"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_AppSearchObject.html#methodtoString">toString</a><span class="src-sym">(</span><span class="src-var">$column</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$condition&nbsp;</span>=&nbsp;<span class="src-str">&quot;(&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tmp_value&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$value">value</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Ethna/Ethna_AppSQL.html">Ethna_AppSQL</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_AppSQL.html#methodescapeSQL">escapeSQL</a><span class="src-sym">(</span><span class="src-var">$tmp_value</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$condition&nbsp;</span>.=&nbsp;<span class="src-id"><a href="../Ethna/Ethna_AppSQL.html">Ethna_AppSQL</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_AppSQL.html#methodgetCondition">getCondition</a><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str"><span class="src-var">$column</span></span><span class="src-str">&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tmp_value</span><span class="src-sym">,&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$condition">condition</a><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_AppSearchObject.html#var$object_list">object_list</a>&nbsp;<span class="src-key">as&nbsp;</span><span class="src-var">$elt</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$elt</span><span class="src-sym">[</span><span class="src-str">'condition'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-id"><a href="../Ethna/_class---AppSearchObject.php.html#defineOBJECT_CONDITION_OR">OBJECT_CONDITION_OR</a></span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$condition&nbsp;</span>.=&nbsp;<span class="src-str">&quot;&nbsp;OR&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$condition&nbsp;</span>.=&nbsp;<span class="src-str">&quot;&nbsp;AND&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$condition&nbsp;</span>.=&nbsp;<span class="src-var">$elt</span><span class="src-sym">[</span><span class="src-str">'object'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">toString</span><span class="src-sym">(</span><span class="src-var">$elt</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$condition&nbsp;</span>.&nbsp;<span class="src-str">&quot;)&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a145"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a146"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:57:40 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

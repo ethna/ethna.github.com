@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_Util</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_Util</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ユーティリティクラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_Util.php.html">/class/Ethna_Util.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a111">111</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																												<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#isRootDir" title="details" class="method-name">isRootDir</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																								<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">bool</span>
+										<a href="#mkdir" title="details" class="method-name">mkdir</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$mode</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">bool</span>
+										<a href="#purgeDir" title="details" class="method-name">purgeDir</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$dir</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>)
+									</div>
+																																																				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#checkMailAddress" title="details" class="method-name">checkMailAddress</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailaddress</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#chmod" title="details" class="method-name">chmod</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$file</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#clearDuplicatePost" title="details" class="method-name">clearDuplicatePost</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">エンコード済みの文字列</span>
+										<a href="#encode_MIME" title="details" class="method-name">encode_MIME</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$string</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#escapeCSV" title="details" class="method-name">escapeCSV</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$csv</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$escape_nl</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#escapeHtml" title="details" class="method-name">escapeHtml</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$target</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#explodeCSV" title="details" class="method-name">explodeCSV</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$csv</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$delimiter</span> = <span class="var-default">&quot;,&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#formatBacktrace" title="details" class="method-name">formatBacktrace</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$bt</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#get2dArray" title="details" class="method-name">get2dArray</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$array</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$m</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$order</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getDirectLinkList" title="details" class="method-name">getDirectLinkList</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$total</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$count</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getEra" title="details" class="method-name">getEra</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$t</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getImageExtName" title="details" class="method-name">getImageExtName</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getRandom" title="details" class="method-name">getRandom</a>
+											([<span class="var-type">int</span>&nbsp;<span class="var-name">$length</span> = <span class="var-default">64</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isAbsolute" title="details" class="method-name">isAbsolute</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isCsrfSafe" title="details" class="method-name">isCsrfSafe</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#isDuplicatePost" title="details" class="method-name">isDuplicatePost</a>
+										()
+									</div>
+																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#lockFile" title="details" class="method-name">lockFile</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$mode</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">0</span>])
+									</div>
+																																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#purgeTmp" title="details" class="method-name">purgeTmp</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$prefix</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$timeout</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#setCsrfID" title="details" class="method-name">setCsrfID</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#unlockFile" title="details" class="method-name">unlockFile</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$lh</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_escapeHtml" title="details" class="method-name">_escapeHtml</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$vars</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$retval</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$vars</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$retval</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodisRootDir" id="isRootDir"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static isRootDir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a690">690</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">パス名がルートディレクトリかどうかを返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isRootDir
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmkdir" id="mkdir"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static mkdir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a713">713</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">mkdir -p</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:成功 false:失敗</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			mkdir
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$mode</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$dir</span><span class="var-description">: 作成するディレクトリ</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$mode</span><span class="var-description">: パーミッション</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpurgeDir" id="purgeDir"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static purgeDir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a758">758</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ディレクトリを再帰的に削除する   (途中で失敗しても中断せず、削除できるものはすべて消す)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:成功 false:失敗</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			purgeDir
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$dir</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$file</span><span class="var-description">: 削除するファイルまたはディレクトリ</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$dir</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheckMailAddress" id="checkMailAddress"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">checkMailAddress</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a239">239</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">メールアドレスが正しいかどうかをチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true: 正しいメールアドレス false: 不正な形式</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			checkMailAddress
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailaddress</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailaddress</span><span class="var-description">: チェックするメールアドレス</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodchmod" id="chmod"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">chmod</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a738">738</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ファイルのパーミッションを変更する</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			chmod
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$file</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$file</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$mode</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodclearDuplicatePost" id="clearDuplicatePost"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">clearDuplicatePost</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a162">162</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">POSTのユニークチェックフラグをクリアする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 Ethna_Error:エラー</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			clearDuplicatePost
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodencode_MIME" id="encode_MIME"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">encode_MIME</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a412">412</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">文字列をMIMEエンコードする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">エンコード済みの文字列</span>
+		<span class="method-name">
+			encode_MIME
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$string</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$string</span><span class="var-description">: MIMEエンコードする文字列</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodescapeCSV" id="escapeCSV"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">escapeCSV</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a354">354</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CSVエスケープ処理を行う</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> CSVエスケープされた文字列</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			escapeCSV
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$csv</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$escape_nl</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$csv</span><span class="var-description">: エスケープ対象の文字列(CSVの各要素)</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$escape_nl</span><span class="var-description">: 改行文字(\r/\n)のエスケープフラグ</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodescapeHtml" id="escapeHtml"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">escapeHtml</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a377">377</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">配列の要素を全てHTMLエスケープして返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> エスケープされた配列</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			escapeHtml
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$target</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$target</span><span class="var-description">: HTMLエスケープ対象となる配列</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodexplodeCSV" id="explodeCSV"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">explodeCSV</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a258">258</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CSV形式の文字列を配列に分割する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> (array):分割結果 Ethna_Error:エラー(行継続)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			explodeCSV
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$csv</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$delimiter</span> = <span class="var-default">&quot;,&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$csv</span><span class="var-description">: CSV形式の文字列(1行分)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$delimiter</span><span class="var-description">: フィールドの区切り文字</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodformatBacktrace" id="formatBacktrace"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">formatBacktrace</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a878">878</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">バックトレースをフォーマットして返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 文字列にフォーマットされたバックトレース</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			formatBacktrace
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$bt</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$bt</span><span class="var-description">: debug_backtrace()関数で取得したバックトレース</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodget2dArray" id="get2dArray"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get2dArray</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a625">625</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">1次元配列をm x nに再構成する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> m x nに再構成された配列</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			get2dArray
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$array</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$m</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$order</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$array</span><span class="var-description">: 処理対象の1次元配列</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$m</span><span class="var-description">: 軸の要素数</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$order</span><span class="var-description">: $mをX軸と見做すかY軸と見做すか(0:X軸 1:Y軸)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDirectLinkList" id="getDirectLinkList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDirectLinkList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a437">437</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Google風リンクリストを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> リンク情報を格納した配列</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getDirectLinkList
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$total</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$count</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$total</span><span class="var-description">: 検索総件数</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$offset</span><span class="var-description">: 表示オフセット</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$count</span><span class="var-description">: 表示件数</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetEra" id="getEra"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getEra</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a499">499</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">元号制での年を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 元号(不明な場合はnull)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getEra
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$t</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$t</span><span class="var-description">: unix time</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetImageExtName" id="getImageExtName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getImageExtName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a524">524</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">getimagesize()の返すイメージタイプに対応する拡張子を返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getImageExtName
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$type</span><span class="var-description">: getimagesize()関数の返すイメージタイプ</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetRandom" id="getRandom"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getRandom</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a559">559</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ランダムなハッシュ値を生成する</p>
+<p class="description"><p>決して高速ではないので乱用は避けること</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ハッシュ値</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getRandom
+		</span>
+					([<span class="var-type">int</span>&nbsp;<span class="var-name">$length</span> = <span class="var-default">64</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$length</span><span class="var-description">: ハッシュ値の長さ(〜64)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisAbsolute" id="isAbsolute"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isAbsolute</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a665">665</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">パス名が絶対パスかどうかを返す</p>
+<p class="description"><p>port from File in PEAR (for BC)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:絶対パス false:相対パス</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isAbsolute
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisCsrfSafe" id="isCsrfSafe"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isCsrfSafe</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a194">194</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CSRFをチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:正常なPOST false:不正なPOST</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isCsrfSafe
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisDuplicatePost" id="isDuplicatePost"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isDuplicatePost</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a120">120</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">POSTのユニークチェックを行う</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:2回目以降のPOST false:1回目のPOST</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isDuplicatePost
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodlockFile" id="lockFile"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">lockFile</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a829">829</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ファイルをロックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ロックハンドル(falseならエラー)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			lockFile
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$mode</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$file</span><span class="var-description">: ロックするファイル名</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$mode</span><span class="var-description">: ロックモード('r', 'rw')</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$timeout</span><span class="var-description">: ロック待ちタイムアウト(秒−0なら無限)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpurgeTmp" id="purgeTmp"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">purgeTmp</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a795">795</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">テンポラリディレクトリのファイルを削除する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			purgeTmp
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$prefix</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$timeout</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$prefix</span><span class="var-description">: ファイルのプレフィクス</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$timeout</span><span class="var-description">: 削除対象閾値(秒−60*60*1なら1時間)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetCsrfID" id="setCsrfID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setCsrfID</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a216">216</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CSRFをチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:成功</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			setCsrfID
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodunlockFile" id="unlockFile"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">unlockFile</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a864">864</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ファイルのロックを解除する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			unlockFile
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$lh</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lh</span><span class="var-description">: ロックハンドル</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_escapeHtml" id="_escapeHtml"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_escapeHtml</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Util.php.html#a391">391</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">配列の要素を全てHTMLエスケープして返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_escapeHtml
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$vars</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$retval</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$vars</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$retval</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$vars</span><span class="var-description">: HTMLエスケープ対象となる配列</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$retval</span><span class="var-description">: HTMLエスケープ対象となる子要素</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$vars</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$retval</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 04:01:06 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

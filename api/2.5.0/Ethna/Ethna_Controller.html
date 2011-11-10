@@ -1,0 +1,2882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_Controller</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_Controller</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">コントローラクラス</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">todo:</span> gatewayでswitchしてるところがダサダサ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_Controller.php.html">/class/Ethna_Controller.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a22">22</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">mixed</span>
+										<a href="#checkActionName" title="details" class="method-name">&amp;checkActionName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">mixed</span>
+										<a href="#checkAppId" title="details" class="method-name">&amp;checkAppId</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">mixed</span>
+										<a href="#checkViewName" title="details" class="method-name">&amp;checkViewName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$view_name</span>)
+									</div>
+																																																																																																																																																																																																																																																																																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>
+										<a href="#getInstance" title="details" class="method-name">&amp;getInstance</a>
+										()
+									</div>
+																																																																																																																																																																																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#main" title="details" class="method-name">main</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#main_CLI" title="details" class="method-name">main_CLI</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$enable_filter</span> = <span class="var-default">true</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#main_SOAP" title="details" class="method-name">main_SOAP</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#main_XMLRPC" title="details" class="method-name">main_XMLRPC</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																																																																																																																																																				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_Controller</span>
+										<a href="#Ethna_Controller" title="details" class="method-name">Ethna_Controller</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">GATEWAY_WWW</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#actionClassToName" title="details" class="method-name">actionClassToName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#actionFormToName" title="details" class="method-name">actionFormToName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#end" title="details" class="method-name">end</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#ethnaManagerCheckErrorMsg" title="details" class="method-name">ethnaManagerCheckErrorMsg</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#forwardPathToName" title="details" class="method-name">forwardPathToName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_path</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getActionClassName" title="details" class="method-name">getActionClassName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getActiondir" title="details" class="method-name">getActiondir</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_ActionError.html">object Ethna_ActionError</a></span>
+										<a href="#getActionError" title="details" class="method-name">&amp;getActionError</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_ActionForm.html">object Ethna_ActionForm</a></span>
+										<a href="#getActionForm" title="details" class="method-name">&amp;getActionForm</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getActionFormName" title="details" class="method-name">getActionFormName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getActionRequest" title="details" class="method-name">getActionRequest</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;hidden&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getAppId" title="details" class="method-name">getAppId</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>
+										<a href="#getBackend" title="details" class="method-name">&amp;getBackend</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getBasedir" title="details" class="method-name">getBasedir</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_ClassFactory.html">object Ethna_ClassFactory</a></span>
+										<a href="#getClassFactory" title="details" class="method-name">&amp;getClassFactory</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#getCLI" title="details" class="method-name">getCLI</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getClientEncoding" title="details" class="method-name">getClientEncoding</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Config.html">object Ethna_Config</a></span>
+										<a href="#getConfig" title="details" class="method-name">&amp;getConfig</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getCurrentActionName" title="details" class="method-name">getCurrentActionName</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDBType" title="details" class="method-name">getDBType</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultActionClass" title="details" class="method-name">getDefaultActionClass</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultActionPath" title="details" class="method-name">getDefaultActionPath</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultFormClass" title="details" class="method-name">getDefaultFormClass</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultFormPath" title="details" class="method-name">getDefaultFormPath</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultForwardPath" title="details" class="method-name">getDefaultForwardPath</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultViewClass" title="details" class="method-name">getDefaultViewClass</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDefaultViewPath" title="details" class="method-name">getDefaultViewPath</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDirectory" title="details" class="method-name">getDirectory</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getDSN" title="details" class="method-name">getDSN</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#getDSN_persistent" title="details" class="method-name">getDSN_persistent</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getErrorMessage" title="details" class="method-name">getErrorMessage</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getExt" title="details" class="method-name">getExt</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getGateway" title="details" class="method-name">getGateway</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_I18N.html">object Ethna_I18N</a></span>
+										<a href="#getI18N" title="details" class="method-name">&amp;getI18N</a>
+										()
+									</div>
+																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getLanguage" title="details" class="method-name">getLanguage</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getLocale" title="details" class="method-name">getLocale</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Logger.html">object Ethna_Logger</a></span>
+										<a href="#getLogger" title="details" class="method-name">&amp;getLogger</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getManagerClassName" title="details" class="method-name">getManagerClassName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getManagerList" title="details" class="method-name">getManagerList</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getObjectClassName" title="details" class="method-name">getObjectClassName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Plugin.html">object Ethna_Plugin</a></span>
+										<a href="#getPlugin" title="details" class="method-name">&amp;getPlugin</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+										<a href="#getRenderer" title="details" class="method-name">&amp;getRenderer</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Session.html">object Ethna_Session</a></span>
+										<a href="#getSession" title="details" class="method-name">&amp;getSession</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_AppSQL.html">object Ethna_AppSQL</a></span>
+										<a href="#getSQL" title="details" class="method-name">&amp;getSQL</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getTemplatedir" title="details" class="method-name">getTemplatedir</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+										<a href="#getTemplateEngine" title="details" class="method-name">&amp;getTemplateEngine</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getTestdir" title="details" class="method-name">getTestdir</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getURL" title="details" class="method-name">getURL</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_UrlHandler.html">object Ethna_UrlHandler</a></span>
+										<a href="#getUrlHandler" title="details" class="method-name">&amp;getUrlHandler</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Ethna_View</span>
+										<a href="#getView" title="details" class="method-name">&amp;getView</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getViewClassName" title="details" class="method-name">getViewClassName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getViewdir" title="details" class="method-name">getViewdir</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getXmlrpcMethodName" title="details" class="method-name">getXmlrpcMethodName</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#handleError" title="details" class="method-name">handleError</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>&nbsp;<span class="var-name">&$error</span>)
+									</div>
+																																																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setCLI" title="details" class="method-name">setCLI</a>
+											(<span class="var-type">bool</span>&nbsp;<span class="var-name">$cli</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setClientEncoding" title="details" class="method-name">setClientEncoding</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$client_encoding</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setGateway" title="details" class="method-name">setGateway</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setLocale" title="details" class="method-name">setLocale</a>
+											(<span class="var-type">$locale</span>&nbsp;<span class="var-name">$locale</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#trigger" title="details" class="method-name">trigger</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$default_action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$enable_filter</span> = <span class="var-default">true</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#trigger_XMLRPC" title="details" class="method-name">trigger_XMLRPC</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$param</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_activateEthnaManager" title="details" class="method-name">_activateEthnaManager</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_getActionName_Form" title="details" class="method-name">_getActionName_Form</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#_getDefaultGateway" title="details" class="method-name">_getDefaultGateway</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getDefaultLanguage" title="details" class="method-name">_getDefaultLanguage</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_getGatewayPrefix" title="details" class="method-name">_getGatewayPrefix</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_prepareDSN" title="details" class="method-name">_prepareDSN</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_selectDSN" title="details" class="method-name">_selectDSN</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$dsn_list</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_setDefaultTemplateEngine" title="details" class="method-name">_setDefaultTemplateEngine</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>&nbsp;<span class="var-name">&$renderer</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_setLanguage" title="details" class="method-name">_setLanguage</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$locale</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$system_encoding</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$client_encoding</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_sortForward" title="details" class="method-name">_sortForward</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$retval</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodcheckActionName" id="checkActionName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static checkActionName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a326">326</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクション名をチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:OK Ethna_Error:NG</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			&amp;checkActionName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheckAppId" id="checkAppId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static checkAppId</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a298">298</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションIDをチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:OK Ethna_Error:NG</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			&amp;checkAppId
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: アプリケーションID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheckViewName" id="checkViewName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static checkViewName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a344">344</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ビュー名をチェックする</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:OK Ethna_Error:NG</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			&amp;checkViewName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$view_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$view_name</span><span class="var-description">: ビュー名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetInstance" id="getInstance"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static getInstance</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a269">269</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">(現在アクティブな)コントローラのインスタンスを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> コントローラのインスタンス</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>
+		<span class="method-name">
+			&amp;getInstance
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodmain" id="main"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static main</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a791">791</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションのエントリポイント</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			main
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: アプリケーションコントローラのクラス名</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$action_name</span><span class="var-description">: 指定のアクション名(省略可)</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$fallback_action_name</span><span class="var-description">: アクションが決定できなかった場合に実行されるアクション名(省略可)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmain_CLI" id="main_CLI"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static main_CLI</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a807">807</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CLIアプリケーションのエントリポイント</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			main_CLI
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$enable_filter</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: アプリケーションコントローラのクラス名</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: 実行するアクション名</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$enable_filter</span><span class="var-description">: フィルタチェインを有効にするかどうか</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmain_SOAP" id="main_SOAP"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static main_SOAP</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a841">841</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">SOAPアプリケーションのエントリポイント</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			main_SOAP
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: アプリケーションコントローラのクラス名</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$action_name</span><span class="var-description">: 指定のアクション名(省略可)</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$fallback_action_name</span><span class="var-description">: アクションが決定できなかった場合に実行されるアクション名(省略可)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmain_XMLRPC" id="main_XMLRPC"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static main_XMLRPC</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a821">821</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">XMLRPCアプリケーションのエントリポイント</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			main_XMLRPC
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodEthna_Controller" id="Ethna_Controller"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_Controller</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a169">169</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_Controllerクラスのコンストラクタ</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_Controller</span>
+		<span class="method-name">
+			Ethna_Controller
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">GATEWAY_WWW</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodactionClassToName" id="actionClassToName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">actionClassToName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1524">1524</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">getDefaultActionClass()で取得したクラス名からアクション名を取得する</p>
+<p class="description"><p>getDefaultActionClass()をオーバーライドした場合、こちらも合わせてオーバーライド   することを推奨(必須ではない)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクション名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			actionClassToName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: アクションクラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodactionFormToName" id="actionFormToName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">actionFormToName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1447">1447</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">getDefaultFormClass()で取得したクラス名からアクション名を取得する</p>
+<p class="description"><p>getDefaultFormClass()をオーバーライドした場合、こちらも合わせてオーバーライド   することを推奨(必須ではない)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクション名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			actionFormToName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: フォームクラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodend" id="end"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">end</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a256">256</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーション実行後の後始末を行います。</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			end
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodethnaManagerCheckErrorMsg" id="ethnaManagerCheckErrorMsg"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">ethnaManagerCheckErrorMsg</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2135">2135</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethnaマネージャが実行不能な場合のエラーメッセージを   表示する。運用上の都合でこのメッセージを出力したくない   場合は、このメソッドをオーバーライドせよ</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			ethnaManagerCheckErrorMsg
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$action_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodforwardPathToName" id="forwardPathToName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">forwardPathToName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1664">1664</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">テンプレートパス名から遷移名を取得する</p>
+<p class="description"><p>getDefaultForwardPath()をオーバーライドした場合、こちらも合わせてオーバーライド   することを推奨(必須ではない)</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 遷移名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			forwardPathToName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$forward_path</span><span class="var-description">: テンプレートパス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetActionClassName" id="getActionClassName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActionClassName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1484">1484</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">指定されたアクションのクラス名を返す(オブジェクトの生成は行わない)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションのクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getActionClassName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクションの名称</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetActiondir" id="getActiondir"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActiondir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a458">458</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションディレクトリ名を決定する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションディレクトリ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getActiondir
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetActionError" id="getActionError"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActionError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a546">546</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションエラーオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションエラーオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_ActionError.html">object Ethna_ActionError</a></span>
+		<span class="method-name">
+			&amp;getActionError
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetActionForm" id="getActionForm"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActionForm</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a557">557</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションフォームオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションフォームオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_ActionForm.html">object Ethna_ActionForm</a></span>
+		<span class="method-name">
+			&amp;getActionForm
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetActionFormName" id="getActionFormName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActionFormName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1407">1407</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">指定されたアクションのフォームクラス名を返す(オブジェクトの生成は行わない)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションのフォームクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getActionFormName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetActionRequest" id="getActionRequest"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getActionRequest</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1270">1270</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクション名を指定するクエリ/HTMLを生成する</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> consider gateway</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getActionRequest
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;hidden&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: action to request</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: hidden, url...</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetAppId" id="getAppId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getAppId</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a285">285</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションIDを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アプリケーションID</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getAppId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetBackend" id="getBackend"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getBackend</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a581">581</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">backendオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> backendオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Backend.html">object Ethna_Backend</a></span>
+		<span class="method-name">
+			&amp;getBackend
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetBasedir" id="getBasedir"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getBasedir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a424">424</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションベースディレクトリを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アプリケーションベースディレクトリ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getBasedir
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetClassFactory" id="getClassFactory"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getClassFactory</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a535">535</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クラスファクトリオブジェクトのアクセサ(R)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> クラスファクトリオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_ClassFactory.html">object Ethna_ClassFactory</a></span>
+		<span class="method-name">
+			&amp;getClassFactory
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetCLI" id="getCLI"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCLI</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2155">2155</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CLI実行中フラグを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> CLI実行中フラグ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			getCLI
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetClientEncoding" id="getClientEncoding"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getClientEncoding</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a744">744</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クライアントエンコーディング名へのアクセサ(R)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> クライアントエンコーディング名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getClientEncoding
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetConfig" id="getConfig"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getConfig</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a592">592</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">設定オブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 設定オブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Config.html">object Ethna_Config</a></span>
+		<span class="method-name">
+			&amp;getConfig
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetCurrentActionName" id="getCurrentActionName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCurrentActionName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a681">681</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">実行中のアクション名を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 実行中のアクション名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getCurrentActionName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDBType" id="getDBType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDBType</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a394">394</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DB設定を返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDBType
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$db_key</span><span class="var-description">: DBキー(&quot;&quot;, &quot;r&quot;, &quot;rw&quot;, &quot;default&quot;, &quot;blog_r&quot;...)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultActionClass" id="getDefaultActionClass"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultActionClass</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1503">1503</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションに対応するアクションクラス名が省略された場合のデフォルトクラス名を返す</p>
+<p class="description"><p>デフォルトでは[プロジェクトID]_Action_[アクション名]となるので好み応じてオーバライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultActionClass
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultActionPath" id="getDefaultActionPath"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultActionPath</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1547">1547</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションに対応するアクションパス名が省略された場合のデフォルトパス名を返す</p>
+<p class="description"><p>デフォルトでは&quot;foo_bar&quot; -&gt; &quot;/Foo/Bar.php&quot;となるので好み応じてオーバーライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションクラスが定義されるスクリプトのパス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultActionPath
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultFormClass" id="getDefaultFormClass"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultFormClass</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1426">1426</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションに対応するフォームクラス名が省略された場合のデフォルトクラス名を返す</p>
+<p class="description"><p>デフォルトでは[プロジェクトID]_Form_[アクション名]となるので好み応じてオーバライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アクションフォーム名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultFormClass
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultFormPath" id="getDefaultFormPath"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultFormPath</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1472">1472</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクションに対応するフォームパス名が省略された場合のデフォルトパス名を返す</p>
+<p class="description"><p>デフォルトでは_getDefaultActionPath()と同じ結果を返す(1ファイルに   アクションクラスとフォームクラスが記述される)ので、好みに応じて   オーバーライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> form classが定義されるスクリプトのパス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultFormPath
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultForwardPath" id="getDefaultForwardPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultForwardPath</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1649">1649</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">遷移名に対応するテンプレートパス名が省略された場合のデフォルトパス名を返す</p>
+<p class="description"><p>デフォルトでは&quot;foo_bar&quot;というforward名が&quot;foo/bar&quot; + テンプレート拡張子となる   ので好み応じてオーバライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> forwardパス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultForwardPath
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$forward_name</span><span class="var-description">: forward名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultViewClass" id="getDefaultViewClass"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultViewClass</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1611">1611</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">遷移名に対応するビュークラス名が省略された場合のデフォルトクラス名を返す</p>
+<p class="description"><p>デフォルトでは[プロジェクトID]_View_[遷移名]となるので好み応じてオーバライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> view classクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultViewClass
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$forward_name</span><span class="var-description">: forward名</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDefaultViewPath" id="getDefaultViewPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDefaultViewPath</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1631">1631</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">遷移名に対応するビューパス名が省略された場合のデフォルトパス名を返す</p>
+<p class="description"><p>デフォルトでは&quot;foo_bar&quot; -&gt; &quot;/Foo/Bar.php&quot;となるので好み応じてオーバーライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> view classが定義されるスクリプトのパス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultViewPath
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$forward_name</span><span class="var-description">: forward名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDirectory" id="getDirectory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDirectory</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a506">506</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションディレクトリ設定を返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDirectory
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: ディレクトリタイプ(&quot;tmp&quot;, &quot;template&quot;...)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDSN" id="getDSN"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDSN</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a361">361</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DSNを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> DSN</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDSN
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$db_key</span><span class="var-description">: DBキー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDSN_persistent" id="getDSN_persistent"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDSN_persistent</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a376">376</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DSNの持続接続設定を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true:persistent false:non-persistent(あるいは設定無し)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			getDSN_persistent
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_key</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$db_key</span><span class="var-description">: DBキー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetErrorMessage" id="getErrorMessage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getErrorMessage</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1131">1131</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">エラーメッセージを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> エラーメッセージ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getErrorMessage
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$code</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$code</span><span class="var-description">: エラーコード</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetExt" id="getExt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getExt</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a521">521</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーション拡張子設定を返す</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getExt
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: 拡張子タイプ(&quot;php&quot;, &quot;tpl&quot;...)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetGateway" id="getGateway"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getGateway</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a767">767</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ゲートウェイを取得する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getGateway
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetI18N" id="getI18N"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getI18N</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a603">603</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">i18nオブジェクトのアクセサ(R)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> i18nオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_I18N.html">object Ethna_I18N</a></span>
+		<span class="method-name">
+			&amp;getI18N
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLanguage" id="getLanguage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLanguage</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a707">707</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ロケール設定、使用言語を取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ロケール名(e.x ja_JP, en_US 等),                   システムエンコーディング名,                   クライアントエンコーディング名 の配列                   (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)</li>
+				<li><span class="field">see:</span> <a href="http://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html">http://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html</a></li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getLanguage
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLocale" id="getLocale"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLocale</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a719">719</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ロケール名へのアクセサ(R)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ロケール名(e.x ja_JP, en_US 等),                   (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getLocale
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLogger" id="getLogger"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLogger</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a614">614</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ログオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ログオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Logger.html">object Ethna_Logger</a></span>
+		<span class="method-name">
+			&amp;getLogger
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetManagerClassName" id="getManagerClassName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getManagerClassName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1837">1837</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">マネージャクラス名を取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> マネージャクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getManagerClassName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: マネージャキー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetManagerList" id="getManagerList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getManagerList</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a670">670</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">マネージャ一覧を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> マネージャ一覧</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getManagerList
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetObjectClassName" id="getObjectClassName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getObjectClassName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1852">1852</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションオブジェクトクラス名を取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> マネージャクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getObjectClassName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: アプリケーションオブジェクトキー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPlugin" id="getPlugin"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPlugin</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a647">647</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">プラグインオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> プラグインオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Plugin.html">object Ethna_Plugin</a></span>
+		<span class="method-name">
+			&amp;getPlugin
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetRenderer" id="getRenderer"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getRenderer</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1702">1702</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">レンダラを取得する(getTemplateEngine()はそのうち廃止されgetRenderer()に統合される予定)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> レンダラオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+		<span class="method-name">
+			&amp;getRenderer
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetSession" id="getSession"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getSession</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a625">625</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">セッションオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> セッションオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Session.html">object Ethna_Session</a></span>
+		<span class="method-name">
+			&amp;getSession
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetSQL" id="getSQL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getSQL</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a636">636</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">SQLオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> SQLオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_AppSQL.html">object Ethna_AppSQL</a></span>
+		<span class="method-name">
+			&amp;getSQL
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetTemplatedir" id="getTemplatedir"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getTemplatedir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a438">438</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クライアントタイプ/言語からテンプレートディレクトリ名を決定する   デフォルトでは [appid]/template/ja_JP/ (ja_JPはロケール名)   ロケール名は _getDefaultLanguage で決定される。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> テンプレートディレクトリ</li>
+				<li><span class="field">see:</span> _getDefaultLanguage</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getTemplatedir
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetTemplateEngine" id="getTemplateEngine"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getTemplateEngine</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1715">1715</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">テンプレートエンジン取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> レンダラオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+		<span class="method-name">
+			&amp;getTemplateEngine
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetTestdir" id="getTestdir"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getTestdir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a494">494</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">(action,view以外の)テストケースを置くディレクトリ名を決定する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> テストケースを置くディレクトリ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getTestdir
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetURL" id="getURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getURL</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a413">413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アプリケーションベースURLを返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> アプリケーションベースURL</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getURL
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUrlHandler" id="getUrlHandler"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getUrlHandler</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a658">658</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">URLハンドラオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> URLハンドラオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_UrlHandler.html">object Ethna_UrlHandler</a></span>
+		<span class="method-name">
+			&amp;getUrlHandler
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetView" id="getView"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getView</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a569">569</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ビューオブジェクトのアクセサ</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ビューオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Ethna_View</span>
+		<span class="method-name">
+			&amp;getView
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetViewClassName" id="getViewClassName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getViewClassName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1562">1562</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">指定された遷移名に対応するビュークラス名を返す(オブジェクトの生成は行わない)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> view classのクラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getViewClassName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$forward_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$forward_name</span><span class="var-description">: 遷移先の名称</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetViewdir" id="getViewdir"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getViewdir</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a483">483</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ビューディレクトリ名を決定する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ビューディレクトリ</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getViewdir
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetXmlrpcMethodName" id="getXmlrpcMethodName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getXmlrpcMethodName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a692">692</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">実行中のXMLRPCメソッド名を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 実行中のXMLRPCメソッド名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getXmlrpcMethodName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhandleError" id="handleError"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">handleError</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1116">1116</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">エラーハンドラ</p>
+<p class="description"><p>エラー発生時の追加処理を行いたい場合はこのメソッドをオーバーライドする   (アラートメール送信等−デフォルトではログ出力時にアラートメール   が送信されるが、エラー発生時に別にアラートメールをここで送信   させることも可能)</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			handleError
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>&nbsp;<span class="var-name">&$error</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Error.html">object Ethna_Error</a></span>
+				<span class="var-name">&$error</span><span class="var-description">: エラーオブジェクト</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetCLI" id="setCLI"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setCLI</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2167">2167</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CLI実行中フラグを設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setCLI
+		</span>
+					(<span class="var-type">bool</span>&nbsp;<span class="var-name">$cli</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$cli</span><span class="var-description">: CLI実行中フラグ</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetClientEncoding" id="setClientEncoding"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setClientEncoding</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a755">755</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クライアントエンコーディング名へのアクセサ(W)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setClientEncoding
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$client_encoding</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$client_encoding</span><span class="var-description">: クライアントエンコーディング名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetGateway" id="setGateway"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setGateway</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a777">777</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ゲートウェイモードを設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setGateway
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetLocale" id="setLocale"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setLocale</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a731">731</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ロケール名へのアクセサ(W)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setLocale
+		</span>
+					(<span class="var-type">$locale</span>&nbsp;<span class="var-name">$locale</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$locale</span>
+				<span class="var-name">$locale</span><span class="var-description">: ロケール名(e.x ja_JP, en_US 等),                  (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtrigger" id="trigger"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">trigger</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a857">857</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">フレームワークの処理を開始する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 0:正常終了 Ethna_Error:エラー</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			trigger
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$default_action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fallback_action_name</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$enable_filter</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$default_action_name</span><span class="var-description">: 指定のアクション名</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$fallback_action_name</span><span class="var-description">: アクション名が決定できなかった場合に実行されるアクション名</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$enable_filter</span><span class="var-description">: フィルタチェインを有効にするかどうか</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtrigger_XMLRPC" id="trigger_XMLRPC"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">trigger_XMLRPC</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1053">1053</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">_trigger_XMLRPCのコールバックメソッド</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			trigger_XMLRPC
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$param</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$param</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_activateEthnaManager" id="_activateEthnaManager"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_activateEthnaManager</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2065">2065</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethnaマネージャを設定する</p>
+<p class="description"><p>不要な場合は空のメソッドとしてオーバーライドしてもよい</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_activateEthnaManager
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getActionName_Form" id="_getActionName_Form"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getActionName_Form</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1202">1202</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">フォームにより要求されたアクション名を返す</p>
+<p class="description"><p>アプリケーションの性質に応じてこのメソッドをオーバーライドして下さい。   デフォルトでは&quot;action_&quot;で始まるフォーム値の&quot;action_&quot;の部分を除いたもの   (&quot;action_sample&quot;なら&quot;sample&quot;)がアクション名として扱われます</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> フォームにより要求されたアクション名</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_getActionName_Form
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getDefaultGateway" id="_getDefaultGateway"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getDefaultGateway</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1794">1794</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">デフォルト状態でのゲートウェイを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ゲートウェイ定義(GATEWAY_WWW, GATEWAY_CLI...)</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			_getDefaultGateway
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$gateway</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$gateway</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getDefaultLanguage" id="_getDefaultLanguage"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getDefaultLanguage</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1783">1783</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">デフォルト状態での使用言語を取得する   外部に出力されるEthnaのエラーメッセージ等のエンコーディングを   切り替えたい場合は、このメソッドをオーバーライドする。</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> <p>ロケール名(e.x ja_JP, en_US 等),                   システムエンコーディング名,                   クライアントエンコーディング名                   (= テンプレートのエンコーディングと考えてよい) の配列                   (ロケール名は ll_cc の形式。ll = 言語コード cc = 国コード)</p><p>WARNING!! : クライアントエンコーディング名が、フレームワークの内部エンコーデ               ィングとして設定されます。つまり、クライアントエンコーディングで               ブラウザからの入力は入ってくるものと想定しています！</p></li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getDefaultLanguage
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getGatewayPrefix" id="_getGatewayPrefix"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getGatewayPrefix</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1809">1809</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ゲートウェイに対応したクラス名のプレフィクスを取得する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> ゲートウェイクラスプレフィクス</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_getGatewayPrefix
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$gateway</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$gateway</span><span class="var-description">: ゲートウェイ</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_prepareDSN" id="_prepareDSN"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_prepareDSN</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2015">2015</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">設定ファイルのDSN定義から使用するデータを再構築する(スレーブアクセス分岐等)</p>
+<p class="description"><p>DSNの定義方法(デフォルト:設定ファイル)を変えたい場合はここをオーバーライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> DSN定義(array('DBキー1' =&gt; 'dsn1', 'DBキー2' =&gt; 'dsn2', ...))</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_prepareDSN
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_selectDSN" id="_selectDSN"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_selectDSN</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a2044">2044</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DSNのアクセス分岐を行う</p>
+<p class="description"><p>スレーブサーバへの振分け処理(デフォルト:ランダム)を変更したい場合はこのメソッドをオーバーライドする</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 選択されたDSN</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_selectDSN
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$dsn_list</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: DB種別</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$dsn_list</span><span class="var-description">: DSN一覧</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_setDefaultTemplateEngine" id="_setDefaultTemplateEngine"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setDefaultTemplateEngine</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1737">1737</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">テンプレートエンジンのデフォルト状態を設定する</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_setDefaultTemplateEngine
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>&nbsp;<span class="var-name">&$renderer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Renderer.html">object Ethna_Renderer</a></span>
+				<span class="var-name">&$renderer</span><span class="var-description">: レンダラオブジェクト</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_setLanguage" id="_setLanguage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setLanguage</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1754">1754</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">使用言語、ロケールを設定する   条件によって使用言語、ロケールを切り替えたい場合は、   このメソッドをオーバーライドする。</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> _getDefaultLanguage</li>
+				<li><span class="field">see:</span> <a href="http://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html">http://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html</a></li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_setLanguage
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$locale</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$system_encoding</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$client_encoding</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$locale</span><span class="var-description">: ロケール名(ja_JP, en_US等)                                       (ll_cc の形式。ll = 言語コード cc = 国コード)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$system_encoding</span><span class="var-description">: システムエンコーディング名</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$client_encoding</span><span class="var-description">: クライアントエンコーディング(テンプレートのエンコーディングと考えれば良い)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_sortForward" id="_sortForward"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_sortForward</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_Controller.php.html#a1355">1355</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">アクション名とアクションクラスからの戻り値に基づいて遷移先を決定する</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 遷移先</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_sortForward
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$retval</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action_name</span><span class="var-description">: アクション名</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$retval</span><span class="var-description">: アクションクラスからの戻り値</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:35 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

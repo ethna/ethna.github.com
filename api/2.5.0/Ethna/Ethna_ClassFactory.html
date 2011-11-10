@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Ethna_ClassFactory</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Ethna_ClassFactory</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethnaフレームワークのオブジェクト生成ゲートウェイ</p>
+<p class="description"><p>DIコンテナか、ということも考えましたがEthnaではこの程度の単純なものに   留めておきます。アプリケーションレベルDIしたい場合はフィルタチェインを   使って実現することも出来ます。</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Masaki Fujimoto &lt;<a href="mailto:fujimoto@php.net">fujimoto@php.net</a>&gt;</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_class---Ethna_ClassFactory.php.html">/class/Ethna_ClassFactory.php</a> (line <span class="field"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a24">24</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Ethna_ClassFactory</span>
+										<a href="#Ethna_ClassFactory" title="details" class="method-name">Ethna_ClassFactory</a>
+											(<span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>&nbsp;<span class="var-name">&$controller</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Ethna/Ethna_AppManager.html">object Ethna_AppManager</a></span>
+										<a href="#getManager" title="details" class="method-name">&amp;getManager</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$weak</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#getObject" title="details" class="method-name">&amp;getObject</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$ext</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getObjectName" title="details" class="method-name">getObjectName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Backend" title="details" class="method-name">&amp;_getObject_Backend</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Config" title="details" class="method-name">&amp;_getObject_Config</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_I18n" title="details" class="method-name">&amp;_getObject_I18n</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Logger" title="details" class="method-name">&amp;_getObject_Logger</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Plugin" title="details" class="method-name">&amp;_getObject_Plugin</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Renderer" title="details" class="method-name">&amp;_getObject_Renderer</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Session" title="details" class="method-name">&amp;_getObject_Session</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+										<a href="#_getObject_Sql" title="details" class="method-name">&amp;_getObject_Sql</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_include" title="details" class="method-name">_include</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_isCacheAvailable" title="details" class="method-name">_isCacheAvailable</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method_list</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$weak</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodEthna_ClassFactory" id="Ethna_ClassFactory"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Ethna_ClassFactory</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a58">58</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ethna_ClassFactoryクラスのコンストラクタ</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Ethna_ClassFactory</span>
+		<span class="method-name">
+			Ethna_ClassFactory
+		</span>
+					(<span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>&nbsp;<span class="var-name">&$controller</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Ethna/Ethna_Controller.html">object Ethna_Controller</a></span>
+				<span class="var-name">&$controller</span><span class="var-description">: controllerオブジェクト</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$class</span><span class="var-description">: クラス定義</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetManager" id="getManager"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getManager</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a75">75</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">typeに対応するアプリケーションマネージャオブジェクトを返す   注意： typeは大文字小文字を区別しない          (PHP自体が、クラス名の大文字小文字を区別しないため)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> マネージャオブジェクト</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Ethna/Ethna_AppManager.html">object Ethna_AppManager</a></span>
+		<span class="method-name">
+			&amp;getManager
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$weak</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: アプリケーションマネージャー名</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$weak</span><span class="var-description">: オブジェクトが未生成の場合の強制生成フラグ(default: false)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetObject" id="getObject"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getObject</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a150">150</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クラスキーに対応するオブジェクトを返す/クラスキーが未定義の場合はAppObjectを探す   クラスキーとは、[Appid]_Controller#class に定められたもの。</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;getObject
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$ext</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: [Appid]_Controller#class に定められたクラスキー                           このキーは大文字小文字を区別する                           (配列のキーとして使われているため)</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$ext</span><span class="var-description">: オブジェクトが未生成の場合の強制生成フラグ(default: false)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetObjectName" id="getObjectName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getObjectName</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a230">230</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">クラスキーに対応するクラス名を返す</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> クラス名</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getObjectName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: クラスキー</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Backend" id="_getObject_Backend"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Backend</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a246">246</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(backend)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Backend
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Config" id="_getObject_Config"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Config</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a259">259</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(config)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Config
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_I18n" id="_getObject_I18n"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_I18n</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a272">272</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(i18n)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_I18n
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Logger" id="_getObject_Logger"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Logger</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a285">285</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(logger)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Logger
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Plugin" id="_getObject_Plugin"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Plugin</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a298">298</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(plugin)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Plugin
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Renderer" id="_getObject_Renderer"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Renderer</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a311">311</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(renderer)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Renderer
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Session" id="_getObject_Session"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Session</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a324">324</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(session)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Session
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getObject_Sql" id="_getObject_Sql"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getObject_Sql</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a337">337</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">オブジェクト生成メソッド(sql)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object 生成されたオブジェクト(エラーならnull)</span>
+		<span class="method-name">
+			&amp;_getObject_Sql
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: クラス名</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_include" id="_include"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_include</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a348">348</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">指定されたクラスから想定されるファイルをincludeする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_include
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_isCacheAvailable" id="_isCacheAvailable"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_isCacheAvailable</span> (line <span class="line-number"><a href="../__filesource/fsource_Ethna__classEthna_ClassFactory.php.html#a408">408</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">指定されたクラスがキャッシュを利用可能かどうかをチェックする</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_isCacheAvailable
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class_name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method_list</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$weak</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class_name</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method_list</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$weak</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:24 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

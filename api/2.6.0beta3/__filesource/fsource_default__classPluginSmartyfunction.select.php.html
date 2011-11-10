@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for function.select.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file function.select.php</h1>
+<p>Documentation is available at <a href="../default/_class---Plugin---Smarty---function.select.php.html">function.select.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;smarty&nbsp;function:セレクトフィールド生成</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;sample:</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;$smarty-&gt;assign('hoge',</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'1'&nbsp;=&gt;&nbsp;array('name'&nbsp;=&gt;&nbsp;'foo'),</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'2'&nbsp;=&gt;&nbsp;array('name'&nbsp;=&gt;&nbsp;'bar')</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;);</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;{select&nbsp;list=$hoge&nbsp;name=&quot;hoge&quot;&nbsp;value=&quot;1&quot;&nbsp;empty=&quot;--&nbsp;please&nbsp;select&nbsp;--&quot;}</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;code&gt;</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;select&nbsp;name=&quot;hoge&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;&quot;&gt;--&nbsp;please&nbsp;select&nbsp;--&lt;/option&gt;</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;1&quot;&nbsp;selected=&quot;selected&quot;&gt;foo&lt;/option&gt;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value=&quot;2&quot;&gt;bar&lt;/option&gt;</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/select&gt;</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&lt;/code&gt;</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;&nbsp;</span><span class="src-doc-var">$list&nbsp;</span><span class="src-doc">&nbsp;&nbsp;選択肢一覧</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$name&nbsp;</span><span class="src-doc">&nbsp;&nbsp;フォーム項目名</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$value&nbsp;</span><span class="src-doc">&nbsp;セレクトボックスに渡されたフォーム値</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$empty&nbsp;</span><span class="src-doc">&nbsp;空エントリ(「---選択して下さい---」等)</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@deprecated</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-key">function&nbsp;</span><a href="../default/_class---Plugin---Smarty---function.select.php.html#functionsmarty_function_select">smarty_function_select</a><span class="src-sym">(</span><span class="src-var">$params</span><span class="src-sym">,&nbsp;</span><span class="src-sym">&amp;</span><span class="src-var">$smarty</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/extract">extract</a><span class="src-sym">(</span><span class="src-var">$params</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;empty=&quot;....&quot;&nbsp;を加えると、無条件に追加される</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;ない場合は追加されない</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;</span><span class="src-str">&lt;select&nbsp;name=\&quot;<span class="src-var">$name</span>\&quot;&gt;\n</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$empty</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><span class="src-sym">(</span><span class="src-str">&quot;&lt;option&nbsp;value=\&quot;\&quot;&gt;%s&lt;/option&gt;\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$empty</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$list&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$id&nbsp;</span>=&gt;&nbsp;<span class="src-var">$elt</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;標準に合わせる</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;@see&nbsp;http://www.w3.org/TR/html401/interact/forms.html#adef-selected</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;@see&nbsp;http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-transitional.dtd</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;@see&nbsp;http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;@see&nbsp;http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-frameset.dtd</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;@see&nbsp;http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_sformsmodule</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><span class="src-sym">(</span><span class="src-str">&quot;&lt;option&nbsp;value=\&quot;%s\&quot;&nbsp;%s&gt;%s&lt;/option&gt;\n&quot;</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$id</span><span class="src-sym">,&nbsp;</span><span class="src-var">$id&nbsp;</span>==&nbsp;<span class="src-var">$value&nbsp;</span>?&nbsp;<span class="src-str">'selected=&quot;selected&quot;'&nbsp;</span>:&nbsp;<span class="src-str">''</span><span class="src-sym">,&nbsp;</span><span class="src-var">$elt</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;/select&gt;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:58:10 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

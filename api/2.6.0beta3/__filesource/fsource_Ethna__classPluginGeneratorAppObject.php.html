@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for AppObject.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<h1>Source for file AppObject.php</h1>
+<p>Documentation is available at <a href="../Ethna/_class---Plugin---Generator---AppObject.php.html">AppObject.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">//&nbsp;vim:&nbsp;foldmethod=marker</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;AppObject.php</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.opensource.org/licenses/bsd-license.php&nbsp;The&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;ca050c139fe5eb9a58d3145a89ed58325a8c14e0&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-comm">//&nbsp;{{{&nbsp;Ethna_Plugin_Generator_AppObject</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;スケルトン生成クラス</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masaki&nbsp;Fujimoto&nbsp;&lt;fujimoto@php.net&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Ethna</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-key">class&nbsp;</span><a href="../Ethna/Ethna_Plugin_Generator_AppObject.html">Ethna_Plugin_Generator_AppObject</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Ethna/Ethna_Plugin_Generator.html">Ethna_Plugin_Generator</a></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;アプリケーションオブジェクトのスケルトンを生成する</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@access</span><span class="src-doc">&nbsp;public</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-var">$table_name&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;テーブル名</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;true:成功&nbsp;false:失敗</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Ethna/Ethna_Plugin_Generator_AppObject.html#methodgenerate">generate</a><span class="src-sym">(</span><span class="src-var">$table_name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$table_id&nbsp;</span>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-str">'/_(.)/e'</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;strtoupper('\$1')&quot;</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/ucfirst">ucfirst</a><span class="src-sym">(</span><span class="src-var">$table_name</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$app_dir&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getDirectory</span><span class="src-sym">(</span><span class="src-str">'app'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$app_path&nbsp;</span>=&nbsp;<a href="http://www.php.net/ucfirst">ucfirst</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getAppId</span><span class="src-sym">(</span><span class="src-sym">))&nbsp;</span>.&nbsp;<span class="src-str">'_'&nbsp;</span>.&nbsp;<span class="src-var">$table_id&nbsp;</span>.<span class="src-str">'.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$macro&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$macro</span><span class="src-sym">[</span><span class="src-str">'project_id'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getAppId</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$macro</span><span class="src-sym">[</span><span class="src-str">'app_path'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$app_path</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$macro</span><span class="src-sym">[</span><span class="src-str">'app_object'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<a href="http://www.php.net/ucfirst">ucfirst</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Ethna/Ethna_Plugin_Abstract.html#var$ctl">ctl</a><span class="src-sym">-&gt;</span><span class="src-id">getAppId</span><span class="src-sym">(</span><span class="src-sym">))&nbsp;</span>.&nbsp;<span class="src-str">'_'&nbsp;</span>.&nbsp;<span class="src-var">$table_id</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$user_macro&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_getUserMacro</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$macro&nbsp;</span>=&nbsp;<a href="http://www.php.net/array_merge">array_merge</a><span class="src-sym">(</span><span class="src-var">$macro</span><span class="src-sym">,&nbsp;</span><span class="src-var">$user_macro</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$path&nbsp;</span>=&nbsp;<span class="src-str">&quot;</span><span class="src-str"><span class="src-var">$app_dir</span>/<span class="src-var">$app_path</span></span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Ethna/Ethna_Util.html">Ethna_Util</a></span><span class="src-sym">::</span><a href="../Ethna/Ethna_Util.html#methodmkdir">mkdir</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-num">0755</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/file_exists">file_exists</a><span class="src-sym">(</span><span class="src-var">$path</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><span class="src-sym">(</span><span class="src-str">&quot;file&nbsp;[%s]&nbsp;already&nbsp;exists&nbsp;-&gt;&nbsp;skip\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_generateFile</span><span class="src-sym">(</span><span class="src-str">&quot;skel.app_object.php&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$path</span><span class="src-sym">,&nbsp;</span><span class="src-var">$macro</span><span class="src-sym">)&nbsp;</span>==&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><span class="src-sym">(</span><span class="src-str">&quot;[warning]&nbsp;file&nbsp;creation&nbsp;failed&nbsp;[%s]\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><span class="src-sym">(</span><span class="src-str">&quot;app-object&nbsp;script(s)&nbsp;successfully&nbsp;created&nbsp;[%s]\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-comm">//&nbsp;}}}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:57:33 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

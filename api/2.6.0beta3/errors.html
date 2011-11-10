@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>phpDocumentor Parser Errors and Warnings</title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<a href="#Post-parsing">Post-parsing</a><br>
+<a href="#ActionClass.php">ActionClass.php</a><br>
+<a href="#ActionError.php">ActionError.php</a><br>
+<a href="#ActionForm.php">ActionForm.php</a><br>
+<a href="#AddActionTest.php">AddActionTest.php</a><br>
+<a href="#AddAppManager.php">AddAppManager.php</a><br>
+<a href="#AddEntryPoint.php">AddEntryPoint.php</a><br>
+<a href="#AddTemplate.php">AddTemplate.php</a><br>
+<a href="#AddView.php">AddView.php</a><br>
+<a href="#AddViewTest.php">AddViewTest.php</a><br>
+<a href="#ADOdb.php">ADOdb.php</a><br>
+<a href="#AppManager.php">AppManager.php</a><br>
+<a href="#AppObject.php">AppObject.php</a><br>
+<a href="#AppSearchObject.php">AppSearchObject.php</a><br>
+<a href="#AppSQL.php">AppSQL.php</a><br>
+<a href="#Backend.php">Backend.php</a><br>
+<a href="#block.form.php">block.form.php</a><br>
+<a href="#ClassFactory.php">ClassFactory.php</a><br>
+<a href="#ClearCache.php">ClearCache.php</a><br>
+<a href="#Config.php">Config.php</a><br>
+<a href="#Controller.php">Controller.php</a><br>
+<a href="#DB.php">DB.php</a><br>
+<a href="#Debugtoolbar.php">Debugtoolbar.php</a><br>
+<a href="#Error.php">Error.php</a><br>
+<a href="#Ethna.php">Ethna.php</a><br>
+<a href="#ethna_handle.php">ethna_handle.php</a><br>
+<a href="#ethna_make_package.php">ethna_make_package.php</a><br>
+<a href="#File.php">File.php</a><br>
+<a href="#Filter.php">Filter.php</a><br>
+<a href="#function.checkbox_list.php">function.checkbox_list.php</a><br>
+<a href="#function.csrfid.php">function.csrfid.php</a><br>
+<a href="#function.form_input.php">function.form_input.php</a><br>
+<a href="#function.form_name.php">function.form_name.php</a><br>
+<a href="#function.form_submit.php">function.form_submit.php</a><br>
+<a href="#function.is_error.php">function.is_error.php</a><br>
+<a href="#function.message.php">function.message.php</a><br>
+<a href="#function.select.php">function.select.php</a><br>
+<a href="#function.uniqid.php">function.uniqid.php</a><br>
+<a href="#function.url.php">function.url.php</a><br>
+<a href="#Getopt.php">Getopt.php</a><br>
+<a href="#Handle.php">Handle.php</a><br>
+<a href="#I18N.php">I18N.php</a><br>
+<a href="#I18n.php">I18n.php</a><br>
+<a href="#List.php">List.php</a><br>
+<a href="#Logger.php">Logger.php</a><br>
+<a href="#Logwriter.php">Logwriter.php</a><br>
+<a href="#MakePluginPackage.php">MakePluginPackage.php</a><br>
+<a href="#Mbregexp.php">Mbregexp.php</a><br>
+<a href="#modifier.checkbox.php">modifier.checkbox.php</a><br>
+<a href="#modifier.count.php">modifier.count.php</a><br>
+<a href="#modifier.explode.php">modifier.explode.php</a><br>
+<a href="#modifier.filter.php">modifier.filter.php</a><br>
+<a href="#modifier.form_value.php">modifier.form_value.php</a><br>
+<a href="#modifier.i18n.php">modifier.i18n.php</a><br>
+<a href="#modifier.join.php">modifier.join.php</a><br>
+<a href="#modifier.number_format.php">modifier.number_format.php</a><br>
+<a href="#modifier.select.php">modifier.select.php</a><br>
+<a href="#modifier.strftime.php">modifier.strftime.php</a><br>
+<a href="#modifier.truncate_i18n.php">modifier.truncate_i18n.php</a><br>
+<a href="#modifier.unique.php">modifier.unique.php</a><br>
+<a href="#modifier.wordwrap_i18n.php">modifier.wordwrap_i18n.php</a><br>
+<a href="#PEAR.php">PEAR.php</a><br>
+<a href="#PearLocal.php">PearLocal.php</a><br>
+<a href="#PearWrapper.php">PearWrapper.php</a><br>
+<a href="#Plugin.php">Plugin.php</a><br>
+<a href="#Renderer.php">Renderer.php</a><br>
+<a href="#Session.php">Session.php</a><br>
+<a href="#Smarty.php">Smarty.php</a><br>
+<a href="#Smarty3.php">Smarty3.php</a><br>
+<a href="#UnitTestManager.php">UnitTestManager.php</a><br>
+<a href="#UnitTestReporter.php">UnitTestReporter.php</a><br>
+<a href="#Util.php">Util.php</a><br>
+<a href="#Validator.php">Validator.php</a><br>
+<a href="#ViewClass.php">ViewClass.php</a><br>
+<a name="Post-parsing"></a>
+<h1>Post-parsing</h1>
+<h2>Warnings:</h2><br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintPass()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintException()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintCaseStart()<br>
+<b>Warning</b> - class Ethna_UnitTestCase in package Ethna parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintFail()<br>
+<b>Warning</b> - Class Ethna_UnitTestReporter parent SimpleReporter not found<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintException()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintCaseStart()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintCaseEnd()<br>
+<b>Warning</b> - 
+duplicate define element "UPLOAD_ERR_OK" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Validator.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning</b> - class Ethna_UnitTestCase in package Ethna parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintPass()<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintCaseEnd()<br>
+<b>Warning</b> - Class Ethna_UnitTestCase parent UnitTestCase not found<br>
+<b>Warning</b> - class Ethna_UnitTestReporter in package Ethna parent not found in @see parent::paintFail()<br>
+<a name="Abstract.php"></a>
+<h1>Abstract.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 36</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 39</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 43</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 46</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 49</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 52</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 195</b> - docblock template never terminated with /**#@-*/<br>
+<h2>Errors:</h2><br>
+<b>Error on line 60</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 95</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 105</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 125</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 134</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 161</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 181</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<a name="ActionClass.php"></a>
+<h1>ActionClass.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 20</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 44</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 47</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 56</b> - Unknown tag "@protected" used<br>
+<a name="ActionError.php"></a>
+<h1>ActionError.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 27</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 30</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 33</b> - Unknown tag "@protected" used<br>
+<a name="ActionForm.php"></a>
+<h1>ActionForm.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 39</b> - Unknown tag "@FIXME" used<br>
+<b>Warning on line 42</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 45</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 48</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 51</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 54</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 57</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 60</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 63</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 70</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 74</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 77</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 80</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 83</b> - Unknown tag "@protected" used<br>
+<a name="AddActionTest.php"></a>
+<h1>AddActionTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddAction.php'", use another DocBlock to document the source element<br>
+<a name="AddAppManager.php"></a>
+<h1>AddAppManager.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddAppObject.php'", use another DocBlock to document the source element<br>
+<a name="AddEntryPoint.php"></a>
+<h1>AddEntryPoint.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddAction.php'", use another DocBlock to document the source element<br>
+<a name="AddTemplate.php"></a>
+<h1>AddTemplate.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddView.php'", use another DocBlock to document the source element<br>
+<a name="AddView.php"></a>
+<h1>AddView.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddAction.php'", use another DocBlock to document the source element<br>
+<a name="AddViewTest.php"></a>
+<h1>AddViewTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'Ethna/class/Plugin/Handle/AddView.php'", use another DocBlock to document the source element<br>
+<a name="ADOdb.php"></a>
+<h1>ADOdb.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 43</b> - Unknown tag "@XXX" used<br>
+<b>Warning on line 43</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 46</b> - Unknown tag "@protected" used<br>
+<a name="AppManager.php"></a>
+<h1>AppManager.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 45</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 48</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 51</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 54</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 57</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 60</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 63</b> - Unknown tag "@protected" used<br>
+<a name="AppObject.php"></a>
+<h1>AppObject.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 30</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 33</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 36</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 39</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 42</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 45</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 48</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 51</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 54</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 57</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 60</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 63</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 66</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 69</b> - Unknown tag "@protected" used<br>
+<a name="AppSearchObject.php"></a>
+<h1>AppSearchObject.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 55</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 58</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 63</b> - Unknown tag "@protected" used<br>
+<a name="AppSQL.php"></a>
+<h1>AppSQL.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<a name="Backend.php"></a>
+<h1>Backend.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 44</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 47</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 50</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 56</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 59</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 62</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 65</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 68</b> - Unknown tag "@protected" used<br>
+<a name="block.form.php"></a>
+<h1>block.form.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 96</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/block.form.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ClassFactory.php"></a>
+<h1>ClassFactory.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 30</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 33</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 36</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 39</b> - Unknown tag "@FIXME" used<br>
+<b>Warning on line 42</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 45</b> - Unknown tag "@protected" used<br>
+<a name="ClearCache.php"></a>
+<h1>ClearCache.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once ETHNA_BASE.'/class/PearWrapper.php'", use another DocBlock to document the source element<br>
+<a name="Config.php"></a>
+<h1>Config.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@FIXME" used<br>
+<a name="Controller.php"></a>
+<h1>Controller.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 34</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 37</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 40</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 43</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 64</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 69</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 75</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 78</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 96</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 100</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 103</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 106</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 110</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 113</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 116</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 119</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 128</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 131</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 134</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 137</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 140</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 143</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 146</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 149</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 152</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 155</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 158</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 161</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 164</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 732</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 1810</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 1823</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 2239</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 2251</b> - Unknown tag "@obsolete" used<br>
+<a name="DB.php"></a>
+<h1>DB.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 31</b> - Unknown tag "@XXX" used<br>
+<b>Warning on line 31</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 34</b> - Unknown tag "@protected" used<br>
+<a name="Debugtoolbar.php"></a>
+<h1>Debugtoolbar.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - Unknown tag "@date" used<br>
+<b>Warning on line 10</b> - DocBlock would be page-level, but precedes class "Ethna_Plugin_Logwriter_Debugtoolbar", use another DocBlock to document the file<br>
+<b>Warning on line 17</b> - Unknown tag "@description" used<br>
+<a name="Error.php"></a>
+<h1>Error.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 119</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 122</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 125</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 128</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 131</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 134</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 137</b> - Unknown tag "@protected" used<br>
+<a name="Ethna.php"></a>
+<h1>Ethna.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 22</b> - Page-level DocBlock precedes "define ETHNA_OS_WINDOWS", use another DocBlock to document the source element<br>
+<b>Warning on line 24</b> - 
+duplicate define element "ETHNA_OS_WINDOWS" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/Ethna.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning on line 39</b> - 
+duplicate define element "PATH_SEPARATOR" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/Ethna.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning on line 48</b> - 
+duplicate define element "DIRECTORY_SEPARATOR" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/Ethna.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<a name="ethna_handle.php"></a>
+<h1>ethna_handle.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 18</b> - Page-level DocBlock precedes "require_once 'Ethna/Ethna.php'", use another DocBlock to document the source element<br>
+<a name="ethna_make_package.php"></a>
+<h1>ethna_make_package.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'PEAR.php'", use another DocBlock to document the source element<br>
+<a name="File.php"></a>
+<h1>File.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 13</b> - Page-level DocBlock precedes "define UPLOAD_ERR_OK", use another DocBlock to document the source element<br>
+<a name="Filter.php"></a>
+<h1>Filter.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 23</b> - Unknown tag "@obsolete" used<br>
+<b>Warning on line 30</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 33</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 36</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 39</b> - Unknown tag "@protected" used<br>
+<a name="function.checkbox_list.php"></a>
+<h1>function.checkbox_list.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 44</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.checkbox_list.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.csrfid.php"></a>
+<h1>function.csrfid.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 31</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.csrfid.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.form_input.php"></a>
+<h1>function.form_input.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 74</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.form_input.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.form_name.php"></a>
+<h1>function.form_name.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 43</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.form_name.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.form_submit.php"></a>
+<h1>function.form_submit.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.form_submit.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.is_error.php"></a>
+<h1>function.is_error.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.is_error.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.message.php"></a>
+<h1>function.message.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 33</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.message.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.select.php"></a>
+<h1>function.select.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 49</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.select.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.uniqid.php"></a>
+<h1>function.uniqid.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 23</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.uniqid.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="function.url.php"></a>
+<h1>function.url.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 48</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/function.url.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Getopt.php"></a>
+<h1>Getopt.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Page-level DocBlock precedes "define ETHNA_OPTVALUE_IS_DISABLED", use another DocBlock to document the source element<br>
+<a name="Handle.php"></a>
+<h1>Handle.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once ETHNA_BASE.'/class/Getopt.php'", use another DocBlock to document the source element<br>
+<b>Warning on line 24</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 27</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<a name="I18N.php"></a>
+<h1>I18N.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 15</b> - Page-level DocBlock precedes "function mb_enabled", use another DocBlock to document the source element<br>
+<b>Warning on line 51</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 54</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 57</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 60</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 69</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 72</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 75</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 63</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 66</b> - Unknown tag "@protected" used<br>
+<a name="I18n.php"></a>
+<h1>I18n.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 551</b> - docblock template never terminated with /**#@-*/<br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<h2>Errors:</h2><br>
+<b>Error on line 51</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 117</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access private"<br>
+<b>Error on line 146</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 196</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 293</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 364</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 426</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access private"<br>
+<b>Error on line 452</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access private"<br>
+<b>Error on line 485</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<a name="List.php"></a>
+<h1>List.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<a name="Logger.php"></a>
+<h1>Logger.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 37</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 65</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 68</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 71</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 74</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 77</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 80</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 83</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 86</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 89</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 92</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 95</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 98</b> - Unknown tag "@protected" used<br>
+<a name="Logwriter.php"></a>
+<h1>Logwriter.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<a name="MakePluginPackage.php"></a>
+<h1>MakePluginPackage.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Page-level DocBlock precedes "require_once ETHNA_BASE.'/class/PearWrapper.php'", use another DocBlock to document the source element<br>
+<a name="Mbregexp.php"></a>
+<h1>Mbregexp.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - DocBlock would be page-level, but precedes class "Ethna_Plugin_Validator_Mbregexp", use another DocBlock to document the file<br>
+<a name="modifier.checkbox.php"></a>
+<h1>modifier.checkbox.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 22</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.checkbox.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.count.php"></a>
+<h1>modifier.count.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 22</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.count.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.explode.php"></a>
+<h1>modifier.explode.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 27</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.explode.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.filter.php"></a>
+<h1>modifier.filter.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 37</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.filter.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.form_value.php"></a>
+<h1>modifier.form_value.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 31</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.form_value.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.i18n.php"></a>
+<h1>modifier.i18n.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 22</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.i18n.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.join.php"></a>
+<h1>modifier.join.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.join.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.number_format.php"></a>
+<h1>modifier.number_format.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 23</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.number_format.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.select.php"></a>
+<h1>modifier.select.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 34</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.select.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.strftime.php"></a>
+<h1>modifier.strftime.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 24</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.strftime.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.truncate_i18n.php"></a>
+<h1>modifier.truncate_i18n.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 30</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.truncate_i18n.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.unique.php"></a>
+<h1>modifier.unique.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 47</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.unique.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="modifier.wordwrap_i18n.php"></a>
+<h1>modifier.wordwrap_i18n.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 52</b> - File "/mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/Plugin/Smarty/modifier.wordwrap_i18n.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="PEAR.php"></a>
+<h1>PEAR.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'DB.php'", use another DocBlock to document the source element<br>
+<b>Warning on line 31</b> - Unknown tag "@XXX" used<br>
+<b>Warning on line 31</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 34</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 44</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 47</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 50</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 517</b> - no @package tag was used in a DocBlock for class Ethna_DB_PEAR<br>
+<b>Warning on line 517</b> - 
+duplicate class element "Ethna_DB_PEAR" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/DB/PEAR.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning on line 520</b> - 
+duplicate class element "Ethna_DB_PEAR" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/DB/PEAR.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning on line 520</b> - no @package tag was used in a DocBlock for class Ethna_DB_PEAR<br>
+<b>Warning on line 521</b> - no @package tag was used in a DocBlock for class Ethna_DB_PEAR<br>
+<b>Warning on line 521</b> - 
+duplicate class element "Ethna_DB_PEAR" in file /mnt/sdb/sotarok/tmp/Ethna-2.6.0beta2011102522/class/DB/PEAR.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<a name="PearLocal.php"></a>
+<h1>PearLocal.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once 'PEAR/Config.php'", use another DocBlock to document the source element<br>
+<a name="PearWrapper.php"></a>
+<h1>PearWrapper.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - Page-level DocBlock precedes "require_once 'PEAR.php'", use another DocBlock to document the source element<br>
+<b>Warning on line 33</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 36</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 39</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 42</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 45</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 48</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 51</b> - Unknown tag "@protected" used<br>
+<a name="Plugin.php"></a>
+<h1>Plugin.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 28</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 31</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 34</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 40</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 43</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 366</b> - Unknown tag "@retur" used<br>
+<a name="Renderer.php"></a>
+<h1>Renderer.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 44</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 47</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 50</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 335</b> - docblock template never terminated with /**#@-*/<br>
+<h2>Errors:</h2><br>
+<b>Error on line 61</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 83</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 117</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 129</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 143</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 159</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 173</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 185</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 203</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 216</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 228</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 240</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 256</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 274</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 285</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 296</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 306</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 318</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<a name="Session.php"></a>
+<h1>Session.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<a name="Smarty.php"></a>
+<h1>Smarty.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 25</b> - Unknown tag "@protected" used<br>
+<a name="Smarty3.php"></a>
+<h1>Smarty3.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 24</b> - Unknown tag "@protected" used<br>
+<a name="UnitTestManager.php"></a>
+<h1>UnitTestManager.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'simpletest/unit_tester.php'", use another DocBlock to document the source element<br>
+<a name="UnitTestReporter.php"></a>
+<h1>UnitTestReporter.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - Page-level DocBlock precedes "require_once 'simpletest/scorer.php'", use another DocBlock to document the source element<br>
+<h2>Errors:</h2><br>
+<b>Error on line 64</b> - @access was passed neither "public" nor "private."  Was passed: "public
+　@param string   $message    メッセージ"<br>
+<b>Error on line 82</b> - @access was passed neither "public" nor "private."  Was passed: "public
+　@param string   $message    メッセージ"<br>
+<b>Error on line 100</b> - @access was passed neither "public" nor "private."  Was passed: "public
+　@param string   $message    メッセージ"<br>
+<b>Error on line 152</b> - @access was passed neither "public" nor "private."  Was passed: "public
+　@param string   $message    メッセージ"<br>
+<a name="Util.php"></a>
+<h1>Util.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 161</b> - Unknown tag "@acccess" used<br>
+<a name="Validator.php"></a>
+<h1>Validator.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 13</b> - Page-level DocBlock precedes "define UPLOAD_ERR_OK", use another DocBlock to document the source element<br>
+<a name="ViewClass.php"></a>
+<h1>ViewClass.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 26</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 29</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 32</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 35</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 38</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 41</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 44</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 47</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 50</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 53</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 56</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 59</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 62</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 65</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 68</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 71</b> - Unknown tag "@protected" used<br>
+<b>Warning on line 1222</b> - docblock template never terminated with /**#@-*/<br>
+<h2>Errors:</h2><br>
+<b>Error on line 110</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 149</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 163</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 225</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 296</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 314</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 333</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 345</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 360</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 379</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 397</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 437</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 454</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 500</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 512</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 535</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 551</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access public"<br>
+<b>Error on line 640</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 657</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 713</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 741</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 805</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 825</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 863</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 904</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 967</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1039</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1066</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1101</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1145</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1181</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+<b>Error on line 1217</b> - DocBlock has multiple @access tags, illegal. ignoring additional tag "@access protected"<br>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 11 Nov 2011 03:59:32 +0900 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>
