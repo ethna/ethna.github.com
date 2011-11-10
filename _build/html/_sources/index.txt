@@ -76,6 +76,7 @@ Ethna コマンドでプロジェクトを作成 ::
    install
    tutorial
    reference
+   api
    cookbook
    upgrade
    article
