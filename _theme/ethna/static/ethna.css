@@ -32,6 +32,8 @@ html {
     color-stop(0.16, rgb(240,240,240)),
     color-stop(0.58, rgb(255,255,255))
   );
+
+  color: #404040;
 }
 
 body {
@@ -117,6 +119,9 @@ table.hlist td li {
 table.docutils {
   margin: 0 auto;
 }
+table.docutils.footnote {
+  margin: 0;
+}
 
 table.docutils th {
   background: #f0f0f0;
@@ -135,6 +140,7 @@ tt {
   border-radius: 4px;
 }
 span.pre {
+  font-size: 0.82em;
   font-family: menlo, monaco, consolas, monospace;
 }
 
