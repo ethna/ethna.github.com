@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
     <link rel="up" title="チュートリアル" href="../tutorial.html" />
-    <link rel="next" title="2. アクション、ビュー、テンプレートの作成" href="02-action-view-tpl.html" />
+    <link rel="next" title="2. アクション、ビュー、テンプレートの作成と処理の流れ" href="02-action-view-tpl.html" />
     <link rel="prev" title="チュートリアル" href="../tutorial.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成と処理の流れ"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="../tutorial.html" title="チュートリアル"
@@ -53,13 +53,13 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1. プロジェクトのセットアップ</a><ul>
-<li><a class="reference internal" href="#id2">アプリケーション情報の決定</a></li>
-<li><a class="reference internal" href="#id3">アプリケーションの雛形の生成</a></li>
-<li><a class="reference internal" href="#id5">ディレクトリ構成の確認</a></li>
-<li><a class="reference internal" href="#id6">エントリポイントの設定</a><ul>
-<li><a class="reference internal" href="#id7">注釈</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#id2">このページでの目標</a></li>
+<li><a class="reference internal" href="#id3">チュートリアルで作成するアプリケーション</a></li>
+<li><a class="reference internal" href="#id4">アプリケーション情報の決定</a></li>
+<li><a class="reference internal" href="#id5">アプリケーションの雛形の生成</a></li>
+<li><a class="reference internal" href="#id7">ディレクトリ構成の確認</a></li>
+<li><a class="reference internal" href="#id8">エントリポイントの設定</a></li>
+<li><a class="reference internal" href="#id10">注釈</a></li>
 </ul>
 </li>
 </ul>
@@ -69,7 +69,7 @@
                         title="previous chapter">チュートリアル</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="02-action-view-tpl.html"
-                        title="next chapter">2. アクション、ビュー、テンプレートの作成</a></p>
+                        title="next chapter">2. アクション、ビュー、テンプレートの作成と処理の流れ</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/tutorial/01-setup.txt"
@@ -100,41 +100,56 @@
 <span id="id1"></span><h1>1. プロジェクトのセットアップ<a class="headerlink" href="#tutorial-01-setup" title="Permalink to this headline">¶</a></h1>
 <p><cite>Ethna</cite> でアプリケーションを作成するには、まず <cite>プロジェクト</cite> を作成します。</p>
 <div class="section" id="id2">
-<h2>アプリケーション情報の決定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>アプリケーションを構築する前に、少なくとも以下の 2 点を決定しておく必要があります。</p>
-<ol class="arabic">
-<li><p class="first">アプリケーションID(英字のみ)</p>
-<div class="line-block">
-<div class="line">例: <cite>Sample</cite></div>
-</div>
-</li>
-<li><p class="first">アプリケーション配置ディレクトリ (どこでも構いません)</p>
-<div class="line-block">
-<div class="line">例: <tt class="docutils literal"><span class="pre">/var/www/sample/</span></tt> とか <tt class="docutils literal"><span class="pre">C:\codes\php\</span></tt> とか適当に</div>
-</div>
-</li>
+<h2>このページでの目標<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを使って、アプリケーションの雛形を作成する</li>
+<li>ブラウザからアクセスして、ひな形のページが表示できるようにする</li>
 </ol>
 </div>
 <div class="section" id="id3">
-<h2>アプリケーションの雛形の生成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>チュートリアルで作成するアプリケーション<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>チュートリアルに入る前に、どのようなアプリケーションを作成するかを決めておきます。</p>
+<p>今回は、「コメントを入力して一欄に表示する」というひとことブログを実装することを目標とします。このチュートリアルを通じて、</p>
+<ul class="simple">
+<li><cite>Ethna</cite> を用いてアプリケーションを作成する流れ</li>
+<li>データベースへの接続や、URLの設定方法</li>
+</ul>
+<p>を理解しましょう。</p>
+</div>
+<div class="section" id="id4">
+<h2>アプリケーション情報の決定<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>アプリケーションを構築する前に、少なくとも以下の 2 点を決定しておく必要があります。</p>
+<ol class="arabic">
+<li><p class="first">アプリケーションID(英字のみ)</p>
+<p>例: <cite>Miniblog</cite></p>
+</li>
+<li><p class="first">アプリケーション配置ディレクトリ (どこでも構いません)</p>
+<p>例: <tt class="docutils literal"><span class="pre">/var/www/</span></tt> とか <tt class="docutils literal"><span class="pre">C:\codes\php\</span></tt> など。</p>
+<p>このチュートリアルでは、 <tt class="docutils literal"><span class="pre">/var/www/</span></tt> を用います。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>アプリケーションの雛形の生成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを利用してアプリケーションを使って生成します。</p>
-<p>アプリケーションIDが <strong>sample</strong> 、アプリケーション配置ディレクトリが <tt class="docutils literal"><span class="pre">/var/www/sample</span></tt> とすると、次のように <tt class="docutils literal"><span class="pre">add-project</span></tt> コマンドを使ってアプリケーションの雛形を自動的に生成することができます。 <a class="footnote-reference" href="#ref1" id="id4">[1]</a></p>
+<p>アプリケーションIDが <strong>miniblog</strong> 、アプリケーション配置ディレクトリが <tt class="docutils literal"><span class="pre">/var/www</span></tt> とすると、次のように <tt class="docutils literal"><span class="pre">add-project</span></tt> コマンドを使ってアプリケーションの雛形を自動的に生成することができます。 <a class="footnote-reference" href="#ref1" id="id6">[1]</a></p>
+<p><tt class="docutils literal"><span class="pre">add-project</span></tt> コマンドを利用すると、アプリケーションIDに指定した名前でディレクトリが自動的に作成されます。:</p>
 <div class="highlight-python"><pre>$ cd /var/www
-$ ethna add-project sample
-creating directory (/var/www/sample) [y/n]: y
-project sub directory created [/var/www/sample/app]
-project sub directory created [/var/www/sample/app/action]
+$ ethna add-project miniblog
+creating directory (/var/www/miniblog) [y/n]: y
+project sub directory created [/var/www/miniblog/app]
+project sub directory created [/var/www/miniblog/app/action]
 
 ...
 
-file generated [/usr/share/php/Ethna/skel/skel.view_test.php -&gt; /var/www/sample/skel/skel.view_test.php]
+file generated [/usr/share/php/Ethna/skel/skel.view_test.php -&gt; /var/www/miniblog/skel/skel.view_test.php]
 
-project skelton for [sample] is successfully generated at [/var/www/sample]</pre>
+project skelton for [miniblog] is successfully generated at [/var/www/miniblog]</pre>
 </div>
 <p>以上で、最小構成のアプリケーションが生成されます。</p>
 </div>
-<div class="section" id="id5">
-<h2>ディレクトリ構成の確認<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>ディレクトリ構成の確認<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>生成されたディレクトリをのぞいてみましょう。次のような構成となっています。(一部抜粋)</p>
 <div class="highlight-python"><pre>|-- app                 (アプリケーションのディレクトリ)
 |   |-- action          (アクションスクリプト)
@@ -162,27 +177,40 @@ project skelton for [sample] is successfully generated at [/var/www/sample]</pre
 <li><tt class="docutils literal"><span class="pre">template/ja_JP</span></tt></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>エントリポイントの設定<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>エントリポイントの設定<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>生成したアプリケーションにアクセスするには、 <tt class="docutils literal"><span class="pre">www</span></tt> ディレクトリを、ウェブサーバを通じてアクセス可能にするか、シンボリックリンクを作成します。</p>
-<p>今回は、 <cite>Apache</cite> の <cite>VirtualHost</cite> を設定し、 <tt class="docutils literal"><span class="pre">http://sample.myhost/</span></tt> でアクセスできるようにしてみましょう。</p>
-<div class="highlight-python"><pre>$ cd ~/public_html/
-$ ln -s /tmp/sample/www/index.php .
-$ cp -r /tmp/sample/www/css ./css</pre>
+<p>今回は、 <cite>Apache</cite> の <cite>VirtualHost</cite> を設定し、 <tt class="docutils literal"><span class="pre">http://miniblog.myhost/</span></tt> でアクセスできるようにしてみましょう。 <a class="footnote-reference" href="#ref2" id="id9">[2]</a>
+今回のアプリケーションは <tt class="docutils literal"><span class="pre">/var/www/miniblog</span></tt> に構築しているため、 <cite>DocumentRoot</cite> は <tt class="docutils literal"><span class="pre">/var/www/miniblog/www</span></tt> となります。</p>
+<div class="highlight-python"><pre># VirtualHost の設定の例
+&lt;VirtualHost *:80&gt;
+    ServerName miniblog.myhost
+    DocumentRoot /var/www/miniblog/www
+&lt;/VirtualHost&gt;</pre>
 </div>
-<p>以上で設定は完了です。ブラウザから</p>
-<div class="highlight-python"><pre>http://sample.myhost/</pre>
+<p>以上で設定は完了です。さっそくブラウザでアクセスしてみましょう。</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/</pre>
 </div>
-<p>具体的なアプリケーションの作成については <a class="reference internal" href="02-action-view-tpl.html#tutorial-02-action-view-tpl"><em>2. アクション、ビュー、テンプレートの作成</em></a> を御覧下さい。</p>
-<div class="section" id="id7">
-<h3>注釈<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>正しく設定ができていれば、以下のような画面が表示されます。</p>
+<img alt="../_images/tutorial_01-setup-01.png" src="../_images/tutorial_01-setup-01.png" />
+<hr class="docutils" />
+<p>さて、実際のアプリケーションの実装に入る前に、 <tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを用いてアクション・ビュー・テンプレートを作成し、処理の流れを追ってみましょう。</p>
+<p><a class="reference internal" href="02-action-view-tpl.html#tutorial-02-action-view-tpl"><em>2. アクション、ビュー、テンプレートの作成と処理の流れ</em></a> に進んでください。</p>
+</div>
+<div class="section" id="id10">
+<h2>注釈<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <table class="docutils footnote" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td><tt class="docutils literal"><span class="pre">/var/www</span></tt> ディレクトリに適切な権限を設定する必要があります。</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td><tt class="docutils literal"><span class="pre">/var/www</span></tt> ディレクトリに適切な権限を設定する必要があります。</td></tr>
 </tbody>
 </table>
-</div>
+<table class="docutils footnote" frame="void" id="ref2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[2]</a></td><td>もちろん、 <cite>nginx</cite> と <cite>php-fpm</cite> を用いることもできます。このチュートリアルではそこまでは扱いません。</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -196,7 +224,7 @@ $ cp -r /tmp/sample/www/css ./css</pre>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成と処理の流れ"
              >next</a></li>
         <li class="right" >
           <a href="../tutorial.html" title="チュートリアル"

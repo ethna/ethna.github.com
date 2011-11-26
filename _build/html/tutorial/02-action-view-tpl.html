@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. アクション、ビュー、テンプレートの作成 &mdash; Ethna v2.6 documentation</title>
+    <title>2. アクション、ビュー、テンプレートの作成と処理の流れ &mdash; Ethna v2.6 documentation</title>
     <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
     <link rel="up" title="チュートリアル" href="../tutorial.html" />
-    <link rel="next" title="3. ログインのロジックを作成" href="03-logic.html" />
+    <link rel="next" title="3. アプリケーションの実装" href="03-logic.html" />
     <link rel="prev" title="1. プロジェクトのセットアップ" href="01-setup.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="03-logic.html" title="3. ログインのロジックを作成"
+          <a href="03-logic.html" title="3. アプリケーションの実装"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="01-setup.html" title="1. プロジェクトのセットアップ"
@@ -52,9 +52,13 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2. アクション、ビュー、テンプレートの作成</a><ul>
-<li><a class="reference internal" href="#hello-world">アクション、ビュー、テンプレートを使ってHello Worldを表示する</a><ul>
-<li><a class="reference internal" href="#ethna">Ethnaにおける処理の流れ</a></li>
+<li><a class="reference internal" href="#">2. アクション、ビュー、テンプレートの作成と処理の流れ</a><ul>
+<li><a class="reference internal" href="#id2">このページでの目標</a></li>
+<li><a class="reference internal" href="#id3">アクション、ビュー、テンプレートの作成</a></li>
+<li><a class="reference internal" href="#ethna">Ethnaにおける処理の流れ</a><ul>
+<li><a class="reference internal" href="#id4">アクションの確認</a></li>
+<li><a class="reference internal" href="#id5">ビューの確認</a></li>
+<li><a class="reference internal" href="#id6">テンプレートの確認</a></li>
 </ul>
 </li>
 </ul>
@@ -66,7 +70,7 @@
                         title="previous chapter">1. プロジェクトのセットアップ</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03-logic.html"
-                        title="next chapter">3. ログインのロジックを作成</a></p>
+                        title="next chapter">3. アプリケーションの実装</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/tutorial/02-action-view-tpl.txt"
@@ -94,54 +98,120 @@
           <div class="body">
             
   <div class="section" id="tutorial-02-action-view-tpl">
-<span id="id1"></span><h1>2. アクション、ビュー、テンプレートの作成<a class="headerlink" href="#tutorial-02-action-view-tpl" title="Permalink to this headline">¶</a></h1>
-<p>アプリケーションのセットアップが済んだら、アクション、ビュー、テンプレートを作成してみましょう。</p>
-<div class="section" id="hello-world">
-<h2>アクション、ビュー、テンプレートを使ってHello Worldを表示する<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
-<p>仕様</p>
-<p>下記URLでアクセスすると、画面にHello Worldが表示されるようにします。</p>
-<p><a class="reference external" href="http://sample.myhost/index.php?action_hello=true">http://sample.myhost/index.php?action_hello=true</a></p>
+<span id="id1"></span><h1>2. アクション、ビュー、テンプレートの作成と処理の流れ<a class="headerlink" href="#tutorial-02-action-view-tpl" title="Permalink to this headline">¶</a></h1>
+<p>実際のアプリケーションの作成に入る前に、アクション、ビュー、テンプレートを作成してみましょう。</p>
+<div class="section" id="id2">
+<h2>このページでの目標<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>ブラウザからアクセスされてから <cite>Ethna</cite> でアプリケーションが起動し、HTMLが出力されるまでの流れを知る</li>
+<li>アクション、ビュー、テンプレートの役割を知る</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>アクション、ビュー、テンプレートの作成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>ここでは、下記URLでアクセスすると、画面にHello Worldが表示されるようにします。</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/?action_hello=true</pre>
+</div>
 <p>やるべきことは３つです</p>
 <ul class="simple">
 <li>Helloアクションの追加</li>
-<li>Helloビューの作成(省略可能)</li>
+<li>Helloビューの作成</li>
 <li>Helloテンプレートの追加</li>
 </ul>
-<p>Ethnaコマンドを使ってそれぞれ作成します。</p>
+<p><tt class="docutils literal"><span class="pre">ethna</span></tt> コマンドを使ってそれぞれ作成します。</p>
 <div class="highlight-python"><pre>$ ethna add-action hello
-$ ethna add-view   hello
-$ ethna add-template hello</pre>
-</div>
-<p>上記URLでアクセスすれば、Hello Worldが表示されます。</p>
-<div class="section" id="ethna">
-<h3>Ethnaにおける処理の流れ<a class="headerlink" href="#ethna" title="Permalink to this headline">¶</a></h3>
-<p>ここで、Ethnaの処理の流れについて説明します。</p>
-<p>Ethnaは、クライアント(この場合はブラウザ)から上記リクエストを受け取ると、まずhelloアクションを呼び出します。</p>
-<p>helloアクションの実体は、sample/app/action/Hello.phpファイルであり、Sample_Action_Helloクラスです。</p>
-<p>このクラスでは、peformメソッドが&#8217;hello&#8217;という文字列を返しています。</p>
-<p>これは遷移先をビュー名を意味しています。
-「以降の処理は&#8217;hello&#8217;ビューに任せる」という意味です。</p>
-<div class="highlight-python"><pre>class Sample_Action_Hello extends Sample_ActionClass
-{
-    ...
+file generated [/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Hello.php]
+action script(s) successfully created [/var/www/miniblog/app/action/Hello.php]
 
-    function perform()
-    {
-        return 'hello';
-    }
-}</pre>
+$ ethna add-view hello
+file generated [/var/www/miniblog/skel/skel.view.php -&gt; /var/www/miniblog/app/view/Hello.php]
+view script(s) successfully created [/var/www/miniblog/app/view/Hello.php]
+
+$ ethna add-template hello
+file generated [/var/www/miniblog/skel/skel.template.tpl -&gt; /var/www/miniblog/template/ja_JP/hello.tpl]
+template file(s) successfully created [/var/www/miniblog/template/ja_JP/hello.tpl]</pre>
 </div>
-<p>Ethnaは、アクションクラスからこの指示を受け取ると、Helloビュークラスを呼び出してpreforwardメソッドを実行します。</p>
-<p>Helloビュークラスでは、preforwardの中身は空になっているので何も行われません。
-(このような場合、ビュークラス作成を省略してもかまいません)</p>
-<div class="highlight-python"><pre>class Sample_View_Hello extends Sample_ViewClass
-{
-    function preforward()
-    {
-    }
-}</pre>
+<p>このコマンドにより、ひな形から、hello という名前のアクション、ビュー、テンプレートが作成されます。これで、 <tt class="docutils literal"><span class="pre">?action_hello=true</span></tt> にてアクセスができるようになっているはずです。ブラウザからアクセスして確認してみましょう。</p>
+<img alt="../_images/tutorial_02-02.png" src="../_images/tutorial_02-02.png" />
+<p>無事に、新しいアクションの画面が出力されましたね。</p>
 </div>
-<p>最後に、Ethnaがhelloテンプレートを呼び出して、レスポンスとして返します(ブラウザに画面が表示されます)。</p>
+<div class="section" id="ethna">
+<h2>Ethnaにおける処理の流れ<a class="headerlink" href="#ethna" title="Permalink to this headline">¶</a></h2>
+<p>ここで、 <cite>Ethna</cite> の処理の流れについて説明します。 <cite>Ethna</cite> に来たリクエストは、大雑把に言えば、以下のように、アクション→ビュー→テンプレートと流れるように処理されます。</p>
+<img alt="../_images/tutorial_02-action-view-template-01.png" src="../_images/tutorial_02-action-view-template-01.png" />
+<p>それでは、ここから、たったいま生成されたアクション・ビュー・テンプレートのそれぞれを確認してみましょう。</p>
+<div class="section" id="id4">
+<h3>アクションの確認<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>作成された Hello アクションファイル <tt class="docutils literal"><span class="pre">app/action/Hello.php</span></tt> を開いてみましょう。次のように2つのクラス、 <cite>Miniblog_Form_Hello</cite> と <cite>Miniblog_Action_Hello</cite> が作成されているはずです (コメント等は省略しています)。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Miniblog_Form_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionForm</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$form</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Miniblog_Action_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">perform</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><cite>Miniblog_Form_Hello</cite></dt>
+<dd>このクラスは、 <strong>アクションフォーム</strong> クラスです。Helloアクションにおける、フォームの <cite>POST</cite> 値や、クエリーストリングの値の定義ややり取りをします。</dd>
+<dt><cite>Miniblog_Action_Hello</cite></dt>
+<dd><p class="first">このクラスは、 <strong>アクションクラス</strong> です。Helloアクションの実装と、遷移先（ビュークラス）の決定をします。 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドや <tt class="docutils literal"><span class="pre">preform()</span></tt> メソッドにおける <tt class="docutils literal"><span class="pre">return</span></tt> は、ビュークラス名にあたります。作成したてのこのファイルでは <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドでは、文字列の <tt class="docutils literal"><span class="pre">'hellp'</span></tt> が返されることにより、次に <cite>Hello ビュー`</cite> が実行されることを表します。</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッド</dt>
+<dd>アクションクラスの中にあるこのメソッドでは、フォームの値の検証 (Validation) や、フォームの準備をする役割があります。</dd>
+<dt><tt class="docutils literal"><span class="pre">perform()</span></tt> メソッド</dt>
+<dd>このメソッドの中に、実際のアプリケーションの処理を記述します。</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h3>ビューの確認<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>続いて、ビュークラス <tt class="docutils literal"><span class="pre">app/view/Hello.php</span></tt> を確認してみましょう。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Miniblog_View_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ViewClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">preforward</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><cite>Miniblog_View_Hello</cite></dt>
+<dd><p class="first">このクラスは、 <strong>ビュークラス</strong> です。Helloビューにおける表示項目の設定などを行います。その他にも、HTTPヘッダの設定やテンプレートの設定などの役割もあります。</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">preforward()</span></tt> メソッド</dt>
+<dd>ビュークラスの中にあるこのメソッドの中に、Helloビューにおけるビューの実装はこのメソッドにします。</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h3>テンプレートの確認<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>次に、テンプレート <tt class="docutils literal"><span class="pre">template/ja_JP/hello.tpl</span></tt> を確認してみます。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>New Template<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>hello, world!<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>作成されたテンプレートは、これだけが記述された状態です。</p>
+<hr class="docutils" />
+<p>寄り道をしてしまいましたが、 <cite>Ethna</cite> の処理の流れがおおまかに理解できたでしょうか。これからアプリケーションの実装を行っていきます。</p>
+<p><a class="reference internal" href="03-logic.html#tutorial-03-logic"><em>3. アプリケーションの実装</em></a> に進んでください。</p>
 </div>
 </div>
 </div>
@@ -156,7 +226,7 @@ $ ethna add-template hello</pre>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="03-logic.html" title="3. ログインのロジックを作成"
+          <a href="03-logic.html" title="3. アプリケーションの実装"
              >next</a></li>
         <li class="right" >
           <a href="01-setup.html" title="1. プロジェクトのセットアップ"

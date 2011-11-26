@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. ログインのロジックを作成 &mdash; Ethna v2.6 documentation</title>
+    <title>3. アプリケーションの実装 &mdash; Ethna v2.6 documentation</title>
     <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
     <link rel="up" title="チュートリアル" href="../tutorial.html" />
     <link rel="next" title="動作概要" href="99-outline.html" />
-    <link rel="prev" title="2. アクション、ビュー、テンプレートの作成" href="02-action-view-tpl.html" /> 
+    <link rel="prev" title="2. アクション、ビュー、テンプレートの作成と処理の流れ" href="02-action-view-tpl.html" /> 
   </head>
   <body>
 <div id="ethna-header">
@@ -42,7 +42,7 @@
           <a href="99-outline.html" title="動作概要"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成と処理の流れ"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
           <li><a href="../tutorial.html" accesskey="U">チュートリアル</a> &raquo;</li> 
@@ -50,9 +50,30 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. アプリケーションの実装</a><ul>
+<li><a class="reference internal" href="#id2">このページでの目標</a></li>
+<li><a class="reference internal" href="#id3">アクションを追加</a></li>
+<li><a class="reference internal" href="#id4">フォームの作成</a><ul>
+<li><a class="reference internal" href="#id5">フォームの定義</a></li>
+<li><a class="reference internal" href="#id7">フォームの表示</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">投稿内容を表示</a></li>
+<li><a class="reference internal" href="#id9">投稿内容の検証とエラーの表示</a><ul>
+<li><a class="reference internal" href="#id10">投稿内容の検証</a></li>
+<li><a class="reference internal" href="#id11">エラーの表示</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">注釈</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="02-action-view-tpl.html"
-                        title="previous chapter">2. アクション、ビュー、テンプレートの作成</a></p>
+                        title="previous chapter">2. アクション、ビュー、テンプレートの作成と処理の流れ</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="99-outline.html"
                         title="next chapter">動作概要</a></p>
@@ -83,8 +104,168 @@
           <div class="body">
             
   <div class="section" id="tutorial-03-logic">
-<span id="id1"></span><h1>3. ログインのロジックを作成<a class="headerlink" href="#tutorial-03-logic" title="Permalink to this headline">¶</a></h1>
-<p>アクション〜テンプレート表示までのひと通りの流れはわかりましたか。続いて、フォームをもちいた実際おログイン処理を記述してみましょう。</p>
+<span id="id1"></span><h1>3. アプリケーションの実装<a class="headerlink" href="#tutorial-03-logic" title="Permalink to this headline">¶</a></h1>
+<p>ここから、ひとことブログアプリの実装を始めます。</p>
+<div class="section" id="id2">
+<h2>このページでの目標<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>投稿を処理するアクションを追加し、フォームを定義する</li>
+<li>フォームから入力された値を出力する</li>
+<li>フォームから入力された値を検証する</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>アクションを追加<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>さっそく、アクションを追加しましょう。今回作成するひとことブログでは、トップページにブログのリストを表示し、そこに投稿フォームを設置します。トップページのアクションは、アプリケーション作成時に自動的に <cite>Indexアクション</cite> が生成されているため、追加で必要となるアクションは、フォームを処理するアクションです。ここでは、 <cite>Commitアクション</cite> としましょう。</p>
+<p>次のように、 <cite>Commitアクション</cite> を作成します。</p>
+<div class="highlight-python"><pre>$ ethna add-action commit
+file generated [/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Commit.php]
+action script(s) successfully created [/var/www/miniblog/app/action/Commit.php]</pre>
+</div>
+<p>このアクションは、</p>
+<ul class="simple">
+<li>投稿の内容を検証</li>
+<li>投稿をデータベースに保存</li>
+<li>トップページにリダイレクト</li>
+</ul>
+<p>といった処理を行います。リダイレクトしてしまうため、ビュークラスとテンプレートは不要なので、生成しません。</p>
+</div>
+<div class="section" id="id4">
+<h2>フォームの作成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>投稿にあたって、どのようなフォームが必要となるかを考えましょう。ひとことブログなので、「内容」だけあればよさそうですね。</p>
+<div class="section" id="id5">
+<h3>フォームの定義<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt> を開き、アクションフォームに次のような設定をします。</p>
+<div class="highlight-php-inline"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Miniblog_Form_Commit</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionForm</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$form</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;comment&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">VAR_TYPE_STRING</span><span class="p">,</span>
+            <span class="s1">&#39;form_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">FORM_TYPE_TEXTAREA</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;コメント&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;max&#39;</span> <span class="o">=&gt;</span> <span class="mi">140</span><span class="p">,</span>
+            <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>これは、</p>
+<ul class="simple">
+<li>「コメント」という名前のフォーム</li>
+<li>値のタイプは文字列</li>
+<li>フォームタイプは TEXTAREA</li>
+<li>140文字以内</li>
+<li>必須項目</li>
+</ul>
+<p>という、フォームを定義しています。</p>
+<p>また、アクションクラスは、 <cite>index</cite> に戻るようにしておきましょう。 <a class="footnote-reference" href="#ref1" id="id6">[1]</a></p>
+<div class="highlight-php-inline"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Miniblog_Action_Commit</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">perform</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;index&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>フォームの表示<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>続いて、フォームを表示します。フォームは、トップページ (<cite>Indexアクション</cite>) に表示するため、テンプレートファイル <tt class="docutils literal"><span class="pre">template/ja_JP/index.tpl</span></tt> を編集します。</p>
+<p>フォームを出力するための <tt class="docutils literal"><span class="pre">{form}</span></tt> タグと <tt class="docutils literal"><span class="pre">{form_input}</span></tt> タグ、 <tt class="docutils literal"><span class="pre">{form_submit}</span></tt> タグを用います（これらのタグは、フォームヘルパと呼ばれます）。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>投稿<span class="nt">&lt;/h2&gt;</span>
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+  投稿内容:
+  {form_input name=&quot;comment&quot;}
+
+  {form_submit}
+{/form}
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">{form}</span></tt> タグには、 <tt class="docutils literal"><span class="pre">name</span></tt> フォーム名（適当でOK）と、送信したときどのアクションを実行するか (<tt class="docutils literal"><span class="pre">ethna_action</span></tt>)、を記述します。 <tt class="docutils literal"><span class="pre">ethna_action</span></tt> を設定することにより、そのアクションフォーム <cite>Miniblog_Form_Commit</cite> の設定が浸かるようになります。</p>
+<p><tt class="docutils literal"><span class="pre">{form_input}</span></tt> タグは、フォームの要素を出力します。 <cite>Miniblog_Form_Commit</cite> の <tt class="docutils literal"><span class="pre">$form</span></tt> プロパティに設定した、 <tt class="docutils literal"><span class="pre">comment</span></tt> を出力するため、 <tt class="docutils literal"><span class="pre">name=&quot;comment&quot;</span></tt> としています。</p>
+<p><tt class="docutils literal"><span class="pre">{form_submit}</span></tt> タグは、送信ボタンを出力します。</p>
+<p>ここまでできたら、ブラウザでアクセスしてみましょう。うまくいけば、フォームが出力されています。</p>
+<img alt="../_images/tutorial_03-01.png" src="../_images/tutorial_03-01.png" />
+</div>
+</div>
+<div class="section" id="id8">
+<h2>投稿内容を表示<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>ここまでの状態では、 <cite>submit</cite> をクリックしてもなにも表示できない状態ですね。投稿内容を表示させてみましょう。先ほどの <tt class="docutils literal"><span class="pre">index.tpl</span></tt> に、次のように <tt class="docutils literal"><span class="pre">{$form.comment}</span></tt> を追記します。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>投稿内容<span class="nt">&lt;/h2&gt;</span>
+{$form.comment}
+</pre></div>
+</div>
+<p>こうすると、テキストエリアに入力したコメントの内容が出力されたことがわかります。
+このように、フォームに入力された内容は、テンプレートの中では <tt class="docutils literal"><span class="pre">$form</span></tt> 変数を用いてアクセスすることができます。</p>
+<p>ところで、今フォームのテキストエリア内にも、内容が表示されていることがわかりますか？
+<cite>Ethna</cite> では、フォームヘルパを用いれば、フォームの値をあらかじめフォームに埋めておくような処理はフレームワークが勝手にやってくれます。
+これは、例えば、エラーで入力画面に戻った場合に、送信された値をフォームに入れておく、などの処理を書く必要がなくアクションフォームとフォームヘルパがうまく連携してやってくれる、ということです。</p>
+</div>
+<div class="section" id="id9">
+<h2>投稿内容の検証とエラーの表示<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>このままでは、まだフォームの入力内容をなにもチェックしていない状態ですし、内容に不備があった場合でも何のメッセージも表示されませんね。</p>
+<div class="section" id="id10">
+<h3>投稿内容の検証<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>まず、アクションクラスに、フォームの検証をする処理を追加してみます。フォームの検証は、 <cite>Commitアクション</cite> の <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッド内で行います。</p>
+<div class="highlight-php-inline"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">af</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;index&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">$this-&gt;af</span></tt> には、アクションフォームオブジェクト (<cite>ActionForm</cite> なので、 <cite>af</cite>) が入っています。 <tt class="docutils literal"><span class="pre">validate()</span></tt> メソッドを実行すると、フォーム値の検証が行われます。その戻り値はエラー数です。ここでは、エラー数が 0 より大きければ <tt class="docutils literal"><span class="pre">return</span> <span class="pre">'index'</span></tt> として、 <cite>Indexビュー</cite> に遷移します。</p>
+<p>ここでのポイントは、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> で <tt class="docutils literal"><span class="pre">return</span> <span class="pre">'index'</span></tt> とすることによって、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドが実行されない、ということです。 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドと <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドの戻り値は、それが <cite>null</cite> でなければ、ビュー名として扱われます。検証した結果 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドで <tt class="docutils literal"><span class="pre">'index'</span></tt> が返されることにより、このアクションは、 <strong>エラーが発生したら perform() メソッドにはいかず、Indexビューに遷移する</strong> といった処理になります。</p>
+</div>
+<div class="section" id="id11">
+<h3>エラーの表示<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>それでは、 <tt class="docutils literal"><span class="pre">index.tpl</span></tt> に戻り、どのようなエラーが発生したのかを表示してみます。フォームを次のように編集します。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>投稿<span class="nt">&lt;/h2&gt;</span>
+{if count($errors) &gt; 0}
+  入力内容にエラーがあります。
+{/if}
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+
+  投稿内容:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  {message name=&quot;comment&quot;}<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  {form_input name=&quot;comment&quot;}
+
+  {form_submit}
+
+{/form}
+</pre></div>
+</div>
+<p>フォームのエラー内容は <tt class="docutils literal"><span class="pre">{$errors}</span></tt> 変数に入っています。これが 0 より大きければ、「入力内容にエラーがあります。」と出力します。
+また、 <tt class="docutils literal"><span class="pre">{message}</span></tt> タグをもちいて、 <cite>comment</cite> のエラー内容を取得しています。</p>
+<p>例えば 、こうすると、何も入力せずに <cite>POST</cite> したとき、次のように、エラーが表示されます。</p>
+<img alt="../_images/tutorial_03-02.png" src="../_images/tutorial_03-02.png" />
+<p>また、140文字以上入力して送信した場合「コメントは140文字以下で入力して下さい」を出力されます。</p>
+<hr class="docutils" />
+<p>フォームの定義から検証・出力の流れがつかめましたか？</p>
+<p>続いて、データベースに接続し、この投稿内容を保存できるようにしてみましょう。</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>注釈<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td>デフォルトで作成されるアクションクラスは、 <cite>Commitビュー</cite> を使うようになっていますが、今回は <cite>Commitビュー</cite> は作成していないためです。後々、ここは正常に処理が終了した場合はリダイレクトする処理へとなります。</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -100,7 +281,7 @@
           <a href="99-outline.html" title="動作概要"
              >next</a></li>
         <li class="right" >
-          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成"
+          <a href="02-action-view-tpl.html" title="2. アクション、ビュー、テンプレートの作成と処理の流れ"
              >previous</a> |</li>
         <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
           <li><a href="../tutorial.html" >チュートリアル</a> &raquo;</li> 
