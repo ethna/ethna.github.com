@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>動作概要 &mdash; Ethna v2.6 documentation</title>
+    <title>4. データベースの接続 &mdash; Ethna v2.6 documentation</title>
     <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,8 +25,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
     <link rel="up" title="チュートリアル" href="../tutorial.html" />
-    <link rel="next" title="リファレンス" href="../reference.html" />
-    <link rel="prev" title="4. データベースの接続" href="04-database.html" /> 
+    <link rel="next" title="動作概要" href="99-outline.html" />
+    <link rel="prev" title="3. アプリケーションの実装" href="03-logic.html" /> 
   </head>
   <body>
 <div id="ethna-header">
@@ -39,10 +39,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../reference.html" title="リファレンス"
+          <a href="99-outline.html" title="動作概要"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="04-database.html" title="4. データベースの接続"
+          <a href="03-logic.html" title="3. アプリケーションの実装"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
           <li><a href="../tutorial.html" accesskey="U">チュートリアル</a> &raquo;</li> 
@@ -50,15 +50,24 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. データベースの接続</a><ul>
+<li><a class="reference internal" href="#id2">このページでの目標</a></li>
+<li><a class="reference internal" href="#id3">データベースの設定</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="04-database.html"
-                        title="previous chapter">4. データベースの接続</a></p>
+  <p class="topless"><a href="03-logic.html"
+                        title="previous chapter">3. アプリケーションの実装</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../reference.html"
-                        title="next chapter">リファレンス</a></p>
+  <p class="topless"><a href="99-outline.html"
+                        title="next chapter">動作概要</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/tutorial/99-outline.txt"
+    <li><a href="../_sources/tutorial/04-database.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -82,9 +91,36 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="tutorial-99-outline">
-<span id="id1"></span><h1>動作概要<a class="headerlink" href="#tutorial-99-outline" title="Permalink to this headline">¶</a></h1>
-<p><cite>Ethna</cite> で作成したアプリケーションの動作概要。</p>
+  <div class="section" id="tutorial-04-database">
+<span id="id1"></span><h1>4. データベースの接続<a class="headerlink" href="#tutorial-04-database" title="Permalink to this headline">¶</a></h1>
+<p>いよいよ <cite>Ethna</cite> からデータベースに接続してみます。</p>
+<div class="section" id="id2">
+<h2>このページでの目標<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Ethna でデータベースに接続する</li>
+<li>データベースから取り出した値を値をテンプレートで表示する</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>データベースの設定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><cite>etc/miniblog-ini.php</cite> を見てみましょう。ここには、データベースなどのアプリケーションの設定が記述されています。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="c1">// site</span>
+    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+
+    <span class="c1">// debug</span>
+    <span class="c1">// (to enable ethna_info and ethna_unittest, turn this true)</span>
+    <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+
+    <span class="c1">// db</span>
+    <span class="c1">// sample-1: single db</span>
+    <span class="c1">// &#39;dsn&#39; =&gt; &#39;mysql://user:password@server/database&#39;,</span>
+    <span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -97,10 +133,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../reference.html" title="リファレンス"
+          <a href="99-outline.html" title="動作概要"
              >next</a></li>
         <li class="right" >
-          <a href="04-database.html" title="4. データベースの接続"
+          <a href="03-logic.html" title="3. アプリケーションの実装"
              >previous</a> |</li>
         <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
           <li><a href="../tutorial.html" >チュートリアル</a> &raquo;</li> 

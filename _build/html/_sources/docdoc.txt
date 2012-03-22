@@ -16,7 +16,7 @@ Ethna のコミッタである `@sotarok <http://twitter.com/sotarok>`_ がド�
 リポジトリ
 ----------------
 
-*  `book.ethna.jp - GitHub <https://github.com/sotarok/book.ethna.jp>`_
+*  `book.ethna.jp - GitHub <https://github.com/ethna/book.ethna.jp>`_
 
 
 Sphinxインストール方法
@@ -26,7 +26,7 @@ Macの場合 ::
 
     $ sudo easy_install sphinx
 
-Linuxの場合 
+Linuxの場合
 
 aptitude/yum で python-setuptoolsをインストールした後、 ::
 
@@ -53,7 +53,6 @@ Sphinxドキュメントの書き方
 ----------------
 
 
-
 多分結構適当です。元々の http://ethna.jp/ の内容をベースに、バージョンに沿った内容に書きなおしたりしています。
 
 * develop ブランチはソースコードの develop ブランチを追従
@@ -75,5 +74,4 @@ Sphinxドキュメントの書き方
 
 
 ドキュメントを充実させることに協力いただけるのは大歓迎です！
-
 

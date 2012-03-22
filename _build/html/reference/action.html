@@ -191,7 +191,7 @@ action script(s) successfully created [/path/to/sample/app/action/Sample.php]</p
 }</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドと <tt class="docutils literal"><span class="pre">preform()</span></tt> メソッドの関係は以下のようになっていて、まず <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドが呼ばれ、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドが <tt class="docutils literal"><span class="pre">null</span></tt> を返した場合のみ <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドが呼び出されます。</p>
-<img alt="../_images/reference_action-01.png" src="../_images/reference_action-01.png" />
+<img alt="../_images/reference_action-011.png" src="../_images/reference_action-011.png" />
 <p>要するに、 <tt class="docutils literal"><span class="pre">prepare()</span></tt> メソッドでフォーム値の検証を行うこと、 <tt class="docutils literal"><span class="pre">perform()</span></tt> メソッドでは全てのデータがバリデート済みであるという前提で処理を行うことが出来、安全且つ簡潔なコードが書けるというわけです。</p>
 <p>なお、フォーム値の自動検証詳細については以下をご覧下さい。</p>
 <ul class="simple">

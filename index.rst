@@ -81,6 +81,7 @@ Ethna コマンドでプロジェクトを作成 ::
    upgrade
    article
    docdoc
+   dev
 
 
 .. _index-link:

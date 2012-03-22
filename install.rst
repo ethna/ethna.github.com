@@ -17,6 +17,12 @@ PEAR コマンドを使ったインストールが最も簡単であるため、
 
     $ pear channel-discover pear.ethna.jp
 
+
+.. warning::
+
+   PEAR のバージョンが古いと、channel-discover に失敗します。その場合はまず ``pear upgrade pear`` を実行してください。
+
+
 Ethna の PEAR チャネルが登録されたら、次のようにインストールします。 ::
 
     $ pear install -a ethna/ethna

@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>リリース手順 &mdash; Ethna v2.6 documentation</title>
+    <link rel="stylesheet" href="../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Ethna v2.6 documentation" href="../index.html" />
+    <link rel="up" title="開発ドキュメント" href="../dev.html" />
+    <link rel="prev" title="開発ドキュメント" href="../dev.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../index.html">
+  <img src="../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../dev.html" title="開発ドキュメント"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../dev.html" accesskey="U">開発ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">リリース手順</a><ul>
+<li><a class="reference internal" href="#id2">環境の前提</a></li>
+<li><a class="reference internal" href="#master-merge">コードフリーズし、master に merge</a></li>
+<li><a class="reference internal" href="#pear">PEAR チャネルの更新</a></li>
+<li><a class="reference internal" href="#id3">ドキュメントの更新</a></li>
+<li><a class="reference internal" href="#id4">リリースアナウンス</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../dev.html"
+                        title="previous chapter">開発ドキュメント</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/dev/release.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dev-release">
+<span id="id1"></span><h1>リリース手順<a class="headerlink" href="#dev-release" title="Permalink to this headline">¶</a></h1>
+<p>新しいリリースを出すときの手順のメモです。これもいっしょにやってくれよ、というのを見落としてたら追記していただけると助かります。</p>
+<div class="section" id="id2">
+<h2>環境の前提<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Linux での作業を前提にしています。</p>
+<dl class="docutils">
+<dt>必要環境</dt>
+<dd><ul class="first last simple">
+<li>PHP</li>
+<li>Git</li>
+<li>phpdoc</li>
+<li>Pirum</li>
+<li>Sphinx</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="master-merge">
+<h2>コードフリーズし、master に merge<a class="headerlink" href="#master-merge" title="Permalink to this headline">¶</a></h2>
+<p>2.6.0 を例に。gitflow 上で release ブランチを作成し、修正が済んだ状態とします。</p>
+<div class="highlight-python"><pre>$ git flow release finish 2.6.0</pre>
+</div>
+<p>この場合、 <tt class="docutils literal"><span class="pre">2.6.0</span></tt> の annotated tag が付けられます。続いて、GitHub へ push します。</p>
+<div class="highlight-python"><pre>$ git checkout master
+$ git push origin master
+$ git checkout develop
+$ git push origin develop
+$ git push --tags</pre>
+</div>
+</div>
+<div class="section" id="pear">
+<h2>PEAR チャネルの更新<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>ドキュメントの更新<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>お知らせの更新</li>
+<li>API ドキュメントの更新</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>リリースアナウンス<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">このドキュメントは作成中です。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../dev.html" title="開発ドキュメント"
+             >previous</a></li>
+        <li><a href="../index.html">Ethna v2.6 documentation</a> &raquo;</li>
+          <li><a href="../dev.html" >開発ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

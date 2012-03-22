@@ -104,6 +104,10 @@
 <p>最初の1回だけ、 <tt class="docutils literal"><span class="pre">channel-discover</span></tt> で Ethna のチャネルを登録する必要があります。</p>
 <div class="highlight-python"><pre>$ pear channel-discover pear.ethna.jp</pre>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">PEAR のバージョンが古いと、channel-discover に失敗します。その場合はまず <tt class="docutils literal"><span class="pre">pear</span> <span class="pre">upgrade</span> <span class="pre">pear</span></tt> を実行してください。</p>
+</div>
 <p>Ethna の PEAR チャネルが登録されたら、次のようにインストールします。</p>
 <div class="highlight-python"><pre>$ pear install -a ethna/ethna</pre>
 </div>
