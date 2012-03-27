@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="Ethna v2.6 documentation" href="index.html" />
+    <link rel="next" title="開発ドキュメント" href="dev.html" />
     <link rel="prev" title="その他の記事" href="article.html" /> 
   </head>
   <body>
@@ -37,8 +38,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="dev.html" title="開発ドキュメント"
+             accesskey="N">next</a></li>
+        <li class="right" >
           <a href="article.html" title="その他の記事"
-             accesskey="P">previous</a></li>
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Ethna v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
@@ -54,6 +58,12 @@
 <li><a class="reference internal" href="#id5">Sphinxドキュメントの書き方</a></li>
 <li><a class="reference internal" href="#id7">方針</a></li>
 <li><a class="reference internal" href="#id8">ドキュメントの追加など</a></li>
+<li><a class="reference internal" href="#id9">各項の簡単なルール</a><ul>
+<li><a class="reference internal" href="#id10">ドキュメントの名前</a></li>
+<li><a class="reference internal" href="#php">PHPコードの書き方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">その他</a></li>
 </ul>
 </li>
 </ul>
@@ -61,6 +71,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="article.html"
                         title="previous chapter">その他の記事</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dev.html"
+                        title="next chapter">開発ドキュメント</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/docdoc.txt"
@@ -89,8 +102,7 @@
             
   <div class="section" id="id1">
 <h1>このドキュメントについて<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>book.ethna.jp は、Ethna のドキュメントを整理するプロジェクトです。</p>
-<p>Ethna のコミッタである <a class="reference external" href="http://twitter.com/sotarok">&#64;sotarok</a> がドキュメント整備のために始めました。 <cite>Sphinx</cite> を使って作成されています。</p>
+<p>book.ethna.jp は、Ethna のドキュメントを整理するプロジェクトです。 <cite>Sphinx</cite> を使って作成されています。</p>
 <div class="section" id="id2">
 <h2>環境<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -103,6 +115,11 @@
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/ethna/book.ethna.jp">book.ethna.jp - GitHub</a></li>
 </ul>
+<blockquote>
+<div><ul class="simple">
+<li>内容は、 <cite>http://ethna.jp/</cite> に表示されます。</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="sphinx">
 <h2>Sphinxインストール方法<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
@@ -130,26 +147,48 @@ clone したディレクトリで</p>
 </div>
 <div class="section" id="id7">
 <h2>方針<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>多分結構適当です。元々の <a class="reference external" href="http://ethna.jp/">http://ethna.jp/</a> の内容をベースに、バージョンに沿った内容に書きなおしたりしています。</p>
-<ul class="simple">
-<li>develop ブランチはソースコードの develop ブランチを追従</li>
-<li>マイナーバージョンごとに develop ブランチ からのブランチを作成<ul>
-<li>バージョンごとのドキュメントはそのブランチ上で作業</li>
-</ul>
-</li>
-<li>ソースコードの master ブランチに対するドキュメントが整ったタイミングで master に merge<ul>
-<li>その後リリースされているバージョンに対するドキュメントの更新は master からの hotfix で作業</li>
-</ul>
-</li>
-</ul>
+<p>元々の <cite>http://ethna.jp/old/</cite> の内容をベースに、バージョンに沿った内容に書きなおしたりしています。</p>
+<p>生成済み Sphinx ドキュメントは GitHub Pages でホスティングされており、 <cite>http://ethna.jp/doc</cite> に適用されます。</p>
 </div>
 <div class="section" id="id8">
 <h2>ドキュメントの追加など<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>ドキュメントの間違いの指摘、修正、追加などは <cite>GitHub</cite> から直接 pull request を送っていただいても構いませんし、 <a class="reference external" href="http://ml.ethna.jp/mailman/listinfo/users">ML</a> で相談していただいても構いません。Pull request を送る際は、develop ブランチえ直接はコミットせず、他の名前でブランチを適当に区切ってから送ってください。</p>
+<p>ドキュメントの間違いの指摘、修正、追加などは <cite>GitHub</cite> から直接 pull request を送っていただいても構いませんし、 <a class="reference external" href="http://ml.ethna.jp/mailman/listinfo/users">ML</a> で相談していただいても構いません。Pull request を送る際は、master ブランチへ直接はコミットせず、他の名前でブランチを適当に区切ってから送ってください。</p>
 <ul class="simple">
 <li>参考: <a class="reference external" href="http://d.hatena.ne.jp/hnw/20110528">GitHubへpull requestする際のベストプラクティス</a></li>
 </ul>
 <p>ドキュメントを充実させることに協力いただけるのは大歓迎です！</p>
+</div>
+<div class="section" id="id9">
+<h2>各項の簡単なルール<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3>ドキュメントの名前<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>ドキュメント名前は、 ドキュメントファイル名のスラッシュをアンダースコアに変換したものを使います。</p>
+<dl class="docutils">
+<dt>例:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">install.rst</span></tt> の場合 <tt class="docutils literal"><span class="pre">..</span> <span class="pre">_install:</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">reference/action.rst</span></tt> の場合 <tt class="docutils literal"><span class="pre">..</span> <span class="pre">_reference_action:</span></tt></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="php">
+<h3>PHPコードの書き方<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
+<p>PHPコードは、次のように code-block をつかうとハイライトされます</p>
+<div class="highlight-python"><pre>.. code-block:: php-inline
+
+class Sample_Action_Sample extends Sample_ActionClass
+{
+    // ...
+}</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>その他<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>API ドキュメントは、生成済みのものを /api 以下に配置しているだけで Sphinx とは関係ありません</li>
+</ul>
 </div>
 </div>
 
@@ -163,8 +202,11 @@ clone したディレクトリで</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="dev.html" title="開発ドキュメント"
+             >next</a></li>
+        <li class="right" >
           <a href="article.html" title="その他の記事"
-             >previous</a></li>
+             >previous</a> |</li>
         <li><a href="index.html">Ethna v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
