@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2011/10/27 Ethna 2.6.0 beta3 リリース &mdash; Ethna v2.6 documentation</title>
+    <title>2012/3/31 Smarty 3.1.8, simpletest 1.1.0 (stable) のパッケージ配布 &mdash; Ethna v2.6 documentation</title>
     <link rel="stylesheet" href="_static/ethna.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -66,43 +66,19 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="ethna-2-6-0-beta3">
-<h1>2011/10/27 Ethna 2.6.0 beta3 リリース<a class="headerlink" href="#ethna-2-6-0-beta3" title="Permalink to this headline">¶</a></h1>
-<p>Ethna 2.6.0 beta3 をリリースしました。2.6.0 beta2 から主に以下の変更がされています。</p>
+  <div class="section" id="smarty-3-1-8-simpletest-1-1-0-stable">
+<h1>2012/3/31 Smarty 3.1.8, simpletest 1.1.0 (stable) のパッケージ配布<a class="headerlink" href="#smarty-3-1-8-simpletest-1-1-0-stable" title="Permalink to this headline">¶</a></h1>
+<p>Ethna 2.6.0 beta4 のリリースに先駆けて、Ethna の PEAR チャネルに
+Smarty 3.1.8、simpletest 1.1.0 (stable) のパッケージを追加しました。</p>
 <ul class="simple">
-<li>PHP 5.3 非推奨な記述の除去 (beta2 での抜けていた分の対応等)</li>
-<li>iniに url が設定されていない場合のURL判定機能</li>
-<li>シンプルな UrlHandler 実装 Ethna_UrlHandler_Simple の同梱 (thx. &#64;riaf)</li>
-<li>simpletest 1.1 alpha3 への対応</li>
-<li>オプションパッケージ Smarty3、simpletest1.1 のPEARパッケージングとEthnaチャネルでの配布</li>
-<li>サポートしないドライバの削除: Ethna_Renderer_Rhaco, Ethna_DB_Creole</li>
-<li>その他バグフィックス</li>
-</ul>
-<p>その他変更点の詳細は、 <a class="reference external" href="https://github.com/ethna/ethna/blob/2.6.0beta3/CHANGES.rst">CHANGES</a> をご覧ください。</p>
-<p>また、beta2 から beta3 の間に、以下のとおり運用環境も変更されています。</p>
-<ul class="simple">
-<li>ソースコードを SourceForge.JP から GitHub に移行しました</li>
-<li>それにともない、バグトラッキングも GitHub の Issues を利用しています<ul>
-<li>リポジトリはこちらです: <a class="reference external" href="https://github.com/ethna/ethna">https://github.com/ethna/ethna</a>
-バグトラックや、Pull Request 受け付けております</li>
-</ul>
-</li>
-<li>ドキュメントを、SourceForge.JP のサーバの PukiWiki から、GitHub Pages + Sphinx に変更しました<ul>
-<li>ドキュメントのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/ethna.github.com">https://github.com/ethna/ethna.github.com</a>
-誤字脱字の修正、記事の追加、以前のサイトからの記事の移行等、Pull Request 受け付けております</li>
-<li>以前の PukiWiki にあったドキュメントは、静的ファイル化し、 <a class="reference external" href="http://ethna.jp/old/">http://ethna.jp/old/</a> に移動しました。</li>
-</ul>
-</li>
-<li>PEAR チャネルサーバを、SourceForge.JPのサーバの Chiara から、GitHub Pages + Pirum による運用に変更しました<ul>
-<li>PEARサーバのリポジトリはこちら: <a class="reference external" href="https://github.com/ethna/pear">https://github.com/ethna/pear</a>
-こちらは、メンテナ以外が編集する必要性等はありません。</li>
-</ul>
-</li>
+<li><a class="reference external" href="http://pear.ethna.jp">pear.ethna.jp</a></li>
 </ul>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
-<p>以前からEthnaを利用していて、PEARのチャネルに pear.ethna.jp が登録さてれいる方は、必ず <tt class="docutils literal"><span class="pre">channel-update</span></tt> を行なってください。</p>
-<div class="last highlight-python"><pre>$ pear channel-update pear.ethna.jp</pre>
+<p>バージョン番号が同じため、すでに alpha の simpletest 1.1.0 を Ethna の PEAR チャネルからインストールしている場合、
+一度アンインストールする必要があります。</p>
+<div class="last highlight-python"><pre>$ pear uninstall ethna/simpletest
+$ pear install ethna/simpletest</pre>
 </div>
 </div>
 </div>
