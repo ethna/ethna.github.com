@@ -7,16 +7,18 @@ book.ethna.jp は、Ethna のドキュメントを整理するプロジェクト
 環境
 ------
 
-* `Sphinx 1.0.7 <http://sphinx.pocoo.org/>`_
+* `Sphinx 1.1.3 <http://sphinx.pocoo.org/>`_
 * `git-flow 0.4 <https://github.com/nvie/gitflow>`_
 
 
 リポジトリ
 ------------
 
-*  `book.ethna.jp - GitHub <https://github.com/ethna/book.ethna.jp>`_
 
-  * 内容は、 `http://ethna.jp/` に表示されます。
+* `book.ethna.jp - GitHub <https://github.com/ethna/book.ethna.jp>`_
+
+  * 内容は、 http://ethna.jp/ に表示されます。
+
 
 Sphinxインストール方法
 ------------------------
@@ -27,7 +29,7 @@ Macの場合 ::
 
 Linuxの場合
 
-aptitude/yum で python-setuptoolsをインストールした後、 ::
+aptitude/yum で `python-setuptools` をインストールした後、 ::
 
     $ sudo easy_install sphinx
 
