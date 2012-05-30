@@ -54,9 +54,12 @@
 <li><a class="reference internal" href="#">リリース手順</a><ul>
 <li><a class="reference internal" href="#id2">環境の前提</a></li>
 <li><a class="reference internal" href="#master-merge">コードフリーズし、master に merge</a></li>
+<li><a class="reference internal" href="#id3">パッケージング</a></li>
 <li><a class="reference internal" href="#pear">PEAR チャネルの更新</a></li>
-<li><a class="reference internal" href="#id3">ドキュメントの更新</a></li>
-<li><a class="reference internal" href="#id4">リリースアナウンス</a></li>
+<li><a class="reference internal" href="#id4">ドキュメントの更新</a><ul>
+<li><a class="reference internal" href="#api">API ドキュメントの更新</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -101,8 +104,9 @@
 <dd><ul class="first last simple">
 <li>PHP</li>
 <li>Git</li>
-<li>phpdoc</li>
-<li>Pirum</li>
+<li><a class="reference external" href="http://openpear.org/package/PEAR_PackageProjector">PEAR_PackageProjector</a></li>
+<li><a class="reference external" href="http://phpdoc.org/">phpDocumentor2</a></li>
+<li><a class="reference external" href="http://pirum.sensiolabs.org/">Pirum</a></li>
 <li>Sphinx</li>
 </ul>
 </dd>
@@ -121,21 +125,69 @@ $ git push origin develop
 $ git push --tags</pre>
 </div>
 </div>
+<div class="section" id="id3">
+<h2>パッケージング<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>PEAR パッケージを作成します。 <tt class="docutils literal"><span class="pre">./bin/ethna_make_package.sh</span></tt> を実行します。
+beta 版パッケージの場合、 <tt class="docutils literal"><span class="pre">-b</span></tt> をつけて実行します。</p>
+<div class="highlight-python"><pre>$ ./bin/ethna_make_package.sh
+または
+$ ./bin/ethna_make_package.sh -b</pre>
+</div>
+<p>正常に実行されると、 <tt class="docutils literal"><span class="pre">/tmp/ethna</span></tt> 以下に Ethna, Smarty (2, 3), simpletest (1.0.x, 1.1.x) のパッケージが生成されます。</p>
+<div class="highlight-python"><pre>$ ls -la /tmp/ethna
+drwxr-xr-x 10 sotarok sotarok    4096 2012-05-30 23:03 Ethna-2.6.0beta2012053023
+-rw-r--r--  1 sotarok sotarok 1210104 2012-05-30 23:03 Ethna-2.6.0beta2012053023.tgz
+-rw-r--r--  1 sotarok sotarok 1495395 2012-05-30 23:03 Ethna-2.6.0beta2012053023.zip
+-rw-r--r--  1 sotarok sotarok   67946 2012-05-30 23:03 Smarty-2.6.26.tgz
+-rw-r--r--  1 sotarok sotarok  147445 2012-05-30 23:03 Smarty3-3.1.4.tgz
+-rw-r--r--  1 sotarok sotarok   39554 2012-05-30 23:03 package.xml
+-rw-r--r--  1 sotarok sotarok  271591 2012-05-30 23:03 simpletest-1.0.1.tgz
+-rw-r--r--  1 sotarok sotarok  283269 2012-05-30 23:03 simpletest-1.1.0.tgz</pre>
+</div>
+</div>
 <div class="section" id="pear">
 <h2>PEAR チャネルの更新<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h2>
+<p>Pirum がインストールされていない場合はインストールします。</p>
+<div class="highlight-python"><pre>$ pear channel-discover pear.pirum-project.org
+$ pear install pirum/Pirum</pre>
 </div>
-<div class="section" id="id3">
-<h2>ドキュメントの更新<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>お知らせの更新</li>
-<li>API ドキュメントの更新</li>
-</ul>
+<p>PEAR パッケージがホストされている Git リポジトリを clone してきます。 <a class="reference external" href="https://github.com/ethna/pear">ethna/pear - GitHub</a></p>
+<div class="highlight-python"><pre>$ git clone git@github.com:ethna/pear.git</pre>
+</div>
+<p>先程生成された Ethna のパッケージを add します。optional package も、更新があれば add します。Success となれば完了。</p>
+<div class="highlight-python"><pre>$ pirum add . /tmp/ethna/Ethna-2.6.0beta2012053023.tgz
+...
+Running the add command:
+...
+   INFO   Building release 2.6.0beta2012053023 for Ethna.
+...
+   INFO   Building index.
+   INFO   Building feed.
+   INFO   Updating PEAR server files.
+   INFO   Command add run successfully.</pre>
+</div>
+<p>すべて git add し、GitHub に push します (push 前に手元で確認を)。
+GitHub Pages をホスティングとして使っているので、push すれば pear コマンド経由で新しいバージョンをインストールすることができるようになります。</p>
 </div>
 <div class="section" id="id4">
-<h2>リリースアナウンス<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">このドキュメントは作成中です。</p>
+<h2>ドキュメントの更新<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>お知らせの更新<ul>
+<li><tt class="docutils literal"><span class="pre">news.rst</span></tt> と <tt class="docutils literal"><span class="pre">latest_news.rst</span></tt> を更新します (公式サイトでのアナウンス)</li>
+<li>ML で告知します</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="api">
+<h3>API ドキュメントの更新<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<p>API ドキュメントは phpdoc で更新します。phpdoc は 2.0 系を使用します。</p>
+<div class="highlight-python"><pre>$ pear channel-discover pear.phpdoc.org
+$ pear install phpdoc/phpDocumentor-alpha</pre>
+</div>
+<p>ソースコードのディレクトリで実行すると、 <tt class="docutils literal"><span class="pre">phpdoc.dist.xml</span></tt> にしたがってAPIドキュメントが生成されます。</p>
+<div class="highlight-python"><pre>$ phpdoc</pre>
+</div>
+<p>データは <tt class="docutils literal"><span class="pre">data/phpdoc</span></tt> に生成されます。これを、ドキュメントのリポジトリの <tt class="docutils literal"><span class="pre">api/{VERSION}</span></tt> にコピーします。add したら push して完了。</p>
 </div>
 </div>
 </div>
