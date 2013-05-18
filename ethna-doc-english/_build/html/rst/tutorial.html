@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="prev" title="Installation" href="installation.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#setup-1-projects">Setup 1 Projects</a><ul>
+<li><a class="reference internal" href="#simple-blog-application">Simple Blog Application</a></li>
+<li><a class="reference internal" href="#application-information">1. Application information</a></li>
+<li><a class="reference internal" href="#verifying-the-directory-structure">Verifying the Directory Structure</a></li>
+<li><a class="reference internal" href="#setting-application-s-url">2. Setting Application&#8217;s Url</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flow-of-creation-processing-action-view-template">Flow of creation &amp; processing: Action, View, Template</a><ul>
+<li><a class="reference internal" href="#create-action-view-template">Create action, view, template</a></li>
+<li><a class="reference internal" href="#flow-of-processing-in-ethna">Flow of processing in Ethna</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rst/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup-1-projects">
+<h2>Setup 1 Projects<a class="headerlink" href="#setup-1-projects" title="Permalink to this headline">¶</a></h2>
+<p>This section teaches you to build your project
+in just a few steps with Ethna using <strong>command line</strong>.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Make sure once the Ethna is installed on your computer, you have made
+changes to your <tt class="docutils literal"><span class="pre">php.ini</span></tt> files. i.e. pear libraries are in the include
+path. On a Mac, you would do something like the following</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>emacs /etc/php.ini
+
+And <span class="k">then </span>add the appropriate path
+
+; <span class="nv">include_path</span> <span class="o">=</span> <span class="s2">&quot;.:/Users/YOUR-USER-NAME/pear/share/pear/&quot;</span>
+</pre></div>
+</div>
+<p class="last">Similarly, make the changes to your php.ini file on other Operating Systems.</p>
+</div>
+<div class="section" id="simple-blog-application">
+<h3>Simple Blog Application<a class="headerlink" href="#simple-blog-application" title="Permalink to this headline">¶</a></h3>
+<p>Here, we are going to create a simple blog application with Ethna and ethna&#8217;s command line tool.</p>
+<p>In this tutorial, there are two important learnings</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">Ethna</span></tt> flow of creating an application</li>
+<li>How to set up a url</li>
+</ol>
+</div>
+<div class="section" id="application-information">
+<h3>1. Application information<a class="headerlink" href="#application-information" title="Permalink to this headline">¶</a></h3>
+<p>Before developing an Application, there are two points to keep in mind.</p>
+<ol class="arabic simple">
+<li>Application ID (<em>must be letters</em>)
+e.g. miniblog</li>
+<li>Application Directory. Usually on Linux, it is <tt class="docutils literal"><span class="pre">/var/www/</span></tt>. Although, you may change it your directory by modifying the
+<tt class="docutils literal"><span class="pre">/etc/apache/httpd.config</span></tt> file.</li>
+</ol>
+<p>In this tutorial, we are going to use <tt class="docutils literal"><span class="pre">/var/www/</span></tt>.</p>
+<p>To create a new project command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-project</span> <span class="pre">AwesomeName</span></tt></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /var/www
+<span class="nv">$ </span>ethna add-project miniblog
+</pre></div>
+</div>
+<p>The above command will create a skeleton for the application. Following is the sample output.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-project miniblog
+creating directory <span class="o">(</span>/var/www/miniblog<span class="o">)</span> <span class="o">[</span>y/n<span class="o">]</span>: y
+project sub directory created <span class="o">[</span>/var/www/miniblog/app<span class="o">]</span>
+project sub directory created <span class="o">[</span>/var/www/miniblog/app/action<span class="o">]</span>
+
+...
+
+file generated <span class="o">[</span>/usr/share/php/Ethna/skel/skel.view_test.php -&gt; /var/www/miniblog/skel/skel.view_test.php<span class="o">]</span>
+
+project skeleton <span class="k">for</span> <span class="o">[</span>miniblog<span class="o">]</span> is successfully generated at <span class="o">[</span>/var/www/miniblog<span class="o">]</span>
+</pre></div>
+</div>
+<p>Above application has been generated.</p>
+</div>
+<div class="section" id="verifying-the-directory-structure">
+<h3>Verifying the Directory Structure<a class="headerlink" href="#verifying-the-directory-structure" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s take a peek at the directory and the files generated.</p>
+<div class="highlight-python"><pre>| - App (directory of the application)
+| | - Action (Action Script)
+| | - plugin (filter script)
+| | - test (test scripts)
+| `- View (view script)
+| - bin ( command line scripts)
+| - etc (configuration files, etc.)
+| - lib library) (application
+| - locale
+| `- ja_JP
+| - log (log file)
+| - schema (DB schema, etc.)
+| - - skel (skeleton application file)
+| - template
+| `- ja_JP (template file)
+| - tmp (temp files)
+`- www (web publishing file)</pre>
+</div>
+<p>Common use is in the following directory.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">app/</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/action</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/view</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">template/ja_JP</span></tt></li>
+</ul>
+</div>
+<div class="section" id="setting-application-s-url">
+<h3>2. Setting Application&#8217;s Url<a class="headerlink" href="#setting-application-s-url" title="Permalink to this headline">¶</a></h3>
+<p>Although you may see it on the <tt class="docutils literal"><span class="pre">localhost/miniblog/www</span></tt>. Also, in order to access the application from web browser, i.e. <tt class="docutils literal"><span class="pre">var/www/</span></tt>.
+We are going to set the <strong>Apache Virtual Host</strong> to <tt class="docutils literal"><span class="pre">http://miniblog.myhost/</span></tt> like the following:</p>
+<div class="highlight-python"><pre>&lt;VirtualHost *:80&gt;
+   ServerName miniblog.myhost
+   DocumentRoot /var/www/miniblog/www
+&lt;/VirtualHost&gt;</pre>
+</div>
+<p>Set up is complete lets try to view in the browser</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/</pre>
+</div>
+<p>If the set up is done correctly, you may should be able to see the following output</p>
+<a class="reference internal image-reference" href="../_images/tutorial_01-setup-01.png"><img alt="alternate text" class="align-center" src="../_images/tutorial_01-setup-01.png" /></a>
+<p>Next we are create action using ethna</p>
+</div>
+</div>
+<div class="section" id="flow-of-creation-processing-action-view-template">
+<h2>Flow of creation &amp; processing: Action, View, Template<a class="headerlink" href="#flow-of-creation-processing-action-view-template" title="Permalink to this headline">¶</a></h2>
+<p>Prior to creating a real application, we are going to add action, view and template to our miniblog.</p>
+<div class="section" id="create-action-view-template">
+<h3>Create action, view, template<a class="headerlink" href="#create-action-view-template" title="Permalink to this headline">¶</a></h3>
+<p>Next we are going to create action hello, which will be accessible from the following url</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/?action_hello=true</pre>
+</div>
+<p>There are 3 things to do</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">add-action</span> <span class="pre">hello</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">add-view</span> <span class="pre">hello</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">add-template</span> <span class="pre">hello</span></tt></li>
+</ul>
+<p>Let&#8217;s jump to the command line and do the above 3 steps.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-action hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Hello.php<span class="o">]</span>
+action script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/action/Hello.php<span class="o">]</span>
+
+<span class="nv">$ </span>ethna add-view hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.view.php -&gt; /var/www/miniblog/app/view/Hello.php<span class="o">]</span>
+view script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/view/Hello.php<span class="o">]</span>
+
+<span class="nv">$ </span>ethna add-template hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.template.tpl -&gt; /var/www/miniblog/template/ja_JP/hello.tpl<span class="o">]</span>
+template file<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/template/ja_JP/hello.tpl<span class="o">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<dl class="last docutils">
+<dt>You can add a view and template in one command by adding <tt class="docutils literal"><span class="pre">-t</span></tt> like this</dt>
+<dd><div class="first last highlight-python"><pre>add-view -t hello</pre>
+</div>
+</dd>
+</dl>
+</div>
+<p>Now, the view for the added action named <tt class="docutils literal"><span class="pre">hello</span></tt> can be viewed in the browser with the following url</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/?action_hello=true</pre>
+</div>
+<p>The browser should display the following</p>
+<a class="reference internal image-reference" href="../_images/tutorial_02-02.png"><img alt="alternate text" class="align-center" src="../_images/tutorial_02-02.png" /></a>
+</div>
+<div class="section" id="flow-of-processing-in-ethna">
+<h3>Flow of processing in Ethna<a class="headerlink" href="#flow-of-processing-in-ethna" title="Permalink to this headline">¶</a></h3>
+<p>This diagram illustrates the flow of processing Ethna</p>
+<a class="reference internal image-reference" href="../_images/tutorial_02-action-view-template-01.png"><img alt="alternate text" class="align-center" src="../_images/tutorial_02-action-view-template-01.png" /></a>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Ethna Project.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
