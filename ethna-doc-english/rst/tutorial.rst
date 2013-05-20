@@ -332,7 +332,7 @@ The following connects to the database in ``app/action/Hello.php``
 
    function perform()
    {
-       $db =& $this->backend->getDB();
+       $db = & $this->backend->getDB();
        $db->db->setFetchMode(DB_FETCHMODE_OBJ);
    }
 
@@ -346,8 +346,8 @@ SELECT, INSERT, UPDATE with ``$db``
 
    $sql = "SELECT * FROM users where id > ?";
    $params = array("1");
-   $stmt =& $db->db->prepare($sql);
-   $res =& $db->db->execute($stmt,$params);
+   $stmt = & $db->db->prepare($sql);
+   $res = & $db->db->execute($stmt,$params);
    
    echo "<pre>";
    $i = 0;
@@ -371,8 +371,8 @@ SELECT, INSERT, UPDATE with ``$db``
           "1111",
           "gamers"
           );
-    $stmt =& $db->db->prepare($sql);
-    $res =& $db->db->execute($stmt,$params);
+    $stmt = & $db->db->prepare($sql);
+    $res = & $db->db->execute($stmt,$params);
      
     //Note that this message only exists in case of DB error         
     if (method_exists($res, 'getMessage')){
@@ -385,8 +385,8 @@ SELECT, INSERT, UPDATE with ``$db``
 
    $sql = "UPDATE puzzle SET playedby=?,solved=?,score=score +100 WHERE id=?";
    $params = array("johny", '1',  "111");
-   $stmt =& $db->db->prepare($sql);
-   $stmt =& $db->db->execute($stmt,$params);
+   $stmt = & $db->db->prepare($sql);
+   $stmt = & $db->db->execute($stmt,$params);
 
 .. tip::
 
