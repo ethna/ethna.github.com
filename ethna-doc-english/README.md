@@ -1,5 +1,6 @@
-This is the English transtlation of the documenation.
+This is the English translation of the documenation.
 Work is in Progress.
+Typos may occur.
 
-_build/html/index.html
+``_build/html/index.html``
 
