@@ -362,7 +362,7 @@ To connect to the database uncomment the <tt class="docutils literal"><span clas
 <p>The following connects to the database in <tt class="docutils literal"><span class="pre">app/action/Hello.php</span></tt></p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">function perform()</span>
 <span class="x">{</span>
-<span class="x">    $db =&amp; $this-&gt;backend-&gt;getDB();</span>
+<span class="x">    $db = &amp; $this-&gt;backend-&gt;getDB();</span>
 <span class="x">    $db-&gt;db-&gt;setFetchMode(DB_FETCHMODE_OBJ);</span>
 <span class="x">}</span>
 </pre></div>
@@ -373,8 +373,8 @@ To connect to the database uncomment the <tt class="docutils literal"><span clas
 <p><strong>SELECT</strong></p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$sql = &quot;SELECT * FROM users where id &gt; ?&quot;;</span>
 <span class="x">$params = array(&quot;1&quot;);</span>
-<span class="x">$stmt =&amp; $db-&gt;db-&gt;prepare($sql);</span>
-<span class="x">$res =&amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$res = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
 
 <span class="x">echo &quot;&lt;pre&gt;&quot;;</span>
 <span class="x">$i = 0;</span>
@@ -396,8 +396,8 @@ To connect to the database uncomment the <tt class="docutils literal"><span clas
 <span class="x">      &quot;1111&quot;,</span>
 <span class="x">      &quot;gamers&quot;</span>
 <span class="x">      );</span>
-<span class="x">$stmt =&amp; $db-&gt;db-&gt;prepare($sql);</span>
-<span class="x">$res =&amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$res = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
 
 <span class="x">//Note that this message only exists in case of DB error</span>
 <span class="x">if (method_exists($res, &#39;getMessage&#39;)){</span>
@@ -408,8 +408,8 @@ To connect to the database uncomment the <tt class="docutils literal"><span clas
 <p><strong>UPDATE</strong></p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$sql = &quot;UPDATE puzzle SET playedby=?,solved=?,score=score +100 WHERE id=?&quot;;</span>
 <span class="x">$params = array(&quot;johny&quot;, &#39;1&#39;,  &quot;111&quot;);</span>
-<span class="x">$stmt =&amp; $db-&gt;db-&gt;prepare($sql);</span>
-<span class="x">$stmt =&amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
 </pre></div>
 </div>
 <div class="admonition tip">
