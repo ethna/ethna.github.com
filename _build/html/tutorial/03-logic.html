@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -196,7 +194,7 @@ action script(s) successfully created [/var/www/miniblog/app/action/Commit.php]<
 <p><tt class="docutils literal"><span class="pre">{form_input}</span></tt> タグは、フォームの要素を出力します。 <cite>Miniblog_Form_Commit</cite> の <tt class="docutils literal"><span class="pre">$form</span></tt> プロパティに設定した、 <tt class="docutils literal"><span class="pre">comment</span></tt> を出力するため、 <tt class="docutils literal"><span class="pre">name=&quot;comment&quot;</span></tt> としています。</p>
 <p><tt class="docutils literal"><span class="pre">{form_submit}</span></tt> タグは、送信ボタンを出力します。</p>
 <p>ここまでできたら、ブラウザでアクセスしてみましょう。うまくいけば、フォームが出力されています。</p>
-<img alt="../_images/tutorial_03-01.png" src="../_images/tutorial_03-01.png" />
+<img alt="../_images/tutorial_03-011.png" src="../_images/tutorial_03-011.png" />
 </div>
 </div>
 <div class="section" id="id8">
@@ -253,7 +251,7 @@ action script(s) successfully created [/var/www/miniblog/app/action/Commit.php]<
 <p>フォームのエラー内容は <tt class="docutils literal"><span class="pre">{$errors}</span></tt> 変数に入っています。これが 0 より大きければ、「入力内容にエラーがあります。」と出力します。
 また、 <tt class="docutils literal"><span class="pre">{message}</span></tt> タグをもちいて、 <cite>comment</cite> のエラー内容を取得しています。</p>
 <p>例えば 、こうすると、何も入力せずに <cite>POST</cite> したとき、次のように、エラーが表示されます。</p>
-<img alt="../_images/tutorial_03-02.png" src="../_images/tutorial_03-02.png" />
+<img alt="../_images/tutorial_03-021.png" src="../_images/tutorial_03-021.png" />
 <p>また、140文字以上入力して送信した場合「コメントは140文字以下で入力して下さい」を出力されます。</p>
 <hr class="docutils" />
 <p>フォームの定義から検証・出力の流れがつかめましたか？</p>
@@ -292,7 +290,7 @@ action script(s) successfully created [/var/www/miniblog/app/action/Commit.php]<
     </div>
     <div class="footer">
         &copy; Copyright 2011, Ethna Project.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

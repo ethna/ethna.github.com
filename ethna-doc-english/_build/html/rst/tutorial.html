@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="next" title="Reference" href="reference.html" />
     <link rel="prev" title="Installation" href="installation.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="Reference"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
@@ -81,6 +85,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="installation.html"
                         title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference.html"
+                        title="next chapter">Reference</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/rst/tutorial.txt"
@@ -473,20 +480,21 @@ are more than 140 or 0.</p>
 <p>Setting database is pretty straight forward with ethna.
 Settings are defined in <tt class="docutils literal"><span class="pre">etc/miniblog-ini.php</span></tt>.
 To connect to the database uncomment the <tt class="docutils literal"><span class="pre">dsn</span></tt> like the following.</p>
-<div class="highlight-php-inline"><pre>&lt;?php
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
-$config = array(
-   // site
-   'url' =&gt; '',
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+   <span class="c1">// site</span>
+   <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
 
-   // debug
-   // (to enable ethna_info and ethna_unittest, turn this true)
-   'debug' =&gt; true,
+   <span class="c1">// debug</span>
+   <span class="c1">// (to enable ethna_info and ethna_unittest, turn this true)</span>
+   <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 
-   // db
-   // sample-1: single db
-   // 'dsn' =&gt; 'mysql://user:password@server/database',
-   // ...</pre>
+   <span class="c1">// db</span>
+   <span class="c1">// sample-1: single db</span>
+   <span class="c1">// &#39;dsn&#39; =&gt; &#39;mysql://user:password@server/database&#39;,</span>
+   <span class="c1">// ...</span>
+</pre></div>
 </div>
 <p>Replace the</p>
 <ul class="simple">
@@ -572,6 +580,9 @@ $config = array(
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="Reference"
+             >next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >previous</a> |</li>
