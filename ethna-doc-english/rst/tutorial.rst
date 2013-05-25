@@ -282,6 +282,171 @@ Lets, play with the ``helloVariable`` and try to print it in the template
 Implementation of Application
 ------------------------------
 
+Lets start the implementation of creating a blog via learning following 3 things
+
+1. Add action to handle the post, defined in a form.
+2. Output the value from the form.
+3. Validate the values from input form.
+
+Add action
+++++++++++
+
+First is to quickly add an action named ``commit`` by the command ``ethna add-action commit``
+
+.. code-block:: bash
+
+   $ ethna add-action commit
+   file generated [/var/www/miniblog/skel/skel.action.php -> /var/www/miniblog/app/action/Commit.php]
+   action script(s) successfully created [/var/www/miniblog/app/action/Commit.php]
+
+As the message also shows, there should be a file generated in ``app/action/Commit.php``
+Here, there are two classes, 
+
+1. ``class Miniblog_Form_Commit extends Miniblog_ActionForm`` that handles the input fields for the form 
+2. ``class Miniblog_Action_Commit extends Miniblog_ActionClass`` that performs actions upon input/submitting the form
+
+Lets take a look at them one by one
+
+Creating Form
++++++++++++++
+
+In ``app/action/Commit.php``
+
+.. code-block:: php
+
+   class  Miniblog_Form_Commit  extends  Miniblog_ActionForm 
+   { 
+       protected  $ form  =  array ( 
+           'Comment'  =>  array ( 
+               'type'  =>  VAR_TYPE_STRING , 
+               'Form_type'  =>  FORM_TYPE_TEXTAREA , 
+               'name'  =>  'comment' , 
+               'max'  =>  140 , 
+               'required '  =>  true , 
+           ), 
+       ); 
+   }
+
+Which is:
+
+- Form named **Comments**
+- The value type is string
+- Form type is TEXTAREA
+- 140 Characters
+- Required Item
+
+And the second class
+
+.. code-block:: php
+
+   class Miniblog_Action_Commit extends Miniblog_ActionClass
+   {
+       public function prepare()
+       {
+           return null;
+       }
+
+       public function perform()
+       {
+           return 'index';
+       }
+   }
+
+We will talk about this second class ``Miniblog_ActionClass`` soon, but first lets create the form to 
+be shown in the browser.
+
+Display Form
+++++++++++++
+
+Lets display the form in our ``template/ja_JP/index.tpl`` file
+
+.. code-block:: html
+
+   <h2>Post</h2>
+
+   {form name="form_comment" ethna_action="commit"}
+     Post Content:
+     {form_input name="comment"}
+
+     {form_submit}
+    {/form}
+
+``ethna_action`` defines the action to be called. It is similar to doing ``action="commit.php"`` in plain html form.
+Similarity other values are self explanatory.
+
+
+Upon visiting the browser, a page similar to following should appear.
+
+.. image:: ../images/tutorial_03-01.png
+   :scale: 100 %
+   :alt: alternate text
+   :align: center
+
+Showing the POST content
+++++++++++++++++++++++++
+
+.. code-block:: html
+
+   <h2>Comment</h2>
+   {$form.comment}
+
+This way you should be able to see the post content after the submit button from the text area.
+``$form`` is used to access the variables defined in the ActionForm class.
+
+Display Validation and Error content of POST
+++++++++++++++++++++++++++++++++++++++++++++
+
+Here we explain about the ``Miniblog_ActionClass`` where the validations to the form can be performed.
+
+.. code-block:: php
+
+   public function prepare() 
+   {
+      if ($this->af->validate() > 0) {
+          return 'index';
+      }
+      return null;
+   }
+
+Firstly, ``prepare()`` is called, here the necessary preparations can be done, like assigning values to instances,
+performing checks etc.
+
+``$this->af`` is the action form object, while ``validate()`` executes the method that performs validations on the 
+input value. The point here is that if there is a trouble with the validation, the next method ``prepare()`` will not
+be called and instead the ``index`` will be returned (rendered).
+
+Displaying Errors
++++++++++++++++++
+
+Error content for the form are handled by the variable ``$error``.
+
+.. code-block:: html
+
+   <h2>Posting Comment</h2>
+   {if count($errors) > 0}
+   There was an error !
+   {/if}
+
+   {form name="form_comment" ethna_action="commit"}
+
+    Post Content:<br />
+    {message name="comment"}<br />
+    {form_input name="comment"}
+
+    {form_submit}
+
+   {/form}
+
+Where the output of the above code would be the following, if the characters in the text area 
+are more than 140 or 0.
+
+.. image:: ../images/tutorial_03-02.png
+   :scale: 100 %
+   :alt: alternate text
+   :align: center
+   
+
+
 Connection to Database
 ----------------------
 

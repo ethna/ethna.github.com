@@ -59,7 +59,15 @@
 <li><a class="reference internal" href="#template">Template</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#implementation-of-application">Implementation of Application</a></li>
+<li><a class="reference internal" href="#implementation-of-application">Implementation of Application</a><ul>
+<li><a class="reference internal" href="#add-action">Add action</a></li>
+<li><a class="reference internal" href="#creating-form">Creating Form</a></li>
+<li><a class="reference internal" href="#display-form">Display Form</a></li>
+<li><a class="reference internal" href="#showing-the-post-content">Showing the POST content</a></li>
+<li><a class="reference internal" href="#display-validation-and-error-content-of-post">Display Validation and Error content of POST</a></li>
+<li><a class="reference internal" href="#displaying-errors">Displaying Errors</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#connection-to-database">Connection to Database</a><ul>
 <li><a class="reference internal" href="#setting-database">Setting Database</a></li>
 <li><a class="reference internal" href="#connecting-to-database-in-action-class">Connecting to Database in Action Class</a></li>
@@ -319,6 +327,139 @@ directory <tt class="docutils literal"><span class="pre">template/ja_JP/hello.tp
 </div>
 <div class="section" id="implementation-of-application">
 <h2>Implementation of Application<a class="headerlink" href="#implementation-of-application" title="Permalink to this headline">¶</a></h2>
+<p>Lets start the implementation of creating a blog via learning following 3 things</p>
+<ol class="arabic simple">
+<li>Add action to handle the post, defined in a form.</li>
+<li>Output the value from the form.</li>
+<li>Validate the values from input form.</li>
+</ol>
+<div class="section" id="add-action">
+<h3>Add action<a class="headerlink" href="#add-action" title="Permalink to this headline">¶</a></h3>
+<p>First is to quickly add an action named <tt class="docutils literal"><span class="pre">commit</span></tt> by the command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-action</span> <span class="pre">commit</span></tt></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-action commit
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Commit.php<span class="o">]</span>
+action script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/action/Commit.php<span class="o">]</span>
+</pre></div>
+</div>
+<p>As the message also shows, there should be a file generated in <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt>
+Here, there are two classes,</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">class</span> <span class="pre">Miniblog_Form_Commit</span> <span class="pre">extends</span> <span class="pre">Miniblog_ActionForm</span></tt> that handles the input fields for the form</li>
+<li><tt class="docutils literal"><span class="pre">class</span> <span class="pre">Miniblog_Action_Commit</span> <span class="pre">extends</span> <span class="pre">Miniblog_ActionClass</span></tt> that performs actions upon input/submitting the form</li>
+</ol>
+<p>Lets take a look at them one by one</p>
+</div>
+<div class="section" id="creating-form">
+<h3>Creating Form<a class="headerlink" href="#creating-form" title="Permalink to this headline">¶</a></h3>
+<p>In <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class  Miniblog_Form_Commit  extends  Miniblog_ActionForm</span>
+<span class="x">{</span>
+<span class="x">    protected  $ form  =  array (</span>
+<span class="x">        &#39;Comment&#39;  =&gt;  array (</span>
+<span class="x">            &#39;type&#39;  =&gt;  VAR_TYPE_STRING ,</span>
+<span class="x">            &#39;Form_type&#39;  =&gt;  FORM_TYPE_TEXTAREA ,</span>
+<span class="x">            &#39;name&#39;  =&gt;  &#39;comment&#39; ,</span>
+<span class="x">            &#39;max&#39;  =&gt;  140 ,</span>
+<span class="x">            &#39;required &#39;  =&gt;  true ,</span>
+<span class="x">        ),</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Which is:</p>
+<ul class="simple">
+<li>Form named <strong>Comments</strong></li>
+<li>The value type is string</li>
+<li>Form type is TEXTAREA</li>
+<li>140 Characters</li>
+<li>Required Item</li>
+</ul>
+<p>And the second class</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Miniblog_Action_Commit extends Miniblog_ActionClass</span>
+<span class="x">{</span>
+<span class="x">    public function prepare()</span>
+<span class="x">    {</span>
+<span class="x">        return null;</span>
+<span class="x">    }</span>
+
+<span class="x">    public function perform()</span>
+<span class="x">    {</span>
+<span class="x">        return &#39;index&#39;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>We will talk about this second class <tt class="docutils literal"><span class="pre">Miniblog_ActionClass</span></tt> soon, but first lets create the form to
+be shown in the browser.</p>
+</div>
+<div class="section" id="display-form">
+<h3>Display Form<a class="headerlink" href="#display-form" title="Permalink to this headline">¶</a></h3>
+<p>Lets display the form in our <tt class="docutils literal"><span class="pre">template/ja_JP/index.tpl</span></tt> file</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Post<span class="nt">&lt;/h2&gt;</span>
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+  Post Content:
+  {form_input name=&quot;comment&quot;}
+
+  {form_submit}
+ {/form}
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">ethna_action</span></tt> defines the action to be called. It is similar to doing <tt class="docutils literal"><span class="pre">action=&quot;commit.php&quot;</span></tt> in plain html form.
+Similarity other values are self explanatory.</p>
+<p>Upon visiting the browser, a page similar to following should appear.</p>
+<a class="reference internal image-reference" href="../_images/tutorial_03-01.png"><img alt="alternate text" class="align-center" src="../_images/tutorial_03-01.png" /></a>
+</div>
+<div class="section" id="showing-the-post-content">
+<h3>Showing the POST content<a class="headerlink" href="#showing-the-post-content" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Comment<span class="nt">&lt;/h2&gt;</span>
+{$form.comment}
+</pre></div>
+</div>
+<p>This way you should be able to see the post content after the submit button from the text area.
+<tt class="docutils literal"><span class="pre">$form</span></tt> is used to access the variables defined in the ActionForm class.</p>
+</div>
+<div class="section" id="display-validation-and-error-content-of-post">
+<h3>Display Validation and Error content of POST<a class="headerlink" href="#display-validation-and-error-content-of-post" title="Permalink to this headline">¶</a></h3>
+<p>Here we explain about the <tt class="docutils literal"><span class="pre">Miniblog_ActionClass</span></tt> where the validations to the form can be performed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function prepare()</span>
+<span class="x">{</span>
+<span class="x">   if ($this-&gt;af-&gt;validate() &gt; 0) {</span>
+<span class="x">       return &#39;index&#39;;</span>
+<span class="x">   }</span>
+<span class="x">   return null;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Firstly, <tt class="docutils literal"><span class="pre">prepare()</span></tt> is called, here the necessary preparations can be done, like assigning values to instances,
+performing checks etc.</p>
+<p><tt class="docutils literal"><span class="pre">$this-&gt;af</span></tt> is the action form object, while <tt class="docutils literal"><span class="pre">validate()</span></tt> executes the method that performs validations on the
+input value. The point here is that if there is a trouble with the validation, the next method <tt class="docutils literal"><span class="pre">prepare()</span></tt> will not
+be called and instead the <tt class="docutils literal"><span class="pre">index</span></tt> will be returned (rendered).</p>
+</div>
+<div class="section" id="displaying-errors">
+<h3>Displaying Errors<a class="headerlink" href="#displaying-errors" title="Permalink to this headline">¶</a></h3>
+<p>Error content for the form are handled by the variable <tt class="docutils literal"><span class="pre">$error</span></tt>.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Posting Comment<span class="nt">&lt;/h2&gt;</span>
+{if count($errors) &gt; 0}
+There was an error !
+{/if}
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+
+ Post Content:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+ {message name=&quot;comment&quot;}<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+ {form_input name=&quot;comment&quot;}
+
+ {form_submit}
+
+{/form}
+</pre></div>
+</div>
+<p>Where the output of the above code would be the following, if the characters in the text area
+are more than 140 or 0.</p>
+<a class="reference internal image-reference" href="../_images/tutorial_03-02.png"><img alt="alternate text" class="align-center" src="../_images/tutorial_03-02.png" /></a>
+</div>
 </div>
 <div class="section" id="connection-to-database">
 <h2>Connection to Database<a class="headerlink" href="#connection-to-database" title="Permalink to this headline">¶</a></h2>
@@ -332,21 +473,20 @@ directory <tt class="docutils literal"><span class="pre">template/ja_JP/hello.tp
 <p>Setting database is pretty straight forward with ethna.
 Settings are defined in <tt class="docutils literal"><span class="pre">etc/miniblog-ini.php</span></tt>.
 To connect to the database uncomment the <tt class="docutils literal"><span class="pre">dsn</span></tt> like the following.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php-inline"><pre>&lt;?php
 
-<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-   <span class="c1">// site</span>
-   <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+$config = array(
+   // site
+   'url' =&gt; '',
 
-   <span class="c1">// debug</span>
-   <span class="c1">// (to enable ethna_info and ethna_unittest, turn this true)</span>
-   <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+   // debug
+   // (to enable ethna_info and ethna_unittest, turn this true)
+   'debug' =&gt; true,
 
-   <span class="c1">// db</span>
-   <span class="c1">// sample-1: single db</span>
-   <span class="c1">// &#39;dsn&#39; =&gt; &#39;mysql://user:password@server/database&#39;,</span>
-   <span class="c1">// ...</span>
-</pre></div>
+   // db
+   // sample-1: single db
+   // 'dsn' =&gt; 'mysql://user:password@server/database',
+   // ...</pre>
 </div>
 <p>Replace the</p>
 <ul class="simple">

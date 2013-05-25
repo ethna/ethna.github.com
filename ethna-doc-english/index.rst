@@ -43,3 +43,4 @@ Contents:
    rst/quickStart
    rst/installation
    rst/tutorial
+   rst/reference
