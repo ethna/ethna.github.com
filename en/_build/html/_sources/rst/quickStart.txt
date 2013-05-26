@@ -10,7 +10,7 @@ Installation is simple using ``PEAR``
 
 .. Note::
 
-   If permission errors or not able to discover then try with sudo like 
+   If permission errors or not able to discover then try with ``sudo`` like 
    
    .. code-block:: bash
   
