@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; Ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/ethna.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Ethna 2.6 documentation" href="../../index.html" /> 
+  </head>
+  <body>
+<div id="ethna-header">
+  <a href="../../index.html">
+  <img src="../../_static/logo_transpand.png" alt="Ethna" />
+  </a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#setup-1-projects">Setup 1 Projects</a><ul>
+<li><a class="reference internal" href="#simple-blog-application">Simple Blog Application</a></li>
+<li><a class="reference internal" href="#application-information">1. Application information</a></li>
+<li><a class="reference internal" href="#verifying-the-directory-structure">Verifying the Directory Structure</a></li>
+<li><a class="reference internal" href="#setting-application-s-url">2. Setting Application&#8217;s Url</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flow-of-creation-processing-action-view-template">Flow of creation &amp; processing: Action, View, Template</a><ul>
+<li><a class="reference internal" href="#create-action-view-template">Create action, view, template</a></li>
+<li><a class="reference internal" href="#flow-of-processing-in-ethna">Flow of processing in Ethna</a></li>
+<li><a class="reference internal" href="#action">Action</a></li>
+<li><a class="reference internal" href="#view">View</a></li>
+<li><a class="reference internal" href="#template">Template</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation-of-application">Implementation of Application</a><ul>
+<li><a class="reference internal" href="#add-action">Add action</a></li>
+<li><a class="reference internal" href="#creating-form">Creating Form</a></li>
+<li><a class="reference internal" href="#display-form">Display Form</a></li>
+<li><a class="reference internal" href="#showing-the-post-content">Showing the POST content</a></li>
+<li><a class="reference internal" href="#display-validation-and-error-content-of-post">Display Validation and Error content of POST</a></li>
+<li><a class="reference internal" href="#displaying-errors">Displaying Errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connection-to-database">Connection to Database</a><ul>
+<li><a class="reference internal" href="#setting-database">Setting Database</a></li>
+<li><a class="reference internal" href="#connecting-to-database-in-action-class">Connecting to Database in Action Class</a></li>
+<li><a class="reference internal" href="#select-insert-update-with-db">SELECT, INSERT, UPDATE with <tt class="docutils literal"><span class="pre">$db</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/en/rst/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup-1-projects">
+<h2>Setup 1 Projects<a class="headerlink" href="#setup-1-projects" title="Permalink to this headline">¶</a></h2>
+<p>This section teaches you to build your project
+in just a few steps with Ethna using <strong>command line</strong>.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Make sure once the Ethna is installed on your computer, you have made
+changes to your <tt class="docutils literal"><span class="pre">php.ini</span></tt> files. i.e. pear libraries are in the include
+path. On a Mac, you would do something like the following</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>emacs /etc/php.ini
+
+And <span class="k">then </span>add the appropriate path
+
+; <span class="nv">include_path</span> <span class="o">=</span> <span class="s2">&quot;.:/Users/YOUR-USER-NAME/pear/share/pear/&quot;</span>
+</pre></div>
+</div>
+<p class="last">Similarly, make the changes to your php.ini file on other Operating Systems.</p>
+</div>
+<div class="section" id="simple-blog-application">
+<h3>Simple Blog Application<a class="headerlink" href="#simple-blog-application" title="Permalink to this headline">¶</a></h3>
+<p>Here, we are going to create a simple blog application with Ethna and ethna&#8217;s command line tool.</p>
+<p>In this tutorial, there are two important learnings</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">Ethna</span></tt> flow of creating an application</li>
+<li>How to set up a url</li>
+</ol>
+</div>
+<div class="section" id="application-information">
+<h3>1. Application information<a class="headerlink" href="#application-information" title="Permalink to this headline">¶</a></h3>
+<p>Before developing an Application, there are two points to keep in mind.</p>
+<ol class="arabic simple">
+<li>Application ID (<em>must be letters</em>)
+e.g. miniblog</li>
+<li>Application Directory. Usually on Linux, it is <tt class="docutils literal"><span class="pre">/var/www/</span></tt>. Although, you may change it your directory by modifying the
+<tt class="docutils literal"><span class="pre">/etc/apache/httpd.config</span></tt> file.</li>
+</ol>
+<p>In this tutorial, we are going to use <tt class="docutils literal"><span class="pre">/var/www/</span></tt>.</p>
+<p>To create a new project command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-project</span> <span class="pre">AwesomeName</span></tt></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /var/www
+<span class="nv">$ </span>ethna add-project miniblog
+</pre></div>
+</div>
+<p>The above command will create a skeleton for the application. Following is the sample output.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-project miniblog
+creating directory <span class="o">(</span>/var/www/miniblog<span class="o">)</span> <span class="o">[</span>y/n<span class="o">]</span>: y
+project sub directory created <span class="o">[</span>/var/www/miniblog/app<span class="o">]</span>
+project sub directory created <span class="o">[</span>/var/www/miniblog/app/action<span class="o">]</span>
+
+...
+
+file generated <span class="o">[</span>/usr/share/php/Ethna/skel/skel.view_test.php -&gt; /var/www/miniblog/skel/skel.view_test.php<span class="o">]</span>
+
+project skeleton <span class="k">for</span> <span class="o">[</span>miniblog<span class="o">]</span> is successfully generated at <span class="o">[</span>/var/www/miniblog<span class="o">]</span>
+</pre></div>
+</div>
+<p>Above application has been generated.</p>
+</div>
+<div class="section" id="verifying-the-directory-structure">
+<h3>Verifying the Directory Structure<a class="headerlink" href="#verifying-the-directory-structure" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s take a peek at the directory and the files generated.</p>
+<div class="highlight-python"><pre>| - App (directory of the application)
+| | - Action (Action Script)
+| | - plugin (filter script)
+| | - test (test scripts)
+| `- View (view script)
+| - bin ( command line scripts)
+| - etc (configuration files, etc.)
+| - lib library) (application
+| - locale
+| `- ja_JP
+| - log (log file)
+| - schema (DB schema, etc.)
+| - - skel (skeleton application file)
+| - template
+| `- ja_JP (template file)
+| - tmp (temp files)
+`- www (web publishing file)</pre>
+</div>
+<p>Common use is in the following directory.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">app/</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/action</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">app/view</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">template/ja_JP</span></tt></li>
+</ul>
+</div>
+<div class="section" id="setting-application-s-url">
+<h3>2. Setting Application&#8217;s Url<a class="headerlink" href="#setting-application-s-url" title="Permalink to this headline">¶</a></h3>
+<p>Although you may see it on the <tt class="docutils literal"><span class="pre">localhost/miniblog/www</span></tt>. Also, in order to access the application from web browser, i.e. <tt class="docutils literal"><span class="pre">var/www/</span></tt>.
+We are going to set the <strong>Apache Virtual Host</strong> to <tt class="docutils literal"><span class="pre">http://miniblog.myhost/</span></tt> like the following:</p>
+<div class="highlight-python"><pre>&lt;VirtualHost *:80&gt;
+   ServerName miniblog.myhost
+   DocumentRoot /var/www/miniblog/www
+&lt;/VirtualHost&gt;</pre>
+</div>
+<p>Set up is complete lets try to view in the browser</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/</pre>
+</div>
+<p>If the set up is done correctly, you may should be able to see the following output</p>
+<a class="reference internal image-reference" href="../../_images/tutorial_01-setup-01.png"><img alt="alternate text" class="align-center" src="../../_images/tutorial_01-setup-01.png" /></a>
+<p>Next we are create action using ethna</p>
+</div>
+</div>
+<div class="section" id="flow-of-creation-processing-action-view-template">
+<h2>Flow of creation &amp; processing: Action, View, Template<a class="headerlink" href="#flow-of-creation-processing-action-view-template" title="Permalink to this headline">¶</a></h2>
+<p>Prior to creating a real application, we are going to add action, view and template to our miniblog.</p>
+<div class="section" id="create-action-view-template">
+<h3>Create action, view, template<a class="headerlink" href="#create-action-view-template" title="Permalink to this headline">¶</a></h3>
+<p>Next we are going to create action hello, which will be accessible from the following url</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/?action_hello=true</pre>
+</div>
+<p>There are 3 things to do</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">add-action</span> <span class="pre">hello</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">add-view</span> <span class="pre">hello</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">add-template</span> <span class="pre">hello</span></tt></li>
+</ul>
+<p>Let&#8217;s jump to the command line and do the above 3 steps.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-action hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Hello.php<span class="o">]</span>
+action script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/action/Hello.php<span class="o">]</span>
+
+<span class="nv">$ </span>ethna add-view hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.view.php -&gt; /var/www/miniblog/app/view/Hello.php<span class="o">]</span>
+view script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/view/Hello.php<span class="o">]</span>
+
+<span class="nv">$ </span>ethna add-template hello
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.template.tpl -&gt; /var/www/miniblog/template/ja_JP/hello.tpl<span class="o">]</span>
+template file<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/template/ja_JP/hello.tpl<span class="o">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<dl class="last docutils">
+<dt>You can add a view and template in one command by adding <tt class="docutils literal"><span class="pre">-t</span></tt> like this</dt>
+<dd><div class="first last highlight-python"><pre>add-view -t hello</pre>
+</div>
+</dd>
+</dl>
+</div>
+<p>Now, the view for the added action named <tt class="docutils literal"><span class="pre">hello</span></tt> can be viewed in the browser with the following url</p>
+<div class="highlight-python"><pre>http://miniblog.myhost/?action_hello=true</pre>
+</div>
+<p>The browser should display the following</p>
+<a class="reference internal image-reference" href="../../_images/tutorial_02-02.png"><img alt="alternate text" class="align-center" src="../../_images/tutorial_02-02.png" /></a>
+</div>
+<div class="section" id="flow-of-processing-in-ethna">
+<h3>Flow of processing in Ethna<a class="headerlink" href="#flow-of-processing-in-ethna" title="Permalink to this headline">¶</a></h3>
+<p>This diagram illustrates the flow of processing Ethna</p>
+<a class="reference internal image-reference" href="../../_images/tutorial_02-action-view-template-01.png"><img alt="alternate text" class="align-center" src="../../_images/tutorial_02-action-view-template-01.png" /></a>
+</div>
+<div class="section" id="action">
+<h3>Action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<p>With the command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-action</span> <span class="pre">hello</span></tt>, <tt class="docutils literal"><span class="pre">Hello.php</span></tt> is created in the directory
+<tt class="docutils literal"><span class="pre">app/action/Hello.php</span></tt>. In this php file there are two classes. As a courtesy, comments
+are also generated, but for this tutorial I am omitting the comments. The two classes follows next.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Miniblog_Form_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionForm</span>
+<span class="p">{</span>
+     <span class="k">protected</span> <span class="nv">$form</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Miniblog_Action_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">perform</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">Miniblog_Form_Hello</span></tt></p>
+<p>This is the action form class, and inherits Ethna&#8217;s ActionForm class.
+In this class the form for POST and/or GET is defined. We will discuss
+more about forms later in this documentation.</p>
+<p><tt class="docutils literal"><span class="pre">Miniblog_Action_Hello</span></tt></p>
+<p>This class implements the Hello action. Two functions <tt class="docutils literal"><span class="pre">prepare()</span></tt> and <tt class="docutils literal"><span class="pre">perform()</span></tt>
+are called before the implementation transit to <em>view</em>.</p>
+</div>
+<div class="section" id="view">
+<h3>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+<p>The, view class generated by the command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-view</span> <span class="pre">hello</span></tt>, should be in the directory
+<tt class="docutils literal"><span class="pre">app/view/Hello.php</span></tt>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Miniblog_View_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ViewClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">preforward</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-</span><span class="nx">af</span><span class="o">-&gt;</span><span class="na">setApp</span><span class="p">(</span><span class="s1">&#39;helloVariable&#39;</span><span class="p">,</span><span class="nv">$message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the View class inherits from ethna&#8217;s View class. View class is responsible
+for setting the variables that then be used in the HTML <em>template</em>. You may set your variables
+in the function <tt class="docutils literal"><span class="pre">preforward()</span></tt>, using <tt class="docutils literal"><span class="pre">setApp()</span></tt>.</p>
+</div>
+<div class="section" id="template">
+<h3>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h3>
+<p>Last one is template which is created by the command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-template</span> <span class="pre">hello</span></tt> in the
+directory <tt class="docutils literal"><span class="pre">template/ja_JP/hello.tpl</span></tt></p>
+<p>Lets, play with the <tt class="docutils literal"><span class="pre">helloVariable</span></tt> and try to print it in the template</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">&lt;h2&gt; New Template &lt;/h2&gt;</span>
+<span class="x">&lt;p&gt; {$app.helloVariable} &lt;/p&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="implementation-of-application">
+<h2>Implementation of Application<a class="headerlink" href="#implementation-of-application" title="Permalink to this headline">¶</a></h2>
+<p>Lets start the implementation of creating a blog via learning following 3 things</p>
+<ol class="arabic simple">
+<li>Add action to handle the post, defined in a form.</li>
+<li>Output the value from the form.</li>
+<li>Validate the values from input form.</li>
+</ol>
+<div class="section" id="add-action">
+<h3>Add action<a class="headerlink" href="#add-action" title="Permalink to this headline">¶</a></h3>
+<p>First is to quickly add an action named <tt class="docutils literal"><span class="pre">commit</span></tt> by the command <tt class="docutils literal"><span class="pre">ethna</span> <span class="pre">add-action</span> <span class="pre">commit</span></tt></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-action commit
+file generated <span class="o">[</span>/var/www/miniblog/skel/skel.action.php -&gt; /var/www/miniblog/app/action/Commit.php<span class="o">]</span>
+action script<span class="o">(</span>s<span class="o">)</span> successfully created <span class="o">[</span>/var/www/miniblog/app/action/Commit.php<span class="o">]</span>
+</pre></div>
+</div>
+<p>As the message also shows, there should be a file generated in <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt>
+Here, there are two classes,</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">class</span> <span class="pre">Miniblog_Form_Commit</span> <span class="pre">extends</span> <span class="pre">Miniblog_ActionForm</span></tt> that handles the input fields for the form</li>
+<li><tt class="docutils literal"><span class="pre">class</span> <span class="pre">Miniblog_Action_Commit</span> <span class="pre">extends</span> <span class="pre">Miniblog_ActionClass</span></tt> that performs actions upon input/submitting the form</li>
+</ol>
+<p>Lets take a look at them one by one</p>
+</div>
+<div class="section" id="creating-form">
+<h3>Creating Form<a class="headerlink" href="#creating-form" title="Permalink to this headline">¶</a></h3>
+<p>In <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class  Miniblog_Form_Commit  extends  Miniblog_ActionForm</span>
+<span class="x">{</span>
+<span class="x">    protected  $ form  =  array (</span>
+<span class="x">        &#39;Comment&#39;  =&gt;  array (</span>
+<span class="x">            &#39;type&#39;  =&gt;  VAR_TYPE_STRING ,</span>
+<span class="x">            &#39;Form_type&#39;  =&gt;  FORM_TYPE_TEXTAREA ,</span>
+<span class="x">            &#39;name&#39;  =&gt;  &#39;comment&#39; ,</span>
+<span class="x">            &#39;max&#39;  =&gt;  140 ,</span>
+<span class="x">            &#39;required &#39;  =&gt;  true ,</span>
+<span class="x">        ),</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Which is:</p>
+<ul class="simple">
+<li>Form named <strong>Comments</strong></li>
+<li>The value type is string</li>
+<li>Form type is TEXTAREA</li>
+<li>140 Characters</li>
+<li>Required Item</li>
+</ul>
+<p>And the second class</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Miniblog_Action_Commit extends Miniblog_ActionClass</span>
+<span class="x">{</span>
+<span class="x">    public function prepare()</span>
+<span class="x">    {</span>
+<span class="x">        return null;</span>
+<span class="x">    }</span>
+
+<span class="x">    public function perform()</span>
+<span class="x">    {</span>
+<span class="x">        return &#39;index&#39;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>We will talk about this second class <tt class="docutils literal"><span class="pre">Miniblog_ActionClass</span></tt> soon, but first lets create the form to
+be shown in the browser.</p>
+</div>
+<div class="section" id="display-form">
+<h3>Display Form<a class="headerlink" href="#display-form" title="Permalink to this headline">¶</a></h3>
+<p>Lets display the form in our <tt class="docutils literal"><span class="pre">template/ja_JP/index.tpl</span></tt> file</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Post<span class="nt">&lt;/h2&gt;</span>
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+  Post Content:
+  {form_input name=&quot;comment&quot;}
+
+  {form_submit}
+ {/form}
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">ethna_action</span></tt> defines the action to be called. It is similar to doing <tt class="docutils literal"><span class="pre">action=&quot;commit.php&quot;</span></tt> in plain html form.
+Similarity other values are self explanatory.</p>
+<p>Upon visiting the browser, a page similar to following should appear.</p>
+<a class="reference internal image-reference" href="../../_images/tutorial_03-01.png"><img alt="alternate text" class="align-center" src="../../_images/tutorial_03-01.png" /></a>
+</div>
+<div class="section" id="showing-the-post-content">
+<h3>Showing the POST content<a class="headerlink" href="#showing-the-post-content" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Comment<span class="nt">&lt;/h2&gt;</span>
+{$form.comment}
+</pre></div>
+</div>
+<p>This way you should be able to see the post content after the submit button from the text area.
+<tt class="docutils literal"><span class="pre">$form</span></tt> is used to access the variables defined in the ActionForm class.</p>
+</div>
+<div class="section" id="display-validation-and-error-content-of-post">
+<h3>Display Validation and Error content of POST<a class="headerlink" href="#display-validation-and-error-content-of-post" title="Permalink to this headline">¶</a></h3>
+<p>Here we explain about the <tt class="docutils literal"><span class="pre">Miniblog_ActionClass</span></tt> where the validations to the form can be performed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function prepare()</span>
+<span class="x">{</span>
+<span class="x">   if ($this-&gt;af-&gt;validate() &gt; 0) {</span>
+<span class="x">       return &#39;index&#39;;</span>
+<span class="x">   }</span>
+<span class="x">   return null;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Firstly, <tt class="docutils literal"><span class="pre">prepare()</span></tt> is called, here the necessary preparations can be done, like assigning values to instances,
+performing checks etc.</p>
+<p><tt class="docutils literal"><span class="pre">$this-&gt;af</span></tt> is the action form object, while <tt class="docutils literal"><span class="pre">validate()</span></tt> executes the method that performs validations on the
+input value. The point here is that if there is a trouble with the validation, the next method <tt class="docutils literal"><span class="pre">prepare()</span></tt> will not
+be called and instead the <tt class="docutils literal"><span class="pre">index</span></tt> will be returned (rendered).</p>
+</div>
+<div class="section" id="displaying-errors">
+<h3>Displaying Errors<a class="headerlink" href="#displaying-errors" title="Permalink to this headline">¶</a></h3>
+<p>Error content for the form are handled by the variable <tt class="docutils literal"><span class="pre">$error</span></tt>.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Posting Comment<span class="nt">&lt;/h2&gt;</span>
+{if count($errors) &gt; 0}
+There was an error !
+{/if}
+
+{form name=&quot;form_comment&quot; ethna_action=&quot;commit&quot;}
+
+ Post Content:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+ {message name=&quot;comment&quot;}<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+ {form_input name=&quot;comment&quot;}
+
+ {form_submit}
+
+{/form}
+</pre></div>
+</div>
+<p>Where the output of the above code would be the following, if the characters in the text area
+are more than 140 or 0.</p>
+<a class="reference internal image-reference" href="../../_images/tutorial_03-02.png"><img alt="alternate text" class="align-center" src="../../_images/tutorial_03-02.png" /></a>
+</div>
+</div>
+<div class="section" id="connection-to-database">
+<h2>Connection to Database<a class="headerlink" href="#connection-to-database" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we talk about the following things</p>
+<ol class="arabic simple">
+<li>Setting Database</li>
+<li>SELECT, INSERT, UPDATE i.e. basic stuff</li>
+</ol>
+<div class="section" id="setting-database">
+<h3>Setting Database<a class="headerlink" href="#setting-database" title="Permalink to this headline">¶</a></h3>
+<p>Setting database is pretty straight forward with ethna.
+Settings are defined in <tt class="docutils literal"><span class="pre">etc/miniblog-ini.php</span></tt>.
+To connect to the database uncomment the <tt class="docutils literal"><span class="pre">dsn</span></tt> like the following.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+   <span class="c1">// site</span>
+   <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+
+   <span class="c1">// debug</span>
+   <span class="c1">// (to enable ethna_info and ethna_unittest, turn this true)</span>
+   <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+
+   <span class="c1">// db</span>
+   <span class="c1">// sample-1: single db</span>
+   <span class="c1">// &#39;dsn&#39; =&gt; &#39;mysql://user:password@server/database&#39;,</span>
+   <span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>Replace the</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">user</span></tt> with your <tt class="docutils literal"><span class="pre">DB</span> <span class="pre">username</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">password</span></tt> with your <tt class="docutils literal"><span class="pre">password</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">server</span></tt> with <tt class="docutils literal"><span class="pre">localhost</span></tt> or <tt class="docutils literal"><span class="pre">127.0.0.1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">database</span></tt> with your <tt class="docutils literal"><span class="pre">database_name</span></tt></li>
+</ul>
+<p>Save it and good to go</p>
+</div>
+<div class="section" id="connecting-to-database-in-action-class">
+<h3>Connecting to Database in Action Class<a class="headerlink" href="#connecting-to-database-in-action-class" title="Permalink to this headline">¶</a></h3>
+<p>The following connects to the database in <tt class="docutils literal"><span class="pre">app/action/Hello.php</span></tt></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function perform()</span>
+<span class="x">{</span>
+<span class="x">    $db = &amp; $this-&gt;backend-&gt;getDB();</span>
+<span class="x">    $db-&gt;db-&gt;setFetchMode(DB_FETCHMODE_OBJ);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-insert-update-with-db">
+<h3>SELECT, INSERT, UPDATE with <tt class="docutils literal"><span class="pre">$db</span></tt><a class="headerlink" href="#select-insert-update-with-db" title="Permalink to this headline">¶</a></h3>
+<p><strong>SELECT</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$sql = &quot;SELECT * FROM users where id &gt; ?&quot;;</span>
+<span class="x">$params = array(&quot;1&quot;);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$res = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+
+<span class="x">echo &quot;&lt;pre&gt;&quot;;</span>
+<span class="x">$i = 0;</span>
+<span class="x">while ($data[$i] = $res-&gt;fetchRow()) {</span>
+<span class="x">   if ($i){</span>
+<span class="x">       var_dump($data);</span>
+<span class="x">   }</span>
+<span class="x">   $i++;</span>
+<span class="x">}</span>
+<span class="x">echo &quot;&lt;/pre&gt;&quot;;</span>
+</pre></div>
+</div>
+<p><strong>INSERT</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$sql = &quot;INSERT INTO users (username, email, password, osid, gameid,signup) VALUES (?,?,?,?,?,now())&quot;;</span>
+<span class="x">$params = array(</span>
+<span class="x">     &quot;kevin&quot;,</span>
+<span class="x">     &quot;dummy@gmail.com&quot;,</span>
+<span class="x">      sha1(&quot;foo&quot;),</span>
+<span class="x">      &quot;1111&quot;,</span>
+<span class="x">      &quot;gamers&quot;</span>
+<span class="x">      );</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$res = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+
+<span class="x">//Note that this message only exists in case of DB error</span>
+<span class="x">if (method_exists($res, &#39;getMessage&#39;)){</span>
+<span class="x">    var_dump($res-&gt;getMessage());</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p><strong>UPDATE</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$sql = &quot;UPDATE puzzle SET playedby=?,solved=?,score=score +100 WHERE id=?&quot;;</span>
+<span class="x">$params = array(&quot;johny&quot;, &#39;1&#39;,  &quot;111&quot;);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;prepare($sql);</span>
+<span class="x">$stmt = &amp; $db-&gt;db-&gt;execute($stmt,$params);</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Check the other class methods quickly by <tt class="docutils literal"><span class="pre">var_dump(get_class_methods($res))</span></tt></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ethna Project.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
