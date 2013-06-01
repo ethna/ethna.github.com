@@ -232,15 +232,19 @@ hr {
     border-radius: 2px;
 }
 
+
 pre {
-    font-family: 'Consolas', 'Deja Vu Sans Mono',
-                 'Bitstream Vera Sans Mono', monospace;
-    font-size: 0.95em;
+    font-family: 'Source Code Pro', monospace;
+    font-style: normal;
+	font-size: 0.9em;
     letter-spacing: 0.015em;
     line-height: 120%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    background-color: #f8f8f8;
+    padding: 0.7em;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 pre a {

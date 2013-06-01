@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Its All Romantic &mdash; ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="reference.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Its All Romantic</a><ul>
+<li><a class="reference internal" href="#setting-app-on-heroku">Setting app on Heroku</a></li>
+<li><a class="reference internal" href="#back-to-terminal">Back to Terminal</a></li>
+<li><a class="reference internal" href="#setting-up-database">Setting up Database</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rst/romantic.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="its-all-romantic">
+<h1>Its All Romantic<a class="headerlink" href="#its-all-romantic" title="Permalink to this headline">¶</a></h1>
+<p>In this section we will talk about ethna, smarty, localhost &amp; webserver (<a class="reference external" href="https://www.heroku.com/">Heroku</a>)
+The goal upon this section is to set up ethna on a heroku. Ethna being lightweight
+we will not install it on heroku but rather just copy the required libs to the server.</p>
+<div class="section" id="setting-app-on-heroku">
+<h2>Setting app on Heroku<a class="headerlink" href="#setting-app-on-heroku" title="Permalink to this headline">¶</a></h2>
+<p>Go to <a class="reference external" href="https://www.heroku.com/">Heroku</a> and set up your account.
+First step here is to set up an app on heroku, lets name it <tt class="docutils literal"><span class="pre">ethna-web</span></tt>.
+Upon creating the app, go to settings and get the <strong>Git URL:</strong> <tt class="docutils literal"><span class="pre">git&#64;heroku.com:ethna-web.git</span></tt></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Also install the <strong>Heroku Toolbelt</strong> based on your operating system if you haven&#8217;t done that already.
+<a class="reference external" href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a></p>
+</div>
+</div>
+<div class="section" id="back-to-terminal">
+<h2>Back to Terminal<a class="headerlink" href="#back-to-terminal" title="Permalink to this headline">¶</a></h2>
+<p>Now on the terminal, make a new Directory lets say <tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">~/Documents/Ethna-Web_Heroku</span></tt>
+And go to that directory.</p>
+<p>Lets quickly create a file in that directory,</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;&lt;?php echo &#39;Hello Heroku&#39;; ?&gt;&quot;</span> &gt;index.php
+</pre></div>
+</div>
+<p><strong>Initialize the git</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git init
+<span class="nv">$ </span>git add .
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Committing the index.php&quot;</span>
+</pre></div>
+</div>
+<p><strong>Add the Remote</strong></p>
+<p>Because we have already created the app named <tt class="docutils literal"><span class="pre">ethna-web</span></tt>. Lets just add
+a remote for the existing app using the terminal</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>heroku git:remote -a ethna-web
+</pre></div>
+</div>
+<p><strong>Push</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that we added <tt class="docutils literal"><span class="pre">index.php</span></tt> which also indicates heroku that its a PHP application</p>
+</div>
+<p>Test on your url (e.g. <a class="reference external" href="http://ethna-web.herokuapp.com/">http://ethna-web.herokuapp.com/</a>) provided by heroku for your app if <tt class="docutils literal"><span class="pre">hello</span></tt> is rendered on the web browser.</p>
+<p><strong>Getting Ethna to work</strong></p>
+<p>While in the Dir <tt class="docutils literal"><span class="pre">~/Documents/Ethna-Web_Heroku</span></tt>. Lets do the following to add a project.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna add-project ethnaweb
+</pre></div>
+</div>
+<p>Now if you have installed Ethna on your local machine, we need to copy the libraries to
+heroku server.</p>
+<p>First copy,</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cp -a ~/pear/share/pear/Smarty ethnaweb/app/
+<span class="nv">$ </span>cp -a ~/pear/share/pear/Ethna ethnaweb/app/
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>You may also want to copy the DB files</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cp -a ~/pear/share/pear/DB ethnaweb/app/
+</pre></div>
+</div>
+</div>
+<p><strong>All Done</strong></p>
+<p>Push the changes to heroku&#8217;s repo</p>
+<div class="highlight-bash"><div class="highlight"><pre> <span class="nv">$ </span>git add .
+ <span class="nv">$ </span>git commit -m <span class="s2">&quot;pushing ethna&quot;</span>
+ <span class="nv">$ </span>git push heroku master
+
+Ethna should render the welcome page on the url http://ethna-web.herokuapp.com/ethnaweb/www/
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-up-database">
+<h2>Setting up Database<a class="headerlink" href="#setting-up-database" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Ethna Project.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

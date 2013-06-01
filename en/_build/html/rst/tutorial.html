@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
-    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="next" title="Its All Romantic" href="romantic.html" />
     <link rel="prev" title="Installation" href="installation.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
@@ -35,7 +35,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="reference.html" title="Reference"
+          <a href="romantic.html" title="Its All Romantic"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
@@ -86,8 +86,8 @@
   <p class="topless"><a href="installation.html"
                         title="previous chapter">Installation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="reference.html"
-                        title="next chapter">Reference</a></p>
+  <p class="topless"><a href="romantic.html"
+                        title="next chapter">Its All Romantic</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/rst/tutorial.txt"
@@ -273,7 +273,6 @@ template file<span class="o">(</span>s<span class="o">)</span> successfully crea
 <tt class="docutils literal"><span class="pre">app/action/Hello.php</span></tt>. In this php file there are two classes. As a courtesy, comments
 are also generated, but for this tutorial I am omitting the comments. The two classes follows next.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
-
 <span class="k">class</span> <span class="nc">Miniblog_Form_Hello</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionForm</span>
 <span class="p">{</span>
      <span class="k">protected</span> <span class="nv">$form</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -358,19 +357,21 @@ Here, there are two classes,</p>
 </div>
 <div class="section" id="creating-form">
 <h3>Creating Form<a class="headerlink" href="#creating-form" title="Permalink to this headline">¶</a></h3>
-<p>In <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class  Miniblog_Form_Commit  extends  Miniblog_ActionForm</span>
-<span class="x">{</span>
-<span class="x">    protected  $ form  =  array (</span>
-<span class="x">        &#39;Comment&#39;  =&gt;  array (</span>
-<span class="x">            &#39;type&#39;  =&gt;  VAR_TYPE_STRING ,</span>
-<span class="x">            &#39;Form_type&#39;  =&gt;  FORM_TYPE_TEXTAREA ,</span>
-<span class="x">            &#39;name&#39;  =&gt;  &#39;comment&#39; ,</span>
-<span class="x">            &#39;max&#39;  =&gt;  140 ,</span>
-<span class="x">            &#39;required &#39;  =&gt;  true ,</span>
-<span class="x">        ),</span>
-<span class="x">    );</span>
-<span class="x">}</span>
+<p>And in <tt class="docutils literal"><span class="pre">app/action/Commit.php</span></tt> file.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Miniblog_Form_Commit</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionForm</span>
+<span class="p">{</span>
+    <span class="k">protected</span>  <span class="nv">$form</span>  <span class="o">=</span>  <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;Comment&#39;</span>  <span class="o">=&gt;</span>  <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;type&#39;</span>  <span class="o">=&gt;</span>  <span class="nx">VAR_TYPE_STRING</span><span class="p">,</span>
+            <span class="s1">&#39;form_type&#39;</span>  <span class="o">=&gt;</span>  <span class="nx">FORM_TYPE_TEXTAREA</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span>  <span class="o">=&gt;</span>  <span class="s1">&#39;comment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;max&#39;</span>  <span class="o">=&gt;</span>  <span class="mi">140</span><span class="p">,</span>
+            <span class="s1">&#39;required &#39;</span>  <span class="o">=&gt;</span>  <span class="k">true</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">);</span>
+
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Which is:</p>
@@ -382,18 +383,18 @@ Here, there are two classes,</p>
 <li>Required Item</li>
 </ul>
 <p>And the second class</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Miniblog_Action_Commit extends Miniblog_ActionClass</span>
-<span class="x">{</span>
-<span class="x">    public function prepare()</span>
-<span class="x">    {</span>
-<span class="x">        return null;</span>
-<span class="x">    }</span>
-
-<span class="x">    public function perform()</span>
-<span class="x">    {</span>
-<span class="x">        return &#39;index&#39;;</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Miniblog_Action_Commit</span> <span class="k">extends</span> <span class="nx">Miniblog_ActionClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">perform</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;index&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>We will talk about this second class <tt class="docutils literal"><span class="pre">Miniblog_ActionClass</span></tt> soon, but first lets create the form to
@@ -581,7 +582,7 @@ To connect to the database uncomment the <tt class="docutils literal"><span clas
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="reference.html" title="Reference"
+          <a href="romantic.html" title="Its All Romantic"
              >next</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"

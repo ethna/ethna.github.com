@@ -43,4 +43,5 @@ Contents:
    rst/quickStart
    rst/installation
    rst/tutorial
+   rst/romantic
    rst/reference

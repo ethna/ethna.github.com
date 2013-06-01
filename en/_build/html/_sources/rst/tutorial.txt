@@ -210,7 +210,6 @@ are also generated, but for this tutorial I am omitting the comments. The two cl
 .. code-block:: php
 
    <?php
-
    class Miniblog_Form_Hello extends Miniblog_ActionForm
    {
         protected $form = array(
@@ -310,21 +309,23 @@ Lets take a look at them one by one
 Creating Form
 +++++++++++++
 
-In ``app/action/Commit.php``
+And in ``app/action/Commit.php`` file.
 
 .. code-block:: php
-
-   class  Miniblog_Form_Commit  extends  Miniblog_ActionForm 
+   
+   <?php
+   class Miniblog_Form_Commit extends Miniblog_ActionForm 
    { 
-       protected  $ form  =  array ( 
-           'Comment'  =>  array ( 
-               'type'  =>  VAR_TYPE_STRING , 
-               'Form_type'  =>  FORM_TYPE_TEXTAREA , 
-               'name'  =>  'comment' , 
-               'max'  =>  140 , 
-               'required '  =>  true , 
+       protected  $form  =  array( 
+           'Comment'  =>  array( 
+               'type'  =>  VAR_TYPE_STRING, 
+               'form_type'  =>  FORM_TYPE_TEXTAREA, 
+               'name'  =>  'comment', 
+               'max'  =>  140, 
+               'required '  =>  true, 
            ), 
        ); 
+
    }
 
 Which is:
@@ -339,13 +340,13 @@ And the second class
 
 .. code-block:: php
 
+   <?php
    class Miniblog_Action_Commit extends Miniblog_ActionClass
    {
        public function prepare()
        {
            return null;
        }
-
        public function perform()
        {
            return 'index';
