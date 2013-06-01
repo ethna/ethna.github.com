@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Config etc/***-ini.php &mdash; ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="next" title="Writing to Log" href="log.html" />
+    <link rel="prev" title="Its All Romantic" href="romantic.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="log.html" title="Writing to Log"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="romantic.html" title="Its All Romantic"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="romantic.html"
+                        title="previous chapter">Its All Romantic</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="log.html"
+                        title="next chapter">Writing to Log</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rst/configuration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="config-etc-ini-php">
+<h1>Config <tt class="docutils literal"><span class="pre">etc/***-ini.php</span></tt><a class="headerlink" href="#config-etc-ini-php" title="Permalink to this headline">¶</a></h1>
+<p>The default location of the configuration file is in <tt class="docutils literal"><span class="pre">YOURAPP/etc/YOURAPP-ini.php</span></tt>
+The configurations are defined in <tt class="docutils literal"><span class="pre">$config</span></tt></p>
+<p>We already discussed previously when setting up the Database like the following</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$config = array(</span>
+<span class="x"> &#39;debug&#39; =&gt; false,</span>
+<span class="x"> &#39;dsn&#39;   =&gt; &#39;mysql://user:pass@unix+localhost/dbname&#39;,</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Now, to access the config items in ActionClass of your app you can call using the following</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Sample_Action_Index extends Ethna_ActionClass</span>
+<span class="x">{</span>
+<span class="x">    function prepare()</span>
+<span class="x">    {</span>
+<span class="x">        return null;</span>
+<span class="x">    }</span>
+
+<span class="x">    function perform()</span>
+<span class="x">    {</span>
+<span class="x">        //Will get you the settings for ``dsn``</span>
+<span class="x">        $dsn = $this-&gt;config-&gt;get(&#39;dsn&#39;);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Similarity we can also define the memcached configuration in the same file as</p>
+<p>It is also possible to define more than one configs for memcache as</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"> $config = array(</span>
+<span class="x">// sample-2: multiple memcache servers (distributing w/ namespace and ids)</span>
+<span class="x">&#39;memcache&#39; =&gt; array(</span>
+<span class="x">     &#39;namespace1&#39; =&gt; array(</span>
+<span class="x">         0 =&gt; array(</span>
+<span class="x">             &#39;memcache_host&#39; =&gt; &#39;cache1.example.com&#39;,</span>
+<span class="x">             &#39;memcache_port&#39; =&gt; 11211,</span>
+<span class="x">         ),</span>
+<span class="x">         1 =&gt; array(</span>
+<span class="x">             &#39;memcache_host&#39; =&gt; &#39;cache2.example.com&#39;,</span>
+<span class="x">             &#39;memcache_port&#39; =&gt; 11211,</span>
+<span class="x">         ),</span>
+<span class="x">     ),</span>
+<span class="x">  ),</span>
+<span class="x"> );</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="log.html" title="Writing to Log"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="romantic.html" title="Its All Romantic"
+             >previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Ethna Project.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

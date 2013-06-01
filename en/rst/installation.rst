@@ -67,12 +67,3 @@ It is also possible to upgrade via downloading the package using wget.
 
    $ wget -O Ethna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
    $ pear upgrade Ethna-2.x.y.tgz
-
-
-Installation via Unzipping archives (tar.gz/zip)
-------------------------------------------------
-
-If you don't want to use PEAR then.
-
-
-

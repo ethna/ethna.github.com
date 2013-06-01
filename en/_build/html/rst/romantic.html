@@ -23,8 +23,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
-    <link rel="next" title="&lt;no title&gt;" href="reference.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="next" title="Inside etc/PROJECTNAME-ini.php" href="configuration.html" />
+    <link rel="prev" title="Session" href="session.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
   <body>
@@ -35,10 +35,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="reference.html" title="&lt;no title&gt;"
+          <a href="configuration.html" title="Inside etc/PROJECTNAME-ini.php"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="session.html" title="Session"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>
@@ -56,11 +56,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial.html"
-                        title="previous chapter">Tutorial</a></p>
+  <p class="topless"><a href="session.html"
+                        title="previous chapter">Session</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="reference.html"
-                        title="next chapter">&lt;no title&gt;</a></p>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Inside <tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">etc/PROJECTNAME-ini.php</span></tt></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/rst/romantic.txt"
@@ -160,6 +160,69 @@ Ethna should render the welcome page on the url http://ethna-web.herokuapp.com/e
 </div>
 <div class="section" id="setting-up-database">
 <h2>Setting up Database<a class="headerlink" href="#setting-up-database" title="Permalink to this headline">¶</a></h2>
+<p>Setting the database (DB) requires following 2 steps:</p>
+<ol class="arabic simple">
+<li>Create a DB on Heroku</li>
+<li>Set it up in Ethna</li>
+</ol>
+<p>To create a DB on Heroku, I am going to use the free one <strong>Heroku Postgres</strong>. Note that the
+previous tutorial about DB uses Ethna&#8217;s Backend to call a query to MySQL, but we are not
+restricted to just using Ethna&#8217;s, misc DB can also be easily integrated.</p>
+<p><strong>Getting Heroku username &amp; password</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>heroku config | grep HEROKU_POSTGRESQL
+
+  ...HEROKU_POSTGRESQL_MAROON_URL: postgres://himvd
+
+<span class="nv">$ </span>heroku pg:credentials MAROON
+</pre></div>
+</div>
+<p>The above will output the username &amp; password like the following</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="s2">&quot;dbname=abcdefg host=****.amazonaws.com port=5432 user=**** password=**** sslmode=require&quot;</span>
+</pre></div>
+</div>
+<p><strong>Setting PDO in Ethna</strong></p>
+<p>Setup the username and password in <tt class="docutils literal"><span class="pre">etc/ethnaweb-ini.php</span></tt></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$config = array(</span>
+<span class="x"> // site</span>
+<span class="x"> &#39;url&#39; =&gt; &#39;&#39;,</span>
+
+<span class="x"> // debug</span>
+<span class="x"> // (to enable ethna_info and ethna_unittest, turn this true)</span>
+<span class="x"> &#39;debug&#39; =&gt; false,</span>
+
+<span class="x"> // db</span>
+<span class="x"> // sample-1: single db</span>
+<span class="x"> // &#39;dsn&#39; =&gt; &#39;mysql://user:password@server/database&#39;,</span>
+<span class="x"> //    &#39;dsn&#39; =&gt; &#39;dbname=d5thfeu7cb8dms host=ec2-54-227-252-82.compute-1.amazonaws.com port=5432 user=himvdmapqkjhav password=zGN3cprl66dNc1Qh-HzEsTwez7 sslmode=require&#39;,</span>
+<span class="x"> &#39;pghost&#39;    =&gt; &#39;***82.compute-1.amazonaws.com&#39;,</span>
+<span class="x"> &#39;pgdbname&#39;  =&gt; &#39;*****&#39;,</span>
+<span class="x"> &#39;pguser&#39;    =&gt; &#39;*****&#39;,</span>
+<span class="x"> &#39;pgpassword&#39;=&gt; &#39;*****&#39;,</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+ <span class="p">{</span>
+   <span class="c1">//Access the config array</span>
+   <span class="nv">$host</span> <span class="o">=</span>  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;pghost&#39;</span><span class="p">);</span>
+   <span class="nv">$dbname</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;pgdbname&#39;</span><span class="p">);</span>
+
+   <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;pguser&#39;</span><span class="p">);</span>
+   <span class="nv">$pass</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;pgpassword&#39;</span><span class="p">);</span>
+   <span class="c1">//  $dbh = new PDO(&#39;pgsql:host=localhost;dbname=[YOUR_DATABASE_NAME]&#39;);</span>
+   <span class="c1">//  $db = new PDO(&#39;pgsql:host=&#39;.$host.&#39;;&#39;.&#39;dbname=&#39;.$dbname.&#39;;user=&#39;.$user.&#39;;password=&#39;.$pass);</span>
+   <span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;pgsql:host=&#39;</span><span class="o">.</span><span class="nv">$host</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="s1">&#39;dbname=&#39;</span><span class="o">.</span><span class="nv">$dbname</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>All Done ! Create the table in heroku using terminal and do the queries from ethna</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>CLI interface to connect to heroku&#8217;s postgresql</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>psql -h HOSTNAME -U USERNAME DBNAME
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -176,10 +239,10 @@ Ethna should render the welcome page on the url http://ethna-web.herokuapp.com/e
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="reference.html" title="&lt;no title&gt;"
+          <a href="configuration.html" title="Inside etc/PROJECTNAME-ini.php"
              >next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="Tutorial"
+          <a href="session.html" title="Session"
              >previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>

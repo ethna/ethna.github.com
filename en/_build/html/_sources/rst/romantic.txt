@@ -111,3 +111,78 @@ Push the changes to heroku's repo
 
 Setting up Database
 -------------------
+
+Setting the database (DB) requires following 2 steps:
+
+1. Create a DB on Heroku
+2. Set it up in Ethna
+
+To create a DB on Heroku, I am going to use the free one **Heroku Postgres**. Note that the
+previous tutorial about DB uses Ethna's Backend to call a query to MySQL, but we are not 
+restricted to just using Ethna's, misc DB can also be easily integrated.
+
+**Getting Heroku username & password**
+
+.. code-block:: bash
+
+   $ heroku config | grep HEROKU_POSTGRESQL
+
+     ...HEROKU_POSTGRESQL_MAROON_URL: postgres://himvd
+
+   $ heroku pg:credentials MAROON
+
+The above will output the username & password like the following
+
+.. code-block:: bash
+
+   "dbname=abcdefg host=****.amazonaws.com port=5432 user=**** password=**** sslmode=require"
+
+**Setting PDO in Ethna**
+
+Setup the username and password in ``etc/ethnaweb-ini.php``
+
+.. code-block:: php
+
+   $config = array(
+    // site
+    'url' => '',
+
+    // debug
+    // (to enable ethna_info and ethna_unittest, turn this true)
+    'debug' => false,
+
+    // db
+    // sample-1: single db
+    // 'dsn' => 'mysql://user:password@server/database',
+    //    'dsn' => 'dbname=d5thfeu7cb8dms host=ec2-54-227-252-82.compute-1.amazonaws.com port=5432 user=himvdmapqkjhav password=zGN3cprl66dNc1Qh-HzEsTwez7 sslmode=require',
+    'pghost'    => '***82.compute-1.amazonaws.com',
+    'pgdbname'  => '*****',
+    'pguser'    => '*****',
+    'pgpassword'=> '*****',
+
+.. code-block:: php
+
+    <?php
+
+     function prepare()
+     {
+       //Access the config array
+       $host =  $this->config->get('pghost');
+       $dbname = $this->config->get('pgdbname');
+        
+       $user = $this->config->get('pguser');
+       $pass = $this->config->get('pgpassword');
+       //  $dbh = new PDO('pgsql:host=localhost;dbname=[YOUR_DATABASE_NAME]');
+       //  $db = new PDO('pgsql:host='.$host.';'.'dbname='.$dbname.';user='.$user.';password='.$pass);
+       $db = new PDO('pgsql:host='.$host.';'.'dbname='.$dbname, $user, $pass);
+
+All Done ! Create the table in heroku using terminal and do the queries from ethna
+
+.. tip::
+
+   CLI interface to connect to heroku's postgresql
+
+   .. code-block:: bash
+
+      $ psql -h HOSTNAME -U USERNAME DBNAME
+

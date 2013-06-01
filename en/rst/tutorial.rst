@@ -558,22 +558,3 @@ SELECT, INSERT, UPDATE with ``$db``
 
    Check the other class methods quickly by ``var_dump(get_class_methods($res))``
 
-
-
-
-
-
-
-
-
-
-   
-
-
- 
-
-
-
-
-
-      

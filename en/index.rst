@@ -38,10 +38,14 @@ Documentation
 Contents:
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 9
 
    rst/quickStart
    rst/installation
    rst/tutorial
+   rst/session
    rst/romantic
+   rst/configuration
+   rst/log
+   rst/appobject
    rst/reference

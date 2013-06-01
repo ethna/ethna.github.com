@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Misc References &mdash; ethna 2.6 documentation</title>
+    <title>App Object &mdash; ethna 2.6 documentation</title>
     
     <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -23,7 +23,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
-    <link rel="prev" title="App Object" href="appobject.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="next" title="Misc References" href="reference.html" />
+    <link rel="prev" title="Writing to Log" href="log.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
   <body>
@@ -34,27 +35,25 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="appobject.html" title="App Object"
+          <a href="reference.html" title="Misc References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="log.html" title="Writing to Log"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Misc References</a><ul>
-<li><a class="reference internal" href="#preventing-double-post">Preventing Double POST</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="appobject.html"
-                        title="previous chapter">App Object</a></p>
+  <p class="topless"><a href="log.html"
+                        title="previous chapter">Writing to Log</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference.html"
+                        title="next chapter">Misc References</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/rst/reference.txt"
+    <li><a href="../_sources/rst/appobject.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -78,22 +77,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="misc-references">
-<h1>Misc References<a class="headerlink" href="#misc-references" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preventing-double-post">
-<h2>Preventing Double POST<a class="headerlink" href="#preventing-double-post" title="Permalink to this headline">¶</a></h2>
-<p>A neat little trick for preventing duplicate POST on form submission using Ethna&#8217;s
-Util class static method <tt class="docutils literal"><span class="pre">isDuplicatePost()</span></tt>.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">function perform()</span>
-<span class="x">     {</span>
-<span class="x">        if (Ethna_Util::isDuplicatePost()) {</span>
-<span class="x">           //If it is a duplicate post</span>
-<span class="x">           return &#39;regist_done&#39;;</span>
-<span class="x">        }</span>
-<span class="x">     }</span>
-</pre></div>
-</div>
-</div>
+  <div class="section" id="app-object">
+<h1>App Object<a class="headerlink" href="#app-object" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -109,7 +94,10 @@ Util class static method <tt class="docutils literal"><span class="pre">isDuplic
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="appobject.html" title="App Object"
+          <a href="reference.html" title="Misc References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="log.html" title="Writing to Log"
              >previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>
