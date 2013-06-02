@@ -1,7 +1,7 @@
 Writing Logs
 ============
 
-In the configuration  file e.g. ``appname/etc/appname-ini.php
+In the configuration  file e.g. ``appname/etc/appname-ini.php``
 
 **Add the following lines for log in config**
 
@@ -32,7 +32,7 @@ In the configuration  file e.g. ``appname/etc/appname-ini.php
             'option'          => 'pid,function,pos',
             //'filter_do'     => '',
             //'filter_ignore' => 'Undefined index.*%%.*tpl',
-            'file'            => '/tmp/error.log', 
+            'file'            => '../tmp/error.log', //Complete path of the error file
      //     'dir'             => '/tmp/', //DONOT MENTION DIR here
             'mode'            => 666, //SET THE MODE TO 666 for writable and NOT 777
             ),

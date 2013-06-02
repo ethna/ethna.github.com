@@ -1,6 +1,9 @@
 Installation
 ============
 
+Install Using PEAR
+------------------
+
 Ethna can be installed using pear command. It is the simplest and recommended. Note that you need to have `pear <http://pear.php.net/>`_ installed on your system. 
 
 Only for the first time, you need to register a channel for Ethna using ``channel-discover`` as:

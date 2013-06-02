@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
-    <link rel="next" title="App Object" href="appobject.html" />
+    <link rel="next" title="Internationalization" href="internationalization.html" />
     <link rel="prev" title="Config etc/***-ini.php" href="configuration.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
@@ -35,7 +35,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="appobject.html" title="App Object"
+          <a href="internationalization.html" title="Internationalization"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Config etc/***-ini.php"
@@ -49,8 +49,8 @@
   <p class="topless"><a href="configuration.html"
                         title="previous chapter">Config <tt class="docutils literal"><span class="pre">etc/***-ini.php</span></tt></a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="appobject.html"
-                        title="next chapter">App Object</a></p>
+  <p class="topless"><a href="internationalization.html"
+                        title="next chapter">Internationalization</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/rst/log.txt"
@@ -79,7 +79,7 @@
             
   <div class="section" id="writing-logs">
 <h1>Writing Logs<a class="headerlink" href="#writing-logs" title="Permalink to this headline">¶</a></h1>
-<p>In the configuration  file e.g. <a href="#id1"><span class="problematic" id="id2">``</span></a>appname/etc/appname-ini.php</p>
+<p>In the configuration  file e.g. <tt class="docutils literal"><span class="pre">appname/etc/appname-ini.php</span></tt></p>
 <p><strong>Add the following lines for log in config</strong></p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -106,7 +106,7 @@
          <span class="s1">&#39;option&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;pid,function,pos&#39;</span><span class="p">,</span>
          <span class="c1">//&#39;filter_do&#39;     =&gt; &#39;&#39;,</span>
          <span class="c1">//&#39;filter_ignore&#39; =&gt; &#39;Undefined index.*%%.*tpl&#39;,</span>
-         <span class="s1">&#39;file&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/error.log&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;file&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;../tmp/error.log&#39;</span><span class="p">,</span> <span class="c1">//Complete path of the error file</span>
   <span class="c1">//     &#39;dir&#39;             =&gt; &#39;/tmp/&#39;, //DONOT MENTION DIR here</span>
          <span class="s1">&#39;mode&#39;</span>            <span class="o">=&gt;</span> <span class="mi">666</span><span class="p">,</span> <span class="c1">//SET THE MODE TO 666 for writable and NOT 777</span>
          <span class="p">),</span>
@@ -143,7 +143,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="appobject.html" title="App Object"
+          <a href="internationalization.html" title="Internationalization"
              >next</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Config etc/***-ini.php"
