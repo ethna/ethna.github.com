@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Session &mdash; ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="next" title="Its All Romantic" href="romantic.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="romantic.html" title="Its All Romantic"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Session</a><ul>
+<li><a class="reference internal" href="#authenticate">Authenticate</a></li>
+<li><a class="reference internal" href="#starting-session">Starting Session</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="romantic.html"
+                        title="next chapter">Its All Romantic</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rst/session.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="session">
+<h1>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h1>
+<p>Methods are defined in Ethna&#8217;s ActionClass.
+We will go through them one by one.</p>
+<div class="section" id="authenticate">
+<h2>Authenticate<a class="headerlink" href="#authenticate" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function authenticate()</span>
+<span class="x">{</span>
+<span class="x">   if ( !$this-&gt;session-&gt;isStart() ) {</span>
+<span class="x">      return &#39;login&#39;;</span>
+<span class="x">   }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>If the session has not started yet the user will be drawn to the <tt class="docutils literal"><span class="pre">login</span></tt> page</p>
+</div>
+<div class="section" id="starting-session">
+<h2>Starting Session<a class="headerlink" href="#starting-session" title="Permalink to this headline">¶</a></h2>
+<p>Lets say you have a login page and the user enters the password using the web form
+In that case, we can start a session as:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function perform()</span>
+<span class="x">{</span>
+<span class="x">    $password = $this-&gt;config-&gt;get(&#39;password&#39;);</span>
+
+<span class="x">    if ( $password == $this-&gt;af-&gt;get(&#39;password&#39;)) {</span>
+<span class="x">         $this-&gt;session-&gt;start();</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ul class="last simple">
+<li>Session can be destroyed using <tt class="docutils literal"><span class="pre">$this-&gt;session-&gt;destroy()</span></tt></li>
+<li>Regenerate Id <tt class="docutils literal"><span class="pre">$this-&gt;session-&gt;regenerateId()</span></tt></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="romantic.html" title="Its All Romantic"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Ethna Project.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

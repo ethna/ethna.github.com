@@ -17,6 +17,10 @@
 
    * http://ethna.jp/old/
 
+.. seealso::
+
+   For English documentation please visit `here <../../en/_build/html/index.html>`_
+
 
 .. _index:
 

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; ethna 2.6 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Quick Start" href="quickStart.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="quickStart.html" title="Quick Start"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#install-using-pear">Install Using PEAR</a></li>
+<li><a class="reference internal" href="#update-ethna-using-pear">Update Ethna using PEAR</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quickStart.html"
+                        title="previous chapter">Quick Start</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="next chapter">Tutorial</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rst/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-using-pear">
+<h2>Install Using PEAR<a class="headerlink" href="#install-using-pear" title="Permalink to this headline">¶</a></h2>
+<p>Ethna can be installed using pear command. It is the simplest and recommended. Note that you need to have <a class="reference external" href="http://pear.php.net/">pear</a> installed on your system.</p>
+<p>Only for the first time, you need to register a channel for Ethna using <tt class="docutils literal"><span class="pre">channel-discover</span></tt> as:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If your pear version is old, then it <tt class="docutils literal"><span class="pre">channel-discover</span></tt> will get to discover. Therefore, please run</p>
+<div class="last highlight-bash"><div class="highlight"><pre>pear upgrade pear
+</pre></div>
+</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pear channel-discover pear.ethna.jp
+</pre></div>
+</div>
+<p>Once the channel of Ethna is discovered, you are ready to install Ethna</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pear install -a ethna/ethna
+</pre></div>
+</div>
+<p>From this command, the dependent library <tt class="docutils literal"><span class="pre">Smarty</span></tt> and <tt class="docutils literal"><span class="pre">simpletest</span></tt> will be installed at the same time. If you don&#8217;t want to install them together then just ommit the option <tt class="docutils literal"><span class="pre">-a</span></tt>.</p>
+<p>Once the installation is finished, verify <tt class="docutils literal"><span class="pre">ethna</span></tt>, using the following command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ethna -v
+Ethna 2.6.0 <span class="o">(</span>using PHP 5.3.6-6~dotdeb.1<span class="o">)</span>
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2004-2011,
+Masaki Fujimoto &lt;fujimoto@php.net&gt;
+halt feits &lt;halt.feits@gmail.com&gt;
+Takuya Ookubo &lt;sfio@sakura.ai.to&gt;
+nozzzzz &lt;nozzzzz@gmail.com&gt;
+cocoitiban &lt;cocoiti@comio.info&gt;
+Yoshinari Takaoka &lt;takaoka@beatcraft.com&gt;
+Sotaro Karasawa &lt;sotaro.k@gmail.com&gt;
+
+http://ethna.jp/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The stable Version 2.5.0 will be installed. Ethna 2.6.0 is currently in beta. If you wish to install the beta then choose the following command.</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pear install ethna/ethna-beta
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update-ethna-using-pear">
+<h2>Update Ethna using PEAR<a class="headerlink" href="#update-ethna-using-pear" title="Permalink to this headline">¶</a></h2>
+<p>To update ethna, you may run the following</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pear upgrade ethna/ethna
+</pre></div>
+</div>
+<p>It is also possible to upgrade via downloading the package using wget.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wget -O Ethna-2.6.x.tar.gz  https://github.com/ethna/ethna/tarball/2.6.x
+<span class="nv">$ </span>pear upgrade Ethna-2.x.y.tgz
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="quickStart.html" title="Quick Start"
+             >previous</a> |</li>
+        <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Ethna Project.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
