@@ -9,6 +9,7 @@ We already discussed previously when setting up the Database like the following
 
 .. code-block:: php
 
+   <?php
    $config = array(
     'debug' => false,
     'dsn'   => 'mysql://user:pass@unix+localhost/dbname',
@@ -19,6 +20,7 @@ Now, to access the config items in ActionClass of your app you can call using th
 
 .. code-block:: php
 
+   <?php
    class Sample_Action_Index extends Ethna_ActionClass
    {
        function prepare()
@@ -35,9 +37,10 @@ Now, to access the config items in ActionClass of your app you can call using th
 
 Similarity we can also define the memcached configuration in the same file as
 
-.. code-blcok:: php
+.. code-block:: php
 
-    $config = array(
+   <?php
+   $config = array(
    // sample-1: single (or default) memcache
    'memcache_host' => 'localhost',   
    'memcache_port' => 11211,         
@@ -50,7 +53,8 @@ It is also possible to define more than one configs for memcache as
 
 .. code-block:: php
 
-    $config = array(
+   <?php 
+   $config = array(
    // sample-2: multiple memcache servers (distributing w/ namespace and ids)
    'memcache' => array(
         'namespace1' => array(

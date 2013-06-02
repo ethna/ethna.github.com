@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing to Log &mdash; ethna 2.6 documentation</title>
+    <title>Writing Logs &mdash; ethna 2.6 documentation</title>
     
     <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="ethna 2.6 documentation" href="../index.html" />
     <link rel="next" title="App Object" href="appobject.html" />
-    <link rel="prev" title="Inside etc/PROJECTNAME-ini.php" href="configuration.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="prev" title="Config etc/***-ini.php" href="configuration.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../_static/solarized-dark.css" rel="stylesheet">
   </head>
   <body>
@@ -38,7 +38,7 @@
           <a href="appobject.html" title="App Object"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="configuration.html" title="Inside etc/PROJECTNAME-ini.php"
+          <a href="configuration.html" title="Config etc/***-ini.php"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>
@@ -47,7 +47,7 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="configuration.html"
-                        title="previous chapter">Inside <tt class="docutils literal docutils literal docutils literal"><span class="pre">etc/PROJECTNAME-ini.php</span></tt></a></p>
+                        title="previous chapter">Config <tt class="docutils literal"><span class="pre">etc/***-ini.php</span></tt></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="appobject.html"
                         title="next chapter">App Object</a></p>
@@ -77,8 +77,57 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="writing-to-log">
-<h1>Writing to Log<a class="headerlink" href="#writing-to-log" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-logs">
+<h1>Writing Logs<a class="headerlink" href="#writing-logs" title="Permalink to this headline">¶</a></h1>
+<p>In the configuration  file e.g. <a href="#id1"><span class="problematic" id="id2">``</span></a>appname/etc/appname-ini.php</p>
+<p><strong>Add the following lines for log in config</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+
+
+    <span class="s1">&#39;log_facility&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;log_level&#39;</span>             <span class="o">=&gt;</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;log_option&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;pid,function,pos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;log_filter_do&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;log_filter_ignore&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Undefined index.*%%.*tpl&#39;</span><span class="p">,</span>
+
+
+    <span class="s1">&#39;session&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+       <span class="s1">&#39;handler&#39;</span>                <span class="o">=&gt;</span> <span class="s1">&#39;files&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;path&#39;</span>                   <span class="o">=&gt;</span> <span class="s1">&#39;../tmp&#39;</span><span class="p">,</span> <span class="c1">//THIS IS IF YOU WANT TO SET THE SESSION FILES PATH</span>
+       <span class="s1">&#39;check_remote_addr&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="p">),</span>
+
+ <span class="s1">&#39;log&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+     <span class="s1">&#39;file&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+         <span class="s1">&#39;level&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;notice&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;option&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;pid,function,pos&#39;</span><span class="p">,</span>
+         <span class="c1">//&#39;filter_do&#39;     =&gt; &#39;&#39;,</span>
+         <span class="c1">//&#39;filter_ignore&#39; =&gt; &#39;Undefined index.*%%.*tpl&#39;,</span>
+         <span class="s1">&#39;file&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/error.log&#39;</span><span class="p">,</span>
+  <span class="c1">//     &#39;dir&#39;             =&gt; &#39;/tmp/&#39;, //DONOT MENTION DIR here</span>
+         <span class="s1">&#39;mode&#39;</span>            <span class="o">=&gt;</span> <span class="mi">666</span><span class="p">,</span> <span class="c1">//SET THE MODE TO 666 for writable and NOT 777</span>
+         <span class="p">),</span>
+     <span class="p">),</span>
+  <span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Now to write to a log</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">prepare</span><span class="p">()</span>
+<span class="p">{</span>
+
+    <span class="nv">$logger</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">backend</span><span class="o">-&gt;</span><span class="na">getLogger</span><span class="p">();</span>
+    <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">LOG_NOTICE</span><span class="p">,</span> <span class="s2">&quot;Testing Dir. File Should be Created in appname/tmp/error.log&quot;</span><span class="p">);</span>
+
+    <span class="c1">//ALSO a session file sess_**** should also be created in appname/tmp/sess_*****</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -97,7 +146,7 @@
           <a href="appobject.html" title="App Object"
              >next</a> |</li>
         <li class="right" >
-          <a href="configuration.html" title="Inside etc/PROJECTNAME-ini.php"
+          <a href="configuration.html" title="Config etc/***-ini.php"
              >previous</a> |</li>
         <li><a href="../index.html">ethna 2.6 documentation</a> &raquo;</li> 
       </ul>

@@ -10,6 +10,7 @@ Util class static method ``isDuplicatePost()``.
 
 .. code-block:: php
 
+   <?php
    function perform()
 	{
            if (Ethna_Util::isDuplicatePost()) {
